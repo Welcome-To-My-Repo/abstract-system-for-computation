@@ -1,0 +1,7 @@
+Standard Documentation for
+an Abstract System for Computation
+
+This document covers the formation and interpretation of a programming language called the Abstract System for Computation, abbreviated as "ASC".
+ASC is intended to be a highly expressive general purpose programming language.
+Here, "Programming language" to mean that ASC will be capable of expressing the largest possible set of programs in the mathematical sense of the term.
+
