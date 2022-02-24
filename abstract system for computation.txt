@@ -1,10 +1,25 @@
 Standard Documentation for
 an Abstract System for Computation
 
-This document covers the formation and interpretation of a programming language called the Abstract System for Computation, abbreviated as "ASC".
+This document covers the formation and interpretation of a programming language called the Abstract System for Computation, abbreviated as the name "ASC".
 ASC is intended to be a highly expressive general purpose programming language.
 Here, "Programming language" to mean that ASC will be capable of expressing the largest possible set of programs in the mathematical sense of the term.
 
 The semantics of the ASC language follow the interaction of a number of programmatic entities. 
 These entities interact through the process of expression evaluation.
-Expressions are formed through writing a series of characters.
+Expressions are formed through writing a series of symbols comprised of sequences of characters.
+
+The characters required by ASC are the upper and lower case alphabet, the arabic numerals 0-9, single, double, and backwards quotations, the colon and semicolon, the period dot, the comma, forward and backward slashes, round, curly, triangle, and curved braces, the tilde, the exclamation point, the "at" symbol, the pound sign, the dollar sign, the percent sign, the caret, the ampersand, the asterisk, the underscore, the dash, the plus, the equals sign, the question mark and the blank space.
+The block below additionally displays all necessary symbols (excepting the blank space)...
+	
+	abcdefghijklmnopqrstuvwxyz
+	ABCDEFGHIJKLMNOPQRSTUVWXYZ
+	0123456789
+	`'"~_
+	!@#$%^&
+	=+-*/.,
+	\;:(){}[]<>
+
+Becauase it's likely that ASC programs are stored as digital text, any other types of invisible characters are treated as blank space. 
+Formatting and control characters are ignored. 
+However, these characters are still allowed to occur in a program and may change the appearance of the program's textual representation.
