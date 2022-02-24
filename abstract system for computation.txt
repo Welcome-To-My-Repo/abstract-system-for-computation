@@ -5,3 +5,6 @@ This document covers the formation and interpretation of a programming language 
 ASC is intended to be a highly expressive general purpose programming language.
 Here, "Programming language" to mean that ASC will be capable of expressing the largest possible set of programs in the mathematical sense of the term.
 
+The semantics of the ASC language follow the interaction of a number of programmatic entities. 
+These entities interact through the process of expression evaluation.
+Expressions are formed through writing a series of characters.
