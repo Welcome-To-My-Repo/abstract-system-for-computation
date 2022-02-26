@@ -15,3 +15,9 @@ More refined aspects of geometry such as shape, position, size, and dimension ar
 The type of an entity is simply a space with form.
 The properties the entity are reflected by the properties of that form.
 
+ASC compiles to an arch-independent assembly.
+the assembly has an infinite number of general purpose registers.
+it also has a set number of special registers.
+	- Program Counter
+	- Base Pointer
+	- Zero
