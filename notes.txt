@@ -1,0 +1,17 @@
+type system founded in pure geometry.
+homotopy type theory and algebraic geometry too interested in determining exact shape.
+strength and purity are weakened by heavy grounding in shape.
+extensional descriptions of geometry.
+
+type system supports both extensional and intensional definitions of a type.
+they are treated as mutually dependent descriptors.
+Thus an extensional type can be defined as the explicit list of all the other types which share its qualities and an intensional type can be defined as the explicit list of the qualities which other types must possess.
+The distinction betwen the two approaches to definition is that extensional definitions of type can be reasoned about simply by referring to the list defined for that type whereas intensional types rely more on inference about whether the appropriate qualities are exhibited.
+
+Concept of a type in ASC is a geometric space.
+A type in ASC is a way of naming the collection of qualities of an entity.
+Types are treated as conceptually reduced geometric spaces.
+More refined aspects of geometry such as shape, position, size, and dimension are discarded.
+The type of an entity is simply a space with form.
+The properties the entity are reflected by the properties of that form.
+
