@@ -50,3 +50,10 @@ Formatting and control characters are ignored but are still allowed to occur in 
 Some characters may not be used in the default notations provided by the ASC language. 
 However, they are still considered necessary as ASC allows one to devlop new notations to use within the language.
 A greater variety of characters is convenient for creating new notations.
+
+Every program posesses qualities regarding its behavior, the values it can manupilate, the structures it contains, and so on.
+Types are a way to give a name to the qualities associated with a specific entity.
+The qualities of a program can then be extrapolated from the types of the entities that compose it.
+All entities in a program have a type.
+Types themselves are entities and each have their own type.
+This recursive nature can be extended as far as necessary to reason about a program in the desired way.

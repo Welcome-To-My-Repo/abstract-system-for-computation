@@ -21,3 +21,8 @@ it also has a set number of special registers.
 	- Program Counter
 	- Base Pointer
 	- Zero
+
+Type rules
+a type can be considered a geometric form.
+features of that form represent the definition of the type.
+
