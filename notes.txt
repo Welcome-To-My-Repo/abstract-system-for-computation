@@ -25,4 +25,4 @@ it also has a set number of special registers.
 The properties of an entity are represented using a separate "type" entity which corresponds to the collection of those properties. 
 The type of an entity can be thought of as a geometric form with some distinct features.
 Specific geometric properties such as size, shape, closedness, and dimension are not considered.
-The specific features which a type may have are simply named, without concern for thr geometric nature of each feature.
+The specific features which a type may have are simply named, without concern for the geometric nature of each feature.
