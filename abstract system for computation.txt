@@ -44,7 +44,8 @@ The text block below displays all necessary symbols (excepting the blank space).
 	=+-*/.,
 	\;:(){}[]<>
 
-Becauase it's likely that ASC programs are stored as digital text, any other types of invisible characters are treated as blank space. 
+It's likely that ASC programs will be stored as digital text, using encodings that provide more characters than what's required here.
+Therefore, 
 Formatting and control characters are ignored but are still allowed to occur in a program and may change the appearance of the program's textual representation.
 
 Some characters may not be used in the default notations provided by the ASC language. 
@@ -52,7 +53,8 @@ However, they are still considered necessary as ASC allows one to devlop new not
 A greater variety of characters is convenient for creating new notations.
 
 Every program posesses qualities regarding its behavior, the values it can manupilate, the structures it contains, and so on.
-Types are a way to give a name to the qualities associated with a specific entity.
+Types are provided by ASC as a means to perform automated reasoning about the qualities of a program.
+Types give a name to the qualities associated with a specific entity.
 The qualities of a program can then be extrapolated from the types of the entities that compose it.
 All entities in a program have a type.
 Types themselves are entities and each have their own type.
