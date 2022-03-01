@@ -1,0 +1,123 @@
+An Abstract System for Computation
+
+This document describes the representation and interpretation of programs written in the Abstract System for Computation, abbreviated as the name "ASC".
+ASC is intended to be a highly expressive, general purpose programming language.
+It is capable of expressing the widest possible range of algorithms possible.
+
+An ASC program is written as a sequence of expressions which map to constants, function applications, and nested expressions.
+A program is executed by evaluating the expressions.
+The most literal "result" of a program is then the entity which is produced from evaluating the last remaining expression.
+
+The characters required by ASC are... 
+	- the upper and lower case alphabet, 
+	- the arabic numerals/decimal digits 0-9, 
+	- single, double, and backwards quotations, 
+	- the colon and semicolon, 
+	- the period dot, 
+	- the comma, 
+	- forward and backward slashes, 
+	- round, curly, triangle, and curved braces, 
+	- the tilde, 
+	- the exclamation point, 
+	- the "at" symbol, 
+	- the pound sign, 
+	- the dollar sign, 
+	- the percent sign, 
+	- the caret, 
+	- the ampersand, 
+	- the asterisk, 
+	- the underscore, 
+	- the dash, 
+	- the plus, 
+	- the equals sign, 
+	- the question mark,
+	- the space
+
+The text block below displays all necessary characters (excepting the space)...
+	
+	abcdefghijklmnopqrstuvwxyz
+	ABCDEFGHIJKLMNOPQRSTUVWXYZ
+	0123456789
+	`'"~_
+	!@#$%^&
+	=+-*/.,
+	\;:(){}[]<>
+
+It's likely that ASC programs will be stored as digital text, using encodings that provide more characters than what's required here.
+Therefore, extra code points which print symbols will be treated the same as the required characters.
+Formatting and control characters are ignored but are still allowed to occur in a program and may change the appearance of the program's textual representation.
+Characters which print some other form of blank space will be treated as the space character.
+
+Some characters may not be used in the default notations provided by the ASC language. 
+However, they are still considered necessary as ASC allows one to devlop new notations to use within the language.
+A greater variety of characters is convenient for creating new notations.
+
+Characters are used to form symbols.
+A symbol in ASC is any sequence of characters which does not contain the space character.
+The space delimits symbols.
+Along with characters, symbols are another basic component used to build expressions in ASC.
+
+A special sub-type of symbol is called a constant.
+Constants evaluate to a corresponding numeric value.
+A constant is trivially a symbol which contains all decimal characters (some of decimal digits 0-9).
+A constant may be given a sign which is either the plus or dash character.
+A constant may also be given a decimal dot character (the period character).
+The decimal dot in a constant must always be between two decimal characters.
+A constant may also be given a forward slash character in place of a dot.
+If a constant contains a forward slash, it may optionally contain one decimal dot in the number on either side of the slash.
+This allows for numerical constants of the Natural, Integer, and Rational numbers to be represented with various precision.
+A number may be a simple whole number... 100
+a signed integer... +100
+a decimal... -100.001
+a fraction... +1/3
+or even a fraction with decimals... -7.7/2.2
+
+There are several combinations of notation components which affect how a notation can be written.
+
+Using the cannonical names of the types as they would appear in an ASC program, the hierarchy of default types is as follows...
+Any
+ Type
+  Symbol
+   Constant
+  Function
+  Sequence
+  Module
+  Data
+   B (Big)
+   S (Small)
+   I (Number)
+   F (Fraction)
+  Notation
+
+Note that Any is not a sub-type of any other.
+This is because Any is not a real type, but rather a shorthand for referring to a place where any possible type may be encountered.
+To any other entity in the program, Any appears as a real type and can be used anywhere the name of a real type is allowed.
+Type may be used to refer to all the default types, but it cannot be used to refer to a type such as... [~ & Any == Type]
+
+There are several default data types which are required for any implementation of ASC.
+Other data types may be added and this is encouraged to allow ASC to better use the underlying computer environment.
+The four which are minimally required are "Big", "Small", "Number", and "Fraction", the sub-types of Data.
+The Big and Small types hold natural numbers, that is whole, positive values.
+The Small type will occupy the least amount of storage units possible, the Big type will occupy the most possible units.
+However, the Big type cannot occupy storage larger than the largest single piece of data manageable by the underlying environment.
+The Number type is the same size as the Big type, but can hold both whole positive and whole negative values, a subset of integer values.
+The Fraction type is not required to have the same size as the Big type.
+It represents some subset of real values.
+
+Constant forms have one-to-one mappings with these four types.
+These mappings may be overridden by an implementation where a more precise data type has been defined.
+Generally, the data type which can most accurately represent the constant value will be chosen.
+A constant without a sign or period dot will be mapped to a Big type.
+A constant with a sign but without a dot will be mapped to a Number type.
+A constant with a dot will be mapped to a Fraction type regardless of the presence of a sign.
+
+Each of these four types has a precision which relies entirely on the underlying computing environment of the implementation.
+Not all constants may be representable by the default data types.
+If a precise constant value is desired, an expression can be written where all values are expressed as constants.
+If any of the default mathematical operators are used purely on constants, they are guaranteed to yeild a constant with the most precise value mathematically possible.
+For example, the expressions... 1 / 3 
+or... 1.0/3.0
+will yeild the constant... 1/3
+The expression... 1 - 0.00001
+will yeild the constant... 0.99999
+

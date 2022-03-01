@@ -72,4 +72,8 @@ Think of a type as some kind of geometric form.
 It doesn't matter exactly what the shape, size, position, or dimension of the form is.
 All that is considered is whether two shapes are different or alike in terms of their features.
 
+AND /\
+OR \/
+NOT ~
 
+notation prefix is semicolon ;
