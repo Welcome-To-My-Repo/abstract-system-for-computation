@@ -1,14 +1,26 @@
 Standard Documentation for an Abstract System for Computation
 
+Abstract -
 This document covers the formation and interpretation of a programming language called the Abstract System for Computation, abbreviated as the name "ASC".
 ASC is intended to be a highly expressive general purpose programming language.
 Here, "Programming language" to mean that ASC will be capable of expressing the largest possible set of programs in the mathematical sense of the term.
 
-The semantics of the ASC language follow the interaction of a number of programmatic entities. 
+Introduction - 
+ASC is a general purpose programming language.
+It shall be capable of expressing the widest possible range of algorithms as possible.
+To that end, ASC provides the programmer with a small number of concepts which are fundamental and can be composed into full programs.
+
+Semantics - 
+ASC programs are written as a sequence of expressions.
+A program is then executed by evaluating and reducing these expressions.
+The most literal "result" of a program will be the entity produced from evaluating the last expression.
+
+The semantics of the ASC language follow the interaction of a number of programmatic entities.
 These entities interact through the process of expression evaluation.
 Expressions are formed through writing a series of symbols comprised of sequences of characters.
 A program is then represented by a series of expressions using notations composed of symbols and characters.
 
+Syntax - 
 The characters required by ASC are... 
 	- the upper and lower case alphabet, 
 	- the arabic numerals 0-9, 

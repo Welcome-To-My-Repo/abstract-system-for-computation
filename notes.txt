@@ -21,8 +21,21 @@ it also has a set number of special registers.
 	- Program Counter
 	- Base Pointer
 	- Zero
+Data types correspond to the data types in ASC.
+There's Long, Short, and Fraction.
 
-The properties of an entity are represented using a separate "type" entity which corresponds to the collection of those properties. 
-The type of an entity can be thought of as a geometric form with some distinct features.
-Specific geometric properties such as size, shape, closedness, and dimension are not considered.
-The specific features which a type may have are simply named, without concern for the geometric nature of each feature.
+ASC syntax is created by patterns.
+There are a few notations which are determined using characters rather than symbols. 
+This allows these notations to be represented with any format the programmer may chose.
+These character notations are:
+	-function declaration
+	-function definition
+	-sequence definition
+	-sequence access
+	-sequence introspection
+	-type declaration
+	-type assertion
+	-type introspection
+	-module definition
+	-module access
+	-conditional evaluation
