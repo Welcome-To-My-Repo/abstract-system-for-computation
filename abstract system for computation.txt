@@ -57,5 +57,5 @@ Types are provided by ASC as a means to perform automated reasoning about the qu
 Types give a name to the qualities associated with a specific entity.
 The qualities of a program can then be extrapolated from the types of the entities that compose it.
 All entities in a program have a type.
-Types themselves are entities and each have their own type.
-This recursive nature can be extended as far as necessary to reason about a program in the desired way.
+Types themselves are entities in a program and each have their own type.
+This self-referential pattern can be continued as far as necessary by the programmer.
