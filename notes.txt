@@ -51,3 +51,25 @@ How do to sequence definition with just types and no names?
 Sequence(long long short) `a sequence with fields typed long, long, and short`
 Sequence(100) `a sequence with 100 fields`
 Should a sequence be allowed with no default values?
+
+
+notations:
+
+`comment`
+
+g(x) = x
+f(x) = g(x)
+f(nat) = g(x)
+f(x) = y {y = g(x)}
+
+? x y z
+
+{1 2 3}
+{x y z}
+
+how do types work?
+Think of a type as some kind of geometric form.
+It doesn't matter exactly what the shape, size, position, or dimension of the form is.
+All that is considered is whether two shapes are different or alike in terms of their features.
+
+

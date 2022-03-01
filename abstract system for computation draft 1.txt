@@ -1,0 +1,52 @@
+An Abstract System for Computation
+
+This document describes the representation and interpretation of programs written in the Abstract System for Computation, abbreviated as the name "ASC".
+ASC is intended to be a highly expressive, general purpose programming language.
+It is capable of expressing the widest possible range of algorithms possible.
+
+An ASC program is written as a sequence of expressions which map to constants, function applications, and nested expressions.
+A program is executed by evaluating the expressions.
+The most literal "result" of a program is then the entity which is produced from evaluating the last remaining expression.
+
+The characters required by ASC are... 
+	- the upper and lower case alphabet, 
+	- the arabic numerals 0-9, 
+	- single, double, and backwards quotations, 
+	- the colon and semicolon, 
+	- the period dot, 
+	- the comma, 
+	- forward and backward slashes, 
+	- round, curly, triangle, and curved braces, 
+	- the tilde, 
+	- the exclamation point, 
+	- the "at" symbol, 
+	- the pound sign, 
+	- the dollar sign, 
+	- the percent sign, 
+	- the caret, 
+	- the ampersand, 
+	- the asterisk, 
+	- the underscore, 
+	- the dash, 
+	- the plus, 
+	- the equals sign, 
+	- the question mark,
+	- the blank space.
+
+The text block below displays all necessary characters (excepting the blank space)...
+	
+	abcdefghijklmnopqrstuvwxyz
+	ABCDEFGHIJKLMNOPQRSTUVWXYZ
+	0123456789
+	`'"~_
+	!@#$%^&
+	=+-*/.,
+	\;:(){}[]<>
+
+It's likely that ASC programs will be stored as digital text, using encodings that provide more characters than what's required here.
+Therefore, extra code points which print symbols will be treated the same as the required characters.
+Formatting and control characters are ignored but are still allowed to occur in a program and may change the appearance of the program's textual representation.
+
+Some characters may not be used in the default notations provided by the ASC language. 
+However, they are still considered necessary as ASC allows one to devlop new notations to use within the language.
+A greater variety of characters is convenient for creating new notations.
