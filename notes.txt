@@ -39,3 +39,15 @@ These character notations are:
 	-module definition
 	-module access
 	-conditional evaluation
+
+The function declaration specifies the name of the function and the names of each parameter.
+Function declarations may optionally specify a generic definition of the function.
+A function definition specifies the types allowed for each parameter and a definition which is applied when parameters of those types are given to the function.
+
+How do to sequence definition with just types and no names?
+
+{1 2 3} `a sequence of constants`
+{long long short} `a sequence with fields named "long", "long", "short"`
+Sequence(long long short) `a sequence with fields typed long, long, and short`
+Sequence(100) `a sequence with 100 fields`
+Should a sequence be allowed with no default values?
