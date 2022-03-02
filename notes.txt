@@ -77,3 +77,13 @@ OR \/
 NOT ~
 
 notation prefix is semicolon ;
+
+
+Continuation design:
+To implement full continuations, they must have 6 capabilities...
+1.) Asymmetric; be able to move control back to the point where the continuation was called.
+2.) Stackful; act like a regular function with its own context and stack.
+3.) Delimited; have a finite definition that doesn't contain the entire program.
+4.) Multi-prompt; ability to be nested and recursive.
+5.) Reentrant; dynamically capture the program state at a given point as a callable continuation.
+6.) Cloneable; ability to duplicate any continuation object.
