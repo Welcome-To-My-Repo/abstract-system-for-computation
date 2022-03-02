@@ -87,3 +87,12 @@ To implement full continuations, they must have 6 capabilities...
 4.) Multi-prompt; ability to be nested and recursive.
 5.) Reentrant; dynamically capture the program state at a given point as a callable continuation.
 6.) Cloneable; ability to duplicate any continuation object.
+
+Functions:
+Declare a function in one place or separately as a signature and implementation.
+Declare a generalized function
+Declare a type specific function.
+Define a function as a sequence of statements.
+Define a function as an expression using only the function parameters.
+Complete ad hoc polymorphism where a single function name can be defined for multiple arities and parameter types.
+Declare a function with dynamic extent
