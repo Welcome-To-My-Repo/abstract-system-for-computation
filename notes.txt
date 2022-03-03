@@ -96,3 +96,12 @@ Define a function as a sequence of statements.
 Define a function as an expression using only the function parameters.
 Complete ad hoc polymorphism where a single function name can be defined for multiple arities and parameter types.
 Declare a function with dynamic extent
+
+Function syntax
+
+A function has two parts, a declaration and a definition.
+The declaration specifies the name and parameters of the function.
+A type-specific function also specifies the types accepted for one or more parameters.
+A function declaration begins with the name of the function, followed by a sequence of parameter declarations inside closed parentheses. 
+The patentheses are followed by the equal sign and then a sequence of one or more return parameters.
+
