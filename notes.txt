@@ -8,13 +8,6 @@ they are treated as mutually dependent descriptors.
 Thus an extensional type can be defined as the explicit list of all the other types which share its qualities and an intensional type can be defined as the explicit list of the qualities which other types must possess.
 The distinction betwen the two approaches to definition is that extensional definitions of type can be reasoned about simply by referring to the list defined for that type whereas intensional types rely more on inference about whether the appropriate qualities are exhibited.
 
-Concept of a type in ASC is a geometric space.
-A type in ASC is a way of naming the collection of qualities of an entity.
-Types are treated as conceptually reduced geometric spaces.
-More refined aspects of geometry such as shape, position, size, and dimension are discarded.
-The type of an entity is simply a space with form.
-The properties the entity are reflected by the properties of that form.
-
 ASC compiles to an arch-independent assembly.
 the assembly has an infinite number of general purpose registers.
 it also has a set number of special registers.
@@ -50,27 +43,20 @@ How do to sequence definition with just types and no names?
 {long long short} `a sequence with fields named "long", "long", "short"`
 Sequence(long long short) `a sequence with fields typed long, long, and short`
 Sequence(100) `a sequence with 100 fields`
-Should a sequence be allowed with no default values?
+Should a sequence be allowed with no default values? No.
 
+Characters which are used directly in syntax.
+().:;"'`[]{}&#^@
 
-notations:
-
-`comment`
-
-g(x) = x
-f(x) = g(x)
-f(nat) = g(x)
-f(x) = y {y = g(x)}
-
-? x y z
-
-{1 2 3}
-{x y z}
-
-how do types work?
-Think of a type as some kind of geometric form.
-It doesn't matter exactly what the shape, size, position, or dimension of the form is.
-All that is considered is whether two shapes are different or alike in terms of their features.
+Types are viewed as non-distinct geometric formations.
+The size, shape, positioning, and dimensions of a form are not known.
+Two things are considered: what (non-descript) features may be present on a form, and what features are shared between two forms.
+Types can be defined as a unique form, a combination of multiple forms, a difference of forms, or a superposition of multiple forms.
+A combination exhibits all the features of a collection of forms as a unique formation.
+A difference exhibits all the features present in one form that are not shared with another.
+A superposition is not a unique form, but instead may simultaneously exhibit any one form in a collection of existing forms.
+A sequence is then an ordered collection of forms.
+A function is a transformation from one collection of forms to another.
 
 AND /\
 OR \/
@@ -99,9 +85,18 @@ Declare a function with dynamic extent
 
 Function syntax
 
+A function has two components, a declaration and a definition.
+The declaration specifies the name and parameters for a function.
+The definition specifies what expressions the function reduces to.
+Functions can be written 
+
+A function has two components, a declaration and a definition
+
 A function has two parts, a declaration and a definition.
 The declaration specifies the name and parameters of the function.
 A type-specific function also specifies the types accepted for one or more parameters.
 A function declaration begins with the name of the function, followed by a sequence of parameter declarations inside closed parentheses. 
 The patentheses are followed by the equal sign and then a sequence of one or more return parameters.
-
+Function declarations can be overloaded with multiple types.
+Only one name can ever be associated with the parameter for a given function.
+Once a name for a parameter has been established in a declaration, a different name may not be used in other declarations.
