@@ -80,26 +80,45 @@ A notation is formed through a number of components...
 	- Parameters
 	- contextual nesting
 
+Every entity in ASC has qualities which are represented by a type entity.
+Types are viewed as non-descript geometric formations.
+The size, shape, positioning, and dimensions of a formation are not known.
+The only things which are considered are what features are present on a type, and what features are shared between two types.
+Types can be defined as a unique form, a combination of multiple forms, or a superposition of multiple forms.
+A combination exhibits all the features present in a collection of forms as a unique formation.
+A superposition is not a unique form, but instead may simulteneously exhibit any one form in a collection of existing forms.
 
+Features are not named, and each type may exhibit countably infinite features because the formation of each type is non-descript.
+Therefore, only generalized statements can be made about the features of a type.
+For example, a unique type may be inductively defined in this way... "A type, T, exhibits all the features of a type, T."
+Statements can be made relating two types in various ways.
+Two types can be related as either equivalent, disjoint, or alike.
+Two types are equivalent if they have the same number of features and share all features with each other.
+Two types are disjoint if they do not share any features.
+Two types are alike if they share some features, but not all features.
+Given two types which are alike, the super-type exhibits all the features of the sub-type and at least one feature not exhibited by the sub-type.
+There may be multiple sub-types which are alike a single super-type in a many-to-one relationship.
+
+ASC provides a number of types by default which relate to the entities used to construct programs.
 Using the cannonical names of the types as they would appear in an ASC program, the hierarchy of default types is as follows...
 
 Any
- Type
-  Symbol
-   Constant
-  Function
-  Sequence
-  Module
-  Data
-   Large
-   Small
-   Integer
-   Fraction
-   Boolean
-    True
-    False
-   Character
-  Notation
+	Type
+		Symbol
+			Constant
+		Function
+		Sequence
+		Module
+		Data
+			Large
+			Small
+			Integer
+			Fraction
+			Boolean
+				True
+				False
+		Character
+		Notation
 
 Note that Any is not a sub-type of any other.
 This is because Any is not a real type, but rather a shorthand for referring to a place where any possible type may be encountered.

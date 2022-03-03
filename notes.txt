@@ -57,6 +57,7 @@ A difference exhibits all the features present in one form that are not shared w
 A superposition is not a unique form, but instead may simultaneously exhibit any one form in a collection of existing forms.
 A sequence is then an ordered collection of forms.
 A function is a transformation from one collection of forms to another.
+The types of functions and sequences are also represented as forms.
 
 AND /\
 OR \/
