@@ -71,7 +71,19 @@ a signed integer... +100
 a decimal... -100.001
 a fraction... +1/3
 
-A Notation is a construct in ASC which maps a sequence of characters, symbols, and expressions to a function definition.
+Functions in ASC behave according to the mathematical concept of a function where a series of parameter values are mapped into a sequence of one or more expressions.
+Functions in ASC are defined using two components, the declaration and the body.
+These components can be written together or separately to define a single function.
+The declaration specifies the function name, the arity, and the names of the parameters.
+A function declaration which features parameter names, but does not define which types are accepted for each parameter is called generic.
+A function which defines which types are accepted for every parameter is called specialized.
+A function declaration may specify the types for any number of its parameters.
+A single function may have multiple distinct declarations.
+For two declarations of the same function to be distinct, they must have different arity or at least one different parameter type.
+All declarations for a given function which have the same arity must use the same parameter names.
+Declarations with different numbers of parameters may use different parameter names.
+
+A Notation is a construct in ASC which maps a sequence of characters, symbols, and expressions to a function body.
 Notations can establish parameters in the same manner as a function, except that they are captured from the syntax instead of identified through function notation.
 Notations may also establish a hierarchy of grammatical contexts where some notations may only be possible inside a sequence which has already been captured by a specific notation.
 A notation is formed through a number of components...
