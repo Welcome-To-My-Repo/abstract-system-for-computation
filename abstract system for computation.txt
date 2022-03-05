@@ -71,17 +71,11 @@ a signed integer... +100
 a decimal... -100.001
 a fraction... +1/3
 
-Functions in ASC behave according to the mathematical concept of a function where a series of parameter values are mapped into a sequence of one or more expressions.
-Functions are defined using two components, the declaration and the body.
-These components can be written together or separately to define a single function.
-The declaration specifies the function name, the arity, and the names of the parameters.
-A function declaration which features parameter names, but does not define which types are accepted for each parameter is called generic.
-A function which defines which types are accepted for every parameter is called specialized.
-A function declaration may specify the types for any number of its parameters.
-A single function may have multiple distinct declarations.
-For two declarations of the same function to be distinct, they must have different arity or at least one different parameter type.
-All declarations for a given function which have the same arity must use the same parameter names.
-Declarations with different numbers of parameters may use different parameter names.
+Functions are the central mechanism for computation in ASC.
+All program evaluation maps to function application.
+Functions have two parts, the signature and the definition.
+The signature describes the name of the function, the name of each parameter, and optionally, the type of each parameter.
+The definition describes how the parameters are mapped into one or more expressions to be evaluated when the funciton is applied.
 
 A Notation is a construct in ASC which maps a sequence of characters, symbols, and expressions to a function body.
 Notations can establish parameters in the same manner as a function, except that they are captured from the syntax instead of identified through function notation.
