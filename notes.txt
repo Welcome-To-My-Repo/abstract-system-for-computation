@@ -81,6 +81,28 @@ Declare a function with dynamic extent
 Declare a function to evaluate in place
 declare a lambda
 
+A function can be:
+	- named
+	- unnamed (lambda)
+	- typed
+	- untyped (generic)
+	- mapped to a single expression
+	- mapped to a sequence of expressions
+	- lexical extent
+	- dynamic extent
+	- evaluated when it's called
+	- evaluated when it's defined
+
+A function can have
+	- multiple parameters
+	- no parameters
+	- a return parameters
+	- a return expression
+	- typed parameters
+	- untyped parameters
+	- a mix of typed and untyped parameters
+	- multiple definitions for different arities
+	- multiple definitions for different typed parameters.
 
 
 Functions are defined in two parts, the declaration and the body.
