@@ -101,7 +101,7 @@ Continuations only need dynamic extent and a delimited capture.
 A delimited capture works like call/cc but only includes the lexical extent of its context.
 The exclamation point (!) captures its context.
 
-Functions in ASC can be defined in one or two 
+Functions in ASC can be defined using one single expression or two separate expressions.
 
 A program is executed by evaluation.
 Evaluation involves the process of applying functions and reducing them to their return parameters.
