@@ -75,16 +75,11 @@ To implement full continuations, they must have 6 capabilities...
 5.) Reentrant; dynamically capture the program state at a given point as a callable continuation.
 6.) Cloneable; ability to duplicate any continuation object.
 
-Functions:
-Declare a function in one place or separately as a signature and implementation.
-Declare a generalized function
-Declare a type specific function.
-Define a function as a sequence of statements.
-Define a function as an expression using only the function parameters.
-Complete ad hoc polymorphism where a single function name can be defined for multiple arities and parameter types.
-Declare a function with dynamic extent
-Declare a function to evaluate in place
-declare a lambda
+Continuations as functions:
+	- Dynamic extent enables 1, 2, 3, and 4
+	- Function ends by returning to call site enables 1
+	- Function ends by continuing to the next lexical control point enables 2
+	- Declare a continuation as an immediate function
 
 A function can be:
 	- named
