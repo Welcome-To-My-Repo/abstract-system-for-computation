@@ -10,7 +10,12 @@ it also has a set number of special registers.
 	- Base Pointer
 	- Zero
 Data types correspond to the data types in ASC.
-There's Long, Short, and Fraction.
+Operations are 
+	- Add
+	- Subtract
+	- Multiply
+	- Quotient
+	- Remainder
 
 ASC syntax is created by patterns.
 There are a few notations which are determined using characters rather than symbols. 
