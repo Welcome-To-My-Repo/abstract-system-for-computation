@@ -48,6 +48,21 @@ Should a sequence be allowed with no default values? No.
 Characters which are used directly in syntax.
 ().:;"'`[]{}&#^@
 
+Default symbols...
+( ) [ ] { } . .. : " ' ` & # ## @ ^ ? ??
+
+Function declaration:
+name (p1 p2 p...) = expr(p1 p2 p...)
+name (p1 p2 p...) = expr(p1)
+name (p1 p2 p...) = p3 {expr1(p1) expr2(p...) p3 = expr3(p2)}
+name (p1 p2 p...) = p3 r... {p3 = p1 r... = p...}
+name (p1 = x p2 = y p... = z) = p3 {p3 = expr()}
+name (`...`) = p3 begin yeild name `returns in the immediate context`
+name (`...`) = p3 begin end name `returns to call site`
+
+Function call 
+name()
+
 Types are viewed as non-distinct geometric formations.
 The size, shape, positioning, and dimensions of a form are not known.
 Two things are considered: what (non-descript) features may be present on a form, and what features are shared between two forms.
@@ -79,40 +94,14 @@ Continuations as functions:
 	- Dynamic extent enables 1, 2, 3, and 4
 	- Function ends by returning to call site enables 1
 	- Function ends by continuing to the next lexical control point enables 2
-	- Declare a continuation as an immediate function
+	- Declare a continuation as an immediate function enables 5
+	- Treating continuations as first-class functions enables 6
 
-A function can be:
-	- named
-	- unnamed (lambda)
-	- typed
-	- untyped (generic)
-	- mapped to a single expression
-	- mapped to a sequence of expressions
-	- lexical extent
-	- dynamic extent
-	- evaluated when it's called
-	- evaluated when it's defined
+Continuations only need dynamic extent and a delimited capture.
+A delimited capture works like call/cc but only includes the lexical extent of its context.
+The exclamation point (!) captures its context.
 
-A function can have
-	- multiple parameters
-	- no parameters
-	- a return parameters
-	- a return expression
-	- typed parameters
-	- untyped parameters
-	- a mix of typed and untyped parameters
-	- multiple definitions for different arities
-	- multiple definitions for different typed parameters.
-
-
-Functions are defined in two parts, the declaration and the body.
-The declaration names the function and specifies the parameters.
-The body defines what operations are performed on the parameters.
-A single function may be defined multiple times with each definition varying by either arity or type specialization.
-A function definition may be either generic or specialized by including types.
-A generic function definition provides the name of the function and the name of each of its parameters, but does not specify what types are accepted for each parameter.
-A function may only have one generic definition for each possible arity.
-Each possible arity may also be given any number of typed declarations.
+Functions in ASC can be defined in one or two 
 
 A program is executed by evaluation.
 Evaluation involves the process of applying functions and reducing them to their return parameters.
@@ -120,3 +109,7 @@ Through the process of evaluation, the program may change state and behavior.
 Each time a program changes state, a mode is implicitly created.
 A mode represents everything that is known about the program at the point where the mode is created.
 Modes can be nested and have similar extent to scope, however modes are also affected by assignment and conditional evaluation as these both are ways where a program may change its own state.
+
+How to do quoted macros and stuff like the backquote in common lisp?
+A good example is forcing heap allocated variables to work like regular variables...
+~ . (x:Symbol) = ?? & (x) == Box Heap-Lookup(x) x
