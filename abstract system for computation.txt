@@ -79,12 +79,8 @@ The definition describes how the parameters are mapped into one or more expressi
 
 A Notation is a construct in ASC which maps a sequence of characters, symbols, and expressions to a function body.
 Notations can establish parameters in the same manner as a function, except that they are captured from the syntax instead of identified through function notation.
-Notations may also establish a hierarchy of grammatical contexts where some notations may only be possible inside a sequence which has already been captured by a specific notation.
-A notation is formed through a number of components...
-	- Characters
-	- Symbols
-	- Parameters
-	- contextual nesting
+Notations may also depend on a grammatical context such that one notation may only be possible within the syntax captured by another notation.
+Notations are formed by building a sequence of characters, symbols, parameters, and context.
 
 Every entity in ASC has qualities which are represented by a type entity.
 Types are viewed as non-descript geometric formations.
