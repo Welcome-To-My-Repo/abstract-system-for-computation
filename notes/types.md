@@ -11,3 +11,5 @@ Features cannot be named, but a type which exhibits a single, specific feature c
 
 ## Type syntax
 
+Type definition is surrounded by square brackets.
+The definition is named by assignment.
