@@ -114,5 +114,7 @@ How to do quoted macros and stuff like the backquote in common lisp?
 A good example is forcing heap allocated variables to work like regular variables...
 ~ . (x:Symbol) = ?? & (x) == Box Heap-Lookup(x) x
 
+ASC doesn't really require an IR because it's already at C's level.
+What it needs is a few operators for binary crap with registers.
 
-IR has a function call abstraction which makes the language runtime independent of calling convention. All the programmer has to do is supply the proper arguments. Libraries are treated as a different version of a compiled module.
+Top-down semantic description sucks, but is helpful for describing the interaction of types with a dynamic program.
