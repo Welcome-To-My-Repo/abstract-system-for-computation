@@ -113,3 +113,6 @@ Modes can be nested and have similar extent to scope, however modes are also aff
 How to do quoted macros and stuff like the backquote in common lisp?
 A good example is forcing heap allocated variables to work like regular variables...
 ~ . (x:Symbol) = ?? & (x) == Box Heap-Lookup(x) x
+
+
+IR has a function call abstraction which makes the language runtime independent of calling convention. All the programmer has to do is supply the proper arguments. Libraries are treated as a different version of a compiled module.
