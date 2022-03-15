@@ -118,3 +118,28 @@ ASC doesn't really require an IR because it's already at C's level.
 What it needs is a few operators for binary crap with registers.
 
 Top-down semantic description sucks, but is helpful for describing the interaction of types with a dynamic program.
+
+Evaluation schemes for Notation parameters.
+Normal evaluation is implicit so captures expressions are evaluated before the notation is applied.
+Deferred evaluation forces a captured expression to be preserved until after to notation is applied.
+A parameter that has been deferred can be evaluated during the notation application by writing it by itself inside parentheses.
+
+``Ex``
+
+T = [value]
+U = [value]
+V = [value]
+
+; . (x:T) = f(x) `normal`
+; . (,x:U) = f(x) `deferred`
+; . (,x:V) = f((x)) `deferred forced eval`
+
+j:T = value
+j `=> f(value), j is evaluated before f is called`
+
+k:U = value n:U = value
+(k + n):U `=> f(k + n), expression is evaluated after f is called`
+
+h(x) = x:V
+l:V = value
+h(l) `=> f(value), l is forced to be evaluated before f is called`
