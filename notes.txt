@@ -143,3 +143,5 @@ k:U = value n:U = value
 h(x) = x:V
 l:V = value
 h(l) `=> f(value), l is forced to be evaluated before f is called`
+
+how does "alike"-ness get represented?
