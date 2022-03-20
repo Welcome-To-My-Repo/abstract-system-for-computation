@@ -144,4 +144,7 @@ h(x) = x:V
 l:V = value
 h(l) `=> f(value), l is forced to be evaluated before f is called`
 
-how does "alike"-ness get represented?
+how does "alike"-ness get represented? More importantly, how is it useful?        "editor.tabSize": 8,
+        "editor.minimap.renderCharacters": false,
+        "editor.fontSize": 13,
+        "editor.insertSpaces": false,
