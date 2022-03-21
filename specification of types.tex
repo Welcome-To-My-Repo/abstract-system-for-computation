@@ -32,9 +32,9 @@ I hope that this treatment of types may offer new insight about their behavior.
 
 \section*{Relationships Between Types}
 \begin{enumerate}
-    \item Consider two types which have the same number of features and each feature is common. These two types are \textit{equivalent}.
-    \item Consider two types which do not have the same number of features and no feature is common. These two types are \textit{disjoint}.
-    \item Consider two types which may have the same number of features and not all features are common. These two types are \textit{alike}.
+    \item Consider two types where every feature between the two is common. These two types are \textit{equivalent}.
+    \item Consider two types which have no common features. These two types are \textit{disjoint}.
+    \item Consider two types which have some common features. These two types are \textit{alike}.
     \item Consider two types which are alike and only one of the types has features which are not common. The type with the greater number of features is the \textit{super-type}. The type with the lesser number of features is the \textit{sub-type}.
 \end{enumerate}
 
@@ -42,8 +42,8 @@ I hope that this treatment of types may offer new insight about their behavior.
 \begin{enumerate}
     \item A \textit{unit} is a type which has a single feature and consequently serves to identify the feature it possesses.
     \item A \textit{function} is a transformation from a collection of types to another collection of types.
-    \item A \textit{composite} is a type which has a common feature of each and every feature in a collection of types.
-    \item A \textit{type superposition} is a type which is possibly equivalent to any one type in a collection of types and cannot be equivalent to every type in that collection.
+    \item A \textit{composite} is a type which has a common feature corresponding to each and every feature in a collection of types.
+    \item A \textit{type superposition} is a type which is possibly equivalent to any one type in a collection of types.
 \end{enumerate}
 
 
@@ -67,5 +67,11 @@ A more arbitrary example which is closer to the geometric nature of this system 
 The type, \textit{third-dimension}, is a \textbf{superposition} of every type \textit{alike} the \textbf{composite} of the \textbf{units} \textit{length}, \textit{width}, and \textit{height}.
 \end{center}
 This trivially models the relation that that class of three dimensional spaces must each feature length, width, and height (not accounting for other factors such as whether the space is closed, if it has folds or intersections, etc..).
+
+\section*{Notation}
+
+Consider two types $A$ and $B$. If they are equivalent, then $A = B$. If they are disjoint, then $A \neq B$. If they are alike, then $A - B$. If $A$ is a super-type of $B$, then $A > B$. If $A$ is a sub-type of $B$, then $A < B$.
+
+If $A$ is a unit, then it is defined as $A = [A]$ If $A$ is a function from $B$ to $C$, then it is defined as $A = B \rightarrow C$. If $A$ is a composition of $B$ and $C$, then it is defined as $A = [B,C]$. If $A$ is a superposition of $B$ and $C$, then it is defined as $A = [B.C]$.
 
 \end{document}

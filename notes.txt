@@ -144,4 +144,30 @@ h(x) = x:V
 l:V = value
 h(l) `=> f(value), l is forced to be evaluated before f is called`
 
-how does "alike"-ness get represented? More importantly, how is it useful?
+if two types are alike? what does that represent?
+
+Zero is a superposition of all zero values in the number tower.
+
+0 = [0 +0 0.0]
+
+Notation for conditionals:
+Single conditional "if"... ? cond exp
+conditional "if-else"... ?? cond exp exp
+condition uses the following comparisions and boolean operators
+
+Generic Comparison:
+Equal		=
+
+Numerical Comparisons:
+Greater than 	>
+less than 	<
+
+Logical Connectives:
+and 		/\
+or		\/
+not		~
+
+Type Comparisons:
+supertype	>
+subtype		<
+alike		-
