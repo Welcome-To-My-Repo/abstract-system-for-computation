@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
 		:root{
-			--bg:#e9d2ba;
+			--bg:#ebd5cb;
 			--fg:#06080f;
 			--nt:#4da2a5;
 		}
@@ -16,7 +16,7 @@
 			background-color:var(--bg);
 			font-family:serif;
 		}
-		h1, h2, h3, h4 {font-family:sans-serif;}
+		h1, h2, h3, h4 {font-family:sans-serif;margin-top:3ch;}
 		h1, h2 {width:80%;margin-left:auto;margin-right:auto;}
 		h3, h4 {width:fit-content;text-align:center;margin-left:25%;}
 		h1{background-color:var(--nt);border-radius:1ch;padding:1ch;}
@@ -28,7 +28,7 @@
 		p, table, ul, ol, dl{width:50%;margin-left:auto;margin-right:auto;}
 		table{border: solid 3px var(--nt);}
 		th{text-align:left;}
-		code{font-family:monospace;}
+		code{font-family:monospace;border: solid 3px var(--nt);padding:0.2ch;border-collapse:collapse;}
 
 		a, a:link, a:visited{text-decoration:underline;color:var(--nt);}
 		a:hover{color:var(--fg);background-color:var(--nt);}
@@ -36,7 +36,7 @@
 
 		#header{height:100%;overflow-y:hidden;width:100%;}
 		#header h1{text-align:center;margin-top:10%;width:75%;margin-left:auto;margin-right:auto;padding:1%;background-color:var(--bg);font-family:serif;}
-		#header img{display:inline;height:20ch;background-color:var(--nt);padding:3ch;border-top-left-radius:3ch;border-bottom-right-radius:3ch;}
+		#header svg{display:inline;height:20ch;background-color:var(--nt);padding:3ch;border-top-left-radius:3ch;border-bottom-right-radius:3ch;}
 
 		@media only screen and (max-width: 600px) {
 			#header img{height:10ch;overflow-x:hidden;}
@@ -44,13 +44,38 @@
 			h3, h4 {margin-left:5%;}
 			p, table, ul, ol, dl {width:90%;}
 		}
-
+		@media print {
+			h1, h2 {page-break-before:always;}
+			#header h1{page-break-before:avoid;}
+			h1,h2,h3,h4,h5{page-break-after:avoid;}
+			table,li,dl{page-break-inside:avoid;}
+		}
 	</style>
 </head>
 <body>
 	<div id="header">
 		<h1>
-			<img src="icon.svg"><br>
+			<svg
+				viewBox="0 0 50 70"
+				version="1.1"
+				id="ASC-logo"
+				xmlns="http://www.w3.org/2000/svg">
+				<ellipse
+					style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+					ry="10"
+					rx="28"
+					cy="4"
+					cx="35"
+					transform="matrix(0.8,0.6,-0.7,0.7,0,0)">
+				</ellipse>
+				<path
+					style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:5;stroke-dasharray:none;stroke-opacity:1"
+					d="M 36,43 A 13,13 0 0 1 23,57 13,13 0 0 1 11,43 13,13 0 0 1 23,30 13,13 0 0 1 36,44" />
+				<path
+					style="fill:none;stroke:var(--fg);stroke-width:1.85208;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+					d="M 32,1 16,68"/>
+			</svg>
+			<br>
 			An Abstract System for Computation
 		</h1>
 	</div>
@@ -61,20 +86,22 @@
 	</p>
 	<h1>Table of Contents</h1>
 	<ol>
-		<li><a>Introduction</a></li>
+		<li><a href="#Introduction">Introduction</a></li>
+		<li><a>Terms</a></li>
 		<li><a>Syntax</a></li>
 		<li><a>Data</a></li>
 		<li><a>Types</a></li>
 		<li><a>Formalization of Types</a></li>
 		<li><a>Functions</a></li>
 		<li><a>Sequences</a></li>
+		<li><a href="#Interpretation of Programs">Interpretation of Programs</a></li>
 	</ol>
-	<h1>Introduction</h1>
+	<h1 id="Introduction">Introduction</h1>
 	<p>
 		An Abstract System for Computation is a concept which is both specific to this document and defines the philosophy involved with the creation of ASC.
 		The key consideration is that an abstract system for computation is a higher abstract concept which the programming language, ASC, is only intended to represent.
 		There may very well be other, alternative systems for programming or mathematical reasoning which can also be described as an abstract system for computation, but they are not defined here.
-		In fact, the title of this document uses "An" instead of "The" to make this fact explicit.
+		In fact, the title of this document uses "An" instead of "The" to make this point explicit.
 		The programming language described in the following chapters is being proposed as one of many possible manifestations of an abstract system for computation.
 	</p>
 	<h2>Properties of an Abstract System for Computation</h2>
@@ -86,8 +113,8 @@
 	<p>
 		An abstract system for computation is different from mathematics because it addresses different concerns.
 		It is a lower level of abstraction than most mathematics.
-		It is useful for modelling problems and determining reliable methods for arriving at an answer.
-		In contrast, higher level mathematics is concerned with what the answer is, rather than how it is obtained.
+		Classical mathematics is concerned with the correspondence between problems and answers.
+		By contrast, abstract systems for computation are concerned with how an answer can be obtained and if solving a problem is possible.
 	</p>
 	<h1>Syntax</h1>
 	<p>
@@ -103,39 +130,39 @@
 	<h5>Table of ASCII Character Encodings</h5>
 	<table>
 		<tr><th>Binary</th><th>Decimal</th><th>Hexadecimal</th><th>Glyph/Name</th></tr>
-		<tr><td>0000 0000</td><td>0</td><td>00</td><td>Null</td></tr>
-		<tr><td>0000 0001</td><td>1</td><td>01</td><td>Start of Heading</td></tr>
-		<tr><td>0000 0010</td><td>2</td><td>02</td><td>Start of Text</td></tr>
-		<tr><td>0000 0011</td><td>3</td><td>03</td><td>End of Text</td></tr>
-		<tr><td>0000 0100</td><td>4</td><td>04</td><td>End of Transmission</td></tr>
-		<tr><td>0000 0101</td><td>5</td><td>05</td><td>Enquiry</td></tr>
-		<tr><td>0000 0110</td><td>6</td><td>06</td><td>Acknowledgement</td></tr>
-		<tr><td>0000 0111</td><td>7</td><td>07</td><td>Bell</td></tr>
-		<tr><td>0000 1000</td><td>8</td><td>08</td><td>Backspace</td></tr>
-		<tr><td>0000 1001</td><td>9</td><td>09</td><td>Horizontal Tab</td></tr>
-		<tr><td>0000 1010</td><td>10</td><td>0a</td><td>Line Feed</td></tr>
-		<tr><td>0000 1011</td><td>11</td><td>0b</td><td>Vertical Tab</td></tr>
-		<tr><td>0000 1100</td><td>12</td><td>0c</td><td>Form Feed</td></tr>
-		<tr><td>0000 1101</td><td>13</td><td>0d</td><td>Carriage Return</td></tr>
-		<tr><td>0000 1110</td><td>14</td><td>0e</td><td>Shift Out</td></tr>
-		<tr><td>0000 1111</td><td>15</td><td>0f</td><td>Shift In</td></tr>
-		<tr><td>0001 0000</td><td>16</td><td>10</td><td>Data Link Escape</td></tr>
-		<tr><td>0001 0001</td><td>17</td><td>11</td><td>Device Control 1</td></tr>
-		<tr><td>0001 0010</td><td>18</td><td>12</td><td>Device Control 2</td></tr>
-		<tr><td>0001 0011</td><td>19</td><td>13</td><td>Device Control 3</td></tr>
-		<tr><td>0001 0100</td><td>20</td><td>14</td><td>Device Control 4</td></tr>
-		<tr><td>0001 0101</td><td>21</td><td>15</td><td>Negative Acknowledgement</td></tr>
-		<tr><td>0001 0110</td><td>22</td><td>16</td><td>Synchronous Idle</td></tr>
-		<tr><td>0001 0111</td><td>23</td><td>17</td><td>End of Transmission Block</td></tr>
-		<tr><td>0001 1000</td><td>24</td><td>18</td><td>Cancel</td></tr>
-		<tr><td>0001 1001</td><td>25</td><td>19</td><td>End of Medium</td></tr>
-		<tr><td>0001 1010</td><td>26</td><td>1a</td><td>Substitute</td></tr>
-		<tr><td>0001 1011</td><td>27</td><td>1b</td><td>Escape</td></tr>
-		<tr><td>0001 1100</td><td>28</td><td>1c</td><td>File Separator</td></tr>
-		<tr><td>0001 1101</td><td>29</td><td>1d</td><td>Group Separator</td></tr>
-		<tr><td>0001 1110</td><td>30</td><td>1e</td><td>Record Separator</td></tr>
-		<tr><td>0001 1111</td><td>31</td><td>1f</td><td>Unit Separator</td></tr>
-		<tr><td>0010 0000</td><td>32</td><td>20</td><td>Space</td></tr>
+		<tr><td>00000000</td><td>0</td><td>00</td><td>Null</td></tr>
+		<tr><td>00000001</td><td>1</td><td>01</td><td>Start of Heading</td></tr>
+		<tr><td>00000010</td><td>2</td><td>02</td><td>Start of Text</td></tr>
+		<tr><td>00000011</td><td>3</td><td>03</td><td>End of Text</td></tr>
+		<tr><td>00000100</td><td>4</td><td>04</td><td>End of Transmission</td></tr>
+		<tr><td>00000101</td><td>5</td><td>05</td><td>Enquiry</td></tr>
+		<tr><td>00000110</td><td>6</td><td>06</td><td>Acknowledgement</td></tr>
+		<tr><td>00000111</td><td>7</td><td>07</td><td>Bell</td></tr>
+		<tr><td>00001000</td><td>8</td><td>08</td><td>Backspace</td></tr>
+		<tr><td>00001001</td><td>9</td><td>09</td><td>Horizontal Tab</td></tr>
+		<tr><td>00001010</td><td>10</td><td>0a</td><td>Line Feed</td></tr>
+		<tr><td>00001011</td><td>11</td><td>0b</td><td>Vertical Tab</td></tr>
+		<tr><td>00001100</td><td>12</td><td>0c</td><td>Form Feed</td></tr>
+		<tr><td>00001101</td><td>13</td><td>0d</td><td>Carriage Return</td></tr>
+		<tr><td>00001110</td><td>14</td><td>0e</td><td>Shift Out</td></tr>
+		<tr><td>00001111</td><td>15</td><td>0f</td><td>Shift In</td></tr>
+		<tr><td>00010000</td><td>16</td><td>10</td><td>Data Link Escape</td></tr>
+		<tr><td>00010001</td><td>17</td><td>11</td><td>Device Control 1</td></tr>
+		<tr><td>00010010</td><td>18</td><td>12</td><td>Device Control 2</td></tr>
+		<tr><td>00010011</td><td>19</td><td>13</td><td>Device Control 3</td></tr>
+		<tr><td>00010100</td><td>20</td><td>14</td><td>Device Control 4</td></tr>
+		<tr><td>00010101</td><td>21</td><td>15</td><td>Negative Acknowledgement</td></tr>
+		<tr><td>00010110</td><td>22</td><td>16</td><td>Synchronous Idle</td></tr>
+		<tr><td>00010111</td><td>23</td><td>17</td><td>End of Transmission Block</td></tr>
+		<tr><td>00011000</td><td>24</td><td>18</td><td>Cancel</td></tr>
+		<tr><td>00011001</td><td>25</td><td>19</td><td>End of Medium</td></tr>
+		<tr><td>00011010</td><td>26</td><td>1a</td><td>Substitute</td></tr>
+		<tr><td>00011011</td><td>27</td><td>1b</td><td>Escape</td></tr>
+		<tr><td>00011100</td><td>28</td><td>1c</td><td>File Separator</td></tr>
+		<tr><td>00011101</td><td>29</td><td>1d</td><td>Group Separator</td></tr>
+		<tr><td>00011110</td><td>30</td><td>1e</td><td>Record Separator</td></tr>
+		<tr><td>00011111</td><td>31</td><td>1f</td><td>Unit Separator</td></tr>
+		<tr><td>00100000</td><td>32</td><td>20</td><td>Space</td></tr>
 		<tr><td>00100001</td><td>33</td><td>21</td><td>!</td></tr>
 		<tr><td>00100010</td><td>34</td><td>22</td><td>"</td></tr>
 		<tr><td>00100011</td><td>35</td><td>23</td><td>#</td></tr>
@@ -232,18 +259,15 @@
 		<tr><td>01111110</td><td>126</td><td>7e</td><td>~</td></tr>
 		<tr><td>0111 1111</td><td>127</td><td>7F</td><td>Delete</td></tr>
 	</table>
+	<h2>Symbols</h2>
 	<p>
-		Symbols in ASC are formed by sequences of characters and delimited by blank space and control characters.
+		Symbols consist of sequences of characters delimited by blank, unprintable, and control characters.
+		For the ASCII table, character codes 0-31 and 127 are delimiting characters.
+		Every other character may be included in a symbol.
 	</p>
-	<p>
-		A special type of symbol is called a constant.
-		Constants represent numeric values and will self-evaluate to whichever value they represent.
-		A constant is any symbol which contains all decimal characters.
-	</p>
-	<p>
-		A constant can be written with a <code>+</code> or <code>-</code> as the first character.
-		This denotes a positive or negative value.
-	</p>
+	<h3>Examples of Symbols</h3>
+	<p>The character sequence<br><code>abc def ghi</code><br> corresponds to the three symbols <code>abc</code>, <code>def</code>, and <code>ghi</code>.</p>
+	<p>The character sequence<br><code>a&amp;*&emsp;&amp;9)(li afj i3#afs</code><br>corresponds to the four symbols <code>a&amp;*</code>, <code>&amp;9)(li</code>, <code>afj</code>, and <code>i3#afs</code>.</p>
 
 	<h1>Formalization of Types</h1>
 	<p>
@@ -285,5 +309,9 @@
 	</p>
 </body>
 <footer>
-
+	<p>
+		The HTML markup document, "<i>An Abstract System for Computation</i>" Copyright &copy; 2020, by Daniel Smith, All Rights Reserved
+		may be used, unmodified, without restriction. Additional permission is granted to produce whole, complete, and unmodified copies of this HTML document.
+		Permission to modify this document or any copy of this document is expressly NOT granted.
+	</p>
 </footer>
