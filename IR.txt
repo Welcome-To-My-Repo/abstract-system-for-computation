@@ -1,0 +1,79 @@
+Intermediate representation is either interpreted, jitted, or compiled.
+the compiler image will try to interpret the code in the IR form to provide easy debugging
+
+infinite general purpose registers.
+
+static specific purpose registers for context maintenance.
+
+Stack register:		$
+	used to manipulate the stack
+Base register:		_
+	points to the base of the memory provided for that context
+Instruction register: 	^
+	points to the instruction being interpreted.
+
+Instructions are separated by a line break
+instruction components are separated by a horizontal tab
+
+Arithmetic:
++	add
+-	sub
+*	mul
+/	quo
+\	rem
+
+bitwise:
+&	and
+|	or
+~	not
+^	xor
+
+conditional jump:
+>	greater than
+<	less than
+=	equal
+_	not equal
+
+unconditional jump:
+.
+
+Shift increasing:
+{
+
+Shift decreasing:
+}
+
+Rotate increasing:
+[
+
+Rotate decreasing
+]
+
+Cast
+,
+
+System Call
+!
+
+Types are 
+Byte
+	b
+Signed Byte
+	B
+Word
+	w
+Signed word
+	W
+Half-Word
+	h
+Signed Half-Word
+	H
+Address 
+	@
+Float
+	f
+
+
+Labels are marked with a "#"
+All instructions take at least one register.
+the three register names $, _, and ^ are reserved for the special purpose registers
