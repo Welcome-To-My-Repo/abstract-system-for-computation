@@ -4,21 +4,68 @@
 	<title>An Abstract System for Computation</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="style.css">
+	<style>
+		:root{
+			--bg:#ffefdf;
+			--fg:#06080f;
+			--nt:#4da2a5;
+		}
+		html, body{height:100%;}
+		body{
+			color:var(--fg);
+			background-color:var(--bg);
+			font-family:serif;
+		}
+		h1, h2, h3, h4 {font-family:sans-serif;}
+		h1, h2 {width:80%;margin-left:auto;margin-right:auto;}
+		h3, h4 {width:fit-content;text-align:center;margin-left:25%;}
+		h1{background-color:var(--nt);border-radius:1ch;padding:1ch;}
+		h2{border-bottom-style:solid;border-bottom-color:var(--nt);border-bottom-width:3px;}
+		h3{background-color:var(--nt);border-radius:1ch;padding:1ch;}
+		h4{border-bottom-style:solid;border-bottom-color:var(--nt);border-bottom-width:3px;}
+		h5{font-weight:bolder;width:fit-content;margin-left:auto;margin-right:auto;font-size:medium;}
+
+		p, table, ul, ol, dl{width:50%;margin-left:auto;margin-right:auto;}
+		table{border: solid 3px var(--nt);}
+		th{text-align:left;}
+		code{font-family:monospace;}
+
+		a, a:link, a:visited{text-decoration:underline;color:var(--nt);}
+		a:hover{color:var(--fg);background-color:var(--nt);}
+
+
+		#header{height:100%;overflow-y:hidden;width:100%;}
+		#header h1{text-align:center;margin-top:10%;width:75%;margin-left:auto;margin-right:auto;padding:1%;background-color:var(--bg);font-family:serif;}
+		#header img{display:inline;height:20ch;background-color:var(--nt);padding:3ch;border-top-left-radius:3ch;border-bottom-right-radius:3ch;}
+
+		@media only screen and (max-width: 600px) {
+			#header img{height:10ch;overflow-x:hidden;}
+			h1, h2 {width:90%;}
+			h3, h4 {margin-left:5%;}
+			p, table, ul, ol, dl {width:90%;}
+		}
+
+	</style>
 </head>
 <body>
-	
-	<h1 style="text-align:center;"><img src="icon.svg" style="display:inline;height:7ch;"><br>An Abstract System for Computation</h1>
-	<h1>Abstract</h1>
+	<div id="header">
+		<h1>
+			<img src="icon.svg"><br>
+			An Abstract System for Computation
+		</h1>
+	</div>
 	<p>
 		This document describes the representation and interpretation of programs written in a programming language called the Abstract System for Computation, abbreviated as the name "ASC".
 		ASC is intended to be a highly expressive, general purpose programming language.
 		It is designed to be capable of expressing a wide range of useful algorithms.
 	</p>
+	<h1>Syntax</h1>
+	<h2>Character Encoding</h2>
 	<p>
-		ASC minimally requires the printable set of characters from the ASCII character encoding table.
-		This also means that implementations of ASC can easily be extended to support Unicode character encodings.
+		ASC minimally requires the printable set of characters from the ASCII character encoding.
+		Implementations are encouraged to extend support for the Unicode character encoding.
 	</p>
+	<h5>Table of ASCII Character Encodings</h5>
 	<table>
 		<tr><th>Binary</th><th>Decimal</th><th>Hexadecimal</th><th>Glyph/Name</th></tr>
 		<tr><td>0000 0000</td><td>0</td><td>00</td><td>Null</td></tr>
@@ -162,4 +209,46 @@
 		A constant can be written with a <code>+</code> or <code>-</code> as the first character.
 		This denotes a positive or negative value.
 	</p>
+
+	<h1>Formalization of Types</h1>
+	<p>
+		ASC utilizes a system of types which is founded in the description of geometric objects and their relations.
+		In this way, types can be extended to reflect any theory of geometry.
+		Judgements about type can then be enhanced by building on pre-existing relationships established in other fields of mathematics.
+	</p>
+	<p> 
+		Additionally, this system of types is neither complete nor consistent.
+		In fact, it explicitly allows for contradictory or absent information.
+		The intent is that consistency and completeness are sacrificed for greater expressiveness.
+		Mechanisms for handling illogical information can be used to reason about programs or environments which present illogical states and behavior.
+		This kind of system acknowledges that a judgement in real life may depend on multiple gradual stages of reasoning or even missing information.
+	</p>
+	<h2>Definition of Type</h2>
+	<ol>
+		<li>A type is some abstract geometric form with features.</li>
+		<li>A feature is some consideration about a geometric form such as dimension, size, shape, or any arbitrary term.</li>
+		<li>Every type has a countable number of features from none to infinite.</li>
+		<li>Multiple types may have the same feature. A feature shared between two types is called a <a href="">common feature</a>.</li>
+		<li>There is a single type which has no features and it is the <i>Null</i> type.</li>
+		<li>There is a single type which has every possible feature and it is the <i>Any</i> type.</li>
+	</ol>
+	<h2>Type Relationships</h2>
+	<ol>
+		<li>Consider two types where every feature between them is common. These types are <i>equivalent</i>.</li>
+		<li>Consider two types where every feature between them is not common. These types are <i>disjoint</i>.</li>
+		<li>Consider two types where at least one feature is common. These types are <i>alike</i>.</li>
+	</ol>
+	<h2>Type Structures</h2>
+	<p>
+		These structures represent various correspondences which appear as types, but express properties that are external to the definition of types as it was given previously.
+	</p>
+	<ol>
+		<li>A <i>unit</i> is a type which has a single feature and consequently serves to identify that feature.</li>
+		<li>A <i>function</i> is a type which represents a transformation between two collections of types.</li>
+		<li>A <i>composition</i> is a type which has a common feature for every feature present in a collection of types.</li>
+		<li>A <i>superposition</i> is a type which is possibly equivalent to one of a collection of types.</li>
+	</ol>
 </body>
+<footer>
+
+</footer>
