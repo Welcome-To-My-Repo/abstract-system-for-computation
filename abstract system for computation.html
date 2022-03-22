@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
 		:root{
-			--bg:#ffefdf;
+			--bg:#e9d2ba;
 			--fg:#06080f;
 			--nt:#4da2a5;
 		}
@@ -54,13 +54,48 @@
 			An Abstract System for Computation
 		</h1>
 	</div>
+	<h1>Abstract</h1>
 	<p>
-		This document describes the representation and interpretation of programs written in a programming language called the Abstract System for Computation, abbreviated as the name "ASC".
-		ASC is intended to be a highly expressive, general purpose programming language.
-		It is designed to be capable of expressing a wide range of useful algorithms.
+		This document describes the notation and semantics of an Abstract System for Computation, abbreviated as the name "ASC".
+		It provides advanced features which are useful for expressing and reasoning about complex algorithms and computer programs.
+	</p>
+	<h1>Table of Contents</h1>
+	<ol>
+		<li><a>Introduction</a></li>
+		<li><a>Syntax</a></li>
+		<li><a>Data</a></li>
+		<li><a>Types</a></li>
+		<li><a>Formalization of Types</a></li>
+		<li><a>Functions</a></li>
+		<li><a>Sequences</a></li>
+	</ol>
+	<h1>Introduction</h1>
+	<p>
+		An Abstract System for Computation is a concept which is both specific to this document and defines the philosophy involved with the creation of ASC.
+		The key consideration is that an abstract system for computation is a higher abstract concept which the programming language, ASC, is only intended to represent.
+		There may very well be other, alternative systems for programming or mathematical reasoning which can also be described as an abstract system for computation, but they are not defined here.
+		In fact, the title of this document uses "An" instead of "The" to make this fact explicit.
+		The programming language described in the following chapters is being proposed as one of many possible manifestations of an abstract system for computation.
+	</p>
+	<h2>Properties of an Abstract System for Computation</h2>
+	<p>
+		An abstract system for computation is mainly a system for mathematical and logical reasoning.
+		The manner in which it represents structured information and algorithms is based in mathematics rather than pieced together nominally.
+		Every component is formalized or founded in an external theory.
+	</p>
+	<p>
+		An abstract system for computation is different from mathematics because it addresses different concerns.
+		It is a lower level of abstraction than most mathematics.
+		It is useful for modelling problems and determining reliable methods for arriving at an answer.
+		In contrast, higher level mathematics is concerned with what the answer is, rather than how it is obtained.
 	</p>
 	<h1>Syntax</h1>
-	<h2>Character Encoding</h2>
+	<p>
+		ASC programs are represented by a sequence of characters which is converted into a corresponding sequence of symbols using a set of grouping rules.
+		Symbols are then mapped to their corresponding expressions using a set of notation rules.
+		Notations may be defined as part of the program itself and can affect how symbols and expressions are identified.
+	</p>
+	<h2>Characters</h2>
 	<p>
 		ASC minimally requires the printable set of characters from the ASCII character encoding.
 		Implementations are encouraged to extend support for the Unicode character encoding.
@@ -239,15 +274,15 @@
 		<li>Consider two types where at least one feature is common. These types are <i>alike</i>.</li>
 	</ol>
 	<h2>Type Structures</h2>
-	<p>
-		These structures represent various correspondences which appear as types, but express properties that are external to the definition of types as it was given previously.
-	</p>
 	<ol>
 		<li>A <i>unit</i> is a type which has a single feature and consequently serves to identify that feature.</li>
 		<li>A <i>function</i> is a type which represents a transformation between two collections of types.</li>
 		<li>A <i>composition</i> is a type which has a common feature for every feature present in a collection of types.</li>
 		<li>A <i>superposition</i> is a type which is possibly equivalent to one of a collection of types.</li>
 	</ol>
+	<p>
+		These structures represent various correspondences which appear as types, but express properties that are external to the definition of types as it is given here.
+	</p>
 </body>
 <footer>
 
