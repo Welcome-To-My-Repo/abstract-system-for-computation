@@ -34,12 +34,14 @@
 		a:hover{color:var(--fg);background-color:var(--nt);}
 
 
-		#header{height:100%;overflow-y:hidden;width:100%;}
+		#header{height:100%;overflow:hidden;width:100%;}
 		#header h1{text-align:center;margin-top:10%;width:75%;margin-left:auto;margin-right:auto;padding:1%;background-color:var(--bg);font-family:serif;}
 		#header svg{display:inline;height:20ch;background-color:var(--nt);padding:3ch;border-top-left-radius:3ch;border-bottom-right-radius:3ch;}
 
 		@media only screen and (max-width: 600px) {
-			#header img{height:10ch;overflow-x:hidden;}
+			#header {width:auto;margin-right:auto;margin-left:auto;}
+			#header img{height:7ch;}
+			#header h1 {width:fit-content;}
 			h1, h2 {width:90%;}
 			h3, h4 {margin-left:5%;}
 			p, table, ul, ol, dl {width:90%;}
