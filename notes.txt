@@ -63,6 +63,13 @@ name (`...`) = p3 begin end name `returns to call site`
 Function call 
 name()
 
+Pointer syntax just overloads the "@" character.
+@ of any type except location generates a location.
+@ of a location dereferences it.
+actually makes things safer.
+if you have nested structures then you don't need pointers to pointers because
+you would use data type declarations to assert a specific memory layout.
+
 Types are viewed as non-distinct geometric formations.
 The size, shape, positioning, and dimensions of a form are not known.
 Two things are considered: what (non-descript) features may be present on a form, and what features are shared between two forms.
@@ -171,3 +178,12 @@ Type Comparisons:
 supertype	>
 subtype		<
 alike		-
+
+Should default operators be special characters or should they follow normal symbol rules?
+
+Brackets are special characters because they are used as boundaries.
+The vertical bar is also a special character because it's used with modules.
+But what about operators such as pointers?
+
+
+What about foreign function calls and ABI mis-matches?

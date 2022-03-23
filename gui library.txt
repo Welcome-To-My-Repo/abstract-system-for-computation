@@ -1,0 +1,14 @@
+Graphics library is a native ASC module.
+Includes assembly that calls Window management libraries.
+Xorg, Win32/Win64, [whatever OS X uses]
+
+combines HTML-style markup with CSS style tags.
+
+Primitives are Point and Edge.
+Point has a location. 
+Edge has curves.
+
+Utilities:
+-	Tables
+-	Graphs
+-	

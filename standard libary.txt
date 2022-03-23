@@ -1,0 +1,7 @@
+Quality of Life crap:
+-	Memory allocation
+-	Process control
+-	Thread control
+-	File system interface
+-	dynamic object loading
+-	
