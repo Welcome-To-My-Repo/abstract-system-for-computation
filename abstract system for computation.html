@@ -45,16 +45,17 @@
 		#header h1{text-align:center;margin-top:10%;width:75%;margin-left:auto;margin-right:auto;padding:1%;background-color:var(--bg);font-family:serif;}
 		#header svg{display:inline;height:20ch;background-color:var(--neutral);padding:3ch;border-top-left-radius:3ch;border-bottom-right-radius:3ch;}
 
-		#settings{width:10%;font-size:x-large;position:fixed;top:0;left:0;}
-		#settings a{width:1em;height:1em;border-radius:7ch;display:block;text-decoration:none;position:sticky;}
+		#settings{width:10%;font-size:x-large;position:fixed;bottom:0;}
+		#settings a{float:bottom;width:1em;height:1em;border-radius:7ch;display:block;text-decoration:none;position:sticky;}
 
-		@media only screen and (max-width: 600px) {
+		@media only screen and (max-width: 700px) {
 			#header {width:auto;margin-right:auto;margin-left:auto;}
 			#header img{height:7ch;}
 			#header h1 {width:fit-content;}
 			h1, h2 {width:90%;}
 			h3, h4 {margin-left:5%;}
 			p, table, ul, ol, dl {width:90%;}
+			#settings{font-size:x-small;}
 		}
 		@media print {
 			h1, h2 {page-break-before:always;}
@@ -100,6 +101,20 @@
 		<a onclick="yellow()" style="background-color:var(--yellow);">&nbsp;</a>
 		<a onclick="grey()" style="background-color:var(--grey);">&nbsp;</a>
 		<a onclick="purple()" style="background-color:var(--purple);">&nbsp;</a>
+		<script>
+				function show () { 
+								s = document.getElementById("parameters");
+								if (s.style.display == "hidden") s.style.display = "block";
+								else s.style.display = "hidden"; 
+							}
+			function teal () { document.querySelector(":root").style.setProperty('--neutral', 'var(--teal)'); }
+			function red () { document.querySelector(":root").style.setProperty('--neutral', 'var(--red)'); }
+			function green () { document.querySelector(":root").style.setProperty('--neutral', 'var(--green)'); }
+			function blue () { document.querySelector(":root").style.setProperty('--neutral', 'var(--blue)'); }
+			function yellow () { document.querySelector(":root").style.setProperty('--neutral', 'var(--yellow)'); }
+			function grey () { document.querySelector(":root").style.setProperty('--neutral', 'var(--grey)'); }
+			function purple () { document.querySelector(":root").style.setProperty('--neutral', 'var(--purple)'); }
+		</script>
 
 	</div>
 	<h1>Abstract</h1>
