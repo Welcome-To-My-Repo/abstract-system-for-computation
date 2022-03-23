@@ -8,7 +8,14 @@
 		:root{
 			--bg:#f8efe3;
 			--fg:#140e22;
-			--nt:#4da599;
+			--teal:#4da596;
+			--red:#a54d4d;
+			--green:#54a54d;
+			--blue:#4d5da5;
+			--yellow:#a59f4d;
+			--grey:#adadad;
+			--purple:#a54da1;
+			--neutral:var(--teal);
 		}
 		html, body{height:100%;}
 		body{
@@ -19,24 +26,27 @@
 		h1, h2, h3, h4 {font-family:sans-serif;margin-top:3ch;}
 		h1, h2 {width:80%;margin-left:auto;margin-right:auto;}
 		h3, h4 {width:fit-content;text-align:center;margin-left:25%;}
-		h1{background-color:var(--nt);border-radius:1ch;padding:1ch;}
-		h2{border-bottom-style:solid;border-bottom-color:var(--nt);border-bottom-width:3px;}
-		h3{background-color:var(--nt);border-radius:1ch;padding:1ch;}
-		h4{border-bottom-style:solid;border-bottom-color:var(--nt);border-bottom-width:3px;}
+		h1{background-color:var(--neutral);border-radius:1ch;padding:1ch;}
+		h2{border-bottom-style:solid;border-bottom-color:var(--neutral);border-bottom-width:3px;}
+		h3{background-color:var(--neutral);border-radius:1ch;padding:1ch;}
+		h4{border-bottom-style:solid;border-bottom-color:var(--neutral);border-bottom-width:3px;}
 		h5{font-weight:bolder;width:fit-content;margin-left:auto;margin-right:auto;font-size:medium;}
 
 		p, table, ul, ol, dl{width:50%;margin-left:auto;margin-right:auto;}
-		table{border: solid 3px var(--nt);}
+		table{border: solid 3px var(--neutral);}
 		th{text-align:left;}
-		code{font-family:monospace;border: solid 3px var(--nt);padding:0.2ch;border-collapse:collapse;}
+		code{font-family:monospace;border: solid 3px var(--neutral);padding:0.2ch;border-collapse:collapse;}
 
-		a, a:link, a:visited{text-decoration:underline;color:var(--nt);}
-		a:hover{color:var(--fg);background-color:var(--nt);}
+		a, a:link, a:visited{text-decoration:underline;color:var(--neutral);}
+		a:hover{color:var(--fg);background-color:var(--neutral);}
 
 
 		#header{height:100%;overflow:hidden;width:100%;text-align:center;}
 		#header h1{text-align:center;margin-top:10%;width:75%;margin-left:auto;margin-right:auto;padding:1%;background-color:var(--bg);font-family:serif;}
-		#header svg{display:inline;height:20ch;background-color:var(--nt);padding:3ch;border-top-left-radius:3ch;border-bottom-right-radius:3ch;}
+		#header svg{display:inline;height:20ch;background-color:var(--neutral);padding:3ch;border-top-left-radius:3ch;border-bottom-right-radius:3ch;}
+
+		#settings{width:10%;font-size:x-large;position:fixed;top:0;left:0;}
+		#settings a{width:1em;height:1em;border-radius:7ch;display:block;text-decoration:none;position:sticky;}
 
 		@media only screen and (max-width: 600px) {
 			#header {width:auto;margin-right:auto;margin-left:auto;}
@@ -54,7 +64,7 @@
 		}
 	</style>
 </head>
-<body>
+<body>	
 	<div id="header">
 		<h1>
 			<svg
@@ -81,6 +91,16 @@
 			An Abstract System for Computation
 		</h1>
 		<p>Revision 0.0</p>
+	</div>
+	<div id="settings">
+		<a onclick="teal()" style="background-color:var(--teal);">&nbsp;</a>
+		<a onclick="red()" style="background-color:var(--red);">&nbsp;</a>
+		<a onclick="green()" style="background-color:var(--green);">&nbsp;</a>
+		<a onclick="blue()" style="background-color:var(--blue);">&nbsp;</a>
+		<a onclick="yellow()" style="background-color:var(--yellow);">&nbsp;</a>
+		<a onclick="grey()" style="background-color:var(--grey);">&nbsp;</a>
+		<a onclick="purple()" style="background-color:var(--purple);">&nbsp;</a>
+
 	</div>
 	<h1>Abstract</h1>
 	<p>
