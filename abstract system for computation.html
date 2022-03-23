@@ -100,6 +100,7 @@
 		<li><a href="#Interpretation of Programs">Interpretation of Programs</a></li>
 	</ol>
 	<h1 id="Introduction">Introduction</h1>
+	<h2>Properties of an Abstract System for Computation</h2>
 	<p>
 		An Abstract System for Computation is a concept which is both specific to this document and defines the philosophy involved with the creation of ASC.
 		The key consideration is that an abstract system for computation is a higher abstract concept which the programming language, ASC, is only intended to represent.
@@ -107,7 +108,6 @@
 		In fact, the title of this document uses "An" instead of "The" to make this point explicit.
 		The programming language described in the following chapters is being proposed as one of many possible manifestations of an abstract system for computation.
 	</p>
-	<h2>Properties of an Abstract System for Computation</h2>
 	<p>
 		An abstract system for computation is mainly a system for mathematical and logical reasoning.
 		The manner in which it represents structured information and algorithms is based in mathematics rather than pieced together nominally.
@@ -264,7 +264,7 @@
 	</table>
 	<h2>Symbols</h2>
 	<p>
-		Symbols consist of sequences of characters delimited by blank, unprintable, and control characters.
+		Symbols consist of sequences of visible characters delimited by blank, unprintable, and control characters.
 		For the ASCII table, character codes 0-31 and 127 are delimiting characters.
 		Every other character may be included in a symbol.
 	</p>
@@ -275,11 +275,43 @@
 		Note that no distinction is made between symbolic and script characters.
 		This allows for names which may include symbols.
 	</p>
-	<h2>Notations</h2>
+	<h3>Regarding Symbol Alternate Encodings</h3>
 	<p>
-		A notation provides the means for associating an series of characters and symbols with some expression to be evaluated.
-		Notations can specify patterns that include characters, symbols, and function parameters.
+		If alternate character encodings are used, the rules for grouping characters into symbols should be such that any visible characters compose symbols and any non-visible characters delimit symbols.
+		It may be necessary to transparently ignore certain characters such as formatting codes which are technically invisible, but change the textual appearance of a visible character.
+		Alternatively, additional rules may be necessary to decide if a character is delimiting or used in symbols.
+		The task of interpreting and applying these rules to alternative character encodings is left to the implementation.
 	</p>
+	<h3>Reserved Characters</h3>
+	<p>
+		The default syntactic forms of ASC force some characters to be interpreted in unique ways.
+		The following is a list of reserved characters.
+	</p>
+	<h5>Reserved Characters</h5>
+	<ul>
+		<li>Open Round Bracket, <code>(</code></li>
+		<li>Closed Round Bracket, <code>)</code></li>
+		<li>Open Curly Bracket, <code>{</code></li>
+		<li>Closed Curly Bracket, <code>}</code></li>
+		<li>Open Square Bracket, <code>[</code></li>
+		<li>Closed Square Bracket, <code>]</code></li>
+		<li>Period Dot, <code>.</code></li>
+		<li>Colon, <code>:</code></li>
+		<li>Double Quotation, <code>"</code></li>
+		<li>Single Quotation, <code>'</code></li>
+		<li>Back Quotation, <code>`</code></li>
+		<li>Ampersand, <code>&amp;</code></li>
+		<li>At Symbol, <code>@</code></li>
+		<li>Caret, <code>^</code></li>
+		<li>Question Mark, <code>?</code></li>
+	</ul>
+	<h1>Data</h1>
+	<h1>Types</h1>
+	<h1>Sequences</h1>
+	<h2>Strings</h2>
+	<h1>Functions</h1>
+	<h1>Modules</h1>
+	<h1>Notations</h1>
 	<h1>Formalization of Types</h1>
 	<p>
 		ASC utilizes a system of types which is founded in the description of geometric objects and their relations.
