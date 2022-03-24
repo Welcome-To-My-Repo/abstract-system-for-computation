@@ -241,9 +241,9 @@
 		<tr><td>00111001</td><td>57</td><td>39</td><td>9</td></tr>
 		<tr><td>00111010</td><td>58</td><td>3a</td><td>:</td></tr>
 		<tr><td>00111011</td><td>59</td><td>3b</td><td>;</td></tr>
-		<tr><td>00111100</td><td>60</td><td>3c</td><td><</td></tr>
+		<tr><td>00111100</td><td>60</td><td>3c</td><td>&lt;</td></tr>
 		<tr><td>00111101</td><td>61</td><td>3d</td><td>=</td></tr>
-		<tr><td>00111110</td><td>62</td><td>3e</td><td>></td></tr>
+		<tr><td>00111110</td><td>62</td><td>3e</td><td>&gt;</td></tr>
 		<tr><td>00111111</td><td>63</td><td>3f</td><td>?</td></tr>
 		<tr><td>01000000</td><td>64</td><td>40</td><td>@</td></tr>
 		<tr><td>01000001</td><td>65</td><td>41</td><td>A</td></tr>
@@ -313,9 +313,15 @@
 	<h2>Symbols</h2>
 	<p>
 		Symbols consist of sequences of visible characters delimited by blank, unprintable, and control characters.
-		For the ASCII table, character codes 0-31 and 127 are delimiting characters.
-		Every other character may be included in a symbol.
 	</p>
+	<h3>Character Grouping Rules</h3>
+	<ol>
+		<li>Visible characters shall be included as symbols. For the ASCII character encoding, visible characters include the codes 33 to 126.</li>
+		<li>Blank, unprintable, or invisible characters shall delimit symbols. For the ASCII character encoding delimiting characters include the codes 0 to 32 and 127.</li>
+		<li>Two adjacent visible characters shall be included in the same symbol.</li>
+		<li>Two adjacent delimiting characters shall be treated as a single delimiting element.</li>
+		<li>A specific sequence of characters may be defined using Notations which is treated as a complete symbol and will delimit any visible characters adjacent to itself.</li>
+	</ol>
 	<h3>Examples of Symbols</h3>
 	<p>The character sequence<br><code>abc def ghi</code><br> corresponds to the three symbols <code>abc</code>, <code>def</code>, and <code>ghi</code>.</p>
 	<p>The character sequence<br><code>a&amp;*&emsp;&amp;9)(li afj i3#afs</code><br>corresponds to the four symbols <code>a&amp;*</code>, <code>&amp;9)(li</code>, <code>afj</code>, and <code>i3#afs</code>.</p>
@@ -323,7 +329,7 @@
 		Note that no distinction is made between symbolic and script characters.
 		This allows for names which may include symbols.
 	</p>
-	<h3>Regarding Symbol Alternate Encodings</h3>
+	<h3>Symbol Rules for Alternate Encodings</h3>
 	<p>
 		If alternate character encodings are used, the rules for grouping characters into symbols should be such that any visible characters compose symbols and any non-visible characters delimit symbols.
 		It may be necessary to transparently ignore certain characters such as formatting codes which are technically invisible, but change the textual appearance of a visible character.
@@ -332,8 +338,9 @@
 	</p>
 	<h3>Reserved Characters</h3>
 	<p>
-		The default syntactic forms of ASC force some characters to be interpreted in unique ways.
-		The following is a list of reserved characters.
+		The default syntax provided by ASC make use of the fifth character grouping rule for a number of constructs.
+		The following list of characters are generally not available for sumbols without heavily abusing notations.
+		These characters are called reserved characters.
 	</p>
 	<h5>Reserved Characters</h5>
 	<ul>
