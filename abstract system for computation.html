@@ -22,6 +22,7 @@
 			color:var(--fg);
 			background-color:var(--bg);
 			font-family:serif;
+			font-size:2vh;
 		}
 		h1, h2, h3, h4 {font-family:sans-serif;margin-top:3ch;}
 		h1, h2 {width:80%;margin-left:auto;margin-right:auto;}
@@ -45,8 +46,9 @@
 		#header h1{text-align:center;margin-top:10%;width:75%;margin-left:auto;margin-right:auto;padding:1%;background-color:var(--bg);font-family:serif;}
 		#header svg{display:inline;height:20ch;background-color:var(--neutral);padding:3ch;border-top-left-radius:3ch;border-bottom-right-radius:3ch;}
 
-		#settings{width:80%;font-size:x-large;margin-left:auto;margin-right:auto;height:3em;}
-		#settings a{display:inline-block;width:3em;height:3em;border-radius:100%;text-decoration:none;}
+		#settings{margin-left:auto;margin-right:auto;width:fit-content;}
+		#settings button{border-radius:100%;width:3vw;height:3vw;border-style:none;min-width:13px;min-height:13px;}
+		#settings button:hover{cursor:pointer;}
 
 		@media only screen and (max-width: 700px) {
 			#header {width:auto;margin-right:auto;margin-left:auto;}
@@ -94,13 +96,13 @@
 		<p>Revision 0.0</p>
 	</div>
 	<div id="settings">
-		<a onclick="teal()" style="background-color:var(--teal);">&nbsp;</a>
-		<a onclick="red()" style="background-color:var(--red);">&nbsp;</a>
-		<a onclick="green()" style="background-color:var(--green);">&nbsp;</a>
-		<a onclick="blue()" style="background-color:var(--blue);">&nbsp;</a>
-		<a onclick="yellow()" style="background-color:var(--yellow);">&nbsp;</a>
-		<a onclick="grey()" style="background-color:var(--grey);">&nbsp;</a>
-		<a onclick="purple()" style="background-color:var(--purple);">&nbsp;</a>
+		<button onclick="teal()" style="background-color:var(--teal);">&nbsp;</button>
+		<button onclick="red()" style="background-color:var(--red);">&nbsp;</button>
+		<button onclick="green()" style="background-color:var(--green);">&nbsp;</button>
+		<button onclick="blue()" style="background-color:var(--blue);">&nbsp;</button>
+		<button onclick="yellow()" style="background-color:var(--yellow);">&nbsp;</button>
+		<button onclick="grey()" style="background-color:var(--grey);">&nbsp;</button>
+		<button onclick="purple()" style="background-color:var(--purple);">&nbsp;</button>
 		<script>
 				function show () { 
 								s = document.getElementById("parameters");
