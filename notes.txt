@@ -187,3 +187,44 @@ But what about operators such as pointers?
 
 
 What about foreign function calls and ABI mis-matches?
+honestly just make a foreign function call convention which matches the convention of one of GCC, MSCV, or Clang.
+should ASC compile directly to assembly? Yes, because it employs special context manipulation which isn't possible in any other language.
+
+what is type specification?
+
+Ex:
+	T = [x y z]
+	var:T(x) `what does this mean?`
+
+
+say you want a symbol with parentheses in it.
+the symbol quotation operator drops special notations and just does visible vs. spaces
+
+`(parens)
+
+now to use the symbol as a symbol, evaluate it with parentheses
+
+( `(parens) )
+
+actually parentheses randomly unquoting symbols is dangerous. 
+i need an unquote operator.
+
+symbol quote:	`
+symbol unquote: `` 
+`(symbol)
+
+
+
+primitive operators:
+
+symbol quotation
+symbol unquote
+
+entity location
+access location
+
+entity storage requirements
+entity cardinality
+
+entity index subscript
+entity member access
