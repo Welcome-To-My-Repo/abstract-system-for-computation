@@ -22,7 +22,7 @@
 			color:var(--fg);
 			background-color:var(--bg);
 			font-family:serif;
-			font-size:1.7vh;
+			font-size:1vh;
 		}
 		h1, h2, h3, h4 {font-family:sans-serif;margin-top:3ch;}
 		h1, h2 {width:80%;margin-left:auto;margin-right:auto;}
@@ -46,7 +46,7 @@
 		#header h1{text-align:center;margin-top:17%;width:75%;margin-left:auto;margin-right:auto;padding:1%;background-color:var(--bg);font-family:serif;}
 		#header svg{display:inline;height:20ch;background-color:var(--neutral);padding:3ch;border-top-left-radius:3ch;border-bottom-right-radius:3ch;}
 
-		#settings{margin-left:auto;margin-right:auto;width:fit-content;}
+		#settings{margin-left:auto;margin-right:auto;width:fit-content;text-align:center;}
 		#settings button{border-radius:100%;width:3vw;height:3vw;border-style:none;min-width:13px;min-height:13px;}
 		#settings button:hover{cursor:pointer;}
 
@@ -102,12 +102,17 @@
 		<button onclick="yellow()" style="background-color:var(--yellow);">&nbsp;</button>
 		<button onclick="grey()" style="background-color:var(--grey);">&nbsp;</button>
 		<button onclick="purple()" style="background-color:var(--purple);">&nbsp;</button>
+		<br>
+		<button onclick="small()" style="border: solid 3px var(--neutral);background-color:inherit;font-size:1vh;">a</button>
+		<button onclick="big()" style="border: solid 3px var(--neutral);background-color:inherit;font-size:2vh;">A</button>
 		<script>
-				function show () { 
-								s = document.getElementById("parameters");
-								if (s.style.display == "hidden") s.style.display = "block";
-								else s.style.display = "hidden"; 
-							}
+			function show () { 
+				s = document.getElementById("parameters");
+				if (s.style.display == "hidden") s.style.display = "block";
+				else s.style.display = "hidden"; 
+			}
+			function big () { document.getElementsByTagName("body")[0].style.fontSize = "2vh";}
+			function small () { document.getElementsByTagName("body")[0].style.fontSize = "1vh";}
 			function teal () { document.querySelector(":root").style.setProperty('--neutral', 'var(--teal)'); }
 			function red () { document.querySelector(":root").style.setProperty('--neutral', 'var(--red)'); }
 			function green () { document.querySelector(":root").style.setProperty('--neutral', 'var(--green)'); }
