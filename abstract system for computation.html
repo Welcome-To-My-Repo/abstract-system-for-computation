@@ -28,7 +28,7 @@
 			color:var(--fg);
 			background-color:var(--bg);
 			font-family:serif;
-			font-size:1vh;
+			font-size:1.5vh;
 		}
 		h1, h2, h3, h4 {font-family:sans-serif;margin-top:3ch;}
 		h1, h2 {width:80%;margin-left:auto;margin-right:auto;}
@@ -43,14 +43,18 @@
 		li{margin-bottom:1ch;}
 		table{border: solid 3px var(--neutral);}
 		th{text-align:left;}
-		code{font-family:monospace;margin:7px;padding:-7px;border: solid 1px var(--neutral);padding:0.2ch;border-collapse:collapse;}
+		code{font-family:monospace;color:var(--neutral);background-color:var(--fg);border-radius:1ch;padding:3px;margin:3px;padding-top:1px;padding-bottom:1px;}
+		button{border-radius:1ch;border:3px solid var(--neutral);padding:1ch;background-color:var(--bg);transition:0.1s;}
+		button:active{background-color:var(--neutral);}
+		button:hover{cursor:pointer;}
+		dt {border-bottom:3px solid var(--neutral); border-right:3px solid var(--neutral);width:fit-content;}
 
 		a, a:link, a:visited{text-decoration:underline;color:var(--neutral);}
 		a:hover{color:var(--fg);background-color:var(--neutral);}
 
 
 		#header{height:100%;overflow:hidden;width:100%;text-align:center;}
-		#header h1{text-align:center;margin-top:17%;width:75%;margin-left:auto;margin-right:auto;padding:1%;background-color:var(--bg);font-family:serif;}
+		#header h1{text-align:center;margin-top:7%;width:75%;margin-left:auto;margin-right:auto;padding:1%;background-color:var(--bg);font-family:serif;}
 		#header svg{display:inline;height:20ch;background-color:var(--neutral);padding:3ch;border-top-left-radius:3ch;border-bottom-right-radius:3ch;}
 
 		#settings{margin-left:auto;margin-right:auto;width:fit-content;text-align:center;}
@@ -99,7 +103,7 @@
 			<br>
 			An Abstract System for Computation
 		</h1>
-		<p>Revision 0.0</p>
+		<p><span style="color:var(--neutral);"><b>Draft</b></span> Revision 0.0</p>
 	</div>
 	<div id="settings">
 		<button onclick="teal()" style="background-color:var(--teal);">&nbsp;</button>
@@ -110,7 +114,7 @@
 		<button onclick="grey()" style="background-color:var(--grey);">&nbsp;</button>
 		<button onclick="purple()" style="background-color:var(--purple);">&nbsp;</button>
 		<br>
-		<button onclick="small()" style="vertical-align:top;border: solid 3px var(--neutral);background-color:inherit;font-size:1vh;">a</button>
+		<button onclick="small()" style="vertical-align:top;border: solid 3px var(--neutral);background-color:inherit;font-size:1.5vh;">a</button>
 		<button onclick="big()" style="vertical-align:top;border: solid 3px var(--neutral);background-color:inherit;font-size:2vh;">A</button>
 		<script>
 			function show () { 
@@ -119,7 +123,7 @@
 				else s.style.display = "hidden"; 
 			}
 			function big () { document.getElementsByTagName("body")[0].style.fontSize = "2vh";}
-			function small () { document.getElementsByTagName("body")[0].style.fontSize = "1vh";}
+			function small () { document.getElementsByTagName("body")[0].style.fontSize = "1.5vh";}
 			function teal () { document.querySelector(":root").style.setProperty('--neutral', 'var(--teal)'); }
 			function red () { document.querySelector(":root").style.setProperty('--neutral', 'var(--red)'); }
 			function green () { document.querySelector(":root").style.setProperty('--neutral', 'var(--green)'); }
@@ -137,15 +141,6 @@
 	</p>
 	<h1>Table of Contents</h1>
 	<ol>
-		<li><a href="#Introduction">Introduction</a></li>
-		<li><a>Terms</a></li>
-		<li><a>Syntax</a></li>
-		<li><a>Data</a></li>
-		<li><a>Types</a></li>
-		<li><a>Formalization of Types</a></li>
-		<li><a>Functions</a></li>
-		<li><a>Sequences</a></li>
-		<li><a href="#Interpretation of Programs">Interpretation of Programs</a></li>
 	</ol>
 	<h1 id="Introduction">Introduction</h1>
 	<h2>Properties of an Abstract System for Computation</h2>
@@ -167,6 +162,26 @@
 		Classical mathematics is concerned with the correspondence between problems and answers.
 		By contrast, abstract systems for computation are concerned with how an answer can be obtained and if solving a problem is possible.
 	</p>
+	<h1>Language Overview</h1>
+	<p>
+		ASC consists of a number of fundamental entities which are composed to form programs.
+		Programs are represented textually through written expressions which construct entities and apply functions.
+		The following descriptive list outlines the main classes of entities in no particular order.
+	</p>
+	<dl>
+		<dt>Notations</dt>
+		<dd>Notations provide a meta-language utility for creating new forms of syntax and mapping them to some program semantics.</dd>
+		<dt>Functions</dt>
+		<dd>Functions represent computations to be performed. Every expression is some form of function definition or application.</dd>
+		<dt>Data</dt>
+		<dd>Data provides a correspondence between values represented at the program level and values as they can be represented in the environment where ASC programs are executed.</dd>
+		<dt>Types</dt>
+		<dd>Types provide a means to create generic models representing a specific class of program. If it is possible to specify a program using types in a sound way, then executing the actual program is guaranteed to function according to the model.</dd>
+		<dt>Modules</dt>
+		<dd>Modules separate a cohesive program into discrete components which interact using structured interfaces.</dd>
+		<dt>Sequences</dt>
+		<dd>Sequences allow data to be organized into various kinds of structures. More generally, sequences allow multiple individual pieces of data to be indexed and named within a single abstract entity which appears as data itself.</dd>
+	</dl>
 	<h1>Syntax</h1>
 	<p>
 		ASC programs are represented by a sequence of characters which is converted into a corresponding sequence of symbols using a set of grouping rules.
@@ -179,7 +194,16 @@
 		Implementations are encouraged to extend support for the Unicode character encoding.
 	</p>
 	<h5>Table of ASCII Character Encodings</h5>
-	<table>
+	<div id="ASCII">
+	<p><button class="button" onclick="showtable()">Show/Hide Table</button></p>
+	<script>
+		function showtable () {
+			t = document.getElementById("ASCII Table");
+			if (t.style.display != "none") t.style.display = "none";
+			else t.style.display = "table";
+		}
+	</script>
+	<table style="display:none;" id="ASCII Table">
 		<tr><th>Binary</th><th>Decimal</th><th>Hexadecimal</th><th>Glyph/Name</th></tr>
 		<tr><td>00000000</td><td>0</td><td>00</td><td>Null</td></tr>
 		<tr><td>00000001</td><td>1</td><td>01</td><td>Start of Heading</td></tr>
@@ -310,9 +334,11 @@
 		<tr><td>01111110</td><td>126</td><td>7e</td><td>~</td></tr>
 		<tr><td>01111111</td><td>127</td><td>7F</td><td>Delete</td></tr>
 	</table>
+	</div>
 	<h2>Symbols</h2>
 	<p>
-		Symbols consist of sequences of visible characters delimited by blank, unprintable, and control characters.
+		Symbols are the most basic program-level entity used to build programs.
+		They consist of sequences of visible characters delimited by blank, unprintable, and control characters.
 	</p>
 	<h3>Character Grouping Rules</h3>
 	<ol>
@@ -359,6 +385,8 @@
 		<li>At Symbol, <code>@</code></li>
 		<li>Caret, <code>^</code></li>
 	</ul>
+	<h2>Default Syntax</h2>
+	<p>The following figures describe the default syntactic constructs of the ASC programming language.</p>
 	<h1>Data</h1>
 	<h1>Types</h1>
 	<h1>Sequences</h1>
