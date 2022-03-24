@@ -344,6 +344,12 @@
 		Symbols are the most basic program-level entity used to build programs.
 		They consist of sequences of visible characters delimited by blank, unprintable, and control characters.
 	</p>
+	<p>
+		Symbols are used to name entities and to mark notations.
+		Used as names, symbols will self-evaluate to the entity which they name.
+		Used as notation, symbols will not evaluate and instead be discarded once the notation is evaluated.
+		Symbols which are used in notations are generally unavailable for use as names due to the fact that writing the symbol signifies a notation, preventing it from self-evaluating.
+	</p>
 	<h3 id="Character Grouping Rules">Character Grouping Rules</h3>
 	<ol>
 		<li>Visible characters shall be included as symbols. For the ASCII character encoding, visible characters include the codes 33 to 126.</li>
@@ -366,29 +372,6 @@
 		Alternatively, additional rules may be necessary to decide if a character is delimiting or used in symbols.
 		The task of interpreting and applying these rules to alternative character encodings is left to the implementation.
 	</p>
-	<h3>Reserved Characters</h3>
-	<p>
-		The default syntax provided by ASC make use of the fifth character grouping rule for a number of constructs.
-		The following list of characters are generally not available for sumbols without heavily abusing notations.
-		These characters are called reserved characters.
-	</p>
-	<h5>Reserved Characters</h5>
-	<ul>
-		<li>Open Round Bracket, <code>(</code></li>
-		<li>Closed Round Bracket, <code>)</code></li>
-		<li>Open Curly Bracket, <code>{</code></li>
-		<li>Closed Curly Bracket, <code>}</code></li>
-		<li>Open Square Bracket, <code>[</code></li>
-		<li>Closed Square Bracket, <code>]</code></li>
-		<li>Period Dot, <code>.</code></li>
-		<li>Colon, <code>:</code></li>
-		<li>Double Quotation, <code>"</code></li>
-		<li>Single Quotation, <code>'</code></li>
-		<li>Back Quotation, <code>`</code></li>
-		<li>Ampersand, <code>&amp;</code></li>
-		<li>At Symbol, <code>@</code></li>
-		<li>Caret, <code>^</code></li>
-	</ul>
 	<h2 id="Notations">Notations</h2>
 	<p>
 		ASC is self-describing through Notations.
