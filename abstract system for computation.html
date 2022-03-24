@@ -71,7 +71,7 @@
 			#header h1 {width:fit-content;}
 			h1, h2 {width:90%;}
 			h3, h4 {margin-left:5%;}
-			p, table, ul, ol, dl {width:90%;}
+			p, table, ul, ol, dl, #multiline {width:90%;}
 		}
 		@media print {
 			h1, h2 {page-break-before:always;}
@@ -118,8 +118,8 @@
 		<button onclick="grey()" style="background-color:var(--grey);">&nbsp;</button>
 		<button onclick="purple()" style="background-color:var(--purple);">&nbsp;</button>
 		<br>
-		<button onclick="small()" style="vertical-align:top;border: solid 3px var(--neutral);background-color:inherit;font-size:1.5vh;">a</button>
-		<button onclick="big()" style="vertical-align:top;border: solid 3px var(--neutral);background-color:inherit;font-size:2vh;">A</button>
+		<button onclick="small()" style="font-size:1.5vh;">a</button>
+		<button onclick="big()" style="font-size:2vh;">A</button>
 		<script>
 			function show () { 
 				s = document.getElementById("parameters");
@@ -247,7 +247,7 @@
 		<tr><td>00100011</td><td>35</td><td>23</td><td>#</td></tr>
 		<tr><td>00100100</td><td>36</td><td>24</td><td>$</td></tr>
 		<tr><td>00100101</td><td>37</td><td>25</td><td>%</td></tr>
-		<tr><td>00100110</td><td>38</td><td>26</td><td>&</td></tr>
+		<tr><td>00100110</td><td>38</td><td>26</td><td>&amp;</td></tr>
 		<tr><td>00100111</td><td>39</td><td>27</td><td>'</td></tr>
 		<tr><td>00101000</td><td>40</td><td>28</td><td>(</td></tr>
 		<tr><td>00101001</td><td>41</td><td>29</td><td>)</td></tr>
@@ -359,7 +359,7 @@
 		Note that no distinction is made between symbolic and script characters.
 		This allows for names which may include symbols.
 	</p>
-	<h3>Symbol Rules for Alternate Encodings</h3>
+	<h3>Regarding Alternate Encodings</h3>
 	<p>
 		If alternate character encodings are used, the rules for grouping characters into symbols should be such that any visible characters compose symbols and any non-visible characters delimit symbols.
 		It may be necessary to transparently ignore certain characters such as formatting codes which are technically invisible, but change the textual appearance of a visible character.
@@ -389,7 +389,7 @@
 		<li>At Symbol, <code>@</code></li>
 		<li>Caret, <code>^</code></li>
 	</ul>
-	<h2>Notation</h2>
+	<h2 id="Notations">Notations</h2>
 	<p>
 		ASC is self-describing through Notations.
 		A notation defines some syntax and the semantics that are engaged when the syntax occurs in a program.
@@ -452,8 +452,8 @@
 		; . (<br>
 		&emsp;"|" dependencies:Symbol *<br>
 		&emsp;"|" internal-definitions:[~ Any == Module] *<br>
-		&emsp;"|" external-definitions:[~ Any == Module] * "|"<br>
-		) = x:Module
+		&emsp;"|" external-definitions:[~ Any == Module] *<br>
+		"|" ) = x:Module
 	</code></div></p>
 	<h1>Data</h1>
 	<h1>Types</h1>
