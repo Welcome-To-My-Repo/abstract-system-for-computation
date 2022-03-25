@@ -118,8 +118,8 @@
 		<button onclick="grey()" style="background-color:var(--grey);">&nbsp;</button>
 		<button onclick="purple()" style="background-color:var(--purple);">&nbsp;</button>
 		<br>
-		<button onclick="small()" style="font-size:inherit;border: 3px solid var(--neutral);border-radius:1ch;">a</button>
-		<button onclick="big()" style="font-size:inherit;border: 3px solid var(--neutral);border-radius:1ch;">A</button>
+		<button onclick="small()" style="font-size:inherit;border: 3px solid var(--neutral);height:3ch;width:3ch;">a</button>
+		<button onclick="big()" style="font-size:inherit;border: 3px solid var(--neutral);height:3ch;width:3ch;">A</button>
 		<script>
 			function show () { 
 				s = document.getElementById("parameters");
@@ -199,7 +199,7 @@
 	</p>
 	<h5>Table of ASCII Character Encodings</h5>
 	<div id="ASCII">
-	<p><button class="button" onclick="showtable()">Show/Hide Table</button></p>
+	<p><button onclick="showtable()" style="font-size:inherit;">Show/Hide Table</button></p>
 	<script>
 		function showtable () {
 			t = document.getElementById("ASCII Table");
