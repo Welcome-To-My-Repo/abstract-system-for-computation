@@ -174,17 +174,17 @@
 	</p>
 	<dl>
 		<dt>Notations</dt>
-		<dd>Notations provide a meta-language utility for creating new forms of syntax and mapping them to some program semantics.</dd>
+		<dd>Notations provide a meta-language utility for creating new forms of syntax and mapping them to some evaluational semantics.</dd>
 		<dt>Functions</dt>
-		<dd>Functions represent computations to be performed. Every expression is some form of function definition or application.</dd>
+		<dd>Functions represent computations to be performed. Every expression reduces to some series of function definitions and applications.</dd>
 		<dt>Data</dt>
 		<dd>Data provides a correspondence between values represented at the program level and values as they can be represented in the environment where ASC programs are executed.</dd>
 		<dt>Types</dt>
-		<dd>Types provide a means to create generic models representing a specific class of program. If it is possible to specify a program using types in a sound way, then executing the actual program is guaranteed to function according to the model.</dd>
+		<dd>Types provide a means to model what a program might do and to reason about it. If it is possible to specify a program using types in a sound way, then executing the actual program is guaranteed to function according to the model.</dd>
 		<dt>Modules</dt>
 		<dd>Modules separate a cohesive program into discrete components which interact using structured interfaces.</dd>
 		<dt>Sequences</dt>
-		<dd>Sequences allow data to be organized into various kinds of structures. More generally, sequences allow multiple individual pieces of data to be indexed and named within a single abstract entity which appears as data itself.</dd>
+		<dd>Sequences allow data to be organized into various kinds of structures. More generally, sequences allow multiple individual pieces of data to be indexed and named within a single abstract entity appearing as data itself.</dd>
 	</dl>
 	<h1>Syntax</h1>
 	<p>
@@ -447,7 +447,7 @@
 	<h1>Notations</h1>
 	<h1>Formalization of Types</h1>
 	<p>
-		ASC utilizes a system of types which is founded in the description of geometric objects and their relations.
+		ASC utilizes a system of types which is founded in the description of geometric objects, their properties, and relations between them.
 		In this way, types can be extended to reflect any theory of geometry.
 		Judgements about type can then be enhanced by building on pre-existing relationships established in other fields of mathematics.
 	</p>
@@ -460,8 +460,8 @@
 	</p>
 	<h2>Definition of Type</h2>
 	<ol>
-		<li>A type is some abstract geometric form with features.</li>
-		<li>A feature is some consideration about a geometric form such as dimension, size, shape, or any arbitrary term.</li>
+		<li>A type is some abstract geometric formation with features.</li>
+		<li>A feature represents some aspect of a form which may or may not relate to actual geometrical properties.</li>
 		<li>Every type has a countable number of features from none to infinite.</li>
 		<li>Multiple types may have the same feature. A feature shared between two types is called a common feature.</li>
 		<li>There is a single type which has no features and it is the <i>Null</i> type.</li>
@@ -474,15 +474,15 @@
 		<li>Consider two types where at least one feature is common. These types are <i>alike</i>.</li>
 	</ol>
 	<h2>Type Structures</h2>
+	<p>
+		These structures represent various correspondences which appear as types, but express properties that are external to what can be represented by types.
+	</p>
 	<ol>
 		<li>A <i>unit</i> is a type which has a single feature and consequently serves to identify that feature.</li>
 		<li>A <i>function</i> is a type which represents a transformation between two collections of types.</li>
 		<li>A <i>composition</i> is a type which has a common feature for every feature present in a collection of types.</li>
-		<li>A <i>superposition</i> is a type which is possibly equivalent to one of a collection of types.</li>
+		<li>A <i>superposition</i> is a type which is possibly equivalent to any one of a collection of types.</li>
 	</ol>
-	<p>
-		These structures represent various correspondences which appear as types, but express properties that are external to the definition of types as it is given here.
-	</p>
 </body>
 <footer>
 	<h1>Copyright Statement</h1>
