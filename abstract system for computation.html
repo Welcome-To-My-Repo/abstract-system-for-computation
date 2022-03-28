@@ -14,14 +14,14 @@
 		:root{
 			--bg:#f8efe3;
 			--dbg:#beaf93;
-			--fg:#140e22;
+			--fg:#2f2f3d;
 			--teal:#23b89f;
 			--red:#b83f3f;
 			--green:#4dad44;
-			--blue:#3d53b4;
+			--blue:#5a71d8;
 			--yellow:#c0ae48;
 			--grey:#9e9e9e;
-			--purple:#b341ad;
+			--purple:#d431cc;
 			--neutral:var(--teal);
 		}
 		html, body{height:100%;}
@@ -44,7 +44,7 @@
 		li{margin-bottom:1ch;}
 		table{border: solid 3px var(--neutral);}
 		th{text-align:left;}
-		code{font-family:monospace;color:var(--neutral);}
+		code{font-family:monospace;color:var(--neutral);background-color:var(--fg);}
 		#multiline{display:block;border:solid 1px var(--fg);}
 		#multiline code{color:var(--fg);}
 		button{border-radius:1ch;border:3px solid var(--neutral);padding:1ch;background-color:var(--bg);transition:0.1s;}
@@ -434,8 +434,23 @@
 	</p>
 	<h4>Example Contexts</h4>
 	<p>
-		An empty context list, <code>; .</code> denotes a notation which does not rely on any contexts and does not 
+		An empty context list, <code>; .</code> represents a notation context which does not rely on any contexts and does not name a context of its own.
+		The list, <code>; m</code> represents a notation context which does not rely on any contexts, but names it's own context "m".
 	</p>
+	<h3>Patterns</h3>
+	<p>
+		Patterns define the structure of the expression the notation corresponds to.
+		A pattern extends the function parameter notation with additional constructs for describing delimiting symbols, characters, and repeating expression elements.
+		There are three components which extend the function parameter notation, they are strings, symbols, and repetition.
+	</p>
+	<p>
+		Patterns are written following the last name or period of the context list.
+		The entire pattern is surrounded in a closed pair of round brackets.
+		Strings, symbols, and parameters are written inside.
+	</p>
+	<h4>Strings</h4>
+	<h4>Characters</h4>
+	<h4>Repetition</h4>
 	<h1 id="Program Entities">Program Entities</h1>
 	<h1 id="Data">Data</h1>
 	<h1 id="Types">Types</h1>
@@ -443,153 +458,6 @@
 	<h1 id="Functions">Functions</h1>
 	<h1 id="Modules">Modules</h1>
 	<h1 id="Semantics">Semantics</h1>
-<!--
-	<h2>Symbols</h2>
-	<p>
-		Symbols are the most basic program-level entity used to build programs.
-		They consist of sequences of visible characters delimited by blank, unprintable, and control characters.
-	</p>
-	<p>
-		Symbols are used to name entities and to mark notations.
-		Used as names, symbols will self-evaluate to the entity which they name.
-		Used as notation, symbols will not evaluate and instead be discarded once the notation is evaluated.
-		Symbols which are used in notations are generally unavailable for use as names due to the fact that writing the symbol signifies a notation, preventing it from self-evaluating.
-	</p>
-	<h3 id="Character Grouping Rules">Character Grouping Rules</h3>
-	<ol>
-		<li>Visible characters shall be included as symbols. For the ASCII character encoding, visible characters include the codes 33 to 126.</li>
-		<li>Blank, unprintable, or invisible characters shall delimit symbols. For the ASCII character encoding delimiting characters include the codes 0 to 32 and 127.</li>
-		<li>Two adjacent visible characters shall be included in the same symbol.</li>
-		<li>Two adjacent delimiting characters shall be treated as a single delimiting element.</li>
-		<li>A specific sequence of characters may be defined using Notations which is treated as a complete symbol and will delimit any visible characters adjacent to itself.</li>
-	</ol>
-	<h3>Examples of Symbols</h3>
-	<p>The character sequence<br><code>abc def ghi</code><br> corresponds to the three symbols <code>abc</code>, <code>def</code>, and <code>ghi</code>.</p>
-	<p>The character sequence<br><code>a&amp;*&emsp;&amp;9)(li afj i3#afs</code><br>corresponds to the four symbols <code>a&amp;*</code>, <code>&amp;9)(li</code>, <code>afj</code>, and <code>i3#afs</code>.</p>
-	<p>
-		Note that no distinction is made between symbolic and script characters.
-		This allows for names which may include symbols.
-	</p>
-	<h3>Regarding Alternate Encodings</h3>
-	<p>
-		If alternate character encodings are used, the rules for grouping characters into symbols should be such that any visible characters compose symbols and any non-visible characters delimit symbols.
-		It may be necessary to transparently ignore certain characters such as formatting codes which are technically invisible, but change the textual appearance of a visible character.
-		Alternatively, additional rules may be necessary to decide if a character is delimiting or used in symbols.
-		The task of interpreting and applying these rules to alternative character encodings is left to the implementation.
-	</p>
-	<h2 id="Notations">Notations</h2>
-	<p>
-		ASC is self-describing through Notations.
-		A notation defines some syntax and the semantics that are engaged when the syntax occurs in a program.
-		Notation declarations are prefixed with the semicolon, <code>;</code>, and are composed of three parts, the context, the pattern, and the definition.
-	</p>
-	<h3>Notation Semantics</h3>
-	<p>
-		Notations fulfill the dual role of grouping sequences of characters into sequences of symbols and mapping those symbols to expressions.
-		Thus notations follow the character grouping rules<sup><a href="#Character Grouping Rules">*</a></sup> by default and can override them depending on the pattern defined.
-		When a pattern for which a notation has been defined occurs in a sequence of characters, that notation is "engaged".
-		The process of a notation being engaged is identical to a function being called in that the definition component of the engaged notation will be evaluated.
-	</p>
-	<h3>Contexts</h3>
-	<p>
-		When a pattern occurs and a notation is engaged, that sequence of characters corresponding to the pattern is said to be "captured".
-		This captured sequence of characters is a context.
-		Notations can be defined in such a way that they will only engage if their corresponding pattern occurs within a previously captured sequence.
-	</p>
-	<p>
-		A notation context is defined as a list of context names which must be engaged before the notation being defined can be engaged.
-		The list is interpreted in hierarchical order such that the first listed context following the semicolon prefix must be engaged before following contexts may apply.
-	</p>
-	<p>
-		The last context in the list of context names is interpreted as the name of the context for the notation being defined.
-		If a notation does not require a named context, the last name must be a period.
-		If a notation is given a context name, it must be a unique name which is not already used to name any other context accessible to the notation being defined.
-	</p>
-	<h3>Patterns</h3>
-	<p>
-		A pattern is composed of three elements: characters, symbols, and parameters.
-		These three elements are used to decide how a pattern may appear in a sequence of characters.
-	</p>
-	<p>
-		Characters and symbols act as terminal components in a pattern.
-		They delimit or otherwise mark the structure of a pattern and are never evaluated.
-		Because of this, if character sequences or symbols are used in a notation, they can no longer be used as names where that notation is visible.
-	</p>
-	<h4>Characters</h4>
-	<p>
-		A pattern may specify one or more characters in a sequence which are treated as their own symbol.
-		Character sequences in a pattern are written as a string<a href="#Strings"></a>.
-		The string may contain any characters including invisible ones.
-		Normal grouping rules are still applied to the remaining parts of the character sequence.
-		The string itself is not included in the remaining sequence and is treated as a single delimiting character.
-	</p>
-	<h4>Symbols</h4>
-	<p>
-		A pattern may include symbols for which normal character grouping rules apply.
-		Symbols which are specified as part of a pattern can no longer be used to make entities in expressions.
-		
-	</p>
-	<h3>Examples of Notations</h3>
-	<h2>Default Syntax</h2>
-	<p>
-		The following figures describe the default syntactic constructs of the ASC programming language.
-		They are given in the form of notations. 
-		As the default syntax is what notations can minimally be defined as, the definition component of notations is replaced by a natural description of each notation's definition.
-	</p>
-	<h5>Module Definition</h5>
-	<p><div id="multiline"><code>
-		; . (<br>
-		&emsp;"|" dependencies:Symbol *<br>
-		&emsp;"|" internal-definitions:[~ Any == Module] *<br>
-		&emsp;"|" external-definitions:[~ Any == Module] *<br>
-		"|" ) = x:Module
-	</code></div></p>
-	<h1>Data</h1>
-	<h1>Types</h1>
-	<h1>Sequences</h1>
-	<h2 id="Strings">Strings</h2>
-	<h1>Functions</h1>
-	<h1>Modules</h1>
-	<h1>Notations</h1>
-	<h1>Formalization of Types</h1>
-	<p>
-		ASC utilizes a system of types which is founded in the description of geometric objects, their properties, and relations between them.
-		In this way, types can be extended to reflect any theory of geometry.
-		Judgements about type can then be enhanced by building on pre-existing relationships established in other fields of mathematics.
-	</p>
-	<p> 
-		Additionally, this system of types is neither complete nor consistent.
-		In fact, it explicitly allows for contradictory or absent information.
-		The intent is that consistency and completeness are sacrificed for greater expressiveness.
-		Mechanisms for handling illogical information can be used to reason about programs or environments which present illogical states and behavior.
-		This kind of system acknowledges that a judgement in real life may depend on multiple gradual stages of reasoning or even missing information.
-	</p>
-	<h2>Definition of Type</h2>
-	<ol>
-		<li>A type is some abstract geometric formation with features.</li>
-		<li>A feature represents some aspect of a form which may or may not relate to actual geometrical properties.</li>
-		<li>Every type has a countable number of features from none to infinite.</li>
-		<li>Multiple types may have the same feature. A feature shared between two types is called a common feature.</li>
-		<li>There is a single type which has no features and it is the <i>Null</i> type.</li>
-		<li>There is a single type which has every possible feature and it is the <i>Any</i> type.</li>
-	</ol>
-	<h2>Type Relationships</h2>
-	<ol>
-		<li>Consider two types where every feature between them is common. These types are <i>equivalent</i>.</li>
-		<li>Consider two types where every feature between them is not common. These types are <i>disjoint</i>.</li>
-		<li>Consider two types where at least one feature is common. These types are <i>alike</i>.</li>
-	</ol>
-	<h2>Type Structures</h2>
-	<p>
-		These structures represent various correspondences which appear as types, but express properties that are external to what can be represented by types.
-	</p>
-	<ol>
-		<li>A <i>unit</i> is a type which has a single feature and consequently serves to identify that feature.</li>
-		<li>A <i>function</i> is a type which represents a transformation between two collections of types.</li>
-		<li>A <i>composition</i> is a type which has a common feature for every feature present in a collection of types.</li>
-		<li>A <i>superposition</i> is a type which is possibly equivalent to any one of a collection of types.</li>
-	</ol>
--->
 </body>
 <footer>
 	<h1>Copyright Statement</h1>
