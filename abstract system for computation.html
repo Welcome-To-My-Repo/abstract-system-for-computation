@@ -44,7 +44,7 @@
 		li{margin-bottom:1ch;}
 		table{border: solid 3px var(--neutral);}
 		th{text-align:left;}
-		code{font-family:monospace;color:var(--neutral);background-color:var(--fg);}
+		code{font-family:monospace;color:var(--neutral);}
 		#multiline{display:block;border:solid 1px var(--fg);}
 		#multiline code{color:var(--fg);}
 		button{border-radius:1ch;border:3px solid var(--neutral);padding:1ch;background-color:var(--bg);transition:0.1s;}
@@ -390,7 +390,7 @@
 		Which characters are included in symbols, which ones are excluded, and where individual symbols begin and end in a stream of characters are decided by a set of character "grouping" rules.
 		These rules are used to decide how a symbol is formed from a stream of characters.
 	</p>
-	<h3>Character Grouping Rules</h3>
+	<h3 id="Character Grouping Rules">Character Grouping Rules</h3>
 	<ol>
 		<li>Visible characters shall be included as part of a symbol.</li>
 		<li>Invisible characters shall delimit symbols such that one symbol ends before the delimiter and another begins after it.</li>
@@ -398,7 +398,7 @@
 		<li>Two adjacent delimiting characters shall be treated as a single delimiting character.</li>
 		<li>A notation may define a specific sequence of characters which mark an expression. This sequence of characters will be treated as a delimiting character where it occurs.</li>
 	</ol>
-	<h3>Quoting Symbols</h3>
+	<h3 id="Quoting Symbols">Quoting Symbols</h3>
 	<p>
 		A symbol may be prefixed with a backquote, <code>`</code>, in which case, the symbol becomes "quoted".
 		A quoted symbol is neither evaluated or consumed as a delimiter but appears as a unique symbolic value defined by the characters which compose it.
@@ -417,25 +417,31 @@
 		Notations are described in three distinct components, the <i>context</i>, the <i>pattern</i>, and the <i>definition</i>.
 		As a stream of characters is consumed, the patterns for all accessible notations are compared against the stream.
 		If a pattern matches against the stream, the corresponding notation "engages".
-		When a notation "engages", it performs two things, it first consumes the part of the stream which matches it pattern which becomes the context for that notation.
+		When a notation "engages", it performs two things, it first "captures" the part of the stream which matches it pattern which becomes the context for that notation.
 		Secondly, the corresponding definition for that notation is evaluated.
-		After the definition has been evaluated, the consumed portion of the stream is discarded.
+		After the definition has been evaluated, the captured portion of the stream is discarded.
 	</p>
 	<h3>Contexts</h3>
 	<p>
 		Contexts provide a mechanism for notations to conditionally depend on a separate notation being engaged before their pattern is compared against a stream.
-		When a notation engages and the part of the stream matching its pattern is consumed, the patterns notations which depend on the context of the engaged notation are compared against the portion of the stream being consumed.
+		When a notation engages and part of the stream is captured, the patterns of the notations which depend on the context of the capturing notation are compared against the captured portion of the stream.
 	</p>
 	<p>
 		Contexts are written beginning with a semicolon prefix followed by a series of symbols which name contexts.
 		The series is hierarchical meaning that each context must exist in the one it was listed after.
 		The last context given must be the name of the context created when the notation being defined engages.
 		If the context isn't named, then the place of the last name is filled with a period dot.
+		It is possible for multiple contexts to have the same name.
 	</p>
 	<h4>Example Contexts</h4>
 	<p>
 		An empty context list, <code>; .</code> represents a notation context which does not rely on any contexts and does not name a context of its own.
 		The list, <code>; m</code> represents a notation context which does not rely on any contexts, but names it's own context "m".
+	</p>
+	<p>
+		Given the context list, <code>; a b c .</code>, a notation with context "a" would have to engage. 
+		Then within that, a notation with context "b" would have to engage.
+		Finally, finally a third notation with context "c" would have to engage before the pattern for this hypothetical notation could be compared against the stream.
 	</p>
 	<h3>Patterns</h3>
 	<p>
@@ -449,12 +455,48 @@
 		Strings, symbols, and parameters are written inside.
 	</p>
 	<h4>Strings</h4>
-	<h4>Characters</h4>
+	<p>
+		Strings correspond to the fifth character grouping rule where a series of characters may be treated as a delimiter.
+		A string uses the default string notation<sup><a href="#Strings">*</a></sup> to define one or more characters in a sequence which serves to identify an expression.
+	</p>
+	<h4>Symbols</h4>
+	<p>
+		Symbols are defined in a pattern using symbol quotation<sup><a href="#Quoting Symbols">*</a></sup>.
+		Symbols are used in patterns in the same way as strings, to identify a specific expression.
+		However, symbols follow the normal character grouping rules<sup><a href="#Character Grouping Rules">*</a></sup>.
+		In order for a symbol in a pattern to match a stream, that symbol must occurr explicitly as a symbol in the stream.
+	</p>
+	<h4>Parameters</h4>
+	<p>
+		Parameters are used to describe where expression nesting may occur in a pattern.
+		The name of a parameter is accessible as a name within the notation definition.
+		Consider the pattern <code>(`x p:T `y)</code>.
+		Here, an expression is expected to occur between the symbols "x" and "y" within a stream.
+		Additionally, the parameter is given a hypothetical type, "T" which places the restriction that the expression occurring between the two symbols must evaluated to some entity with a type, "T".
+	</p>
 	<h4>Repetition</h4>
+	<p>
+		In a pattern, a parameter may repeat a variable number of times.
+		Parameters which may repeat are given a suffix symbol, <code>*</code>.
+		Parameters with this suffix will be interpreted as collections of whatever type the parameter may be.
+		For example, the pattern <code>(`x p:N *)</code> describes a symbol, "x" prefixing a number of expressions which must all evaluate to a type "N".
+		The type of the parameter "p" is then implicitly a collection of a number of entities of type "N" which are produced from evaluating the expressions following the symbol "x".
+	</p>
+	<h4>Stream Types</h4>
+	<p>
+		A notation may want to take a portion of a stream as it appears and perform some manipulation or computation with it.
+		In order to capture a portion of the stream directly, a parameter may be given the type, <code>Stream</code> which will imply that the parameter will be a collection of characters taken directly from the stream.
+		The Stream type may be parameterized with a constant value denoting a specific number of characters which are captured.
+	</p>
+	<p>
+		A pattern which captures one character from the stream might be described as <code>(`. x:Stream(1))</code> where the next character following the symbol, "." will be captured.
+		A pattern which captures a large portion of a stream might be described as <code>(`begin l:Stream `end)</code> where every character occurring between the two symbols is captured as a collection named "l" within the definition of the notation.
+	</p>
 	<h1 id="Program Entities">Program Entities</h1>
 	<h1 id="Data">Data</h1>
 	<h1 id="Types">Types</h1>
 	<h1 id="Collections">Collections</h1>
+	<h2 id="Strings">Strings</h2>
 	<h1 id="Functions">Functions</h1>
 	<h1 id="Modules">Modules</h1>
 	<h1 id="Semantics">Semantics</h1>

@@ -5,3 +5,12 @@ Communication protocol sends code and compilation commands to the compiler.
 executables are extracted by specifying a function or module.
 
 entities are stored as conflict free replicated data types
+
+syntax highlighting has colors for each category of syntax:
+	- single-character notation strings
+	- multi-character notation strings
+	- notation symbols
+	- constants
+	- type names (collections are types)
+	- function names
+	- module names
