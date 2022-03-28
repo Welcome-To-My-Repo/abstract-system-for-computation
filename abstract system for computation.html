@@ -148,7 +148,7 @@
 		<li><a href="#Introduction">Introduction</a></li>
 		<li><a href="#Foundation">Foundation</a></li>
 		<li><a href="#Notations">Notations</a></li>
-		<li><a href="#Program Entities">Program Entities</a></li>
+		<li><a href="#Environment">Environment</a></li>
 		<li><a href="#Data">Data</a></li>
 		<li><a href="#Types">Types</a></li>
 		<li><a href="#Collections">Collections</a></li>
@@ -492,9 +492,15 @@
 		A pattern which captures one character from the stream might be described as <code>(`. x:Stream(1))</code> where the next character following the symbol, "." will be captured.
 		A pattern which captures a large portion of a stream might be described as <code>(`begin l:Stream `end )</code> where every character occurring between the two symbols is captured as a collection named "l" within the definition of the notation.
 	</p>
-	<h1 id="Program Entities">Program Entities</h1>
+	<h1 id="Environment">Environment</h1>
 	<p>
-		The collection of entities which must be present 
+		There is a discrete environment which all entities reside in when they are constructed.
+		This environment contains the resources required to execute a program.
+		Each entity within the environment has a location, and a size in units of storage.
+		Entities may also be named by associating them with symbols.
+	</p>
+	<p>
+		By default, each entity is visible to every other entity within the environment.
 	</p>
 	<h1 id="Data">Data</h1>
 	<h1 id="Types">Types</h1>
