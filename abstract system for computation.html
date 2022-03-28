@@ -20,7 +20,7 @@
 			--green:#4dad44;
 			--blue:#3d53b4;
 			--yellow:#c0ae48;
-			--grey:#c2c2c2;
+			--grey:#9e9e9e;
 			--purple:#b341ad;
 			--neutral:var(--teal);
 		}
@@ -107,7 +107,7 @@
 			<br>
 			An Abstract System for Computation
 		</h1>
-		<p><span style="color:var(--neutral);"><b>Draft</b></span> Revision 0.0</p>
+		<p><span style="color:var(--red);"><b>Draft</b></span><br>Revision 0</p>
 	</div>
 	<div id="settings">
 		<button onclick="teal()" style="background-color:var(--teal);">&nbsp;</button>
@@ -167,6 +167,7 @@
 		By contrast, abstract systems for computation are concerned with how an answer can be obtained and if solving a problem is possible.
 	</p>
 	<h1>Language Overview</h1>
+	</p>
 	<p>
 		ASC consists of a number of fundamental entities which are composed to form programs.
 		Programs are represented textually through written expressions which construct entities and apply functions.
@@ -186,6 +187,15 @@
 		<dt>Sequences</dt>
 		<dd>Sequences allow data to be organized into various kinds of structures. More generally, sequences allow multiple individual pieces of data to be indexed and named within a single abstract entity appearing as data itself.</dd>
 	</dl>
+	<h2>Program Semantics</h2>
+	<h2>Program Entities</h2>
+	<p>
+		Program entities are any construct which facilitates the evaluation of a program.
+	</p>
+	<h2>Contexts</h2>
+	<p>
+		A context is the collection of entities at a given point in a program which are visible to each other.
+	</p>
 	<h1>Syntax</h1>
 	<p>
 		ASC programs are represented by a sequence of characters which is converted into a corresponding sequence of symbols using a set of grouping rules.
@@ -408,6 +418,7 @@
 	<p>
 		Characters and symbols act as terminal components in a pattern.
 		They delimit or otherwise mark the structure of a pattern and are never evaluated.
+		Because of this, if character sequences or symbols are used in a notation, they can no longer be used as names where that notation is visible.
 	</p>
 	<h4>Characters</h4>
 	<p>

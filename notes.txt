@@ -228,3 +228,30 @@ entity cardinality
 
 entity index subscript
 entity member access
+
+type composition is just a sequence.
+In normal type systems, dependent types combine types and values, but in 
+pure type systems, types and values are types. 
+Take the classic List dependent type example. There's an abstract list type 
+where the definition depends on a length value.
+In a pure type system, the list type is a type, and the length value is also a 
+type.
+List types then become type tuples.
+The constraint that the List is the "interface" of the type and the length is 
+part of the type information becomes a meta-logical decision.
+Now list types are simply a normal list type with a length just like how they're
+defined using records in other languages.
+
+So now if unit types are
+	U = [U]
+and type superpositions are
+	S = [t t t]
+
+then type compositions are
+	C = [k.l.m]
+where
+	C..1 == k
+	C..2 == l
+	C..3 == m
+and 
+	&{x:p y:q z:r} == [p.q.r]
