@@ -255,3 +255,14 @@ where
 	C..3 == m
 and 
 	&{x:p y:q z:r} == [p.q.r]
+
+
+
+dependent types means that there's some value attached to type information which can be erased.
+if types are completely tied to structs as they exist during a program, type information can't be erased.
+how to attach random types to stuff which don't affect the interface?
+how to erase types?
+
+Ex:
+asserting that a list is longer without necessarily keeping track of the length.
+

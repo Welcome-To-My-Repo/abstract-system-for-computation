@@ -470,7 +470,7 @@
 	<p>
 		Parameters are used to describe where expression nesting may occur in a pattern.
 		The name of a parameter is accessible as a name within the notation definition.
-		Consider the pattern <code>(`x p:T `y)</code>.
+		Consider the pattern <code>(`x p:T `y )</code>.
 		Here, an expression is expected to occur between the symbols "x" and "y" within a stream.
 		Additionally, the parameter is given a hypothetical type, "T" which places the restriction that the expression occurring between the two symbols must evaluated to some entity with a type, "T".
 	</p>
@@ -482,7 +482,7 @@
 		For example, the pattern <code>(`x p:N *)</code> describes a symbol, "x" prefixing a number of expressions which must all evaluate to a type "N".
 		The type of the parameter "p" is then implicitly a collection of a number of entities of type "N" which are produced from evaluating the expressions following the symbol "x".
 	</p>
-	<h4>Stream Types</h4>
+	<h4>The Stream Type</h4>
 	<p>
 		A notation may want to take a portion of a stream as it appears and perform some manipulation or computation with it.
 		In order to capture a portion of the stream directly, a parameter may be given the type, <code>Stream</code> which will imply that the parameter will be a collection of characters taken directly from the stream.
@@ -490,9 +490,12 @@
 	</p>
 	<p>
 		A pattern which captures one character from the stream might be described as <code>(`. x:Stream(1))</code> where the next character following the symbol, "." will be captured.
-		A pattern which captures a large portion of a stream might be described as <code>(`begin l:Stream `end)</code> where every character occurring between the two symbols is captured as a collection named "l" within the definition of the notation.
+		A pattern which captures a large portion of a stream might be described as <code>(`begin l:Stream `end )</code> where every character occurring between the two symbols is captured as a collection named "l" within the definition of the notation.
 	</p>
 	<h1 id="Program Entities">Program Entities</h1>
+	<p>
+		The collection of entities which must be present 
+	</p>
 	<h1 id="Data">Data</h1>
 	<h1 id="Types">Types</h1>
 	<h1 id="Collections">Collections</h1>
@@ -507,7 +510,7 @@
 		"<i>An Abstract System for Computation</i>"<br>Copyright &copy; 2020, by Daniel Smith, All Rights Reserved
 	</p>
 	<p>
-		This HTML markup documentmay be used, unmodified, without restriction. Additional permission is granted to produce whole, complete, and unmodified copies of this HTML document.
+		This HTML markup document may be used, unmodified, without restriction. Additional permission is granted to produce whole, complete, and unmodified copies of this HTML document.
 		Permission to modify this document or any copy of this document is expressly NOT granted.
 	</p>
 </footer>
