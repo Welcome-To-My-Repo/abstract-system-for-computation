@@ -279,3 +279,9 @@ type system by proving the equality of functions over a list with an explicit
 length and functions over a list without an explicit length.
 Basically any compilation level optimization becomes a form of type erasure.
 
+Now I just need to prove equivalence between things.
+
+1 + 1 = 2
+
+f([Nat > 1]) = 0
+

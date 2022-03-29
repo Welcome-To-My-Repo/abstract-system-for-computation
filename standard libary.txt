@@ -1,7 +1,7 @@
 Quality of Life crap:
--	Memory allocation
+-	Memory allocation/page allocation
 -	Process control
 -	Thread control
 -	File system interface
 -	dynamic object loading
--	
+-	network interface(the stack beginning with IP)
