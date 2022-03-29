@@ -266,3 +266,16 @@ how to erase types?
 Ex:
 asserting that a list is longer without necessarily keeping track of the length.
 
+SLTN:
+Dependent types exist because of the explicit notion of type erasure.
+The types which depend on terms are discarded once the terms are proven sound.
+Pure type systems don't need this because everything is types. Terms are just 
+unit types.
+
+Type erasure reduces to proving equality between two programs.
+For instance, functions across a dependent list type can be proven using a 
+dependent list length annotation. But the same action can be achieved in a pure
+type system by proving the equality of functions over a list with an explicit 
+length and functions over a list without an explicit length.
+Basically any compilation level optimization becomes a form of type erasure.
+

@@ -13,8 +13,7 @@
 	<style>
 		:root{
 			--bg:#f8efe3;
-			--dbg:#beaf93;
-			--fg:#2f2f3d;
+			--fg:#1f1f31;
 			--teal:#23b89f;
 			--red:#b83f3f;
 			--green:#4dad44;
@@ -44,8 +43,8 @@
 		li{margin-bottom:1ch;}
 		table{border: solid 3px var(--neutral);}
 		th{text-align:left;}
-		code{font-family:monospace;color:var(--neutral);}
-		#multiline{display:block;border:solid 1px var(--fg);}
+		code{font-family:monospace;border: solid 3px var(--fg);display:inline-block;font-size:inherit;}
+		#multiline{display:block;border:solid 3px var(--fg);}
 		#multiline code{color:var(--fg);}
 		button{border-radius:1ch;border:3px solid var(--neutral);padding:1ch;background-color:var(--bg);transition:0.1s;}
 		button:active{background-color:var(--neutral);}
@@ -62,7 +61,7 @@
 		#header svg{display:inline;height:20ch;background-color:var(--neutral);padding:3ch;border-top-left-radius:3ch;border-bottom-right-radius:3ch;}
 
 		#settings{margin-left:auto;margin-right:auto;width:fit-content;text-align:center;}
-		#settings button{border-radius:100%;width:3vw;height:3vw;border-style:none;min-width:2.5vh;min-height:2.5vh;}
+		#settings button{border-radius:100%;width:3vw;height:3vw;border-style:none;min-width:2.5vh;min-height:2.5vh;font-size:inherit;line-height:0%;}
 		#settings button:hover{cursor:pointer;}
 
 		@media only screen and (max-width: 700px) {
@@ -118,8 +117,8 @@
 		<button onclick="grey()" style="background-color:var(--grey);">&nbsp;</button>
 		<button onclick="purple()" style="background-color:var(--purple);">&nbsp;</button>
 		<br>
-		<button onclick="small()" style="font-size:inherit;border: 3px solid var(--neutral);">a</button>
-		<button onclick="big()" style="font-size:inherit;border: 3px solid var(--neutral);">A</button>
+		<button onclick="small()" style="border: 3px solid var(--neutral);">a</button>
+		<button onclick="big()" style="border: 3px solid var(--neutral);">A</button>
 		<script>
 			function show () { 
 				s = document.getElementById("parameters");
