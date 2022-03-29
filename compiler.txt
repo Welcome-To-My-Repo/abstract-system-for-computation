@@ -14,3 +14,10 @@ syntax highlighting has colors for each category of syntax:
 	- type names (collections are types)
 	- function names
 	- module names
+	- ability to assign an extra color to a notation
+
+Compiler is a server entity.
+Keeps a database of code entities that are defined.
+Can have multiple communication sockets sending code and recieving stats
+Sockets can be over the network
+multiple compilers can be chained together and synchronized.
