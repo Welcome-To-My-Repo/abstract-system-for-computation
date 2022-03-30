@@ -119,7 +119,7 @@ Modes can be nested and have similar extent to scope, however modes are also aff
 
 How to do quoted macros and stuff like the backquote in common lisp?
 A good example is forcing heap allocated variables to work like regular variables...
-~ . (x:Symbol) = ?? & (x) == Box Heap-Lookup(x) x
+; . (x:Symbol) = ?? & (x) == Box Heap-Lookup(x) x
 
 ASC doesn't really require an IR because it's already at C's level.
 What it needs is a few operators for binary crap with registers.
@@ -285,3 +285,32 @@ Now I just need to prove equivalence between things.
 
 f([Nat > 1]) = 0
 
+
+================================================================================
+SUPER IMPORTANT
+================================================================================
+
+support term rewriting instead of f expression style macros?
+
+What's the difference?
+
+macros involve invoking expressions which are matched and replaced.
+
+term rewriting involves substituting portions of the syntax tree and requires 
+proof of equivalence.
+
+a simple example is constant folding. how would I explicitly define constant 
+folding.
+
+1 + 1 = 2
+Constant + Constant = (Constant + Constant)
+; (x:Constant `+ y:Constant) = x + y `enforces all constant addition is performed at compilation` 
+
+Say a function f of a certain expression is rewritable as a separate function application
+; (`f `( x:k `) ) = g(x)
+
+what if I want to say that a function f can be replaced with a function g
+; (`f `( ,x `) ) = g(x)
+; ('f ( ,x )') = g(x)
+
+; ; 'f ( ,x )' = g(x)
