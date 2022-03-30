@@ -12,8 +12,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
 		:root{
-			--bg:#faf4ed;
-			--fg:#000018;
+			--bg:#fff6eb;
+			--fg:#00001d;
 			--teal:#23b89f;
 			--red:#b83f3f;
 			--green:#4dad44;
@@ -50,7 +50,7 @@
 		button{border-radius:1ch;border:3px solid var(--neutral);padding:1ch;background-color:var(--bg);transition:0.1s;}
 		button:active{background-color:var(--neutral);}
 		button:hover{cursor:pointer;}
-		dt {border-bottom:3px solid var(--neutral); border-right:3px solid var(--neutral);width:fit-content;padding:0.3ch;}
+		dt {border-bottom-right-radius:1ch;border-bottom:3px solid var(--neutral);border-right:3px solid var(--neutral);width:fit-content;padding:0.3ch;}
 
 		a, a:link, a:visited{text-decoration:underline;color:var(--neutral);}
 		a:hover{color:var(--fg);background-color:var(--neutral);}
@@ -234,7 +234,8 @@
 	</dl>
 	<h1 id="Lexical Conventions">Lexical Conventions</h1>
 	<p>
-		This section covers the basic treatment of a stream of characters as written ASC syntax.
+		An ASC program is represented by a stream of characters.
+		Default behavior is provided to analyze the stream and transform it into a stream of symbols and expressions.
 	</p>
 	<h2>Characters</h2>
 	<p>
@@ -468,7 +469,64 @@
 		It should be noted as seen in the example that rational numbers are capable of expressing any infinite sequence which can be written as a proper fraction.
 	</p>
 	</div>
-	
+	<h2>Default Expressions</h2>
+	<p>
+		The default expressions are given here using notations<sup><a href="#Notations">*</a></sup> as they are more capable of expressing ASC syntax than other ways of constructing grammar and syntax.
+		These expressions are globally available at any point in a program.
+	</p>
+	<h3>Primitive Operations</h3><div id="subsection">
+	<h5>Entity Size</h5>
+	<div id="multiline">
+	<code>
+		; ("#" x:Any) = y:Constant<br>
+		{y = get-entity-storage-units-required(x)}
+	</code>
+	</div>
+	<h5>Entity Type</h5>
+	<div id="multiline">
+	<code>
+		; ("&" x:Any) = y:Type<br>
+		{y = get-type-of-entity(x)}
+	</code>
+	</div>
+	<h5>Entity Location</h5>
+	<div id="multiline">
+	<code>
+		; ("^" x:Any) = y:Location(&x)<br>
+		{y = derive-location-from-entity-position(x)}
+	</code>
+	</div>
+	<h5>Location Access</h5>
+	<div id="multiline">
+	<code>
+		; ("@" x:Location) = y:(&Location..1)<br>
+		{y = read-entity-from-location(x)}
+	</code>
+	</div>
+	</div>
+	<h3>Collection Operations</h3><div id="subsection">
+	<h5>Cardinality</h5>
+	<div id="multiline">
+	<code>
+		; ("##" x:Collection) = y:Constant<br>
+		{y = get-cardinality-routine(x)}
+	</code>
+	</div>
+	<h5>Index Subscript Access</h5>
+	<div id="multiline">
+	<code>
+		; (x:Collection ".." y:Number) = z:Any<br>
+		{y = subscript-with-index(x y)}
+	</code>
+	</div>
+	<h5>Named Member Access</h5>
+	<div id="multiline">
+	<code>
+		; (x:Collection "." y:Symbol) = z:Any<br>
+		{y = access-with-name(x y)}
+	</code>
+	</div>
+	</div>
 	<h1 id="Environment">Environment</h1>
 	<p>
 		Entities which are constructed as part of a program exist within a discrete environment.
@@ -530,10 +588,11 @@
 		The expressions captured must be in positions corresponding to where parameters were given in the notation pattern.
 		For example, given the following expression and notation,
 	</p>
-	<h5>Example Expression and Notation</h5>
+	<h5>Example Expression</h5>
 	<div id="multiline">
 		<code>PREFIX x + 1</code>
 	</div>
+	<h5>Example Notation</h5>
 	<div id="multiline">
 		<code>; (`PREFIX n) = n + 1</code>
 	</div>
@@ -552,7 +611,7 @@
 		Contexts provide a mechanism for notations to conditionally require additional notations to be engaged first before they can engage.
 		A context takes the form of a list of symbols occurring after the semicolon prefix and before the pattern definition.
 		The last symbol corresponds to the name of the context for the notation being defined.
-		If the notation does not require a named context, then the last symbol before the second semicolon must be a period dot.
+		If the notation does not require a named context, then the last symbol in the list must be a period dot.
 		If the list consists of a single symbol with no period following, then that symbol names the context of the notation being defined.
 	</p>
 	<p>
@@ -571,6 +630,15 @@
 		Finally, finally a third notation with context "c" would have to engage before the pattern for this hypothetical notation could be compared against the stream.
 	</p>
 	</div>
+	<h2>Patterns</h2>
+	<p>
+		A pattern is an extension of the function parameter definition.
+		Patterns define the collection of possible expressions which can engage the notation.
+	</p>
+	<p>
+		Patterns extend the normal function parameter list with mechanisms for declaring delimiting characters, symbols, repeating elements, and explicit evaluation.
+
+	</p>
 	<h2>Patterns</h2>
 	<p>
 		A pattern is an extension of the function parameter definition.
