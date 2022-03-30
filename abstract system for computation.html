@@ -13,7 +13,7 @@
 	<style>
 		:root{
 			--bg:#f8efe3;
-			--fg:#1f1f31;
+			--fg:#000018;
 			--teal:#23b89f;
 			--red:#b83f3f;
 			--green:#4dad44;
@@ -44,13 +44,13 @@
 		li{margin-bottom:1ch;}
 		table{border: solid 3px var(--neutral);}
 		th{text-align:left;}
-		code{font-family:monospace;border: solid 1px var(--fg);display:inline-block;font-size:inherit;padding:0.2ch;}
-		#multiline{display:block;border:solid 3px var(--fg);}
-		#multiline code{color:var(--fg);}
+		code{font-family:monospace;border: solid 1px var(--fg);display:inline-block;font-size:inherit;padding:0.3ch;}
+		#multiline{display:block;border:solid 3px var(--fg);margin-bottom:1ch;}
+		#multiline code{color:var(--fg);border-style:none;}
 		button{border-radius:1ch;border:3px solid var(--neutral);padding:1ch;background-color:var(--bg);transition:0.1s;}
 		button:active{background-color:var(--neutral);}
 		button:hover{cursor:pointer;}
-		dt {border-bottom:3px solid var(--neutral); border-right:3px solid var(--neutral);width:fit-content;}
+		dt {border-bottom:3px solid var(--neutral); border-right:3px solid var(--neutral);width:fit-content;padding:0.3ch;}
 
 		a, a:link, a:visited{text-decoration:underline;color:var(--neutral);}
 		a:hover{color:var(--fg);background-color:var(--neutral);}
@@ -158,6 +158,7 @@
 	<ol>
 		<li><a href="#Introduction">Introduction</a></li>
 		<li><a href="#Foundation">Foundation</a></li>
+		<li><a href="#Lexical Conventions">Lexical Conventions</a></li>
 		<li><a href="#Notations">Notations</a></li>
 		<li><a href="#Environment">Environment</a></li>
 		<li><a href="#Data">Data</a></li>
@@ -218,10 +219,9 @@
 		<li>A <i>collection</i> is a type which has a common feature with every feature of one or more types.</li>
 		<li>A <i>superposition</i> is a type which is possibly equivalent to any one of a collection of types and cannot be disjoint to every type in the collection.</li>
 	</ul>
-	<h1 id="Notations">Notations</h1>
+	<h1 id="Lexical Conventions">Lexical Conventions</h1>
 	<p>
-		Notations are the means through which written expressions in the ASC language are mapped to the semantics of ASC algorithms.
-		They achieve this in two stages, by transforming a stream of characters into a stream of symbols and transforming a stream of symbols into some expressions in a program.
+		This section covers the basic treatment of a stream of characters as written ASC syntax.
 	</p>
 	<h2>Characters</h2>
 	<p>
@@ -455,86 +455,104 @@
 		It should be noted as seen in the example that rational numbers are capable of expressing any infinite sequence which can be written as a proper fraction.
 	</p>
 	</div>
-	<h2>Defining Notations</h2>
+	<h1 id="Notations">Notations</h1>
 	<p>
-		Notations are described in three distinct components, the <i>context</i>, the <i>pattern</i>, and the <i>definition</i>.
-		As a stream of characters is consumed, the patterns for all accessible notations are compared against the stream.
-		If a pattern matches against the stream, the corresponding notation "engages".
-		When a notation "engages", it performs two things, it first "captures" the part of the stream which matches it pattern which becomes the context for that notation.
-		Secondly, the corresponding definition for that notation is evaluated.
-		After the definition has been evaluated, the captured portion of the stream is discarded.
-	</p>
-	<h3>Contexts</h3><div id="subsection">
-	<p>
-		Contexts provide a mechanism for notations to conditionally depend on a separate notation being engaged before their pattern is compared against a stream.
-		When a notation engages and part of the stream is captured, the patterns of the notations which depend on the context of the capturing notation are compared against the captured portion of the stream.
+		Notations are the central mechanism for associating written syntax with program semantics.
+		There are three components to a notation definition, the <i>context</i>, the <i>pattern</i>, and the <i>definition</i>.
+		Notations definitions begin with a semicolon, <code>;</code>, prefix.
 	</p>
 	<p>
-		Contexts are written beginning with a semicolon prefix followed by a series of symbols which name contexts.
-		The series is hierarchical meaning that each context must exist in the one it was listed after.
-		The last context given must be the name of the context created when the notation being defined engages.
-		If the context isn't named, then the place of the last name is filled with a period dot.
-		It is possible for multiple contexts to have the same name.
-	</p>
-	<h4>Example Contexts</h4>
-	<p>
-		An empty context list, <code>; .</code> represents a notation context which does not rely on any contexts and does not name a context of its own.
-		The list, <code>; m</code> represents a notation context which does not rely on any contexts, but names it's own context "m".
+		At the abstract level, each notation corresponds to a single expression.
+		Some notations will simply evaluate to an entity.
+		Other notations include openings where other expressions are expected to be nested.
 	</p>
 	<p>
-		Given the context list, <code>; a b c .</code>, a notation with context "a" would have to engage. 
+		Notations obey all function semantics<sup><a href="#Functions">*</a></sup> regarding how a definition is evaluated and how function parameters behave in a pattern.
+	</p>
+	<h2>Notation Semantics</h2>
+	<p>
+		The pattern component of a notation describes a specific collection of character and symbol sequences which correspond to some expressions given as the notation definition.
+		As a stream of characters is consumed, a notation's pattern is compared to the characters in the stream.
+		If a sequence of characters matches one of the collection of sequences specified by the pattern, that notation will become <i>engaged</i>.
+	</p>
+	<p>
+		Once a notation is engaged, it will <i>capture</i> the sequence of characters from the stream which matched that notation's pattern.
+		This sequence of characters becomes a context for the engaged notation.
+		If the pattern for that notation includes parameters, then the process of comparing notation patterns to character sequences will continue locally within the engaged notation's context.
+		Additional notation patterns may be compared here if they have a context dependency for the engaged notation.
+		This process corresponds to the nesting of expressions.
+	</p>
+	<p>
+		After the context for the engaged notation has been consumed by furrther notations, it will discard its context and its definition will be evaluated.
+		If there were any parameters for that notation's pattern, those parameters are made accessible to the expressions in that notation's definition.
+	</p>
+	<h2>Contexts</h2>
+	<p>
+		Contexts provide a mechanism for notations to conditionally depend on a specific context being captured before they can engage.
+		Contexts are specified for a notation by listing symbols corresponding to names of contexts after the notation semicolon prefix and ending the list with a second semicolon.
+		The last symbol corresponds to the name of the context for the notation being defined.
+		If the notation does not require a named context, then the last symbol before the second semicolon must be a period dot.
+		If the list consists of a single symbol with no period following, then that symbol names the context of the notation being defined.
+	</p>
+	<p>
+		The context list is treated as a hierarchy.
+		This means that the each context in the list must be present before the one following it can be engaged.
+		All contexts listed must be engaged before the notation being defined can engage.
+	</p>
+	<h3>Example Contexts</h3><div id="subsection">
+	<p>
+		An empty context list, <code>; . ;</code> represents a notation context which does not rely on any contexts and does not name a context of its own.
+		The list, <code>; m ;</code> represents a notation context which does not rely on any contexts, but names it's own context "m".
+	</p>
+	<p>
+		Given the context list, <code>; a b c . ;</code>, a notation with context "a" would have to engage. 
 		Then within that, a notation with context "b" would have to engage.
 		Finally, finally a third notation with context "c" would have to engage before the pattern for this hypothetical notation could be compared against the stream.
 	</p>
 	</div>
-	<h3>Patterns</h3><div id="subsection">
+	<h2>Patterns</h2>
 	<p>
-		Patterns define the structure of the expression the notation corresponds to.
-		A pattern extends the function parameter notation with additional constructs for describing delimiting symbols, characters, and repeating expression elements.
-		There are three components which extend the function parameter notation, they are strings, symbols, and repetition.
+		Patterns define the collection of possible character sequences for which the notation can engage.
+		They provide a number of ways of defining an ordering of characters, symbols, parameters, and repeating elments which form an expression.
+		Patterns are written after the notation prefix or after the second semicolon if a context list is also provided.
 	</p>
-	<p>
-		Patterns are written following the last name or period of the context list.
-		The entire pattern is surrounded in a closed pair of round brackets.
-		Strings, symbols, and parameters are written inside.
-	</p>
-	<h4>Strings</h4>
+	<h3>Strings</h3><div id="subsection">
 	<p>
 		Strings correspond to the fifth character grouping rule where a series of characters may be treated as a delimiter.
 		A string uses the default string notation<sup><a href="#Strings">*</a></sup> to define one or more characters in a sequence which serves to identify an expression.
 	</p>
-	<h4>Symbols</h4>
+	<p>
+		When a notation engages, any strings featured in its pattern must be discarded from the captured context.
+	</p>
+	</div>
+	<h3>Symbols</h3><div id="subsection">
 	<p>
 		Symbols are defined in a pattern using symbol quotation<sup><a href="#Quoting Symbols">*</a></sup>.
 		Symbols are used in patterns in the same way as strings, to identify a specific expression.
 		However, symbols follow the normal character grouping rules<sup><a href="#Character Grouping Rules">*</a></sup>.
 		In order for a symbol in a pattern to match a stream, that symbol must occurr explicitly as a symbol in the stream.
 	</p>
-	<h4>Parameters</h4>
+	<p>
+		Like strings, symbols must also be discarded from the captured context when a notation engages.
+	</p>
+	</div>
+	<h3>Parameters</h3><div id="subsection">
+	<p>
+		A pattern may include function parameters<sup><a href="#Functions">*</a></sup>.
+		These provide "openings" in the form of an expression where further expressions may be nested.
+	</p>
+	<p>
+		Function parameters behave identically in both functions<sup><a href="#Functions">*</a></sup> and notation patterns.
+		Parameters in notations must be supplied entities through expressions being nested in positions corresponding to a parameter's placemnt within a pattern.
+	</p>
+	</div>
+	<h4>Parameters</h4><div id="subsection">
 	<p>
 		Parameters are used to describe where expression nesting may occur in a pattern.
 		The name of a parameter is accessible as a name within the notation definition.
 		Consider the pattern <code>(`x p:T `y )</code>.
 		Here, an expression is expected to occur between the symbols "x" and "y" within a stream.
 		Additionally, the parameter is given a hypothetical type, "T" which places the restriction that the expression occurring between the two symbols must evaluated to some entity with a type, "T".
-	</p>
-	<h4>Repetition</h4>
-	<p>
-		In a pattern, a parameter may repeat a variable number of times.
-		Parameters which may repeat are given a suffix symbol, <code>*</code>.
-		Parameters with this suffix will be interpreted as collections of whatever type the parameter may be.
-		For example, the pattern <code>(`x p:N *)</code> describes a symbol, "x" prefixing a number of expressions which must all evaluate to a type "N".
-		The type of the parameter "p" is then implicitly a collection of a number of entities of type "N" which are produced from evaluating the expressions following the symbol "x".
-	</p>
-	<h4>The Stream Type</h4>
-	<p>
-		A notation may want to take a portion of a stream as it appears and perform some manipulation or computation with it.
-		In order to capture a portion of the stream directly, a parameter may be given the type, <code>Stream</code> which will imply that the parameter will be a collection of characters taken directly from the stream.
-		The Stream type may be parameterized with a constant value denoting a specific number of characters which are captured.
-	</p>
-	<p>
-		A pattern which captures one character from the stream might be described as <code>(`. x:Stream(1))</code> where the next character following the symbol, "." will be captured.
-		A pattern which captures a large portion of a stream might be described as <code>(`begin l:Stream `end )</code> where every character occurring between the two symbols is captured as a collection named "l" within the definition of the notation.
 	</p>
 	</div>
 	<h1 id="Environment">Environment</h1>
@@ -571,6 +589,41 @@
 	<h1 id="Functions">Functions</h1>
 	<h1 id="Modules">Modules</h1>
 	<h1 id="Semantics">Semantics</h1>
+	<h2 id="Errors">Errors</h2>
+	<p>
+		Errors may be encountered during the translation of a program into an interpretable format.
+		They may be caused by various undesireable conditions.
+		In the event of an error, translation should abort.
+		The implemntation should also communicate the nature of the error and its position within the stream.
+		The list below describes the various classes of errors which may occur during translation.
+	</p>
+	<h5>Classes of Translation Error</h5>
+	<dl>
+		<dt>Lexical Errors</dt>
+		<dd>
+			A lexical error occurs when a character sequence is encountered in the stream for which there is no corresponding notation.
+		</dd>
+		<dt>Semantic Errors</dt>
+		<dd>
+			A semantic error occurs when an expression is mal-formed such as notations being engaged in an unexpected manner.
+			An example of a semantic error is two addition operators being written adjacent to each other.
+		</dd>
+		<h5>Example of a Semantic Error</h5>
+		<div id="multiline">
+			<code>+ +</code>
+		</div>
+		<dt>Type Errors</dt>
+		<dd>
+			A type error is similar in nature to a semantic error, except it occurs specifically when notations are composed in a semantically valid manner, but the resulting expression is not sound according to the mechanics of the type system.
+			An example is a numerical addition performed with entities which are not numbers.
+		</dd>
+		<h5>Example of a Type Error</h5>
+		<div id="multiline">
+			<code>
+				`x + `x
+			</code>
+		</div>
+	</dl>
 </body>
 <footer>
 	<h1>Copyright Statement</h1>

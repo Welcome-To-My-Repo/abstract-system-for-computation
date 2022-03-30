@@ -314,3 +314,5 @@ what if I want to say that a function f can be replaced with a function g
 ; ('f ( ,x )') = g(x)
 
 ; ; 'f ( ,x )' = g(x)
+
+; 'a' = b `rejected because terms are not equal`
