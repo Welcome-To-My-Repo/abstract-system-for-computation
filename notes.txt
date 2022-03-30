@@ -316,3 +316,26 @@ what if I want to say that a function f can be replaced with a function g
 ; ; 'f ( ,x )' = g(x)
 
 ; 'a' = b `rejected because terms are not equal`
+
+SKIP ALL THAT, JUST MAKE EXPRESSIONS COMPARABLE
+
+Comparing constant expressions is simple
+
+1 + 1 = 2
+
+(. (x = 1) = x + 1) = 2
+
+What about variables?
+x = 1 `x can only equal one here because the most accurate type is the unit type, 1`
+`x being typed as a Natural means that it can be equal to any unit which is a subtype of the natural numbers`
+x:Natural = 1
+x:Natural = 2
+
+Register + 1 = 2 = 1 + Register
+
+Natural + Natural = Natural + Natural
+x:Natural + y:Natural = y:Natural + x:Natural
+
+equality rules:
+	- the expressions on both sides must evaluate to the same thing or else 
+	  a semantic error occurs.

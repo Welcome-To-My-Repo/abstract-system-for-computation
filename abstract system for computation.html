@@ -159,13 +159,13 @@
 		<li><a href="#Introduction">Introduction</a></li>
 		<li><a href="#Foundation">Foundation</a></li>
 		<li><a href="#Lexical Conventions">Lexical Conventions</a></li>
-		<li><a href="#Notations">Notations</a></li>
 		<li><a href="#Environment">Environment</a></li>
 		<li><a href="#Data">Data</a></li>
 		<li><a href="#Types">Types</a></li>
 		<li><a href="#Collections">Collections</a></li>
 		<li><a href="#Functions">Functions</a></li>
 		<li><a href="#Modules">Modules</a></li>
+		<li><a href="#Notations">Notations</a></li>
 		<li><a href="#Semantics">Semantics</a></li>
 	</ol>
 	<h1 id="Introduction">Introduction</h1>
@@ -209,16 +209,29 @@
 			The type with the least number of features is the <i>sub-type</i>. 
 			The type with the greatest number of features is the <i>super-type</i>.</li>
 	</ul>
-	<h2>Type Structures</h2>
+	<h2>Features</h2>
 	<p>
-		These structures represent various correspondences that appear as types, but express properties that cannot be directly represented by types themselves.
+		There are several features which represent significant correspondences between types in the meta-language.
 	</p>
-	<ul>
-		<li>A <i>unit</i> is a type which has exactly one feature and consequently serves to identify that feature.</li>
-		<li>A <i>function</i> is a type which represents a transformation of some features in a collection of types to some features in another collection of types.</li>
-		<li>A <i>collection</i> is a type which has a common feature with every feature of one or more types.</li>
-		<li>A <i>superposition</i> is a type which is possibly equivalent to any one of a collection of types and cannot be disjoint to every type in the collection.</li>
-	</ul>
+	<dl>
+		<dt>Unit</dt>
+		<dd>
+			A type which has exactly one feature is a unit type.
+			Unit types identify their feature.
+		</dd>
+		<dt>Function</dt>
+		<dd>
+			A function is a feature which represents a transformation from some features in a collection of types to some features in another collection of types.
+		</dd>
+		<dt>Collection</dt>
+		<dd>
+			A feature which may be identical to multiple features.
+		</dd>
+		<dt>Superposition</dt>
+		<dd>
+			A feature which is possibly any of a collection of features and must be identical to one.
+		</dd>
+	</dl>
 	<h1 id="Lexical Conventions">Lexical Conventions</h1>
 	<p>
 		This section covers the basic treatment of a stream of characters as written ASC syntax.
@@ -455,41 +468,89 @@
 		It should be noted as seen in the example that rational numbers are capable of expressing any infinite sequence which can be written as a proper fraction.
 	</p>
 	</div>
+	
+	<h1 id="Environment">Environment</h1>
+	<p>
+		Entities which are constructed as part of a program exist within a discrete environment.
+		This environment serves to abstract over whatever actual resources may be present to perform computation.
+		Each entity which exists in the environment has an established location, duration, and size.
+	</p>
+	<p>
+		By default, all entities are accessible to each other within the environment.
+		Artificial boundaries may be introduced to limit which entities may access others by establishing <i>contexts</i>.
+		Contexts are implicitly established and dissolved through the evaluation of a number of specific entities.
+	</p>
+	<h2>Location</h2>
+	<p>
+		There is a finite, countable number of locations within the environment, constrained by the capabilities of the underlying computing resources.
+		When a new entity is introduced to the environment, it is stored at a location.
+		This location will never change for the duration that the entity exists in the environment.
+	</p>
+	<p>
+		Locations appear in the environment as entities themselves and can be computed with as values.
+		Locations can be derived from an entity's placement within the environment.
+		Data can also be accessed from locations.
+	</p>
+	<p>
+		Locations as values for computation are not ordered and do not have the property of magnitude.
+		Every location available in the environment is a unique value which has no relationship with any other locations.
+		The only comparison that can be made is equality: whether two location values represent the same location, or whether those values are different.
+	</p>
+	<h1 id="Data">Data</h1>
+	<h1 id="Types">Types</h1>
+	<h1 id="Collections">Collections</h1>
+	<h2 id="Strings">Strings</h2>
+	<h1 id="Functions">Functions</h1>
+	<h1 id="Modules">Modules</h1>
 	<h1 id="Notations">Notations</h1>
 	<p>
-		Notations are the central mechanism for associating written syntax with program semantics.
-		There are three components to a notation definition, the <i>context</i>, the <i>pattern</i>, and the <i>definition</i>.
-		Notations definitions begin with a semicolon, <code>;</code>, prefix.
+		Notations are functions<sup><a href="#Functions">*</a></sup> with extended facilities to describe forms of expressions.
+		Instead of relying on function application, notations are applied to parameters by writing the expression that they describe.
+		There are two main extensions which notations provide, <i>contexts</i> and <i>patterns</i>.
+		Notation definitions are made distinct from function definitions by prefixing them with a semicolon.
 	</p>
 	<p>
-		At the abstract level, each notation corresponds to a single expression.
-		Some notations will simply evaluate to an entity.
-		Other notations include openings where other expressions are expected to be nested.
-	</p>
-	<p>
-		Notations obey all function semantics<sup><a href="#Functions">*</a></sup> regarding how a definition is evaluated and how function parameters behave in a pattern.
+		A single notation will only correspond to one form of expression.
+		An expression may have any number of parameters, keywords, and delimiting characters.
+		No part of an expression may be optional.
+		An exception to this is variadic parameters.
 	</p>
 	<h2>Notation Semantics</h2>
+	<h3>Engaging A Notation</h3><div id="subsection">
 	<p>
-		The pattern component of a notation describes a specific collection of character and symbol sequences which correspond to some expressions given as the notation definition.
-		As a stream of characters is consumed, a notation's pattern is compared to the characters in the stream.
-		If a sequence of characters matches one of the collection of sequences specified by the pattern, that notation will become <i>engaged</i>.
+		Notations do not have an explicit application expression like functions.
+		Instead, they are applied when an expression occurs which matches the pattern for a notation.
+		When an expression matches a pattern defined by a notation, that notation is <i>engaged</i>.
+		After a notation is engaged there are additional steps which are performed before normal function evaluation occurrs.
+	</p>
+	</div>
+	<h3>Capturing Expressions</h3><div id="subsection">
+	<p>
+		If a notation has been engaged, and it accepts parameters, then an expression will be <i>captured</i> for each parameter.
+		The expressions captured must be in positions corresponding to where parameters were given in the notation pattern.
+		For example, given the following expression and notation,
+	</p>
+	<h5>Example Expression and Notation</h5>
+	<div id="multiline">
+		<code>PREFIX x + 1</code>
+	</div>
+	<div id="multiline">
+		<code>; (`PREFIX n) = n + 1</code>
+	</div>
+	<p>
+		the expression, <code>x + 1</code> will be captured when the notation is engaged.
+		When the notation is evaluated, the parameter <code>n</code> will be the result of evaluating <code>x + 1</code>.
 	</p>
 	<p>
-		Once a notation is engaged, it will <i>capture</i> the sequence of characters from the stream which matched that notation's pattern.
-		This sequence of characters becomes a context for the engaged notation.
-		If the pattern for that notation includes parameters, then the process of comparing notation patterns to character sequences will continue locally within the engaged notation's context.
-		Additional notation patterns may be compared here if they have a context dependency for the engaged notation.
-		This process corresponds to the nesting of expressions.
+		The expressions which are captured form a <i>context</i>.
+		When these expressions are evaluated, additional notations may engage which depend on that context being established.
 	</p>
-	<p>
-		After the context for the engaged notation has been consumed by furrther notations, it will discard its context and its definition will be evaluated.
-		If there were any parameters for that notation's pattern, those parameters are made accessible to the expressions in that notation's definition.
-	</p>
+	</div>
 	<h2>Contexts</h2>
 	<p>
-		Contexts provide a mechanism for notations to conditionally depend on a specific context being captured before they can engage.
-		Contexts are specified for a notation by listing symbols corresponding to names of contexts after the notation semicolon prefix and ending the list with a second semicolon.
+		A notation definition may optionally begin with a context.
+		Contexts provide a mechanism for notations to conditionally require additional notations to be engaged first before they can engage.
+		A context takes the form of a list of symbols occurring after the semicolon prefix and before the pattern definition.
 		The last symbol corresponds to the name of the context for the notation being defined.
 		If the notation does not require a named context, then the last symbol before the second semicolon must be a period dot.
 		If the list consists of a single symbol with no period following, then that symbol names the context of the notation being defined.
@@ -501,11 +562,11 @@
 	</p>
 	<h3>Example Contexts</h3><div id="subsection">
 	<p>
-		An empty context list, <code>; . ;</code> represents a notation context which does not rely on any contexts and does not name a context of its own.
-		The list, <code>; m ;</code> represents a notation context which does not rely on any contexts, but names it's own context "m".
+		An empty context list, <code>;</code> represents a notation context which does not rely on any contexts and does not name a context of its own.
+		The list, <code>; m</code> represents a notation context which does not rely on any contexts, but names it's own context "m".
 	</p>
 	<p>
-		Given the context list, <code>; a b c . ;</code>, a notation with context "a" would have to engage. 
+		Given the context list, <code>; a b c .</code>, a notation with context "a" would have to engage. 
 		Then within that, a notation with context "b" would have to engage.
 		Finally, finally a third notation with context "c" would have to engage before the pattern for this hypothetical notation could be compared against the stream.
 	</p>
@@ -546,39 +607,6 @@
 		Parameters in notations must be supplied entities through expressions being nested in positions corresponding to a parameter's placemnt within a pattern.
 	</p>
 	</div>
-	<h1 id="Environment">Environment</h1>
-	<p>
-		Entities which are constructed as part of a program exist within a discrete environment.
-		This environment serves to abstract over whatever actual resources may be present to perform computation.
-		Each entity which exists in the environment has an established location, duration, and size.
-	</p>
-	<p>
-		By default, all entities are accessible to each other within the environment.
-		Artificial boundaries may be introduced to limit which entities may access others by establishing <i>contexts</i>.
-		Contexts are implicitly established and dissolved through the evaluation of a number of specific entities.
-	</p>
-	<h2>Location</h2>
-	<p>
-		There is a finite, countable number of locations within the environment, constrained by the capabilities of the underlying computing resources.
-		When a new entity is introduced to the environment, it is stored at a location.
-		This location will never change for the duration that the entity exists in the environment.
-	</p>
-	<p>
-		Locations appear in the environment as entities themselves and can be computed with as values.
-		Locations can be derived from an entity's placement within the environment.
-		Data can also be accessed from locations.
-	</p>
-	<p>
-		Locations as values for computation are not ordered and do not have the property of magnitude.
-		Every location available in the environment is a unique value which has no relationship with any other locations.
-		The only comparison that can be made is equality: whether two location values represent the same location, or whether those values are different.
-	</p>
-	<h1 id="Data">Data</h1>
-	<h1 id="Types">Types</h1>
-	<h1 id="Collections">Collections</h1>
-	<h2 id="Strings">Strings</h2>
-	<h1 id="Functions">Functions</h1>
-	<h1 id="Modules">Modules</h1>
 	<h1 id="Semantics">Semantics</h1>
 	<h2 id="Errors">Errors</h2>
 	<p>
