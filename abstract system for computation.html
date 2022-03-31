@@ -617,8 +617,29 @@
 	<p>
 		The context list is treated as a hierarchy.
 		This means that the each context in the list must be present before the one following it can be engaged.
-		All contexts listed must be engaged before the notation being defined can engage.
+		All contexts listed must be engaged before the notation being defined can engage. For example, given the three following notations which contextually depend on each other,
 	</p>
+	<h5>Notations With Context Dependencies</h5>
+	<div id="multiline">
+	<code>
+		; a (`a x) = x<br>
+		; a b (`b x) = x<br>
+		; a b . (`c) = 1
+	</code>
+	</div>
+	<p>
+		The following expression would be necessary to engage the last notation with no named context.
+	</p>
+	<h5>Expression Satisfying Context Dependencies</h5>
+	<div id="multiline">
+	<code>a b c</code>
+	</div>
+	<h3>Names and Accessiblity</h3><div id="subsection">
+	<p>
+		Notations are a meta-language facility.
+		This means that notations are not accessible as entities and their contexts aren't variable names.
+	</p>
+	</div>
 	<h3>Example Contexts</h3><div id="subsection">
 	<p>
 		An empty context list, <code>;</code> represents a notation context which does not rely on any contexts and does not name a context of its own.
