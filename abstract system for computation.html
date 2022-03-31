@@ -57,6 +57,7 @@
 		sup a, sup a:link, sup a:visited{text-decoration:none;}
 		#subsection{border: 3px solid var(--neutral);border-radius:1ch;width:50%;margin-left:auto;margin-right:auto;}
 		#subsection p, #subsection dl, #subsection ul, #subsection ol, #subsection table, #subsection li{width:auto;}
+		#subsection #multiline {width:80%;}
 		#subsection h4{margin-left:auto;margin-right:auto;width:fit-content;}
 
 
@@ -444,15 +445,20 @@
 		In both these examples, the symbol, <code>symbol</code> will be evaluated.
 	</p>
 	</div>
-	<h3>Numbers</h3><div id="subsection">
+	<h3>Constants</h3><div id="subsection">
 	<p>
-		If a symbol is composed entirely of decimal digits (one of the characters <code>0123456789</code>), then it is a number.
-		Numbers are reserved for expressing numerical constants.
+		If a symbol is composed entirely of decimal digits (one of the characters <code>0123456789</code>), then it is a numerical <i>constant</i>.
 	</p>
 	<p>
-		In any number, place value is always increasing towards the leftmost digit.
+		Constants are always interpreted using the decimal (base-10) number system.
+		The lowest place value begins with the last, rightmost decimal digit and increases towards the first.
+		For Naturals and Integers, the lowest possible place value is 10<sup>0</sup>.
+		For Rationals, the lowest possible place value is 10<sup>-<i>n</i></sup> where <i>n</i> is the number of digits trailing to the right of the decimal dot.
 	</p>
-	<h4>Whole Values</h4>
+	<p>
+		Arithmetic operations between two constants are guaranteed to yeild another constant.
+	</p>
+	<h4>Naturals</h4>
 	<p>
 		Whole, positive numbers are represented simply by sequences of decimal digits such as <code>1</code> or <code>1234987605</code>.
 		Leading zeros are permitted such as <code>0000001</code>.
@@ -462,10 +468,10 @@
 		Integers allow the inclusion of a sign, either positive <code>+</code> or negative <code>-</code>, as the first character in the number.
 		This allows for positive and negative whole values such as <code>+100</code> and <code>-42</code>.
 	</p>
-	<h4>Rational Values</h4>
+	<h4>Rationals</h4>
 	<p>
 		Rational values allow for the inclusion of either a decimal dot, <code>.</code>, or a fraction sign, <code>/</code> as long as there is a decimal digit directly adjacent on either side of the decimal or fraction symbol.
-		Example rational values are <code>1/3</code> and <code>0.3333333</code>.
+		Example rational values are <code>-1/3</code> and <code>+0.3333333</code>.
 		It should be noted as seen in the example that rational numbers are capable of expressing any infinite sequence which can be written as a proper fraction.
 	</p>
 	</div>
@@ -492,7 +498,7 @@
 	<h5>Entity Location</h5>
 	<div id="multiline">
 	<code>
-		; ("^" x:Any) = y:Location(&x)<br>
+		; ("@@" x:Any) = y:Location(&x)<br>
 		{y = derive-location-from-entity-position(x)}
 	</code>
 	</div>
@@ -501,6 +507,19 @@
 	<code>
 		; ("@" x:Location) = y:(&Location..1)<br>
 		{y = read-entity-from-location(x)}
+	</code>
+	</div>
+	<h5>Conditional Evaluation</h5>
+	<div id="multiline">
+	<code>
+		; (`? x:Boolean y:Expression z:Expression) = ? x (y) (z)
+	</code>
+	</div>
+	<h5>Explicit Evaluation</h5>
+	<div id="multiline">
+	<code>
+		; (`( x:Any `) ) = x<br>
+		; (`( x:Expression `) ) = evaluate(x)
 	</code>
 	</div>
 	</div>
@@ -524,6 +543,38 @@
 	<code>
 		; (x:Collection "." y:Symbol) = z:Any<br>
 		{y = access-with-name(x y)}
+	</code>
+	</div>
+	</div>
+	<h3>Arithmetic Operations</h3><div id="subsection">
+	<h5>Arithmetic Over Constants</h5>
+	<div id="multiline">
+	<code>
+		; (x:Constant `+ y:Constant) = constant-addition(x y)<br>
+		; (x:Constant `- y:Constant) = constant-subtraction(x y)<br>
+		; (x:Constant `* y:Constant) = constant-multiplication(x y)<br>
+		; (x:Constant `/ y:Constant) = constant-division-quotient(x y)<br>
+		; (x:Constant `// y:Constant) = constant-division-remainder(x y)<br>
+	</code>
+	</div>
+	</div>
+	<h3>Logic Operations</h3><div id="subsection">
+	<h5>Logical "And"</h5>
+	<div id="multiline">
+	<code>
+		; (x:Boolean `/\ y:Boolean) = z:Boolean {z = logical-conjunction(x y)}
+	</code>
+	</div>
+	<h5>Logical "Or"</h5>
+	<div id="multiline">
+	<code>
+		; (x:Boolean `\/ y:Boolean) = z:Boolean {z = logical-disjunction(x y)}
+	</code>
+	</div>
+	<h5>Logical "Not"</h5>
+	<div id="multiline">
+	<code>
+		; (`~ x:Boolean) = y:Boolean {y = logical-negation(x)}
 	</code>
 	</div>
 	</div>
