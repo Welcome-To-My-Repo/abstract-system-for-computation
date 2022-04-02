@@ -342,5 +342,5 @@ equality rules:
 
 Types are multisets of features.
 Superpositions are fuzzy multisets.
-Collections are just types.
-A collection of types is a type that has all the features of a type.
+Collections are just types with features.
+A collection of types is the same as a single type with all the features of those types
