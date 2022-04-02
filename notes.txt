@@ -325,10 +325,10 @@ Comparing constant expressions is simple
 
 (. (x = 1) = x + 1) = 2
 
-What about variables?
-x = 1 `x can only equal one here because the most accurate type is the unit type, 1`
-`x being typed as a Natural means that it can be equal to any unit which is a subtype of the natural numbers`
+What about variables?t can be equal to any unit which is a subtype of the natural numbers`
 x:Natural = 1
+x = 1 `x can only equal one here because the most accurate type is the unit type, 1`
+`x being typed as a Natural means that i
 x:Natural = 2
 
 Register + 1 = 2 = 1 + Register
@@ -339,3 +339,8 @@ x:Natural + y:Natural = y:Natural + x:Natural
 equality rules:
 	- the expressions on both sides must evaluate to the same thing or else 
 	  a semantic error occurs.
+
+Types are multisets of features.
+Superpositions are fuzzy multisets.
+Collections are just types.
+A collection of types is a type that has all the features of a type.
