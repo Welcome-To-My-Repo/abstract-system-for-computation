@@ -210,7 +210,7 @@
 			The type with the least number of features is the <i>sub-type</i>. 
 			The type with the greatest number of features is the <i>super-type</i>.</li>
 	</ul>
-	<h2>Features</h2>
+	<h2>Unique Features</h2>
 	<p>
 		There are several features which represent significant correspondences between types in the meta-language.
 	</p>
@@ -226,7 +226,8 @@
 		</dd>
 		<dt>Collection</dt>
 		<dd>
-			A feature which may be identical to multiple features.
+			A type which is the super-type to multiple types such that it has every common feature for a number of types.
+			A collection may be the super-type of just one type.
 		</dd>
 		<dt>Superposition</dt>
 		<dd>
@@ -522,6 +523,18 @@
 		; (`( x:Expression `) ) = evaluate(x)
 	</code>
 	</div>
+	<h5>Symbol Quotation</h5>
+	<div id="multiline">
+	<code>
+		; ("`" x:Characters) = construct-symbol-from-characters(x)
+	</code>
+	</div>
+	<h5>Symbol Unquote</h5>
+	<div id="multiline">
+	<code>
+		; ("~`" x:Symbol) = evaluate-symbol(x)
+	</code>
+	</div>
 	</div>
 	<h3>Collection Operations</h3><div id="subsection">
 	<h5>Cardinality</h5>
@@ -604,6 +617,13 @@
 		Locations as values for computation are not ordered and do not have the property of magnitude.
 		Every location available in the environment is a unique value which has no relationship with any other locations.
 		The only comparison that can be made is equality: whether two location values represent the same location, or whether those values are different.
+	</p>
+	<h2>Contexts</h2>
+	<p>
+		By default, every entity may access every other entity in the environment.
+		Contexts establish a means of limiting how entities may access each other.
+		Entities may either reside in or out of the context.
+		Entities within the context may access each other, but entities outside the context cannot access any entity inside the context.
 	</p>
 	<h1 id="Data">Data</h1>
 	<h1 id="Types">Types</h1>
