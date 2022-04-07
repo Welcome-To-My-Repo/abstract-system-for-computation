@@ -353,3 +353,27 @@ Trivially:
 	c:[a.b]
 	d:[x.y]
 	c = d
+
+
+rather than evaluation, make the execution model be term rewriting.
+it's a basic switch and doesn't affect stuff like modules, functions, or
+collections.
+the switch still affects what's fundamentally possible.
+it allows for full unification and equivalence expressions rather than simple variable binding.
+
+
+similar to tail call recursion, what's an optimization for functions that allows modification in place.
+
+n = 0
+f(x) =	? n = 9 
+	 n
+	 f(x + 1)
+f(n)
+
+expression rewriting allows for visual programming in a node style.
+
+how to mutate variables.
+structural rules, weakening, contraction, exchange.
+language doesn't do entailment.
+all propositions which are proven true based on other propositions.
+different than sequent calculus.
