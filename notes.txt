@@ -377,3 +377,10 @@ structural rules, weakening, contraction, exchange.
 language doesn't do entailment.
 all propositions which are proven true based on other propositions.
 different than sequent calculus.
+
+
+how do equalities correspond to entailment?
+
+each equality is probably true or probably false.
+equalities correspond to individual sequents.
+entailment is the conclusion of the program.
