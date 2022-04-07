@@ -384,3 +384,18 @@ how do equalities correspond to entailment?
 each equality is probably true or probably false.
 equalities correspond to individual sequents.
 entailment is the conclusion of the program.
+
+structural rules for sequent calculus don't apply to unification.
+for example, given the equalities
+A: x = y
+B: y = z
+C: z = x
+
+Produces the sequents
+A, B |- C
+B, C |- A
+C, A |- B
+
+and each sequent involves the cut rule so the sequent calculus version explodes.
+much easier to create binding rules regarding variables.
+operations are bind and drop
