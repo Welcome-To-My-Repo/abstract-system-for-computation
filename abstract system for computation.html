@@ -414,10 +414,9 @@
 	</div>
 	<h2>Symbols</h2>
 	<p>
-		Symbols are the basic element of ASC expressions which are composed of sequences of characters.
-		They have a dual role of being evaluated as names of entities or being consumed as delimiting marks for individual notations.
-		Which characters are included in symbols, which ones are excluded, and where individual symbols begin and end in a stream of characters are decided by a set of character "grouping" rules.
-		These rules are used to decide how a symbol is formed from a stream of characters.
+		Symbols are the basic element of ASC expressions and are composed of sequences of characters.
+		Symbols may be featured in expressions as delimiting elements of an expression, variables, or numerical constants.
+		The characters which are included in a symbol are decided by "grouping" rules.
 	</p>
 	<h3 id="Character Grouping Rules">Character Grouping Rules</h3>
 	<div id="subsection">
@@ -476,7 +475,7 @@
 		It should be noted as seen in the example that rational numbers are capable of expressing any infinite sequence which can be written as a proper fraction.
 	</p>
 	</div>
-	<h2>Default Expressions</h2>
+	<h1>Default Expressions</h1>
 	<p>
 		The default expressions are given here using notations<sup><a href="#Notations">*</a></sup> as they are more capable of expressing ASC syntax than other ways of constructing grammar and syntax.
 		These expressions are globally available at any point in a program.
@@ -729,14 +728,6 @@
 	</p>
 	<p>
 		Patterns extend the normal function parameter list with mechanisms for declaring delimiting characters, symbols, repeating elements, and explicit evaluation.
-
-	</p>
-	<h2>Patterns</h2>
-	<p>
-		A pattern is an extension of the function parameter definition.
-		Patterns define the collection of possible character sequences for which the notation can engage.
-		They provide a number of ways of defining an ordering of characters, symbols, parameters, and repeating elments which form an expression.
-		Patterns are written after the notation prefix or after the second semicolon if a context list is also provided.
 	</p>
 	<h3>Strings</h3><div id="subsection">
 	<p>
