@@ -21,3 +21,5 @@ Keeps a database of code entities that are defined.
 Can have multiple communication sockets sending code and recieving stats
 Sockets can be over the network
 multiple compilers can be chained together and synchronized.
+
+compiler has a visual programming mode where functions are nodes.

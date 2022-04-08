@@ -399,3 +399,9 @@ C, A |- B
 and each sequent involves the cut rule so the sequent calculus version explodes.
 much easier to create binding rules regarding variables.
 operations are bind and drop
+
+no sequent structural rules.
+equivalences are different.
+just variable binding and unbinding.
+if a variable appears by itself in an equivalence, opposite an expression, it becomes bound.
+otherwise an equivalence relation is established
