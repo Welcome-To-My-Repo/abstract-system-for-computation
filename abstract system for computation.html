@@ -1,6 +1,6 @@
 <!--
 	Copyright (C) 2021, Daniel Smith, All Rights Reserved.
-	This document may be used, unmodified, without restriction. 
+	This document may be used, unmodified, without restriction.
 	Additional permission is granted to produce whole, complete, and unmodified copies of this HTML document.
 	Permission to modify this document or any copy of this document is expressly NOT granted.
 
@@ -93,7 +93,7 @@
 		}
 	</style>
 </head>
-<body>	
+<body>
 	<div id="header">
 		<h1>
 			<svg
@@ -133,10 +133,10 @@
 		<button onclick="small()" style="border: 3px solid var(--neutral);">a</button>
 		<button onclick="big()" style="border: 3px solid var(--neutral);">A</button>
 		<script>
-			function show () { 
+			function show () {
 				s = document.getElementById("parameters");
 				if (s.style.display == "hidden") s.style.display = "block";
-				else s.style.display = "hidden"; 
+				else s.style.display = "hidden";
 			}
 			function big () { document.getElementsByTagName("body")[0].style.fontSize = "1.9vh";}
 			function small () { document.getElementsByTagName("body")[0].style.fontSize = "1.7vh";}
@@ -206,8 +206,8 @@
 		<li>Consider two types where every feature between them is common. These two types are <i>equivalent</i>.</li>
 		<li>Consider two types where no feature between them is common. These two types are <i>disjoint</i>.</li>
 		<li>Consider two types where at least one and not all features are common between them. These two types are <i>alike</i>.</li>
-		<li>Consider two types where every feature of one type is common, and at least one feature of the other is not common. 
-			The type with the least number of features is the <i>sub-type</i>. 
+		<li>Consider two types where every feature of one type is common, and at least one feature of the other is not common.
+			The type with the least number of features is the <i>sub-type</i>.
 			The type with the greatest number of features is the <i>super-type</i>.</li>
 	</ul>
 	<h2>Meta Features</h2>
@@ -234,10 +234,6 @@
 			A feature which is possibly any of a collection of features and must be identical to one.
 		</dd>
 	</dl>
-	<h2>Semantics of Type</h2>
-	<p>
-		
-	</p>
 	<h1 id="Lexical Conventions">Lexical Conventions</h1>
 	<p>
 		An ASC program is represented by a stream of characters.
@@ -440,7 +436,7 @@
 		A symbol may be prefixed with a backquote, <code>`</code>, in which case, the symbol becomes "quoted".
 		A quoted symbol is neither evaluated or consumed as a delimiter but appears as a unique symbolic value defined by the characters which compose it.
 		A quoted symbol will always have the same value as the quotation of the same symbol, which means <code>`s</code> is equivalent to <code>`s</code> and not equivalent to <code>`t</code>.
-		Additionally, the fifth character grouping rule is ignored. 
+		Additionally, the fifth character grouping rule is ignored.
 		All visible characters following the initial backquote will be included in the quoted symbol.
 		Invisible characters occurring between the initial backquote and the first visible character will be discarded.
 	</p>
@@ -480,6 +476,7 @@
 		It should be noted as seen in the example that rational numbers are capable of expressing any infinite sequence which can be written as a proper fraction.
 	</p>
 	</div>
+	<h1 id="Notations">Notations</h1>
 	<h2>Default Expressions</h2>
 	<p>
 		The default expressions are given here using notations<sup><a href="#Notations">*</a></sup> as they are more capable of expressing ASC syntax than other ways of constructing grammar and syntax.
@@ -721,7 +718,7 @@
 		The list, <code>; m</code> represents a notation context which does not rely on any contexts, but names it's own context "m".
 	</p>
 	<p>
-		Given the context list, <code>; a b c .</code>, a notation with context "a" would have to engage. 
+		Given the context list, <code>; a b c .</code>, a notation with context "a" would have to engage.
 		Then within that, a notation with context "b" would have to engage.
 		Finally, finally a third notation with context "c" would have to engage before the pattern for this hypothetical notation could be compared against the stream.
 	</p>

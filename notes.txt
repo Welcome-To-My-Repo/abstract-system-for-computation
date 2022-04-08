@@ -10,7 +10,7 @@ it also has a set number of special registers.
 	- Base Pointer
 	- Zero
 Data types correspond to the data types in ASC.
-Operations are 
+Operations are
 	- Add
 	- Subtract
 	- Multiply
@@ -18,7 +18,7 @@ Operations are
 	- Remainder
 
 ASC syntax is created by patterns.
-There are a few notations which are determined using characters rather than symbols. 
+There are a few notations which are determined using characters rather than symbols.
 This allows these notations to be represented with any format the programmer may chose.
 These character notations are:
 	-function declaration
@@ -60,7 +60,7 @@ name (p1 = x p2 = y p... = z) = p3 {p3 = expr()}
 name (`...`) = p3 begin yeild name `returns in the immediate context`
 name (`...`) = p3 begin end name `returns to call site`
 
-Function call 
+Function call
 name()
 
 Pointer syntax just overloads the "@" character.
@@ -206,11 +206,11 @@ now to use the symbol as a symbol, evaluate it with parentheses
 
 ( `(parens) )
 
-actually parentheses randomly unquoting symbols is dangerous. 
+actually parentheses randomly unquoting symbols is dangerous.
 i need an unquote operator.
 
 symbol quote:	`
-symbol unquote: `` 
+symbol unquote: ``
 `(symbol)
 
 
@@ -230,14 +230,14 @@ entity index subscript
 entity member access
 
 type composition is just a sequence.
-In normal type systems, dependent types combine types and values, but in 
-pure type systems, types and values are types. 
-Take the classic List dependent type example. There's an abstract list type 
+In normal type systems, dependent types combine types and values, but in
+pure type systems, types and values are types.
+Take the classic List dependent type example. There's an abstract list type
 where the definition depends on a length value.
-In a pure type system, the list type is a type, and the length value is also a 
+In a pure type system, the list type is a type, and the length value is also a
 type.
 List types then become type tuples.
-The constraint that the List is the "interface" of the type and the length is 
+The constraint that the List is the "interface" of the type and the length is
 part of the type information becomes a meta-logical decision.
 Now list types are simply a normal list type with a length just like how they're
 defined using records in other languages.
@@ -253,7 +253,7 @@ where
 	C..1 == k
 	C..2 == l
 	C..3 == m
-and 
+and
 	&{x:p y:q z:r} == [p.q.r]
 
 
@@ -269,13 +269,13 @@ asserting that a list is longer without necessarily keeping track of the length.
 SLTN:
 Dependent types exist because of the explicit notion of type erasure.
 The types which depend on terms are discarded once the terms are proven sound.
-Pure type systems don't need this because everything is types. Terms are just 
+Pure type systems don't need this because everything is types. Terms are just
 unit types.
 
 Type erasure reduces to proving equality between two programs.
-For instance, functions across a dependent list type can be proven using a 
+For instance, functions across a dependent list type can be proven using a
 dependent list length annotation. But the same action can be achieved in a pure
-type system by proving the equality of functions over a list with an explicit 
+type system by proving the equality of functions over a list with an explicit
 length and functions over a list without an explicit length.
 Basically any compilation level optimization becomes a form of type erasure.
 
@@ -296,15 +296,15 @@ What's the difference?
 
 macros involve invoking expressions which are matched and replaced.
 
-term rewriting involves substituting portions of the syntax tree and requires 
+term rewriting involves substituting portions of the syntax tree and requires
 proof of equivalence.
 
-a simple example is constant folding. how would I explicitly define constant 
+a simple example is constant folding. how would I explicitly define constant
 folding.
 
 1 + 1 = 2
 Constant + Constant = (Constant + Constant)
-; (x:Constant `+ y:Constant) = x + y `enforces all constant addition is performed at compilation` 
+; (x:Constant `+ y:Constant) = x + y `enforces all constant addition is performed at compilation`
 
 Say a function f of a certain expression is rewritable as a separate function application
 ; (`f `( x:k `) ) = g(x)
@@ -337,14 +337,14 @@ Natural + Natural = Natural + Natural
 x:Natural + y:Natural = y:Natural + x:Natural
 
 equality rules:
-	- the expressions on both sides must evaluate to the same thing or else 
+	- the expressions on both sides must evaluate to the same thing or else
 	  a semantic error occurs.
 
 Types are multisets of features.
 Superpositions are fuzzy multisets.
 Collections are just types with features.
 A collection of types is the same as a single type with all the features of those types.
-Imagine you had tgree squares in 2D space. 
+Imagine you had tgree squares in 2D space.
 Tge type of each square corresponds to the shape and position.
 The type of a collection of squares is simply the type of three square definitions.
 Trivially:
@@ -365,7 +365,7 @@ it allows for full unification and equivalence expressions rather than simple va
 similar to tail call recursion, what's an optimization for functions that allows modification in place.
 
 n = 0
-f(x) =	? n = 9 
+f(x) =	? n = 9
 	 n
 	 f(x + 1)
 f(n)
@@ -405,3 +405,8 @@ equivalences are different.
 just variable binding and unbinding.
 if a variable appears by itself in an equivalence, opposite an expression, it becomes bound.
 otherwise an equivalence relation is established
+
+there's an expression.
+the expression is made out of symbols.
+symbols are made out of characters.
+notations are used to decide how expressions are formed from symbols.
