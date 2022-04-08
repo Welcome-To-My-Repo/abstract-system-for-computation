@@ -212,7 +212,7 @@
 	</ul>
 	<h2>Meta Features</h2>
 	<p>
-		There are several features which represent significant correspondences between types in the meta-language.
+		There are several features which represent correspondences between types in the meta-language.
 	</p>
 	<dl>
 		<dt>Unit</dt>
@@ -226,14 +226,35 @@
 		</dd>
 		<dt>Collection</dt>
 		<dd>
-			A type which is the super-type to multiple types such that it has every common feature for a number of types.
-			A collection may be the super-type of just one type.
+			A type which is the super-type to one or more types.
 		</dd>
 		<dt>Superposition</dt>
 		<dd>
 			A feature which is possibly any of a collection of features and must be identical to one.
 		</dd>
 	</dl>
+	<h1 id="Semantics">Semantics</h1>
+	<p>
+		ASC provides a number of fundamental entity types which are composed into programs.
+		They are,
+	</p>
+	<ul>
+		<li>Variables</li>
+		<li>Data</li>
+		<li>Types</li>
+		<li>Collections</li>
+		<li>Functions</li>
+		<li>Modules</li>
+		<li>Notations</li>
+	</ul>
+	<p>
+		Except for Notations, all entities may be used in computation.
+	</p>
+	<h2>Representing Programs</h2>
+	<p>
+		An ASC program is represented as a streaming sequence of characters.
+		Notations are used to decide how the stream of characters corresponds to expressions.
+	</p>
 	<h1 id="Lexical Conventions">Lexical Conventions</h1>
 	<p>
 		An ASC program is represented by a stream of characters.
@@ -724,7 +745,8 @@
 	<h2>Patterns</h2>
 	<p>
 		A pattern is an extension of the function parameter definition.
-		Patterns define the collection of possible expressions which can engage the notation.
+		Patterns define the collection of possible sequences of symbols which can engage the notation.
+		
 	</p>
 	<p>
 		Patterns extend the normal function parameter list with mechanisms for declaring delimiting characters, symbols, repeating elements, and explicit evaluation.
@@ -756,6 +778,7 @@
 	</p>
 	<p>
 		Function parameters behave identically in both functions<sup><a href="#Functions">*</a></sup> and notation patterns.
+		Expressions may be nested within the notation at the point where a parameter.
 		Parameters in notations must be supplied entities through expressions being nested in positions corresponding to a parameter's placemnt within a pattern.
 	</p>
 	</div>
