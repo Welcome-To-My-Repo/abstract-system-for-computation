@@ -107,6 +107,15 @@ Continuations as functions:
 Continuations only need dynamic extent and a delimited capture.
 A delimited capture works like call/cc but only includes the lexical extent of its context.
 The exclamation point (!) captures its context.
+actually the exclamation point isn't necessary because you can do a lot more using simple closures.
+
+So, now, full delimited continuations.
+Asymmetric:
+
+	cont () = {}
+	f() = { ? abort Null }
+
+a concern is that non-terminating control flow can cause memory leaking by dynamically generating contexts.
 
 Functions in ASC can be defined using one single expression or two separate expressions.
 
@@ -410,3 +419,4 @@ there's an expression.
 the expression is made out of symbols.
 symbols are made out of characters.
 notations are used to decide how expressions are formed from symbols.
+

@@ -28,7 +28,7 @@
 			color:var(--fg);
 			background-color:var(--bg);
 			font-family:serif;
-			font-size:1.7vh;
+			font-size:calc(13px + 0.7vh);
 		}
 		h1, h2, h3, h4 {font-family:sans-serif;margin-top:3ch;}
 		h1, h2 {width:80%;margin-left:auto;margin-right:auto;}
@@ -103,10 +103,10 @@
 				xmlns="http://www.w3.org/2000/svg">
 				<ellipse
 					style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-					ry="10"
-					rx="28"
-					cy="4"
-					cx="35"
+					ry="11"
+					rx="27"
+					cy="5"
+					cx="36"
 					transform="matrix(0.8,0.6,-0.7,0.7,0,0)">
 				</ellipse>
 				<path
@@ -129,17 +129,12 @@
 		<button onclick="yellow()" style="background-color:var(--yellow);">&nbsp;</button>
 		<button onclick="grey()" style="background-color:var(--grey);">&nbsp;</button>
 		<button onclick="purple()" style="background-color:var(--purple);">&nbsp;</button>
-		<br>
-		<button onclick="small()" style="border: 3px solid var(--neutral);">a</button>
-		<button onclick="big()" style="border: 3px solid var(--neutral);">A</button>
 		<script>
 			function show () {
 				s = document.getElementById("parameters");
 				if (s.style.display == "hidden") s.style.display = "block";
 				else s.style.display = "hidden";
 			}
-			function big () { document.getElementsByTagName("body")[0].style.fontSize = "1.9vh";}
-			function small () { document.getElementsByTagName("body")[0].style.fontSize = "1.7vh";}
 			function teal () { document.querySelector(":root").style.setProperty('--neutral', 'var(--teal)'); }
 			function red () { document.querySelector(":root").style.setProperty('--neutral', 'var(--red)'); }
 			function green () { document.querySelector(":root").style.setProperty('--neutral', 'var(--green)'); }
@@ -235,7 +230,7 @@
 	</dl>
 	<h1 id="Semantics">Semantics</h1>
 	<p>
-		ASC provides a number of fundamental entity types which are composed into programs.
+		ASC provides a number of fundamental classes of entities which are composed into programs.
 		They are,
 	</p>
 	<ul>
@@ -466,7 +461,7 @@
 		In both these examples, the symbol, <code>symbol</code> will be evaluated.
 	</p>
 	</div>
-	<h3>Constants</h3><div id="subsection">
+	<h3 id="Constants">Constants</h3><div id="subsection">
 	<p>
 		If a symbol is composed entirely of decimal digits (one of the characters <code>0123456789</code>), then it is a numerical <i>constant</i>.
 	</p>
@@ -611,6 +606,24 @@
 	</code>
 	</div>
 	</div>
+	<h3>Module Operations</h3><div id="subsection">
+	<h5>Module Constructor</h5>
+	<div id="multiline">
+	<code>
+		; ("|" dependencies:Variable *<br>
+		&emsp;&emsp;&emsp;"|" structure:Expression *<br>
+		&emsp;&emsp;&emsp;"|" surface:Expression *<br>
+		&emsp;&emsp;&emsp;"|" = m:Module<br>
+		&emsp;{construct-module(dependencies structure surface)}</code>
+	</div>
+	<h5>Module Subscript</h5>
+	<div id="multiline">
+	<code>
+		; (x:Module "." y:Symbol) = z:Any<br>
+		{z = expose-member(x y)}
+	</code>
+	</div>
+	</div>
 	<h1 id="Environment">Environment</h1>
 	<p>
 		Entities which are constructed as part of a program exist within a discrete environment.
@@ -646,6 +659,47 @@
 		Entities within the context may access each other, but entities outside the context cannot access any entity inside the context.
 	</p>
 	<h1 id="Data">Data</h1>
+	<p>
+		Data provides the interface to computing resources in the environment.
+		These are done through low level data types which correspond to specific whole units of resources in the environment.
+		The two default interfaces are the <i>Register</i> and the <i>Byte</i>.
+	</p>
+	<h2 id="Registers">Registers</h2>
+	<p>
+		The register data type trivially corresponds to notion of a computer register.
+		In more general terms, computation requires there to be some mechanism provided by the environment to hold data while transformations are applied to it.
+		The interface to this mechanism is the register data type.
+	</p>
+	<p>
+		Some environments may provide multiple register sizes.
+		Environments may also provide abstractions over registers which allow multiple registers to be used as a single large register, or a single register to be used as multiple smaller registers.
+		In these cases where there are multiple register sizes, or abstractions, the register data type shall correspond to the largest available register which is not an abstraction.
+	</p>
+	<p>
+		Additionally there is the notion of a "cannonical" register which is the most general purpose and efficient.
+		There may be exceptional circumstances where the largest register available in the environment is slower to use than smaller registers.
+		Arithmetic operations provided for the largest register may even be realized using a smaller register.
+		In this case, the register data type shall correspond to the next largest register with the greatest efficiency which is compatible with the most operations provided by the environment.
+	</p>
+	<h3>Additional Register Types</h3><div id="subsection">
+	<p>
+		Implementations are free to provide additional register types to provide a more detailed interface with the environment.
+	</p>
+	</div>
+	<h2 id="Bytes">Bytes</h2>
+	<p>
+		Bytes correspond to units of storage.
+		In every computing environment, there is a notion of the storage mediums being comprised of small atomic units.
+		These units contain small whole, positive numbers which are composed to encode more complex information.
+	</p>
+	<p>
+		The byte corresponds to the smallest unit of storage available in an environment.
+		Similarly to how the register data type allows for manipulating values held in dynamic storage, the byte data type allows for manipulating static storage mediums.
+	</p>
+	<p>
+		Because the byte corresponds to the smallest unit of storage, the size of every entity present in the environment can be measured as a whole number of bytes.
+		Thus, given some entity, <code>x</code>, the expression <code># x</code> yeilds a number of bytes.
+	</p>
 	<h1 id="Types">Types</h1>
 	<h1 id="Collections">Collections</h1>
 	<h2 id="Strings">Strings</h2>
