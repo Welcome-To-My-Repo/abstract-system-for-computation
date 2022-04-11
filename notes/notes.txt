@@ -420,3 +420,25 @@ the expression is made out of symbols.
 symbols are made out of characters.
 notations are used to decide how expressions are formed from symbols.
 
+functions are a higher order version of equivalences.
+it binds variables within the function call syntax.
+Take this function example,
+	f(x : Register) = x + 1
+	^ ^   ^           ^   ^
+	1 2a  3           2b  4
+1 is the name of the function. This variable is bound as a function name.
+2a is a variable bound as a function parameter
+3 is the type of the parameter
+2b is the parameter as it is bound in the definition of the function
+4 is a constant
+
+according to equality, you can have two functions which are named the same thing, but differ in types. 
+Such as,
+	f(x:T) = y
+	f(x:t) = z
+However, two definitions which are equal levels of specificity and are not unifiable, are not accepted.
+	f(x:T) = y
+	f(x:T) = z
+or
+	f(x) = n
+	f(x) = n
