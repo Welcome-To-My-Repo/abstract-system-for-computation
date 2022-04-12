@@ -442,3 +442,12 @@ However, two definitions which are equal levels of specificity and are not unifi
 or
 	f(x) = n
 	f(x) = n
+
+what about anonymous functions or things with don't depend on binding?
+functions aren't just equivalences, they're entities which affect context.
+
+equivalences are variable bindings
+higher order equivalences are cases.
+
+x = 1
+f(x) = y + x
