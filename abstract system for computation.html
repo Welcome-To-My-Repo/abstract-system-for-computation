@@ -707,6 +707,32 @@
 	<h1 id="Modules">Modules</h1>
 	<h1 id="Notations">Notations</h1>
 	<p>
+		Notations are a language facility which allows specific syntax to be associated with some evaluational semantics.
+		Notations have three components, the lexical context, the pattern, and the definition.
+	</p>
+	<h5>Notation Construction</h5>
+	<div id="multiline">
+	<code>
+		; (";" Context-List * "("Parameters * ")" "=")
+	</code>
+	</div>
+	<p>
+		Notations are used to associate a stream of characters with expressions in a program.
+		Notation patterns describe a collection of possible sequences of characters.
+		When a stream of characters matches the pattern for a Notation, that Notation becomes <i>engaged</i>.
+	</p>
+	<p>
+		When a Notation engages, it temporarily captures the sequence of characters which matched its pattern.
+		In that sequence, it discards any characters which correspond to the terminal components of the pattern.
+		If the Notation accepts parameters, then the remaining character sequence is compared against Notation patterns again.
+		After its captured sequence has been entirely matched with notations, 
+	</p>
+	<h2>Lexical Context</h2>
+	<p>
+		Notations may 
+	</p>
+
+	<p>
 		Notations are functions<sup><a href="#Functions">*</a></sup> with extended facilities to describe forms of expressions.
 		Instead of relying on function application, notations are applied to parameters by writing the expression that they describe.
 		There are two main extensions which notations provide, <i>contexts</i> and <i>patterns</i>.
