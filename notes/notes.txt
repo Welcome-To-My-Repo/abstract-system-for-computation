@@ -451,3 +451,96 @@ higher order equivalences are cases.
 
 x = 1
 f(x) = y + x
+
+================================================================================
+
+New Function syntax:
+
+because ASC has equality expressions, something like,
+	f(x) = x
+also counts as an equality.
+This creates a problem because equality expressions evaluate to a boolean even 
+if they bind variables.
+So now I need a lambda constructor which does not rely on the equal sign or
+binding.
+
+lambda syntax needs a way to declare multiple parameters and a definition.
+say parameters x and y. Output will always be the last expression so parameters
+aren't necessary.
+
+1. Function type way
+	x y -> x + y
+
+2. Lambda Calculus way
+	/. x y . x + y
+
+3. anonymous function way
+	(x y) x + y
+
+4. alternate anonymous function
+	(x y) -> x + y
+
+5. Without lambda symbol
+	(x y) . x + y
+
+6. Using commas
+	x, y -> x + y
+
+7. currying (ew) ((ASC explicitly supports collections so functions should work
+over collections too
+	x -> y -> x + y
+
+8. {x y} -> {x + y}
+
+9. x, y . x + y
+
+10. , x y . x + y
+
+11. / x y . x + y
+
+12. * x y . x + y
+
+13. | x y . x + y
+
+14. (x y) . x + y
+
+Modules:
+	| ... | ...  | ... |
+Types:
+	[ ... ]
+Collections:
+	{ ... }
+Functions:
+	( ... )
+
+15. (x y -> x + y)
+
+16. (x y . x + y)
+
+17. (x y) -> x + y
+
+parens followed by arrow seems best and most recognizable.
+A function tuple followed by an arrow
+although using currying is interesting.
+or instead of currying, allow collections on either side.
+For example,
+	x -> x + 1
+or 
+	{x y} -> x + y
+and 
+	{x y} -> {z = x + y   z + 1}
+
+and then function application is simply juxtaposition
+	f = {x y} -> x + y
+	f(x y)
+
+
+mutation/assignment operator, _ << _ 
+is separate from equality and binding.
+instead of assigning variable, updates value.
+call it  "clobber".
+only works on Data.
+x:Register = 1
+x = 1
+x << 2
+x = 2
