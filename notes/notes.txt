@@ -263,7 +263,7 @@ where
 	C..2 == l
 	C..3 == m
 and
-	&{x:p y:q z:r} == [p.q.r]
+&{x:p y:q z:r} == [p.q.r]
 
 
 
@@ -544,3 +544,29 @@ x:Register = 1
 x = 1
 x << 2
 x = 2
+
+
+function is not equality, it's rewriting.
+In math, 
+	f(x) = ...
+is used as both definition and to refer to the function object itself,
+as soon as higher order functions are used, function names become variable bindings again.
+
+f(x) = -> x + 1
+f(x) = x -> x + 1
+
+function is a context to evaluate some expressions.
+
+x -> x + 1
+
+(x y) -> x + y
+is actually 
+{x y} -> x + y
+{x y} -> {y + 1  x + 1}
+
+f = {x y} -> x + y
+f = {x:T y:T} -> 
+(x) . x + 1
+(x y) . x + y
+(x y) -> x + y
+
