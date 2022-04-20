@@ -570,3 +570,46 @@ f = {x:T y:T} ->
 (x y) . x + y
 (x y) -> x + y
 
+
+how to do multiple parameter functions?
+
+what are functions? they're contexts.
+you can inline every function and still get the same behavior.
+
+there's different notations though.
+do you want to declare all types and parameters up front, or have them be natural parts of an expression?
+
+	x:t -> y:T
+vs.
+	x:t -> t {y}
+
+functions are important and need to be distinct from other syntax.
+just write down what I want them to look like.
+
+f = x -> x + 1
+f(x) -> x + 1
+(x) -> x + 1
+
+f(x:T) = -> x + 1
+f = x:n -> y
+f = x:m -> y
+
+in geometric meta language, there's transformations between features.
+	x = [x]
+	y = [y]
+	x -> y
+it can be multiple types as in
+	x = [x] y = [y] z = [z] 
+	p = [p] q = [q] r = [r]
+	x.y.z -> p.q.r
+
+polymorphic functions are piecewise case-matching over different parameters.
+
+a transformation is 
+	x -> y
+a function is
+	f = x -> y
+where f is bound and x is unbound such that
+	f(p) => (x = p) -> y
+
+what does it mean to parameterize something?
