@@ -613,3 +613,31 @@ where f is bound and x is unbound such that
 	f(p) => (x = p) -> y
 
 what does it mean to parameterize something?
+parameterization adds independent variables.
+
+a variable becomes bound at the point in a program where it is certain that 
+the variable can only be substituted with a single existing entity.
+
+variables are bound using equality and functions.
+
+--------------------------------------------------------------------------------
+
+
+functions are transformations between features.
+functions can transform a collection of features.
+the syntax is 
+	x -> y
+
+what is a polymorphic function?
+it's a collection of transformations which are mapped piecewise to cases of
+parameter types.
+
+	t_a = []
+	t_b = []
+	f(x) = -> p(x)
+	f(x:t_a) = -> q(x)
+	f(x:t_b) = -> r(x)
+
+	f = {x y} -> {g(x) m(y)}
+same as
+	f(x y) = -> {g(x) m(y)}
