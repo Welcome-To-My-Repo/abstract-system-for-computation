@@ -641,3 +641,8 @@ parameter types.
 	f = {x y} -> {g(x) m(y)}
 same as
 	f(x y) = -> {g(x) m(y)}
+
+Is notation a lambda or an equality.
+probably an equality because you don't necessarily need a function for everything.
+
+; x 'yuck y ; = yuck-fun (x y)

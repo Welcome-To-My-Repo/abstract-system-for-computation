@@ -144,6 +144,7 @@
 	</p>
 	<h1>Table of Contents</h1>
 	<ol>
+		<!--
 		<li><a href="#Introduction">Introduction</a></li>
 		<li><a href="#Foundation">Foundation</a></li>
 		<li><a href="#Lexical Conventions">Lexical Conventions</a></li>
@@ -155,6 +156,7 @@
 		<li><a href="#Modules">Modules</a></li>
 		<li><a href="#Notations">Notations</a></li>
 		<li><a href="#Semantics">Semantics</a></li>
+		-->
 	</ol>
 	<h1 id="Introduction">Introduction</h1>
 	<p>
@@ -187,6 +189,7 @@
 		<li>Multiple types may have identical features to each other. A feature which is shared between types is a <i>common feature</i>.</li>
 		<li>There is a single type with no features. It is the <i>Null</i> type.</li>
 		<li>There is a single type with every existing feature. It is the <i>Any</i> type.</li>
+		<li>A type which has exactly one feature is a <i>Unit</i> and identifies that type.</li>
 	</ul>
 	<h2>Relationships Between Types</h2>
 	<ul>
@@ -196,30 +199,40 @@
 		<li>Consider two types where every feature of one type is common, and at least one feature of the other is not common.
 			The type with the least number of features is the <i>sub-type</i>.
 			The type with the greatest number of features is the <i>super-type</i>.</li>
+		<li>Consider a super-type of one or more sub-types. The super-type is considered a collection of those types.</li>
 	</ul>
+	<h2>Collections</h2>
+	<p>
+		Collections are a relationship which is used at the type and feature level.
+		Types are considered collections of features, but types can also be collections of other types.
+		Consider a super-type which has one or more sub-types.
+		The super-type is a collection of those sub-types.
+	</p>
+	<p>
+		The distinction between collections of features and collections of types is further blurred by the existence of Units.
+		It's possible that a type may be defined as a super-type of some Units.
+		Say that there are two features, <i>a</i> and <i>b</i>, identified by the Units, <i>A</i> and <i>B</i>.
+		The super-type of <i>A</i> and <i>B</i> is identical to the type which has <i>a</i> and <i>b</i> as features.
+	</p>
 	<h2>Meta Features</h2>
 	<p>
-		There are several features which represent correspondences between types in the meta-language.
+		Meta features represent correspondences between types in the meta-language.
 	</p>
 	<dl>
-		<dt>Unit</dt>
-		<dd>
-			A type which has exactly one feature is a unit type.
-			Unit types identify their feature.
-		</dd>
 		<dt>Function</dt>
 		<dd>
-			A function is a feature which represents a transformation from some features in a collection of types to some features in another collection of types.
-		</dd>
-		<dt>Collection</dt>
-		<dd>
-			A type which is the super-type to one or more types.
+			A function is a transformation from one collection of features to another.
+			Neither collection is required to correspond to the entire collection of a type.
 		</dd>
 		<dt>Superposition</dt>
 		<dd>
 			A feature which is possibly any of a collection of features and must be identical to one.
 		</dd>
 	</dl>
+	<h2>Type Operations</h2>
+	<p>
+		
+	</p>
 	<h1 id="Semantics">Semantics</h1>
 	<p>
 		ASC provides a number of fundamental classes of entities which are composed into programs.
