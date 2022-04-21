@@ -1,0 +1,9 @@
+ASC is a programming language.
+"Abstract System for Computation"
+It's a mathematical programming languagee based on a meta language for describing geometry.
+"Mathematical programming language" means that it has several key features.
+They are
+	- explicit eager and lazy evaluation.
+	- explicit contexts.
+
+Because ASC is a systems programming langauge, contexts map directly to how contexts are managed in assembly.
