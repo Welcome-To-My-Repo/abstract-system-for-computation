@@ -20,13 +20,41 @@ Most entities will be declared as modules as it is desireable for things such as
 Other things such as function parameters or closures need only persist as they are needed in a discrete statge of a program.
 
 Semantics-----------------------------------------------------------------------
-A program is composed of entities.
-Each entity has a duration, size, location, and context.
+A program is composed of a number of basic entities:
+	- modules
+	- functions
+	- collections
+	- types
+	- data
+	- variables
+	- notations
+A whole program is contained within a single module.
+That module may depend on other modules.
 
-Duration------------------------------------------------------------------------
-The process of evaluating a program is assumed to occupy some amount of time.
-The duration of an entity is then some amount of time which is less or equal to the time taken to evaluate the entire program.
+Evaluating a Program------------------------------------------------------------
+A program is contained in a single, top-level module which contains the function used to begin the program.
+The top-level module can depend on other modules.
+Program evaluation begins by applying a function in the top-level module to some parameters.
 
-Context-------------------------------------------------------------------------
-Contexts affect duration and accessibility of entities.
-Contexts are created in a nested hierarchy.
+Environment---------------------------------------------------------------------
+The environment represents the resources available for performing computation.
+
+Expressions---------------------------------------------------------------------
+An expression is a top-level syntactic entity.
+It consists of an operation and operands supplied to it.
+Expressions may be nested by replacing an operand with another expression.
+An expression which does not contain any nested expressions is an atomic expression.
+A program is a series of expressions which can each contain further nested expressions.
+
+Evaluation----------------------------------------------------------------------
+Evaluation is the process by which computation is performed in ASC.
+It reduces an expression to a single corresponding entity by computing the operation on the operands provided by the expression.
+In the case of nested expressions, evaluation will traverse the larger expression from left-to-right, top-to-bottom until it encounters an atomic expression.
+The atomic expression will be computed to an entity and then the sccope of evaluation will move to the top-level expression and traverse to the next atomic expression.
+This is repeated until the top-level expression is computed to an entity.
+
+In the case of a collection of expressions, evaluation will reduce the expressions in the lexical order that they were given in the collection.
+Each expression in the collection is aliased as a top-level expression until it is reduced entirely.
+
+Programs------------------------------------------------------------------------
+A program is a top-level module which contains an entry function and all entities necessary to evaluate the function.
