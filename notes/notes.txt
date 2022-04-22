@@ -651,4 +651,8 @@ probably an equality because you don't necessarily need a function for everythin
 --------------------------------------------------------------------------------
 
 no comments, annotations instead.
-you can ask the compiler to look up documentation about stuff.
+you can ask the compiler to look up documentation about bound variables.
+annotation operator is ` and it takes a string after it.
+so 
+	x = 1 
+	x ` "bound to 1"
