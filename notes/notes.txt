@@ -646,3 +646,9 @@ Is notation a lambda or an equality.
 probably an equality because you don't necessarily need a function for everything.
 
 ; x 'yuck y ; = yuck-fun (x y)
+
+
+--------------------------------------------------------------------------------
+
+no comments, annotations instead.
+you can ask the compiler to look up documentation about stuff.

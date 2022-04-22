@@ -1,3 +1,4 @@
+ASC-----------------------------------------------------------------------------
 ASC is a programming language.
 "Abstract System for Computation"
 It's a mathematical programming languagee based on a meta language for describing geometry.
@@ -7,3 +8,25 @@ They are
 	- explicit contexts.
 
 Because ASC is a systems programming langauge, contexts map directly to how contexts are managed in assembly.
+
+Context-------------------------------------------------------------------------
+Contexts represent the collection of entities which are accessible at a given point in the evaluation of a program.
+Contexts are created by functions and modules.
+Module contexts are static as modules persist for the duration of a program.
+Function contexts are dynamic because they are created when a function is applied and discarded when the evaluation of a function application is completed.
+
+Entities are created and discarded with contexts.
+Most entities will be declared as modules as it is desireable for things such as functions and constants to persist, and be accessible, for the duration of a program.
+Other things such as function parameters or closures need only persist as they are needed in a discrete statge of a program.
+
+Semantics-----------------------------------------------------------------------
+A program is composed of entities.
+Each entity has a duration, size, location, and context.
+
+Duration------------------------------------------------------------------------
+The process of evaluating a program is assumed to occupy some amount of time.
+The duration of an entity is then some amount of time which is less or equal to the time taken to evaluate the entire program.
+
+Context-------------------------------------------------------------------------
+Contexts affect duration and accessibility of entities.
+Contexts are created in a nested hierarchy.
