@@ -656,3 +656,134 @@ annotation operator is ` and it takes a string after it.
 so 
 	x = 1 
 	x ` "bound to 1"
+
+--------------------------------------------------------------------------------
+how to explain the top level?
+can't assume that compiler writers will know how to evaluate expressions.
+there's no such thing as order of operations.
+all expressions are left associative because things are read left-to-right.
+
+prefix stuff is always done before suffix stuff. THIS IS GOING TO BE ANNOYING THO
+take this example:
+	x = {1 2 3}
+	y = {1 2 3}
+	y.0 + x.0 = ((y.0) + x).0
+	`when what i want is:` (y.0) + (x.0)
+is this order of operations? yes.
+do i do order of operations for notations? maybe.
+
+
+what about supertypes.
+
+	T = []
+	U = [T]
+	V = [T]
+	x:T
+
+associativity based on types.
+
+say there's operations across some type
+
+; x `+ y = add(x y)
+
+now depending on the types of x and y, you can change associativity.
+	; x:T `+ y:Expression(T) = add(x y)
+is left-associative because the Expression syntax type makes explicit that 
+some other stuff must be evaluated first.
+	; x:Expression(T) `* y:T = add(x y)
+is right-associative.
+
+a + b + c = (a + (b + (c)))
+x * y * z = (((x) * y) * z)
+
+This also helps enforce general operator precedence.
+Take for example addition and collection access.
+
+given an expression without precedence:
+	1 + x.y = (1 + x) . y
+but when addition is defined as 
+	; x:Expression(Number) + y:Expression(Number) = add((x) (y))
+then 
+	1 + x.y = (1) + (x.y)
+due to the definition of Expression being an entire notation, not a constant, variable
+or symbol.
+
+That gets me into syntax types because there's several...
+- Character:
+	Everything that can be written uses one or more characters
+- Symbol:
+	A sequence of characters delimited by blanks (unless some other delimiting rule is applied)
+- Constant:
+	A specific sub-class of symbols which correspond to numeric values
+- Terminal:
+	A symbol which represents an operation and is not evaluated.
+- Variable
+	A symbol which evaluates to an entity.
+- Notation
+	A single operation supplied with operands which are not other notations.
+- Expression
+	A single notation supplied with operands which may be other notations.
+
+--------------------------------------------------------------------------------
+
+what's the deal with equality, is it full unification?
+how is this enforced?
+anything that requires evaluation is reserved for runtime checks? idk
+
+say
+	1 = 1
+those are both constants which are evaluated at compile time.
+unification is special though, so does it get clobbered by macros? yes
+
+equality has to do with variables and determining which entity a variable evaluates to.
+a special case of equality is assignment.
+if an equality is written where only one side has a single variable, then that variable is always bound to whatever is on the other side.
+if there are previous bindings which are not possible with the new binding, those bindings are undone.
+
+given bound and unbound variables, there's also the notion of dependent and independent variables.
+
+there's also the special case of function polymorphism. i.e.
+	f(x:T) = -> g(x)
+	f(x:U) = -> h(x)
+
+so variable binding is 
+	x = 1
+where x is bound to 1
+
+Independent variables allow for constraints and refinements, but how to specify that independent variables are being used?
+Take the expressions,
+	x = 1
+	y + x = z + x
+
+so the three things I want to do with variables:
+- bind them
+- use them independently of their bindings
+- automatically drop previous bindings that conflict with a new one
+
+binding variables:
+	x = 1
+	y = 2
+	b = 3
+equality comparison:
+	x = 1
+	(x) = 1
+using independent variables
+	z = 1
+	f(z) + x = g(z) + y
+
+but how to use independent variables which are the same symbol as bound variables?
+
+--------------------------------------------------------------------------------
+
+very excellent analogy:
+
+ASC is a tool, just like any other.
+More specifically, ASC is like an angle grinder. 
+Angle grinders are used in almost every craft because they are powerful, precise, and highly versatile.
+The only stipulation is that you have to know how to use one properly.
+For example, the object you're grinding must be held in a stable position and there's only a few safe ways to hold the angle grinder.
+If you use one the right way, angle grinders come with many safety features so that you will never be surprised or hurt.
+Unfortunately most craftspeople don't bother to learn proper safety techniques before they use an angle grinder.
+This often results in cases of permanent maiming or even death.
+When you use ASC properly and safely, you'll create marvels of both beauty and practicality.
+Make sure to learn what proper use and safety mean for ASC or else you and others could get hurt.
