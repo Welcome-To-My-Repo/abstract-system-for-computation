@@ -787,3 +787,26 @@ Unfortunately most craftspeople don't bother to learn proper safety techniques b
 This often results in cases of permanent maiming or even death.
 When you use ASC properly and safely, you'll create marvels of both beauty and practicality.
 Make sure to learn what proper use and safety mean for ASC or else you and others could get hurt.
+
+--------------------------------------------------------------------------------
+
+what things are declarative in my language?
+equality statements are declarative.
+they affect what things may be true in a context.
+do lambdas affect things? no, they're entities.
+there's no syntactic unification because lambdas don't rewrite, they evaluate.
+thus there's evaluational unification.
+
+what about lambdas as used to make independent variables?
+usually you say
+	y = x + 1
+where y represents the return value of some f(x) and x is independent.
+but in ASC, you would have to do
+	y = f(x) = -> x + 1
+but what about non-functional independent variables?
+	x + 1 = y + 2
+this would look like
+	{x y} -> x + 1 = y + 2
+The unification is now stuck inside a lambda context.
+
+
