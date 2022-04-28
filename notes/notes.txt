@@ -809,4 +809,25 @@ this would look like
 	{x y} -> x + 1 = y + 2
 The unification is now stuck inside a lambda context.
 
+what I want is quantification.
+higher order quantification?
+how does this work with types?
 
+existential involves binding a variable so
+	x = 1
+is the same as
+	"there exists an x which is 1"
+
+quantification is... types?
+
+is this higher order logic, or lower order logic.
+I can't do pure existential or universal quantification.
+
+here's the thing though, unification can be reduced
+	x + 1 = y - 2
+	x = y - 2 - 1
+	y = x + 1 + 2
+
+
+so how do I do binding in my language?
+is it explicit, or is it implicit as part of equality and unification?
