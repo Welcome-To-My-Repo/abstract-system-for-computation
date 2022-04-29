@@ -831,3 +831,28 @@ here's the thing though, unification can be reduced
 
 so how do I do binding in my language?
 is it explicit, or is it implicit as part of equality and unification?
+
+unification takes two expressions
+; x:Expression `= y:Expression ; = ? (x) = (y) True False
+
+--------------------------------------------------------------------------------
+
+how to talk about collections.
+collections are 
+	{ ... }
+things inside them can be named
+	{ a b c }
+they can be given values 
+	{ a = 1 b = 2 c = 3 }
+
+but now I want to talk about sequences.
+its a collection where everything is the same type and only the cardinality matters
+what do those look like?
+
+using the sequence type
+	Sequence(3 Byte)
+--------------------------------------------------------------------------------
+
+dependent types?
+
+List and a length?
