@@ -1,5 +1,13 @@
 The Abstract System for Computation
 
-The Abstract System for Computation is a utility for creating programs in the general sense.
+The Abstract System for Computation is a utility for creating programs.
+The term program is used in the general sense to refer to a set of instructions to perform some transformations on information.
 It has three distinct components.
-The system of types serves to specify what a program may do.
+The system of types specifies what a program may do.
+The system of data specifies how information is stored.
+The system of expression specifies how a program is constructed.
+With these three systems, every entity in every possible ASC program has a type, a physical location, and can be written.
+Programs manifest from the interaction between the three systems.
+The system of types constrains how programs may be written correctly and provide abstractions over data.
+The system of data provides the correct formats for storing each program component.
+The system of expression connects types with data and provides rules for how to execute a program.
