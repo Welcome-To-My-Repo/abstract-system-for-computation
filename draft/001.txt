@@ -1,0 +1,5 @@
+The Abstract System for Computation
+
+The Abstract System for Computation is a utility for creating programs in the general sense.
+It has three distinct components.
+The system of types serves to specify what a program may do.

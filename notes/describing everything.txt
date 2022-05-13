@@ -58,3 +58,8 @@ Each expression in the collection is aliased as a top-level expression until it 
 
 Programs------------------------------------------------------------------------
 A program is a top-level module which contains an entry function and all entities necessary to evaluate the function.
+
+Semantic Overview---------------------------------------------------------------
+There are three distinct domains of semantic reasoning within ASC. 
+There are the systems of type, notation, and expression.
+Each of the three serve specific roles and programs are created through their interaction.

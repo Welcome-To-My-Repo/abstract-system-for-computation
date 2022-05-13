@@ -855,4 +855,41 @@ using the sequence type
 
 dependent types?
 
-List and a length?
+stuff where types can depend on values.
+that's called a function.
+to make a list type that depends on a length, you define the list type as a function of length.
+
+what does polymorphism look like
+well the function form 
+	( _ ) -> _
+means that the function is evaluated immediately (a let notation)
+when you supply the function with variables, but on new bindings, then it enforces those variables to be independent on the RHS
+	((x = 1) -> x + 1) = 2
+	((x) -> x + 1) 
+
+(x) -> f(x) = x -> i
+(x:P) -> f(x) = x -> j
+(x:Q) -> f(x) = x -> k
+(x:Q) -> f(x):l = x -> l
+
+--------------------------------------------------------------------------------
+
+unification algorithm:
+
+unification is an equality of two expressions which returns a boolean true if the expressions are equal or a boolean false if they are not equal.
+	(1 = 1) = true
+	(1 = 2) = false
+unification is evaluational so two expressions must yeild equivilant entities otherwise the unification will not hold.
+
+unification is effectful because it will implicitly bind variables.
+so in 
+	x + 1 = 3
+x is bound to two. And in
+	g(y) = f(2)
+y is bound to a value where if g is applied to it, it's equivalent to f applied to 2
+
+there is a special case of binding where a variable appearing by itself on one side of the equality will always be bound to the other side
+any previous bindings that conflict with the new binding are discarded.
+
+--------------------------------------------------------------------------------
+
