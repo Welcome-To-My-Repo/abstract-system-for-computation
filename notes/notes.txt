@@ -893,3 +893,41 @@ any previous bindings that conflict with the new binding are discarded.
 
 --------------------------------------------------------------------------------
 
+expression types:
+
+symbol
+	a symbol
+constant
+	a symbol which is a number
+notation
+	a single operation such as function application with no nested expressions
+expression
+	any operation with or without expression nesting
+
+--------------------------------------------------------------------------------
+
+functions:
+
+the function constructor:
+	; x:Any `-> y:Any ;
+function application
+	; x:Function y:Any ;
+
+so now i can say 
+	f = 1 -> 2
+	f 1 = 2
+
+you can do polymorphism like
+	f:Function
+	f 1 = -> 2
+	f 2 = -> 3
+
+--------------------------------------------------------------------------------
+
+a collection is { ... }
+and inside it has a bunch of bound variables.
+it can also contain equality constraints.
+a simple collection is
+	{1 2 3}
+collections are just sequences of expressions
+	{f 1  g 2  h 3}
