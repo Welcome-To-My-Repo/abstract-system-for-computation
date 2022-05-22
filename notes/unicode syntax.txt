@@ -1,0 +1,26 @@
+symbols are the latin basic block
+
+Function
+	x → y
+	x ⇝ n
+	n ⇜
+
+Module
+	■ includes ▷ internal ▯ external ■
+
+addition +
+subtraction −
+multiplication ×
+quotient ÷
+remainder ∸
+
+location ⋖
+reference ⋗
+
+clobber ⋘
+
+conjunction ⋀
+disjunction ⋁
+negation ∼
+
+

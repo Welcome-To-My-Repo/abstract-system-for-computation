@@ -931,3 +931,38 @@ a simple collection is
 	{1 2 3}
 collections are just sequences of expressions
 	{f 1  g 2  h 3}
+how are bindings managed in collections?
+the collection constructor enforces that all bindings are local to the collection.
+
+--------------------------------------------------------------------------------
+
+Evaluation model:
+
+Evaluation is based on reducing expressions by substitution.
+Expressions are built of constructors, variables, function applications, and modules.
+These can be organized in terms of variable binding orders.
+
+Constructors are 0-th or bottom order because they do not involve any binding.
+
+Equalities are first-order binding.
+A single variable is bound to a single entity.
+That variable may be replaced with that entity wherever that variable appears.
+
+Function applications are second-order binding.
+Rather than being directly subsituted with an entity, function application corresponds to one or more expressions.
+Those expressions must be reduced in order to substitute the function.
+
+--------------------------------------------------------------------------------
+
+special operations which have implicit or effectful behavior.
+
+Evaluation: ( ... )
+Equality: ... = ...
+Function Construction: ... -> ...
+Type Construction: [ ... ]
+Collection Construction: { ... }
+Function Application: _ ...
+Module Construction: | ... | ... | ... |
+
+these expressions all affect variable binding
+
