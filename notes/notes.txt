@@ -966,3 +966,35 @@ Module Construction: | ... | ... | ... |
 
 these expressions all affect variable binding
 
+--------------------------------------------------------------------------------
+
+What is an effect system?
+It's a method for declaring an abstract typed event and assigning some function to be evaluated when that effect occurs in code.
+Allows for safe(er) non-determinism.
+
+What is the effect model.
+Same as object model? Yes.
+Instead of context, object which has effect handlers and may emit effects.
+Where does an object fit into the language model? Object is a type.
+Because types are geometrical objects.
+
+Are operations objects too? Yes, functions are objects according to the type system.
+
+So a type has effects, effect triggers, and effect handlers.
+
+two objects can emit the same kind of effect so handlers can be designated to handle an effect for a specific object.
+
+what is an effect?
+An effect is an event that results from evaluating an expression, including the evaluation itself.
+An effect is part of the system of types like everything else.
+There is an effect type which classifies all effects.
+An object can emit an effect.
+
+An effect has a trigger and a handler.
+A trigger is some event which is classified by that effect.
+A handler is some expression that is evaluated when the effect is triggered.
+
+from the high level, an algorithm may be complex enough to arrive at an invalid step.
+the environment may also become invalid while an algorithm is still executing.
+effects allow an algorithm to react to an invalid environment or to restart from handling an invalid step.
+
