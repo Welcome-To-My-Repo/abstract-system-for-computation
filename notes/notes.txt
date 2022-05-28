@@ -998,3 +998,52 @@ from the high level, an algorithm may be complex enough to arrive at an invalid 
 the environment may also become invalid while an algorithm is still executing.
 effects allow an algorithm to react to an invalid environment or to restart from handling an invalid step.
 
+--------------------------------------------------------------------------------
+
+context switching
+rosetta code task:
+"Using either native language concurrency syntax or frely available libraries,
+writea program to display the strings "Enjoy", "Rosetta", "Code", one string 
+per line, in random order.
+Concurrency syntax must use threads, tasks, co-routines, or whatever 
+concurrency is called in your language."
+
+	f = {	r -> {display "Enjoy" (r 's1 )}
+		r -> {display "Rosetta" (r 's2 )}
+		r -> {display "Code" (r 's3 )} }
+
+	print-all = null -> {
+		(thread f.0 a  thread f.1 a  thread f.2 a)
+		a = x -> ...
+		f <<< filter f x
+		(f.0 b  f.1 b)
+		b = x -> ...
+		f <<< filter f x
+		f.0
+	}
+--------------------------------------------------------------------------------
+
+variable binding with recursive functions.
+
+the rule of independent variables appearing on both sides doesn't work because
+everything appears on both sides.
+	f = x -> f x
+
+	x = y 
+	x:t y:t
+
+--------------------------------------------------------------------------------
+
+Continuations, exceptions, all control flow is contexts.
+
+A context contains a set of bindings, an entry point, an exit point, and a part 
+of a program.
+
+context operations:
+	create		- creates a context
+	enter		- enters a context
+	exit		- exits a context
+	bind		- binds an object in a context
+	clobber		- destrutively changes a binding
+	handle		- handles an effect
+	emit		- emits an effect
