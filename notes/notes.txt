@@ -1047,3 +1047,24 @@ context operations:
 	clobber		- destrutively changes a binding
 	handle		- handles an effect
 	emit		- emits an effect
+
+--------------------------------------------------------------------------------
+
+functions are used to enter contexts.
+contexts are nested.
+handlers are registers per-context.
+contexts are dynamic instead of lexical.
+a context is some control point bundled with all the bindings required to continue at that control point.
+
+
+--------------------------------------------------------------------------------
+
+all this stuff is generalized by functions with lexically dynamic extent.
+
+a normal function has begin and end which is part of the same expression.
+a dynamic function has a beginning and ending which are non-deterministic.
+
+h = -->
+	? cond  
+		<-- h
+		(f)
