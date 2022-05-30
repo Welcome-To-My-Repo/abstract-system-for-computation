@@ -1064,7 +1064,10 @@ all this stuff is generalized by functions with lexically dynamic extent.
 a normal function has begin and end which is part of the same expression.
 a dynamic function has a beginning and ending which are non-deterministic.
 
-h = -->
-	? cond  
-		<-- h
-		(f)
+h = --> ... 
+
+--------------------------------------------------------------------------------
+
+modules and collections are the same.
+only difference is encapsulation.
+also inclusion.
