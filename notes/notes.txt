@@ -1058,16 +1058,28 @@ a context is some control point bundled with all the bindings required to contin
 
 
 --------------------------------------------------------------------------------
+DYNAMIC FUNCTIONS ARE ACTUALLY A TERRIBLE IDEA
+THEY SUCK DON'T DO THEM
 
-all this stuff is generalized by functions with lexically dynamic extent.
+the flow of control for any program outside of a parallel environment will always 
+be linear.
+things like coroutines and delimited continuations will always reduce to 
+continuation passing.
 
-a normal function has begin and end which is part of the same expression.
-a dynamic function has a beginning and ending which are non-deterministic.
 
-h = --> ... 
 
 --------------------------------------------------------------------------------
 
 modules and collections are the same.
 only difference is encapsulation.
 also inclusion.
+
+--------------------------------------------------------------------------------
+
+semantic model:
+
+objects have features.
+objects can be typed according to their features.
+objects can be applied to other objects.
+object application may yeild another object or change something about the object its applied to
+applying an object may emit an effect. 
