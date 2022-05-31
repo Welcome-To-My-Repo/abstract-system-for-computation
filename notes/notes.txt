@@ -1083,3 +1083,7 @@ objects can be typed according to their features.
 objects can be applied to other objects.
 object application may yeild another object or change something about the object its applied to
 applying an object may emit an effect. 
+
+--------------------------------------------------------------------------------
+
+; tree matching algorithm
