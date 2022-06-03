@@ -8,6 +8,31 @@ having a UTF-8 compliant web browser
 
 --------------------------------------------------------------------------------
 
+Module Constructor			|
+Function Constructor			->	→
+Continuation Constructor		-*
+Continuation Delimiter			*-
+Collection Constructor Prefix		{
+Collection Constructor Suffix		}
+Type Constructor Prefix			[
+Type Constructor Suffix			]
+Null constructor			_
+Any constructor				~
+Clobber Assignment			<<
+Derive Location Suffix			/.
+Reference Location Prefix		.\
+Equality				=
+Inequality				/=
+Greater					>
+Less					<
+Conjunction				/\
+Disjunction				\/
+Negation				-.
+
+
+x << 1
+y = x /.
+z = .\y
 Function Arrow 
 
 Dynamic Function Arrow

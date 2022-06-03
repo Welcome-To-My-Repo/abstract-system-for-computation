@@ -785,7 +785,7 @@ For example, the object you're grinding must be held in a stable position and th
 If you use one the right way, angle grinders come with many safety features so that you will never be surprised or hurt.
 Unfortunately most craftspeople don't bother to learn proper safety techniques before they use an angle grinder.
 This often results in cases of permanent maiming or even death.
-When you use ASC properly and safely, you'll create marvels of both beauty and practicality.
+When you use ASC properly and safely, you'll create practical and beautiful things.
 Make sure to learn what proper use and safety mean for ASC or else you and others could get hurt.
 
 --------------------------------------------------------------------------------
@@ -1086,4 +1086,41 @@ applying an object may emit an effect.
 
 --------------------------------------------------------------------------------
 
-; tree matching algorithm
+Full delimited continuations must have 6 capabilities...
+1.) 	Asymmetric: be able to move control back to the point where the 
+	continuation was called.
+2.)	Stackful: act like a regular function with its own context and stack.
+3.)	Delimited: have a finite dfinition that doesn't contain the entire 
+	program.
+4.)	Multi-prompt: ability to be nested and recursive.
+5.)	Reentrant: dynamically capture the program state at a given point as a
+	callable continuation.
+6.)	Clonable: ability to duplicate any continuation object.
+
+
+continuation delimiter: ...
+continuation constructor: <>
+
+thus a continuation appears as:
+
+f = x ... 1 + x.x + x.y
+
+--------------------------------------------------------------------------------
+
+how do functions do multiple arity?
+take a function "f" that requires parameters "x" and "y".
+
+f x y -> x op y
+f z -> z.x op z.y
+f {x y} -> x op y
+f = (x y) -> x op y
+f = {x y} -> x op y
+z = {x y}
+f z
+
+a function constructor after a collection construtor exposes the names inside 
+the collection to the function body.
+
+a function constructor after an expression constructor causes the body of 
+
+--------------------------------------------------------------------------------
