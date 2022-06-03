@@ -1090,7 +1090,7 @@ Full delimited continuations must have 6 capabilities...
 1.) 	Asymmetric: be able to move control back to the point where the 
 	continuation was called.
 2.)	Stackful: act like a regular function with its own context and stack.
-3.)	Delimited: have a finite dfinition that doesn't contain the entire 
+3.)	Delimited: have a finite definition that doesn't contain the entire 
 	program.
 4.)	Multi-prompt: ability to be nested and recursive.
 5.)	Reentrant: dynamically capture the program state at a given point as a
@@ -1098,12 +1098,6 @@ Full delimited continuations must have 6 capabilities...
 6.)	Clonable: ability to duplicate any continuation object.
 
 
-continuation delimiter: ...
-continuation constructor: <>
-
-thus a continuation appears as:
-
-f = x ... 1 + x.x + x.y
 
 --------------------------------------------------------------------------------
 

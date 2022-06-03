@@ -19,8 +19,10 @@ Type Constructor Suffix			]
 Null constructor			_
 Any constructor				~
 Clobber Assignment			<<
-Derive Location Suffix			/.
-Reference Location Prefix		.\
+Derive Location Suffix			
+Reference Location Prefix		@
+Size of Collection			#
+Storage Size				##
 Equality				=
 Inequality				/=
 Greater					>
@@ -28,7 +30,8 @@ Less					<
 Conjunction				/\
 Disjunction				\/
 Negation				-.
-
+Type assertion				:
+Super type 				&
 
 x << 1
 y = x /.
