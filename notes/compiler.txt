@@ -25,3 +25,7 @@ multiple compilers can be chained together and synchronized.
 compiler has a visual programming mode where functions are nodes.
 
 calling convention literally matches C so you can just call shit.
+that is to say that the calling convention matches the convention of the 
+underlying system. 
+
+--------------------------------------------------------------------------------

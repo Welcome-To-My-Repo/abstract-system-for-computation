@@ -1097,8 +1097,6 @@ Full delimited continuations must have 6 capabilities...
 	callable continuation.
 6.)	Clonable: ability to duplicate any continuation object.
 
-
-
 --------------------------------------------------------------------------------
 
 how do functions do multiple arity?
@@ -1118,3 +1116,14 @@ the collection to the function body.
 a function constructor after an expression constructor causes the body of 
 
 --------------------------------------------------------------------------------
+
+Events, Event Triggers, and Event Handlers
+
+The underlying environment and objects within the environment may change 
+due to external conditions. When they change, an event may be triggered.
+Triggers may be external or internal.
+
+--------------------------------------------------------------------------------
+
+continuations in terms of functions. operators "continue" and "return".
+

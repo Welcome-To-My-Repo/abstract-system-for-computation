@@ -29,7 +29,7 @@ Greater					>
 Less					<
 Conjunction				/\
 Disjunction				\/
-Negation				-.
+Negation				~
 Type assertion				:
 Super type 				&
 
