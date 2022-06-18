@@ -1125,5 +1125,9 @@ Triggers may be external or internal.
 
 --------------------------------------------------------------------------------
 
-continuations in terms of functions. operators "continue" and "return".
+functions create contexts and destroy them.
+continuations are additional operators to preserve a context and to create 
+additional entry points.
+
+--------------------------------------------------------------------------------
 

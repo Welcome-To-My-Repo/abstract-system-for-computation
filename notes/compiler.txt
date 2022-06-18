@@ -29,3 +29,7 @@ that is to say that the calling convention matches the convention of the
 underlying system. 
 
 --------------------------------------------------------------------------------
+
+compiler api full reflection.
+queries depend on what information is stored.
+types and bound names.
