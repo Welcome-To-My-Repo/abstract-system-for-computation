@@ -1131,3 +1131,7 @@ additional entry points.
 
 --------------------------------------------------------------------------------
 
+context is some bindings and some expressions to evaluate.
+
+contexts are constructed by function application.
+contexts are discarded when 
