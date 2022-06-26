@@ -1130,8 +1130,30 @@ continuations are additional operators to preserve a context and to create
 additional entry points.
 
 --------------------------------------------------------------------------------
+"continuations"
+contexts as first class entities
 
-context is some bindings and some expressions to evaluate.
+three operators:
+	- continue
+	enforces that the immediate context and any bindings it closes over is
+	preserved until the expression has been evaluated
 
-contexts are constructed by function application.
-contexts are discarded when all the expressions are finished evaluating.
+	- begin
+	creates a new context with dynamic extent
+
+	- end
+	discards a dynamic context
+
+--------------------------------------------------------------------------------
+
+continuation test:
+two functions
+
+	f = x -> {print 'a  print 'b}
+	g = x -> {print 'c  print 'd}
+
+how to get evaluation order so that "a c b d"
+
+h << _ -> _ {
+	
+}
