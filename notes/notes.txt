@@ -1155,43 +1155,21 @@ two functions
 how to get evaluation order so that "a c b d"
 
 h << _ -> _ {
-	
+
 }
 
 --------------------------------------------------------------------------------
 
-execution model:
+continuations
 
-A program can be viewed as a sequence of steps.
-Each step represents a specific state of the environment.
-Operators are used to modify state.
-States are dots and operators are connections.
-	. - . - .
-Each state contains the operator which will be applied to reach the next state.
-States are inserted after the current state.
-Control operators are used to insert new states.
-Function application copies a finite sequence of states and inserts the sequence.
-Continuations mark segments of previous states.
-Applying a continuation copies a previous segment and inserts it.
+operations are
+create
+exit
+continue
 
-terminating finite program
-a - b - c
 
-program applying a function
-* k - l
-a - b * k - l - c
+--------------------------------------------------------------------------------
 
-Program applying a continuation
-a < b - c > d ! b - c
-
-conditional branching
-      - b
-a - |
-      - c
-
-continuation and function
-* k > l
-a < b * k > l - c ! b * k - d
-
-undelimited continuation
-a < b c ! b c ! b c ! b c ...
+code pages:
+Basic Latin
+Mathematical Alphanumeric Symbols
