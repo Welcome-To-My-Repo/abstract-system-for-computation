@@ -1160,12 +1160,21 @@ h << _ -> _ {
 
 --------------------------------------------------------------------------------
 
-continuations
+Contexts
 
-operations are
-create
-exit
-continue
+given "(1 + 1)", there are two resources, the left and right operands, which 
+become bound while the operation is performed. Once the operation is complete, 
+the resources and their bindings can be discarded.
+A "Context" is the combination some operations and the bindings required to 
+complete the operations.
+given "x << 1, y << 2, z << 1, y + z, x + y" you can group these expressions 
+by the contexts they create. "(x << 1, y << 2, (z << 3, y + z) x + y)" notice how
+the second nested context allows z to be discarded before the 
+last operation is performed.
+functions allow a context to be declared lexically.
+the above expressions can be rewritten using the function constructor "->"
+"(x -> y -> { (z -> y + z)(3), x + y})(1)(2)"
+functions defined this way have a lexically bounded context.
 
 
 --------------------------------------------------------------------------------
@@ -1173,3 +1182,5 @@ continue
 code pages:
 Basic Latin
 Mathematical Alphanumeric Symbols
+
+
