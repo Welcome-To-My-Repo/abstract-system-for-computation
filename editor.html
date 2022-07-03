@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
 			html{width:100vw;height:100vh;overflow:hidden;}
-			body{width:100%;height:100%;margin-left:auto;margin-right:auto;color:black;background-color:lightgray;}
+			body{width:100%;height:100%;margin-left:auto;margin-right:auto;color:black;background-color:gray;}
 			#views{width:100%;position:absolute;z-index:10;background-color:inherit;border-bottom:solid black 3px;top:0;height:5vh;box-shadow: 0px 5px 30px -10px black;}
 			#views #center{width:50%;height:auto;position:relative;margin:auto;text-align:center;}
 			#views button{background-color:inherit;border:none;border-radius:none;position:relative;font-size:x-large;border:solid black 3px;border-radius:10px;width:7ch;text-align:center;margin:auto;margin-top:2%;}
@@ -17,9 +17,9 @@
 				border:solid black 3px;
 				margin:auto;
 				border-radius:30px;
-				box-shadow:
-					15px 15px 50px -20px black,
-					-20px -20px 30px 0px white;
+				/*box-shadow:
+					15px 15px 50px 0px black,
+					-15px -15px 50px 0px white;*/
 				}
 			#graph{display:none;}
 			#editor{display:block;}
@@ -33,16 +33,22 @@
 				height:80%;
 				border:solid black 3px;
 				margin:auto;
-				overflow:scroll;
 			}
 			#editor .text{
 				font-family:monospace;
-				min-width:100%;
-				min-height:100%;
-				width:fit-content;
-				height:fit-content;
-				padding:1%;
+				font-size:17px;
+				height:80%;
+				max-width:80%;
+				max-height:80%;
+				overflow:scroll;
+				margin:auto;
+				margin-top:5%;
+				padding:1ch;
 				background-color:white;
+			}
+			#editor #format{
+				position:relative;
+				bottom:-5%;
 			}
 			#image{display:none;}
 		</style>
@@ -67,18 +73,20 @@
 				<div class="text" contenteditable="true">
 					Sample Text
 				</div>
+				<div class="format">
+					<button type="button"><b>Bold</b></button>
+					<button type="button"><i>Italic</i></button>				
+					<select name="Glyph Set">
+						<option value="Serif">Serif</option>
+						<option value="Sans-serif">𝖲𝖺𝗇𝗌-𝗌𝖾𝗋𝗂𝖿</option>
+						<option value="Script">𝒮𝒸𝓇𝒾𝓅𝓉</option>
+						<option value="Fraktur">𝔉𝔯𝔞𝔠𝔱𝔲𝔯</option>
+						<option value="Monospace">𝙼𝚘𝚗𝚘𝚜𝚙𝚊𝚌𝚎</option>
+						<option value="Double-struck">𝔻𝕠𝕦𝕓𝕝𝕖 𝕊𝕥𝕣𝕦𝕔𝕜</option>
+						<option value="Greek">βΓΔλΣΩ</option>
+					</select>
+				</div>
 			</div>
-			<button type="button"><b>Bold</b></button>
-			<button type="button"><i>Italic</i></button>				
-			<select name="Glyph Set">
-				<option value="Serif">Serif</option>
-				<option value="Sans-serif">𝖲𝖺𝗇𝗌-𝗌𝖾𝗋𝗂𝖿</option>
-				<option value="Script">𝒮𝒸𝓇𝒾𝓅𝓉</option>
-				<option value="Fraktur">𝔉𝔯𝔞𝔠𝔱𝔲𝔯</option>
-				<option value="Monospace">𝙼𝚘𝚗𝚘𝚜𝚙𝚊𝚌𝚎</option>
-				<option value="Double-struck">𝔻𝕠𝕦𝕓𝕝𝕖 𝕊𝕥𝕣𝕦𝕔𝕜</option>
-				<option value="Greek">βΓΔλΣΩ</option>
-			</select>
 		</div>
 		<div id="image" class="window">
 		</div>
