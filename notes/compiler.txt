@@ -33,3 +33,19 @@ underlying system.
 compiler api full reflection.
 queries depend on what information is stored.
 types and bound names.
+
+
+
+compiler can provide syntax highlighting hints for code snippets.
+syntax types:
+symbol
+constant
+collection
+function
+type
+module
+expression
+operator
+separator
+
+how should coloring work?
