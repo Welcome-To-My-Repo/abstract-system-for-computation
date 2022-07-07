@@ -1184,3 +1184,58 @@ Basic Latin
 Mathematical Alphanumeric Symbols
 
 
+--------------------------------------------------------------------------------
+
+one continuation operator which replaces a context with another.
+contexts are delimited as functions.
+you have the option to create dynamic functions which implement dynamic contexts.
+
+_ ... _
+
+contexts are named as functions.
+lambdas have a "this" operator.
+
+normal function definition uses a collection of expressions.
+x -> { a b c ... }
+
+dynamic function uses a dynamic collection of expressions determined as the program runs
+k -* 1 ... y *- k
+
+dynamic function have to be named so they can be closed
+
+the create operator names a new dynamic function and yeilds an initial value.
+k -* 1
+
+the close operator delimits the body of the dynamic function and yeilds a
+value that the dynamic function will return if it's called again.
+
+the context switch operator replaces a function with another expression
+
+f = x -> ? x = 1 f ... 1
+f 1 = 1 
+
+(x = 1) -* k
+
+what does 
+	x -* k
+mean?
+x is not provided a value so any use of x cannot be evaluated.
+
+maybe it means 
+
+	x -* k
+	y = x + 1
+	k *- y
+
+that anything in between the create and close operators is not evaluated.
+But what if you do this?
+everything is an expression there are no control statements in the language 
+primitives.
+you can create functions that return null
+
+what does replace return?
+the result of its second operand.
+
+in 
+	_ -> <> ... null
+	is null
