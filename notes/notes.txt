@@ -1239,3 +1239,13 @@ the result of its second operand.
 in 
 	_ -> <> ... null
 	is null
+
+dynamic scope is delimited?
+
+take f _ -> {
+
+	( _ ) -> {
+		(x = 1) -* k
+	}
+	'does k still exist here?'
+}

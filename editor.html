@@ -4,93 +4,79 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
-			html{width:100vw;height:100vh;overflow:hidden;}
-			body{width:100%;height:100%;margin-left:auto;margin-right:auto;color:black;background-color:gray;}
-			#views{width:100%;position:absolute;z-index:10;background-color:inherit;border-bottom:solid black 3px;top:0;height:5vh;box-shadow: 0px 5px 30px -10px black;}
-			#views #center{width:50%;height:auto;position:relative;margin:auto;text-align:center;}
-			#views button{background-color:inherit;border:none;border-radius:none;position:relative;font-size:x-large;border:solid black 3px;border-radius:10px;width:7ch;text-align:center;margin:auto;margin-top:2%;}
-			.window{
-				width:80%;
-				height:80vh;
-				position:relative;
-				top:10vh;
-				border:solid black 3px;
-				margin:auto;
-				border-radius:30px;
-				/*box-shadow:
-					15px 15px 50px 0px black,
-					-15px -15px 50px 0px white;*/
-				}
-			#graph{display:none;}
-			#editor{display:block;}
-			#editor #tabs{position:absolute;top:0;left:10%;height:5%;width:80%;border-bottom-style:solid;border-left-style:solid;border-right-style:solid;background-color:lightgray;overflow-y:hidden;overflow-x:auto;}
-			#editor #tabs button{display:inline;padding:none;margin:none;width:7ch;position:relative;text-align:center;height:100%;background-color:inherit;border:none;border-width:3px;border-color:black;border-right-style:solid;box-shadow: 10px 0px 20px black;}
-			#editor .tab{
-				position:absolute;
-				top:7%;
-				left:10%;
-				width:80%;
-				height:80%;
-				border:solid black 3px;
-				margin:auto;
+			html{width:100%;height:100%;}
+			body{
+				color:black;
+				background-color:white;
+				font-size:150%;
 			}
-			#editor .text{
-				font-family:monospace;
-				font-size:17px;
-				height:80%;
-				max-width:80%;
-				max-height:80%;
+			#editor{
+				width:80ch;
+				height:80ch;
+				border-style:solid;
+				border-width:7px;
 				overflow:scroll;
 				margin:auto;
-				margin-top:5%;
-				padding:1ch;
+				background-color:inherit;
+			}
+			#text{
+				height:100%;
+				width:100%;
+				background-color:inherit;
+				white-space:pre;
+				font-family:monospace;
+				border-style:none;
+			}
+			#format{
+				width:50%;
+				margin:auto;
+				text-align:center;
+			}
+			#format *{
+				font-size:larger;
+				color:black;
 				background-color:white;
 			}
-			#editor #format{
-				position:relative;
-				bottom:-5%;
-			}
-			#image{display:none;}
 		</style>
 	</head>
 	<body>
-		<div id="views">
-			<div id="center">
-				<button type="button" onclick="showgraph();">Graph</button>
-				<button type="button" onclick="showcode();">Code</button>
-				<button type="button" onclick="showimage();">Image</button>
-			</div>
+		<h1>Editor</h1>
+		
+		<div id="editor">
+			<div id="text"><u>T</u>ype text here</div>
 		</div>
-		<div id="graph" class="window">
-			<canvas></canvas>
-		</div>
-		<div id="editor" class="window">
-			<div id="tabs">
-				<button type="button">Tab 1</button>
-				<button type="button">Tab 2</button>
-			</div>
-			<div class="tab">
-				<div class="text" contenteditable="true">
-					Sample Text
-				</div>
-				<div class="format">
-					<button type="button"><b>Bold</b></button>
-					<button type="button"><i>Italic</i></button>				
-					<select name="Glyph Set">
-						<option value="Serif">Serif</option>
-						<option value="Sans-serif">𝖲𝖺𝗇𝗌-𝗌𝖾𝗋𝗂𝖿</option>
-						<option value="Script">𝒮𝒸𝓇𝒾𝓅𝓉</option>
-						<option value="Fraktur">𝔉𝔯𝔞𝔠𝔱𝔲𝔯</option>
-						<option value="Monospace">𝙼𝚘𝚗𝚘𝚜𝚙𝚊𝚌𝚎</option>
-						<option value="Double-struck">𝔻𝕠𝕦𝕓𝕝𝕖 𝕊𝕥𝕣𝕦𝕔𝕜</option>
-						<option value="Greek">βΓΔλΣΩ</option>
-					</select>
-				</div>
-			</div>
-		</div>
-		<div id="image" class="window">
+		<div id="format">
+			<select>
+				<option value="Monospace">Monospace</option>
+				<option value="Serif">Serif</option>
+				<option value="Sans-serif">Sans-serif</option>
+				<option value="Bold">Bold</option>
+				<option value="Italic">Italic</option>
+				<option value="Greek">Greek</option>
+				<option value="Script">Script</option>
+				<option value="Fractur">Fraktur</option>
+				<option value="Double Struck">Double Struck</option>
+				<option value="Math">Math</option>
+				<option value="Supplemental Math">More Math</option>
+				<option value="Arrows">Arrows</option>
+				<option value="Miscellaneous">Miscellaneous</option>
+			</select>
 		</div>
 	</body>
+	<!--
+		Unicode blocks to support:
+			Mathematical Alphanumeric Symbols
+			Mathematical Operators
+			Dingbats
+			Ornamental Dingbats
+			Combining Diacritical Marks
+			Arrows
+			Geometric Shapes
+			Miscellaneous Symbols and Arrows
+			Miscellaneous Mathematical Symbols - A
+			Miscellaneous Mathematical Symbols - B
+			Supplemental Mathematical Operators
+	-->
 	<script>
 
 	</script>
