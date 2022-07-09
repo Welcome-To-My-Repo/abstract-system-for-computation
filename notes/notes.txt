@@ -1248,4 +1248,3 @@ take f _ -> {
 		(x = 1) -* k
 	}
 	'does k still exist here?'
-}
