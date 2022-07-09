@@ -103,6 +103,9 @@
 		var italic = false;
 		var bold = false;
 		var style = 'Serif';
+		
+		text.dispatchEvent(new inputEvent('change', {data:"helloo"}));
+
 		onkeydown = function(event) {
 			if (event.ctrlKey)
 			{
@@ -125,9 +128,6 @@
 			{
 				shifted = true;
 			}
-			var e = new InputEvent('Simulated');
-			e.data = 'λ';
-			document.dispatchEvent(e);
 		};
 		function setItalic(){
 			var x = document.getElementById("Italic");
