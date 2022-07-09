@@ -4,63 +4,84 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
+			:root{
+				--fg:black;
+				--bg:white;
+				--lt:lightgray;
+				--dk:darkgray;
+			}
 			html{width:100%;height:100%;}
 			body{
-				color:black;
-				background-color:white;
+				color:var(--fg);
+				background-color:var(--bg);
 				font-size:150%;
 			}
 			#editor{
 				width:80ch;
 				height:80ch;
 				border-style:solid;
-				border-width:7px;
+				border-width:2px;
 				overflow:scroll;
 				margin:auto;
 				background-color:inherit;
+				padding:1ch;
 			}
 			#text{
 				height:100%;
 				width:100%;
 				background-color:inherit;
 				white-space:pre;
-				font-family:monospace;
+				font-family:serif;
 				border-style:none;
+				outline: 0px solid transparent;
+			}
+			#text:empty:not(:focus):before{
+				content:attr(init-text);
+				color:var(--lt);
+			}
+			#text:focus{
+				outline: 0px solid transparent;
 			}
 			#format{
-				width:50%;
+				width:80ch;
 				margin:auto;
 				text-align:center;
+				margin-top:5px;
 			}
 			#format *{
 				font-size:larger;
-				color:black;
-				background-color:white;
+				color:var(--fg);
+				background-color:var(--bg);
+			}
+			#cursor{
+				border:solid var(--fg) 1px;
+				width:1em;
+				height:1em;
+			}
+			.opt {
+				display:inline-block;
+				padding:5px;
+				border:1px solid var(--fg);
+				cursor:pointer;
+				background-color:var(--bg);
 			}
 		</style>
 	</head>
 	<body>
-		<h1>Editor</h1>
-		
 		<div id="editor">
-			<div id="text"><u>T</u>ype text here</div>
+			<div id="text" contenteditable="true" init-text="Enter code here..."></div>
 		</div>
 		<div id="format">
-			<select>
-				<option value="Monospace">Monospace</option>
-				<option value="Serif">Serif</option>
-				<option value="Sans-serif">Sans-serif</option>
-				<option value="Bold">Bold</option>
-				<option value="Italic">Italic</option>
-				<option value="Greek">Greek</option>
-				<option value="Script">Script</option>
-				<option value="Fractur">Fraktur</option>
-				<option value="Double Struck">Double Struck</option>
-				<option value="Math">Math</option>
-				<option value="Supplemental Math">More Math</option>
-				<option value="Arrows">Arrows</option>
-				<option value="Miscellaneous">Miscellaneous</option>
-			</select>
+			<span>Format:</span>
+			<span class="opt" id="Italic" onclick="setItalic();">𝐼</span>
+			<span class="opt" id="Bold" onclick="setBold();">𝐁</span>
+			<span>&emsp;Style:</span>
+			<span class="opt" class="style" id="Serif" onclick="setStyle('Serif');">S</span>
+			<span class="opt" class="style" id="Sans" onclick="setStyle('Sans');">𝖲</span>
+			<span class="opt" class="style" id="Mono" onclick="setStyle('Mono');">𝙼</span>
+			<span class="opt" class="style" id="Script" onclick="setStyle('Script');">𝒮</span>
+			<span class="opt" class="style" id="Frac" onclick="setStyle('Frac');">𝔉</span>
+			<span class="opt" class="style" id="Double" onclick="setStyle('Double');">𝔻</span>
 		</div>
 	</body>
 	<!--
@@ -78,6 +99,57 @@
 			Supplemental Mathematical Operators
 	-->
 	<script>
+		var text = document.getElementById("text");
+		var italic = false;
+		var bold = false;
+		var style = 'Serif';
+		onkeydown = function(event) {
+			if (event.ctrlKey)
+			{
+				event.preventDefault();
+				switch(event.key)
+				{
+					case 'i':
+						setItalic();
+						break;
+					case 'b':
+						setBold();
+						break;
+				}
+			}
+			if (event.key == 'Control')
+			{
+				control = true;
+			}
+			else if (event.key == 'Shift')
+			{
+				shifted = true;
+			}
+			var e = new InputEvent('Simulated');
+			e.data = 'λ';
+			document.dispatchEvent(e);
+		};
+		function setItalic(){
+			var x = document.getElementById("Italic");
+			if (italic)
+				x.style.backgroundColor = 'var(--bg)';
+			else
+				x.style.backgroundColor = 'var(--dk)';
+			italic = !italic;
 
+		}
+		function setBold(){
+			var x = document.getElementById("Bold");
+			if (bold)
+				x.style.backgroundColor = 'var(--bg)';
+			else
+				x.style.backgroundColor = 'var(--dk)';
+			bold = !bold;
+		}
+		function setStyle(t){
+			document.getElementById(style).style.backgroundColor = 'var(--bg)';
+			document.getElementById(t).style.backgroundColor = 'var(--dk)';
+			style = t;
+		}
 	</script>
 </html>
