@@ -21,19 +21,24 @@
 				height:80ch;
 				border-style:solid;
 				border-width:2px;
-				overflow:scroll;
+				overflow:hidden;
 				margin:auto;
 				background-color:inherit;
 				padding:1ch;
+				border-radius:30px;
+				position:relative;
 			}
 			#text{
-				height:100%;
-				width:100%;
+				height:90%;
+				width:90%;
 				background-color:inherit;
 				white-space:pre;
 				font-family:serif;
 				border-style:none;
 				outline: 0px solid transparent;
+				caret-color:var(--fg);
+				overflow:scroll;
+				margin:auto;
 			}
 			#text:empty:not(:focus):before{
 				content:attr(init-text);
@@ -47,6 +52,8 @@
 				margin:auto;
 				text-align:center;
 				margin-top:5px;
+				position:absolute;
+				bottom:1ch;
 			}
 			#format *{
 				font-size:larger;
@@ -61,28 +68,43 @@
 			.opt {
 				display:inline-block;
 				padding:5px;
-				border:1px solid var(--fg);
+				border:1px none var(--fg);
 				cursor:pointer;
 				background-color:var(--bg);
+				border-radius:30px;
+			}
+			#tabs{
+				border-bottom: solid 3px var(--fg);
+				width:100%;
+				margin:auto;
+				margin-bottom:1ch;
+			}
+			.tab{
+				display:inline-block;
+				width:fit-content;
+				padding:1ch;
+				border-radius:
 			}
 		</style>
 	</head>
 	<body>
 		<div id="editor">
+			<div id="tabs"><div id="123" class="tab">Tab 1</div><div id="456" class="tab">Tab 2</div></div>
 			<div id="text" contenteditable="true" init-text="Enter code here..."></div>
+			<div id="format">
+				<span>Format:</span>
+				<span class="opt" id="Italic" onclick="setItalic();">𝐼</span>
+				<span class="opt" id="Bold" onclick="setBold();">𝐁</span>
+				<span>&emsp;Style:</span>
+				<span class="opt" class="style" id="Serif" onclick="setStyle('Serif');">S</span>
+				<span class="opt" class="style" id="Sans" onclick="setStyle('Sans');">𝖲</span>
+				<span class="opt" class="style" id="Mono" onclick="setStyle('Mono');">𝙼</span>
+				<span class="opt" class="style" id="Script" onclick="setStyle('Script');">𝒮</span>
+				<span class="opt" class="style" id="Frac" onclick="setStyle('Frac');">𝔉</span>
+				<span class="opt" class="style" id="Double" onclick="setStyle('Double');">𝔻</span>
+			</div>
 		</div>
-		<div id="format">
-			<span>Format:</span>
-			<span class="opt" id="Italic" onclick="setItalic();">𝐼</span>
-			<span class="opt" id="Bold" onclick="setBold();">𝐁</span>
-			<span>&emsp;Style:</span>
-			<span class="opt" class="style" id="Serif" onclick="setStyle('Serif');">S</span>
-			<span class="opt" class="style" id="Sans" onclick="setStyle('Sans');">𝖲</span>
-			<span class="opt" class="style" id="Mono" onclick="setStyle('Mono');">𝙼</span>
-			<span class="opt" class="style" id="Script" onclick="setStyle('Script');">𝒮</span>
-			<span class="opt" class="style" id="Frac" onclick="setStyle('Frac');">𝔉</span>
-			<span class="opt" class="style" id="Double" onclick="setStyle('Double');">𝔻</span>
-		</div>
+		
 	</body>
 	<!--
 		Unicode blocks to support:
@@ -103,11 +125,9 @@
 		var italic = false;
 		var bold = false;
 		var style = 'Serif';
-		
-		text.dispatchEvent(new inputEvent('change', {data:"helloo"}));
-
-		onkeydown = function(event) {
-			if (event.ctrlKey)
+		document.getElementById(style).style.backgroundColor = 'var(--dk)';
+		text.onkeydown = function(event) {
+			if (event.ctrlKey && !event.shiftKey)
 			{
 				event.preventDefault();
 				switch(event.key)
@@ -120,14 +140,36 @@
 						break;
 				}
 			}
-			if (event.key == 'Control')
+			if (event.key == "Enter")
 			{
-				control = true;
+				
+				/*event.preventDefault();
+				var s = window.getSelection();
+				var r = s.getRangeAt(0);
+				d = document.createElement("div");
+				r.startContainer.parentElement.insertAdjacentElement("afterend", d)
+				s.removeAllRanges();
+				r.setStart(d.firstChild, 0);
+				r.collapse(true);
+				s.addRange(r);*/
+				
 			}
-			else if (event.key == 'Shift')
+			else if (!event.ctrlKey && /[0-9]/.test(event.key))
 			{
-				shifted = true;
+				event.preventDefault();
+				var s = window.getSelection();
+				var r = s.getRangeAt(0);
+				c = r.startContainer;
+				t = r.startContainer.textContent;
+				o = r.startOffset;
+				r.startContainer.textContent = t.slice(0, r.startOffset) + "𝔄" + t.slice(r.startOffset);
+				s.removeAllRanges();
+				r = new Range();
+				r.setStart(c, o + "𝔄".length);
+				r.collapse(true);
+				s.addRange(r);
 			}
+
 		};
 		function setItalic(){
 			var x = document.getElementById("Italic");
