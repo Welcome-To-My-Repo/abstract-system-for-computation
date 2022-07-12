@@ -1,14 +1,27 @@
 <!DOCTYPE html>
+<!--
+	TODO:
+	Get Numbers Working
+	Fix "pink" character codes
+	
+-->
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
 			:root{
-				--fg:black;
-				--bg:white;
+				--softwhite:rgb(184, 199, 156);
+				--softblack:rgb(22, 31, 30);
+				--white:white;
+				--black:black;
+				--fg:var(--white);
+				--bg:var(--black);
 				--lt:lightgray;
 				--dk:darkgray;
+				--red:red;
+				--blue:blue;
+				--green:yellow;
 			}
 			html{width:100%;height:100%;}
 			body{
@@ -17,16 +30,18 @@
 				font-size:150%;
 			}
 			#editor{
-				width:80ch;
-				height:80ch;
+				width:70vw;
+				height:70vh;
 				border-style:solid;
 				border-width:2px;
 				overflow:hidden;
 				margin:auto;
+				margin-top:5%;
 				background-color:inherit;
 				padding:1ch;
 				border-radius:30px;
 				position:relative;
+				/*box-shadow: 0px 0px 50px 10px var(--fg);*/
 			}
 			#text{
 				height:90%;
@@ -48,17 +63,23 @@
 				outline: 0px solid transparent;
 			}
 			#format{
-				width:80ch;
-				margin:auto;
+				width:100%;
 				text-align:center;
 				margin-top:5px;
 				position:absolute;
 				bottom:1ch;
 			}
-			#format *{
+			#format span{
 				font-size:larger;
 				color:var(--fg);
 				background-color:var(--bg);
+			}
+			#format .formatgroup{
+				border-radius:50px;
+				border: solid 3px var(--fg);
+				width:fit-content;
+				display:inline-block;
+				padding:none;
 			}
 			#cursor{
 				border:solid var(--fg) 1px;
@@ -67,11 +88,13 @@
 			}
 			.opt {
 				display:inline-block;
-				padding:5px;
+				width:1.5em;
+				height:1.3em;
+				padding-top:0.2em;
 				border:1px none var(--fg);
 				cursor:pointer;
 				background-color:var(--bg);
-				border-radius:30px;
+				border-radius:50px;
 			}
 			#tabs{
 				border-bottom: solid 3px var(--fg);
@@ -85,23 +108,47 @@
 				padding:1ch;
 				border-radius:
 			}
+			#theme{
+				position:absolute;
+				bottom:0;
+				left:50vw;
+				user-select:none;
+				text-align:center;
+				margin:auto;
+				padding:1em;
+			}
+			#theme *{
+				display:inline-block;
+				margin:none;
+				padding:none;
+				cursor:pointer;
+				text-align:center;
+				margin:auto;
+			}
 		</style>
 	</head>
 	<body>
+		<div id="theme">
+			<h1 onclick="Reverse();">&#x25d0;</h1>
+			<h1 onclick="Contrast();">&#x25a9;</h1>
+		</div>
 		<div id="editor">
 			<div id="tabs"><div id="123" class="tab">Tab 1</div><div id="456" class="tab">Tab 2</div></div>
 			<div id="text" contenteditable="true" init-text="Enter code here..."></div>
 			<div id="format">
-				<span>Format:</span>
+				<!--<span>Format:</span>-->
+				<div class="formatgroup">
 				<span class="opt" id="Italic" onclick="setItalic();">𝐼</span>
 				<span class="opt" id="Bold" onclick="setBold();">𝐁</span>
-				<span>&emsp;Style:</span>
-				<span class="opt" class="style" id="Serif" onclick="setStyle('Serif');">S</span>
+				</div>
+				<div class="formatgroup">
+				<!--<span>&emsp;Style:</span>-->
 				<span class="opt" class="style" id="Sans" onclick="setStyle('Sans');">𝖲</span>
 				<span class="opt" class="style" id="Mono" onclick="setStyle('Mono');">𝙼</span>
 				<span class="opt" class="style" id="Script" onclick="setStyle('Script');">𝒮</span>
-				<span class="opt" class="style" id="Frac" onclick="setStyle('Frac');">𝔉</span>
+				<span class="opt" class="style" id="Frak" onclick="setStyle('Frak');">𝔉</span>
 				<span class="opt" class="style" id="Double" onclick="setStyle('Double');">𝔻</span>
+				</div>
 			</div>
 		</div>
 		
@@ -122,12 +169,30 @@
 	-->
 	<script>
 		var text = document.getElementById("text");
-		var italic = false;
-		var bold = false;
-		var style = 'Serif';
-		document.getElementById(style).style.backgroundColor = 'var(--dk)';
+		text.Theme = {"Color":"Night", "Contrast":"Hard"};
+		text.Italic = false;
+		text.Bold = false;
+		text.Style = 'Sans';
+		text.Highlight = function(){
+			//console.log('highlight');
+		};
+		text.Tabs = [];
+		text.Wait = null;
+		text.Offset = {
+			Sans:120224,
+			SansBold:120276,
+			SansItalic:120328,
+			SansBoldItalic:120380,
+			Script:119964,
+			ScriptBold:120016,
+			Frak:120068,
+			FrakBold:120172,
+			Mono:120432,
+			Double:120120
+		}
+		document.getElementById(text.Style).style.backgroundColor = 'var(--dk)';
 		text.onkeydown = function(event) {
-			if (event.ctrlKey && !event.shiftKey)
+			if (event.ctrlKey)
 			{
 				event.preventDefault();
 				switch(event.key)
@@ -138,60 +203,169 @@
 					case 'b':
 						setBold();
 						break;
+					case '/':
+						SymbolPicker();
+						break;
 				}
+				return;
 			}
-			if (event.key == "Enter")
+			if (event.key == "Tab")
 			{
-				
-				/*event.preventDefault();
-				var s = window.getSelection();
-				var r = s.getRangeAt(0);
-				d = document.createElement("div");
-				r.startContainer.parentElement.insertAdjacentElement("afterend", d)
-				s.removeAllRanges();
-				r.setStart(d.firstChild, 0);
-				r.collapse(true);
-				s.addRange(r);*/
-				
+				event.preventDefault();
+				switch(text.Style)
+				{
+					case "Sans": {setStyle("Mono"); break;}
+					case "Mono": {setStyle("Script"); break;}
+					case "Script": {setStyle("Frak"); break;}
+					case "Frak": {setStyle("Double"); break;}
+					case "Double": {setStyle("Sans"); break;}
+				}
+				return;
 			}
-			else if (!event.ctrlKey && /[0-9]/.test(event.key))
+			if (event.key.length == 1 && /[0-9]/.test(event.key[0]))
 			{
+				window.clearTimeout(text.Wait);
 				event.preventDefault();
 				var s = window.getSelection();
 				var r = s.getRangeAt(0);
-				c = r.startContainer;
-				t = r.startContainer.textContent;
-				o = r.startOffset;
-				r.startContainer.textContent = t.slice(0, r.startOffset) + "𝔄" + t.slice(r.startOffset);
-				s.removeAllRanges();
-				r = new Range();
-				r.setStart(c, o + "𝔄".length);
-				r.collapse(true);
-				s.addRange(r);
-			}
 
+				function Insert(x) {r.insertNode(document.createTextNode(x));};
+
+				var FinalCode, InitOffset, KeyOffset, CaseOffset;
+
+				KeyOffset = event.keyCode - "0".codePointAt();
+
+				switch(text.Style)
+				{
+					case "Sans":
+					case "Mono":
+					case "Script":
+					case "Frak":
+					case "Double":
+				}
+			}
+			if (event.key.length == 1 && /[a-z|A-Z]/.test(event.key[0]))
+			{
+				window.clearTimeout(text.Wait);
+				event.preventDefault();
+				var s = window.getSelection();
+				let r = s.getRangeAt(0);
+
+				function Insert(x) {r.insertNode(document.createTextNode(x));};
+
+				var FinalCode, InitOffset, KeyOffset, CaseOffset;
+				
+				KeyOffset = event.keyCode - "A".codePointAt();
+				
+				switch(text.Style)
+				{
+					case "Sans":
+						if (text.Bold && text.Italic) {InitOffset = text.Offset.SansBoldItalic}
+						else if (!text.Bold && text.Italic) {InitOffset = text.Offset.SansItalic}
+						else if (text.Bold && !text.Italic) {InitOffset = text.Offset.SansBold}
+						else if (!text.Bold && !text.Italic) {InitOffset = text.Offset.Sans}
+						break;
+					case "Mono":
+						InitOffset = text.Offset.Mono;
+						break;
+					case "Script":
+						if (text.Bold) {InitOffset = text.Offset.ScriptBold}
+						else {InitOffset = text.Offset.Script}
+						break;
+					case "Frak":
+						if (text.Bold) {InitOffset = text.Offset.FrakBold}
+						else {InitOffset = text.Offset.Frak}
+						break;
+					case "Double":
+						InitOffset = text.Offset.Double;
+						break;
+				}
+				
+				if (event.shiftKey) CaseOffset = 0;
+				else CaseOffset = 26;
+
+				FinalCode = InitOffset + KeyOffset + CaseOffset;
+
+				switch(text.Style)
+				{
+					case "Script":
+						switch(FinalCode)
+						{
+							case 119965: FinalCode = 8492; break;
+							case 119968: FinalCode = 8496; break;
+							case 119969: FinalCode = 8497; break;
+							case 119971: FinalCode = 8459; break;
+							case 119972: FinalCode = 8464; break;
+							case 119975: FinalCode = 8466; break;
+							case 119976: FinalCode = 8499; break;
+							case 119981: FinalCode = 8475; break;
+						}
+						break;
+					case "Frak":
+						break;
+					case "Double":
+						break;
+				}
+
+				Insert(String.fromCodePoint(FinalCode));
+				r.collapse();
+				//event.target.normalize();
+				text.Wait = window.setTimeout(function(){text.Highlight(text.innerHTML)}, 700);
+			}
+			return;
 		};
+		function SymbolPicker(){
+
+		}
 		function setItalic(){
 			var x = document.getElementById("Italic");
-			if (italic)
+			if (text.Italic)
 				x.style.backgroundColor = 'var(--bg)';
 			else
 				x.style.backgroundColor = 'var(--dk)';
-			italic = !italic;
+			text.Italic = !text.Italic;
 
 		}
 		function setBold(){
 			var x = document.getElementById("Bold");
-			if (bold)
+			if (text.Bold)
 				x.style.backgroundColor = 'var(--bg)';
 			else
 				x.style.backgroundColor = 'var(--dk)';
-			bold = !bold;
+			text.Bold = !text.Bold;
 		}
 		function setStyle(t){
-			document.getElementById(style).style.backgroundColor = 'var(--bg)';
+			document.getElementById(text.Style).style.backgroundColor = 'var(--bg)';
 			document.getElementById(t).style.backgroundColor = 'var(--dk)';
-			style = t;
+			text.Style = t;
+		}
+		function Reverse(){
+			if (text.Theme.Color == "Night")
+			{
+				text.Theme.Color = "Day";
+				document.querySelector(":root").style.setProperty('--fg', 'var(--black)');
+				document.querySelector(":root").style.setProperty('--bg', 'var(--white)');
+			}
+			else
+			{
+				text.Theme.Color = "Night";
+				document.querySelector(":root").style.setProperty('--fg', 'var(--white)');
+				document.querySelector(":root").style.setProperty('--bg', 'var(--black)');
+			}
+		}
+		function Contrast(){
+			if (text.Theme.Contrast == "Hard")
+			{
+				text.Theme.Contrast = "Soft";
+				document.querySelector(":root").style.setProperty('--white', 'var(--softwhite)');
+				document.querySelector(":root").style.setProperty('--black', 'var(--softblack)');
+			}
+			else
+			{
+				text.Theme.Contrast = "Hard";
+				document.querySelector(":root").style.setProperty('--white', 'white');
+				document.querySelector(":root").style.setProperty('--black', 'black');
+			}
 		}
 	</script>
 </html>
