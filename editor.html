@@ -16,10 +16,10 @@
 				--softblack:rgb(7, 30, 29);
 				--white:white;
 				--black:black;
+				--softnt:rgb(135, 33, 33);
 				--fg:var(--white);
 				--bg:var(--black);
-				--lt:lightgray;
-				--dk:darkgray;
+				--nt:gray;
 				--red:red;
 				--blue:blue;
 				--green:yellow;
@@ -58,7 +58,7 @@
 			}
 			#text:empty:not(:focus):before{
 				content:attr(init-text);
-				color:var(--lt);
+				color:var(--nt);
 			}
 			#text:focus{
 				outline: 0px solid transparent;
@@ -155,7 +155,7 @@
 				<!--<span>&emsp;Style:</span>-->
 				<span class="opt" class="style" id="Sans" onclick="setStyle('Sans');">𝖲</span>
 				<span class="opt" class="style" id="Mono" onclick="setStyle('Mono');">𝙼</span>
-				<span class="opt" class="style" id="Script" onclick="setStyle('Script');">𝒮</span>
+				<span class="opt" class="style" id="Script" onclick="setStyle('Script');">𝒞</span>
 				<span class="opt" class="style" id="Frak" onclick="setStyle('Frak');">𝔉</span>
 				<span class="opt" class="style" id="Double" onclick="setStyle('Double');">𝔻</span>
 				</div>
@@ -188,7 +188,7 @@
 		};
 		text.SymbolPicker = function(){
 			var widget = document.createElement("div");
-			
+
 		}
 		text.Tabs = [];
 		text.Wait = null;
@@ -204,7 +204,9 @@
 			Mono:120432,
 			Double:120120
 		}
-		document.getElementById(text.Style).style.borderStyle = 'solid';
+
+		document.getElementById(text.Style).style.backgroundColor = 'var(--nt)';
+		
 		text.onkeydown = function(event) {
 			if (event.ctrlKey)
 			{
@@ -223,7 +225,7 @@
 			if (event.key == "Tab")
 			{
 				event.preventDefault();
-				if (event.shiftKey)
+				if (!event.shiftKey)
 				{
 					switch(text.Style)
 					{
@@ -371,23 +373,23 @@
 		function setItalic(){
 			var x = document.getElementById("Italic");
 			if (text.Italic)
-				x.style.borderStyle = 'none';
+				x.style.backgroundColor = 'var(--bg)';
 			else
-				x.style.borderStyle = 'solid';
+				x.style.backgroundColor = 'var(--nt)';
 			text.Italic = !text.Italic;
 
 		}
 		function setBold(){
 			var x = document.getElementById("Bold");
 			if (text.Bold)
-				x.style.borderStyle = 'none';
+				x.style.backgroundColor = 'var(--bg)';
 			else
-				x.style.borderStyle = 'solid';
+				x.style.backgroundColor = 'var(--nt)';
 			text.Bold = !text.Bold;
 		}
 		function setStyle(t){
-			document.getElementById(text.Style).style.borderStyle = 'none';
-			document.getElementById(t).style.borderStyle = 'solid';
+			document.getElementById(text.Style).style.backgroundColor = 'var(--bg)';
+			document.getElementById(t).style.backgroundColor = 'var(--nt)';
 			text.Style = t;
 		}
 		function Reverse(){
@@ -410,12 +412,14 @@
 				text.Theme.Contrast = "Soft";
 				document.querySelector(":root").style.setProperty('--white', 'var(--softwhite)');
 				document.querySelector(":root").style.setProperty('--black', 'var(--softblack)');
+				document.querySelector(":root").style.setProperty('--nt', 'var(--softnt)');
 			}
 			else
 			{
 				text.Theme.Contrast = "Hard";
 				document.querySelector(":root").style.setProperty('--white', 'white');
 				document.querySelector(":root").style.setProperty('--black', 'black');
+				document.querySelector(":root").style.setProperty('--nt', 'gray');
 			}
 		}
 	</script>
