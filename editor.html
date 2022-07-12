@@ -28,7 +28,6 @@
 			body{
 				color:var(--fg);
 				background-color:var(--bg);
-				font-size:150%;
 			}
 			#editor{
 				width:70vw;
@@ -220,6 +219,7 @@
 						setBold();
 						break;
 				}
+				text.focus();
 				return;
 			}
 			if (event.key == "Tab")
@@ -246,6 +246,7 @@
 					event.target.normalize();
 					text.Wait = window.setTimeout(function(){text.Highlight(text.innerHTML)}, 700);
 				}
+				text.focus();
 				return;
 			}
 			if (event.key.length == 1 && /[0-9]/.test(event.key[0]))
