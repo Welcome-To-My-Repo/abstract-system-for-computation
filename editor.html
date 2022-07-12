@@ -3,6 +3,7 @@
 	TODO:
 	Get Numbers Working
 	Fix "pink" character codes
+	Make Tabs Work
 	
 -->
 <html>
@@ -11,8 +12,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
 			:root{
-				--softwhite:rgb(184, 199, 156);
-				--softblack:rgb(22, 31, 30);
+				--softwhite:rgb(180, 197, 125);
+				--softblack:rgb(7, 30, 29);
 				--white:white;
 				--black:black;
 				--fg:var(--white);
@@ -77,7 +78,7 @@
 			#format .formatgroup{
 				border-radius:50px;
 				border: solid 3px var(--fg);
-				width:fit-content;
+				width:auto;
 				display:inline-block;
 				padding:none;
 			}
@@ -91,7 +92,7 @@
 				width:1.5em;
 				height:1.3em;
 				padding-top:0.2em;
-				border:1px none var(--fg);
+				border:3px none var(--fg);
 				cursor:pointer;
 				background-color:var(--bg);
 				border-radius:50px;
@@ -101,12 +102,21 @@
 				width:100%;
 				margin:auto;
 				margin-bottom:1ch;
+				text-align:center;
 			}
 			.tab{
 				display:inline-block;
 				width:fit-content;
+				padding:1em;
+				border: 3px none var(--fg);
+				border-radius:50px;
+			}
+			.activetab{
+				display:inline-block;
+				width:fit-content;
 				padding:1ch;
-				border-radius:
+				border: 3px solid var(--fg);
+				border-radius:50px;
 			}
 			#theme{
 				position:absolute;
@@ -133,7 +143,7 @@
 			<h1 onclick="Contrast();">&#x25a9;</h1>
 		</div>
 		<div id="editor">
-			<div id="tabs"><div id="123" class="tab">Tab 1</div><div id="456" class="tab">Tab 2</div></div>
+			<div id="tabs"><div id="123" class="tab">Tab</div><div id="123" class="activetab">Tab</div><div id="123" class="tab">Tab</div></div>
 			<div id="text" contenteditable="true" init-text="Enter code here..."></div>
 			<div id="format">
 				<!--<span>Format:</span>-->
@@ -174,8 +184,12 @@
 		text.Bold = false;
 		text.Style = 'Sans';
 		text.Highlight = function(){
-			//console.log('highlight');
+
 		};
+		text.SymbolPicker = function(){
+			var widget = document.createElement("div");
+			
+		}
 		text.Tabs = [];
 		text.Wait = null;
 		text.Offset = {
@@ -190,7 +204,7 @@
 			Mono:120432,
 			Double:120120
 		}
-		document.getElementById(text.Style).style.backgroundColor = 'var(--dk)';
+		document.getElementById(text.Style).style.borderStyle = 'solid';
 		text.onkeydown = function(event) {
 			if (event.ctrlKey)
 			{
@@ -203,22 +217,32 @@
 					case 'b':
 						setBold();
 						break;
-					case '/':
-						SymbolPicker();
-						break;
 				}
 				return;
 			}
 			if (event.key == "Tab")
 			{
 				event.preventDefault();
-				switch(text.Style)
+				if (event.shiftKey)
 				{
-					case "Sans": {setStyle("Mono"); break;}
-					case "Mono": {setStyle("Script"); break;}
-					case "Script": {setStyle("Frak"); break;}
-					case "Frak": {setStyle("Double"); break;}
-					case "Double": {setStyle("Sans"); break;}
+					switch(text.Style)
+					{
+						case "Sans": {setStyle("Mono"); break;}
+						case "Mono": {setStyle("Script"); break;}
+						case "Script": {setStyle("Frak"); break;}
+						case "Frak": {setStyle("Double"); break;}
+						case "Double": {setStyle("Sans"); break;}
+					}
+				}
+				else
+				{
+					var s = window.getSelection();
+					var r = s.getRangeAt();
+					var FinalCode = text.SymbolPicker();
+					Insert(String.fromCodePoint(FinalCode));
+					r.collapse();
+					event.target.normalize();
+					text.Wait = window.setTimeout(function(){text.Highlight(text.innerHTML)}, 700);
 				}
 				return;
 			}
@@ -231,18 +255,25 @@
 
 				function Insert(x) {r.insertNode(document.createTextNode(x));};
 
-				var FinalCode, InitOffset, KeyOffset, CaseOffset;
+				var FinalCode, InitOffset, KeyOffset;
 
 				KeyOffset = event.keyCode - "0".codePointAt();
 
 				switch(text.Style)
 				{
-					case "Sans":
-					case "Mono":
-					case "Script":
-					case "Frak":
-					case "Double":
+					case "Sans": text.Bold ? InitOffset = 120812: InitOffset = 120802; break;
+					case "Mono": InitOffset = 120822; break;
+					case "Script": text.Bold ? InitOffset = 120812: InitOffset = 120802; break;
+					case "Frak": text.Bold ? InitOffset = 120812: InitOffset = 120802; break;
+					case "Double": InitOffset = 120792;
 				}
+
+				FinalCode = InitOffset + KeyOffset;
+
+				Insert(String.fromCodePoint(FinalCode));
+				r.collapse();
+				event.target.normalize();
+				text.Wait = window.setTimeout(function(){text.Highlight(text.innerHTML)}, 700);
 			}
 			if (event.key.length == 1 && /[a-z|A-Z]/.test(event.key[0]))
 			{
@@ -299,44 +330,64 @@
 							case 119975: FinalCode = 8466; break;
 							case 119976: FinalCode = 8499; break;
 							case 119981: FinalCode = 8475; break;
+							case 119994: FinalCode = 8495; break;
+							case 119996: FinalCode = 8458; break;
+							case 120004: FinalCode = 8500; break;
 						}
 						break;
 					case "Frak":
+						switch(FinalCode)
+						{
+							case 120070: FinalCode = 8493; break;
+							case 120075: FinalCode = 8460; break;
+							case 120076: FinalCode = 8465; break;
+							case 120085: FinalCode = 8476; break;
+							case 120093: FinalCode = 8488; break;
+						}
 						break;
 					case "Double":
+						switch(FinalCode)
+						{
+							case 120122: FinalCode = 8450; break;
+							case 120127: FinalCode = 8461; break;
+							case 120133: FinalCode = 8469; break;
+							case 120135: FinalCode = 8473; break;
+							case 120136: FinalCode = 8474; break;
+							case 120137: FinalCode = 8477; break;
+							case 120145: FinalCode = 8484; break;
+						}
 						break;
 				}
-
 				Insert(String.fromCodePoint(FinalCode));
 				r.collapse();
-				//event.target.normalize();
+				event.target.normalize();
 				text.Wait = window.setTimeout(function(){text.Highlight(text.innerHTML)}, 700);
 			}
 			return;
 		};
 		function SymbolPicker(){
-
+			
 		}
 		function setItalic(){
 			var x = document.getElementById("Italic");
 			if (text.Italic)
-				x.style.backgroundColor = 'var(--bg)';
+				x.style.borderStyle = 'none';
 			else
-				x.style.backgroundColor = 'var(--dk)';
+				x.style.borderStyle = 'solid';
 			text.Italic = !text.Italic;
 
 		}
 		function setBold(){
 			var x = document.getElementById("Bold");
 			if (text.Bold)
-				x.style.backgroundColor = 'var(--bg)';
+				x.style.borderStyle = 'none';
 			else
-				x.style.backgroundColor = 'var(--dk)';
+				x.style.borderStyle = 'solid';
 			text.Bold = !text.Bold;
 		}
 		function setStyle(t){
-			document.getElementById(text.Style).style.backgroundColor = 'var(--bg)';
-			document.getElementById(t).style.backgroundColor = 'var(--dk)';
+			document.getElementById(text.Style).style.borderStyle = 'none';
+			document.getElementById(t).style.borderStyle = 'solid';
 			text.Style = t;
 		}
 		function Reverse(){
