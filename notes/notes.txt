@@ -1248,3 +1248,61 @@ take f _ -> {
 		(x = 1) -* k
 	}
 	'does k still exist here?'
+
+--------------------------------------------------------------------------------
+
+Operators:
+
+algebra:
+	addition		_ + _
+	subtraction		_ - _
+	multiplication		_ * _
+	quotient		_ / _
+	remainder		_ // _
+	evaluate		( _ )
+
+environment:
+	derive location		^ _
+	reference location	@ _
+	clobber			_ << _
+	cast			_ ~> _
+
+comparison and logic:
+	equality		_ = _
+	less than		_ < _
+	greater than		_ > _
+	negation		_ ~ _
+	conjunction		_ /\ _
+	disjunction		_ \/ _
+	conditional evaluation	? _ _ _
+
+collections:
+	member access		_ . _
+	index access		_ .. _
+
+types:
+	type binding		_ : _
+
+functions:
+	replace active context	_ <> _
+	bind handler		_ ! _ 
+
+reflection:
+	storage size: 		_ $ _
+	derive type: 		_ & _
+	membership:		_ \ _
+	cardinality:		_ # _
+	symbol quotation: 	' _
+	
+Constants:
+	active context:		%
+	any:			|
+	null:			_	
+
+Constructors:
+
+constant			123452134
+collection constructor		{ _ }, { _ , _ }
+function constructor		_ -> _
+type constructor		[ _ ]
+syntax constructor		` _ `
