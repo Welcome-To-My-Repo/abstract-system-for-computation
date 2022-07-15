@@ -717,7 +717,7 @@ That gets me into syntax types because there's several...
 	A specific sub-class of symbols which correspond to numeric values
 - Terminal:
 	A symbol which represents an operation and is not evaluated.
-- Variable
+	- Variable
 	A symbol which evaluates to an entity.
 - Notation
 	A single operation supplied with operands which are not other notations.
@@ -1267,13 +1267,13 @@ environment:
 	derive location		_ @
 	reference location	@ _
 	clobber			_ << _
-	cast			_ ~> _
+	cast			_ ~ _
 
 comparison and logic:
-	equality		_ = _
-	less than		_ < _
+	inequality		_ /= _
+	less than		_ < _ 
 	greater than		_ > _
-	negation		_ ~ _
+	negation		_ -. _
 	conjunction		_ /\ _
 	disjunction		_ \/ _
 	conditional evaluation	? _ _ _
@@ -1307,10 +1307,10 @@ Constructors:
 constant			123452134
 collection constructor		{ _ } , { _ \\ _ }
 function constructor		_ -> _
-				{_ ...} -> _
-				(_ ...) -> _
 type constructor		[ _ ]
 syntax constructor		` _ `
+dynamic scope create		_ /. _
+dynamic scope discard		_ .\ _
 
 
 
