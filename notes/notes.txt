@@ -1260,9 +1260,11 @@ algebra:
 	quotient		_ / _
 	remainder		_ // _
 	evaluate		( _ )
+	unification		_ = _
+	introduction		_ , _
 
 environment:
-	derive location		^ _
+	derive location		_ @
 	reference location	@ _
 	clobber			_ << _
 	cast			_ ~> _
@@ -1279,13 +1281,14 @@ comparison and logic:
 collections:
 	member access		_ . _
 	index access		_ .. _
+	explode			_ *
 
 types:
 	type binding		_ : _
 
 functions:
 	replace active context	_ <> _
-	bind handler		_ ! _ 
+	bind handler		_ ! _
 
 reflection:
 	storage size: 		_ $ _
@@ -1294,15 +1297,20 @@ reflection:
 	cardinality:		_ # _
 	symbol quotation: 	' _
 	
-Constants:
-	active context:		%
-	any:			|
-	null:			_	
+Reserved identifiers:
+	active context:		this
+	any:			any
+	null:			none
 
 Constructors:
 
 constant			123452134
-collection constructor		{ _ }, { _ , _ }
+collection constructor		{ _ } , { _ \\ _ }
 function constructor		_ -> _
+				{_ ...} -> _
+				(_ ...) -> _
 type constructor		[ _ ]
 syntax constructor		` _ `
+
+
+
