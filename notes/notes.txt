@@ -1309,8 +1309,5 @@ collection constructor		{ _ } , { _ \\ _ }
 function constructor		_ -> _
 type constructor		[ _ ]
 syntax constructor		` _ `
-dynamic scope create		_ /. _
-dynamic scope discard		_ .\ _
-
-
-
+dynamic scope create		_ .\ _
+dynamic scope discard		_ /. _
