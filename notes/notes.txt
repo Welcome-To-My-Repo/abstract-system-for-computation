@@ -1251,72 +1251,10 @@ take f _ -> {
 
 --------------------------------------------------------------------------------
 
-Operators:
+VERY IMPORTANT!!
 
-algebra:
-	addition		_ + _
-	subtraction		_ - _
-	multiplication		_ * _
-	quotient		_ / _
-	remainder		_ // _
-	evaluate		( _ )
-	unification		_ = _
-	introduction		_ , _
-
-environment:
-	derive location		_ @
-	reference location	@ _
-	clobber			_ << _
-	cast			_ ~ _
-
-comparison and logic:
-	inequality		_ /= _
-	less than		_ < _ 
-	greater than		_ > _
-	negation		_ -. _
-	conjunction		_ /\ _
-	disjunction		_ \/ _
-	conditional evaluation	? _ _ _
-
-collections:
-	member access		_ . _
-	index access		_ .. _
-	explode			_ *
-
-types:
-	type binding		_ : _
-
-functions:
-	replace active context	_ <> _
-	bind handler		_ ! _
-
-reflection:
-	storage size: 		_ $ _
-	derive type: 		_ & _
-	membership:		_ \ _
-	cardinality:		_ # _
-	symbol quotation: 	' _
-	
-Reserved identifiers:
-	active context:		this
-	any:			any
-	null:			none
-
-Constructors:
-
-constant			123452134
-collection constructor		{ _ } , { _ \\ _ }
-function constructor		_ -> _
-type constructor		[ _ ]
-syntax constructor		` _ `
-dynamic scope create		_ .\ _
-dynamic scope discard		_ /. _
-
-
-symbol binding is sugar for syntax binding.
+Variable binding and function binding is sugar for syntax binding.
 
 ` 'x ` = 1
-
-is the same as 
-
+is the more verbose version of 
 x = 1
