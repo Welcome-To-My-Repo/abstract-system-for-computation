@@ -1,90 +1,87 @@
-Syntax is made of double-width unicode characters.
-A compressed-non unicode ASCII encoding which uses the top 128 characters.
-A utf-8 encoding which allows for full unicode compatibility.
+Constructors:
+	Numerical Constant:		
+				Constant = [x:Nat, Symbol..x >= "0" /\ Symbol..x <= "9" ]
+	Collection Constructor:		
+				{ _ ... }
+				{ _ ... \\ _ ...}
+	Function Constructor:
+				_ -> _
+	Dynamic Scope:
+				_ .\ _
+				_ /. _
+	Type Constructor:
+				[ _ ... ]
+	Syntax Constructor:
+				` _ ... `
 
-The strange thing is that using unique symbols actually makes the language more 
-portable to different world regions because you can count on everyone everywhere
-having a UTF-8 compliant web browser
+Operators:
 
---------------------------------------------------------------------------------
-
-Module Constructor			|
-Function Constructor			->	→
-Continuation Constructor		-*
-Continuation Delimiter			*-
-Collection Constructor Prefix		{
-Collection Constructor Suffix		}
-Type Constructor Prefix			[
-Type Constructor Suffix			]
-Null constructor			_
-Any constructor				~
-Clobber Assignment			<<
-Derive Location Suffix			
-Reference Location Prefix		@
-Size of Collection			#
-Storage Size				##
-Equality				=
-Inequality				/=
-Greater					>
-Less					<
-Conjunction				/\
-Disjunction				\/
-Negation				~
-Type assertion				:
-Super type 				&
-
-x << 1
-y = x /.
-z = .\y
-Function Arrow 
-
-Dynamic Function Arrow
-
-Dynamic Function Exit
-
-Type Opening Delimiter
-
-Type Closing Delimiter
-
-Collection Opening Delimiter
-
-Collection Closing Delimiter
-
-Module Prefix
-
-Structure Prefix
-
-Surface Prefix
-
-Module Delimiter
-
-Derive Location
-
-Reference Location
-
-Real Addition
-
-Real Subtraction
-
-Real Multiplication
-
-Real Division
-
-Register Addition
-
-Register Subtraction
-
-Register Multiplication
-
-Register Division
-
-Register Remainder
-
-Register Shift Up
-
-Register Shift Down
-
-Register Rotate Up
-
-Register Rotate Down
-
+	Algebra:
+			_ + _
+			_ - _
+			_ * _
+			_ / _
+			_ // _
+			( _ )
+			_ , _ "introduction"
+	Environment:
+		Binding:
+			_ = _
+		Derive Location:
+			_ @
+		Reference Location:
+			@ _
+		Clobber:
+			_ << _
+		Cast:
+			_ ~ _
+	
+	Comparison and Logic:
+			_ /= _
+			_ < _
+			_ <= _
+			_ > _
+			_ >= _
+		Negation:
+			-. _
+		Conjunction:
+			_ /\ _
+		Disjunction:
+			_ \/ _
+		Conditional Evaluation:
+			? _ _ _
+	
+	Collections:
+		Member Access:	
+			_ . _
+		Index Access:
+			_ .. _
+		Explode:
+			_ *
+	
+	Types:
+		Type Binding:
+			_ : _
+	
+	Functions:
+		Replace Active Context:
+			_ ... _
+		Bind Handler:
+			_ <> _
+	
+	Reflection:
+		Storage Size:
+			& _
+		Derive Type:
+			; _
+		Membership:
+			_ \\ _
+		Cardinality:
+			# _
+		Symbol Quotation:
+			' _
+	
+	Reserved Constants:
+		This: 	()	
+		None:	_
+		

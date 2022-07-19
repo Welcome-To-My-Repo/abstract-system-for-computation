@@ -1,0 +1,2 @@
+need a method to reason about state over time without having to encode crap in the type system.
+For example, checking that some iteration terminates.

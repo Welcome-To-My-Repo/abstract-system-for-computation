@@ -1311,3 +1311,12 @@ type constructor		[ _ ]
 syntax constructor		` _ `
 dynamic scope create		_ .\ _
 dynamic scope discard		_ /. _
+
+
+symbol binding is sugar for syntax binding.
+
+` 'x ` = 1
+
+is the same as 
+
+x = 1
