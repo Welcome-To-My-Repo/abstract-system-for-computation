@@ -17,71 +17,79 @@ Constructors:
 Operators:
 
 	Algebra:
-			_ + _
-			_ - _
-			_ * _
-			_ / _
-			_ // _
-			( _ )
-			_ , _ "introduction"
+				_ + _
+				_ - _
+				_ * _
+				_ / _
+				_ // _
+				( _ )
+				_ , _ "introduction"
 	Environment:
 		Binding:
-			_ = _
+				_ = _
 		Derive Location:
-			_ @
+				_ @
 		Reference Location:
-			@ _
+				@ _
 		Clobber:
-			_ << _
+				_ << _
 		Cast:
-			_ ~ _
+				_ ~ _
 	
 	Comparison and Logic:
-			_ /= _
-			_ < _
-			_ <= _
-			_ > _
-			_ >= _
+				_ /= _
+				_ < _
+				_ <= _
+				_ > _
+				_ >= _
 		Negation:
-			-. _
+				-. _
 		Conjunction:
-			_ /\ _
+				_ /\ _
 		Disjunction:
-			_ \/ _
+				_ \/ _
 		Conditional Evaluation:
-			? _ _ _
+				? _ _ _
 	
 	Collections:
 		Member Access:	
-			_ . _
+				_ . _
 		Index Access:
-			_ .. _
+				_ .. _
 		Explode:
-			_ *
+				_ *
 	
 	Types:
 		Type Binding:
-			_ : _
+				_ : _
 	
 	Functions:
 		Replace Active Context:
-			_ ... _
+				_ ... _
 		Bind Handler:
-			_ <> _
+				_ <> _
 	
 	Reflection:
 		Storage Size:
-			& _
+				& _
 		Derive Type:
-			; _
+				; _
 		Membership:
-			_ \\ _
+				_ : _
 		Cardinality:
-			# _
+				# _
 		Symbol Quotation:
-			' _
+				' _
 	
-	Reserved Constants:
-		This: 	()	
-		None:	_
-		
+	Reserved Words:
+		Any
+		This
+		None
+		Symbol
+		Constant
+		Collection
+		Type
+		Function
+		Expression
+
+Syntax represents expressions which are replaceable with 
