@@ -5,7 +5,7 @@ Constructors:
 				{ _ ... }
 				{ _ ... \\ _ ...}
 	Function Constructor:
-				_ -> _
+				_ . _
 	Dynamic Scope:
 				_ .\ _
 				_ /. _
@@ -35,8 +35,19 @@ Operators:
 				_ << _
 		Cast:
 				_ ~ _
-	
+		Storage Size:
+				& _
+		Derive Type:
+				; _
+		Membership:
+				_ : _
+		Cardinality:
+				# _
+		Symbol Quotation:
+				' _
+
 	Comparison and Logic:
+				_ = _
 				_ /= _
 				_ < _
 				_ <= _
@@ -67,20 +78,13 @@ Operators:
 		Replace Active Context:
 				_ ... _
 		Bind Handler:
-				_ <> _
+				_ !! _
+		Trigger Event:
+				_ !
 	
-	Reflection:
-		Storage Size:
-				& _
-		Derive Type:
-				; _
-		Membership:
-				_ : _
-		Cardinality:
-				# _
-		Symbol Quotation:
-				' _
-	
+	Annotation:
+				_ ; _
+
 	Reserved Words:
 		Any
 		This
@@ -92,4 +96,5 @@ Operators:
 		Function
 		Expression
 
-Syntax represents expressions which are replaceable with 
+Syntax is a data type that represents the semantics with which a certain 
+expression may be replaced with an object.
