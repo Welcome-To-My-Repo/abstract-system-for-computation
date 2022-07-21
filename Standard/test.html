@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+	<title>HTML Syntax Test</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<nav>
+		<a href="">Prev</a>
+		<a href="">Up</a>
+		<a href="">Next</a>
+	</nav>
+	<hr>
+	<h1>Level 1 Header</h1>
+	<h2>Level 2 Header</h2>
+	<h3>Level 3 Header</h3>
+	<h4>Level 4 Header</h4>
+	<h5>Level 5 Header</h5>
+	<h6>Level 6 Header</h6>
+	<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at libero vitae purus blandit mollis. Duis lobortis ligula eget tortor tempus cursus. Nam ultrices lectus ut quam blandit, eget faucibus dui euismod. Aliquam sit amet odio nibh. Duis nec nisi dui. Nulla facilisi. Curabitur suscipit facilisis risus posuere ullamcorper. Maecenas eu ultricies odio, non cursus mi. Suspendisse vehicula sem id quam hendrerit, molestie ullamcorper nibh tempus. Suspendisse potenti.</span>
+	<p>Sed ut posuere mi. Integer tincidunt laoreet nibh eu gravida. In quis augue placerat, pharetra metus at, vestibulum magna. Nunc maximus ut justo nec consectetur. Vivamus vel ultricies ipsum. Integer pellentesque, odio eget rutrum lacinia, neque justo mattis odio, non volutpat nunc diam a odio. Sed in tristique eros. </p>
+	<ol>
+		<li>Ordered List</li>
+	</ol>
+	<ul>
+		<li>Unordered List</li>
+	</ul>
+	<article><p>
+		Aenean imperdiet dui at tortor finibus scelerisque. Nullam quis imperdiet ligula. Integer dignissim magna nisl, sit amet sollicitudin turpis tristique et. Donec ac ullamcorper ante, id rutrum leo. Vestibulum ut augue eu quam pellentesque elementum tincidunt nec lacus. Morbi consequat mollis lacus eget tempor. Duis tellus justo, mattis vitae leo et, accumsan fermentum erat. Vivamus ante nunc, imperdiet ac turpis a, sodales tempor nisi. Fusce sed ultricies sapien, eu rutrum magna. Fusce sem nisi, varius ut porta in, aliquet a tellus. Morbi a nisi sagittis ex suscipit rutrum. Quisque sed mollis tellus. Aliquam feugiat magna ut tortor rhoncus efficitur. 
+	</p></article>
+	<aside><p>
+		Aenean imperdiet dui at tortor finibus scelerisque. Nullam quis imperdiet ligula. Integer dignissim magna nisl, sit amet sollicitudin turpis tristique et. Donec ac ullamcorper ante, id rutrum leo. Vestibulum ut augue eu quam pellentesque elementum tincidunt nec lacus. Morbi consequat mollis lacus eget tempor. Duis tellus justo, mattis vitae leo et, accumsan fermentum erat. Vivamus ante nunc, imperdiet ac turpis a, sodales tempor nisi. Fusce sed ultricies sapien, eu rutrum magna. Fusce sem nisi, varius ut porta in, aliquet a tellus. Morbi a nisi sagittis ex suscipit rutrum. Quisque sed mollis tellus. Aliquam feugiat magna ut tortor rhoncus efficitur. 
+	</p></aside>
+	<code>
+		This is some code.
+	</code>
+	<figure>
+		<code>
+--------------------------------------------------------------------------------<br>
+	<pre></pre>;;"A simple recursive graph coloring algorithm"<br>
+	<pre></pre>Color = [A B C D]<br>
+	<pre></pre>Swap:Function<br>
+	<pre></pre>Swap(A) = B Swap(B) = C Swap(C) = D Swap(D) = A<br>
+	<pre></pre>Edge = {l:[Color@] r:[Color@]}<br>
+	<pre></pre>Graph = [x, &(Collection..x) = [Color Edge]]<br>
+	<pre></pre>Proof = x:Graph -> {<br>
+	<pre>                       </pre>i:[Nat < (#x)] = 0<br>
+	<pre>                       </pre>(n -> {<br>
+	<pre>                               </pre>? @(x..n.l) = @(x..n.r)<br>
+	<pre>                                 </pre>(k = This, _ -> {<br>
+	<pre>                                                     </pre>x..n.r << Swap x..n.r<br>
+	<pre>                                                     </pre>Proof ... Proof x<br>
+	<pre>                                                    </pre>})<br>
+	<pre>                               </pre>This ... This i + 1<br>
+	<pre>                              </pre>} (i))<br>
+	<pre>                       </pre>x<br>
+	<pre>                      </pre>}
+		</code>
+		<hr>
+		<figcaption>
+			This code demonstrates some of ASC's basic syntax by 
+			providing a computational proof of the "Four Color 
+			Theorem", the first theorem ever proven by a computer.
+		</figcaption>
+	</figure>
+	<table>
+		<tr><th>Header</th><th>And another one</th></tr>
+		<tr><td>Data</td><td>And another one</td></tr>
+	</table>
+</body>

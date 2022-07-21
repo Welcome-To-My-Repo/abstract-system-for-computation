@@ -1286,3 +1286,11 @@ kitchen _ -> {
 		make-a-sandwitch ... eat-sandwitch
 	  })
 }
+
+
+
+
+dynamic function
+
+x = 1 | f
+f | p
