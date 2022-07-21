@@ -1258,3 +1258,31 @@ Variable binding and function binding is sugar for syntax binding.
 ` 'x ` = 1
 is the more verbose version of 
 x = 1
+
+Syntax data types capture syntax which can be evaluated in several different 
+orders.
+
+Take an expression that captures a nested expression.
+	`'e x:Expression` = (x)
+This expression simply evaluates to the expression it captures. 
+It does not evaluate the captured expression.
+There is no real difference in the order that the expression is evaluated here
+because as soon as the syntax is evaluated, the expression is immediately 
+evaluated after.
+
+	`'e x:Expression` = (~'x)
+This version of the syntax evaluates the expression immediately.
+
+
+--------------------------------------------------------------------------------
+
+;; "Test of dynamic scope and the continue operator using the sandwich analogy"
+kitchen _ -> {
+	? open-fridge = sandwitch, 
+	  eat-sandwitch,
+	  (_ -> {
+		_ .\ make-a-sandwitch
+		bread, meat, vegetables, condiments, (assemble)
+		make-a-sandwitch ... eat-sandwitch
+	  })
+}

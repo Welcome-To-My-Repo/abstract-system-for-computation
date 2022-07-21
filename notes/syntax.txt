@@ -90,7 +90,7 @@ Operators:
 	Reserved Words:
 		Any
 		This
-		None
+		None (alternatively the underscore)
 		Symbol
 		Constant
 		Collection
