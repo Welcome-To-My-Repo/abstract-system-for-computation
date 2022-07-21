@@ -5,7 +5,7 @@ Constructors:
 				{ _ ... }
 				{ _ ... \\ _ ...}
 	Function Constructor:
-				_ . _
+				_ -> _
 	Dynamic Scope:
 				_ .\ _
 				_ /. _
@@ -45,6 +45,8 @@ Operators:
 				# _
 		Symbol Quotation:
 				' _
+		Symbol Unquotation:
+				~' _
 
 	Comparison and Logic:
 				_ = _

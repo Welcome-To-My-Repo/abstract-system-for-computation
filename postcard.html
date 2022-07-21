@@ -5,21 +5,40 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>ASC Syntax on a Postcard</title>
 		<style>
-			html {height:100%;width:100%;}
-			#card {position:relative;display:block;width:90%;height:auto;margin-left:auto;margin-right:auto;}
+			html {height:100%;width:100%;font-size:23px;}
+			#card {position:relative;display:block;width:90%;height:auto;margin-left:auto;margin-right:auto;min-width:100ch;}
 			#card img {width:100%;height:auto;}
-			#x {position:absolute;display:block;width:33%;height:80%;top:10%;margin-left:5%;font-size:medium;color:rgb(131, 94, 80);}
+			#x {position:absolute;display:block;width:45%;height:80%;top:10%;margin-left:5%;font-size:inherit;color:rgb(75, 36, 7);}
+			#y {position:absolute;display:block;width:40%;height:40%;top:31%;right:0;margin-right:5%;font-size:27px;color:rgb(75, 36, 7);line-height:7.5ex;}
 		</style>
 	</head>
 	<body>
 		<div id="card">
 			<img src="Postcard.jpg">
 			<div id="x">
-				<code>
-					;;
-					"This is a small program that demonstrates most of the features of the ASC language by providing an implementation of the Lambda Calculus"
-					
-				</code>
+				<code><pre>
+------------------------------------------------------
+Color = [A B C D]
+Swap:Function 
+Swap(A)= B  Swap(B)= C  Swap(C)= D  Swap(D)= A 
+Edge = {[Color@] [Color@]}
+Graph = [x,&(Collection..x) = [Color Edge]]
+Proof = x:Graph -> {
+ i:[Nat < (#x)] = 0
+ i, n -> {
+  ? @(x..n..0) = @(x..n..1)
+    (x = This, _ -> { 
+     Swap x..n..1
+     ... Proof x
+    })
+    ... This i + 1
+ }
+ x
+}
+				</pre></code>
+			</div>
+			<div id="y">
+				<span>&emsp;&emsp;&emsp;This code demonstrates the basic features of ASC by giving a proof of<br>&emsp;&emsp;&emsp;the Four Color Theorem, the first mathematical theorem to be proven by a computer.</span>
 			</div>
 		</div>
 	</body>
