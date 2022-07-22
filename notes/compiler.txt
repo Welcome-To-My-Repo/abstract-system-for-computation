@@ -49,3 +49,15 @@ operator
 separator
 
 how should coloring work?
+================================================================================
+
+Compilation environment is image based.
+Image contains code, libraries, executables.
+There is no concept of a "folder of source files".
+The source is collated into one big archival file.
+
+The compilation environment allows multiple simultaneous users.
+Each new user is given a signature.
+The image format performs like a database.
+Code compiled into the image follows the CRUD pattern.
+Images can be merged.

@@ -39,7 +39,7 @@ Operators:
 		Derive Type:
 				& _
 		Membership:
-				_ : _
+				_ \ _
 		Cardinality:
 				# _
 		Symbol Quotation:
