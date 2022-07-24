@@ -44,8 +44,6 @@ Operators:
 		... .
 	
 	Environment:
-		Unification:
-			_ = _
 		Derive Location:
 			_ @
 		Reference Location:
@@ -55,13 +53,9 @@ Operators:
 		Cast: 
 			_ ~ _
 		Storage Size:
-			## _
-		Derive Type:
 			& _
-		Membership:
-			_ :: _
-		Cardinality:
-			# _
+		Derive Type:
+			^ _
 		Symbol Quotation:
 			' _
 		Symbol Unquotation:
@@ -92,6 +86,10 @@ Operators:
 			_ _
 		Index Access:
 			_ (_)
+		Membership:
+			_ :: _
+		Cardinality:
+			# _
 	
 	Control:
 		Conditional Evaluation:

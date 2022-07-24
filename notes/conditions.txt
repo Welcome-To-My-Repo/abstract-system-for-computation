@@ -1,6 +1,5 @@
 The condition abstraction
 
-A condition is written as 
-`c:Any '| e:Expression`
-
-Where "c" occurrs, "e" will be evaluated.
+What I want:
+	I want one generalized abstraction for message passing, defer, signal 
+	handling and effect programming.
