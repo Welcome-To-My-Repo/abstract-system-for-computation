@@ -1,0 +1,6 @@
+The condition abstraction
+
+A condition is written as 
+`c:Any '| e:Expression`
+
+Where "c" occurrs, "e" will be evaluated.
