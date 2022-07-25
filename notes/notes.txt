@@ -1294,3 +1294,18 @@ dynamic function
 
 x = 1 | f
 f | p
+
+----------
+
+Contexts, Continuations, Conditions.
+
+How to make a notation for that.
+Contexts are collections of bindings and expressions you evaluate.
+Functions and collections are refinements of contexts.
+Context constructor is { ... }
+Create a context by constructing and binding one
+Discard a context by discarding the binding.
+Context entry is a fuction call or condition
+Context exit is the continue operator.
+
+what about dynamic contexts.
