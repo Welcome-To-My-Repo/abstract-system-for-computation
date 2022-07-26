@@ -29,7 +29,7 @@
 		figcaption{text-align:center;width:80ch;margin:auto;}
 		h1, h3, aside, figure, table{border-top-left-radius:20px;border-bottom-right-radius:20px;}
 		pre{display:inline;}
-		svg{height:70vh;width:auto;display:block;margin:auto;background-color:var(--nt);border-bottom-right-radius:50px;border-top-left-radius:50px;margin-bottom:5vh;margin-top:5vh;padding:17px;}
+		svg{height:70vh;width:70vw;display:block;margin:auto;background-color:var(--bg);border-bottom-right-radius:50px;border-top-left-radius:50px;margin-bottom:5vh;margin-top:5vh;padding:17px;}
 		@media only screen and (max-width: 900px) {article, aside, ul, ol, table{width:100%;}}
 		@media print{*~h1{break-before:page;}article, aside, figure{break-inside:avoid;}}
 </style>
@@ -37,22 +37,33 @@
 <body>
 	<svg viewBox="0 0 50 70" version="1.1" id="ASC-logo" xmlns="http://www.w3.org/2000/svg">
 		<ellipse 
-			style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+			style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--nt);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
 			ry="11" rx="27" cy="5" cx="36" transform="matrix(0.8,0.6,-0.7,0.7,0,0)">
 		</ellipse>
 		<path
-			style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:5;stroke-dasharray:none;stroke-opacity:1"
+			style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--nt);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:5;stroke-dasharray:none;stroke-opacity:1"
 			d="M 36,43 A 13,13 0 0 1 23,57 13,13 0 0 1 11,43 13,13 0 0 1 23,30 13,13 0 0 1 36,44" />
 		<path
-			style="fill:none;stroke:var(--fg);stroke-width:1.85208;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+			style="fill:none;stroke:var(--nt);stroke-width:1.85208;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
 			d="M 32,1 16,68"/>
 	</svg>
 	<div style="text-align:center;break-after:all;height:20vh;">
-		<span style="font-size:2vh;">The Standard Documentation for ASC, the<br></span>
-		<span style="font-size:4vh;">Abstract System for Computation</span>
+		<span style="font-size:calc(17px + 1vh);">The Standard Documentation for ASC, the<br></span>
+		<span style="font-size:calc(17px + 3vh);">Abstract System for Computation</span>
 		<hr>
 		<span style="font-size:2vh">Revision 0</span>
 	</div>
+	<h1 id="Abstract">Abstract</h1>
+	<article>
+		<p>
+			This document describes the notation, semantics, and interpretation of the Abstract System for Computation (ASC).
+			ASC is a small language which is useful for describing and reasoning about complex programs.
+		</p>
+	</article>
 	<h1 id="Introduction">Introduction</h1>
-	<h2 id="Contents">Contents</h2>
+	<h1 id="Table_of_Contents">Table of Contents</h1>
+	<ol>
+		<li><a href="#Introduction">Introduction</a></li>
+		<li><a href="#Table_of_Contents">Table of Contents</a></li>
+	</ol>
 </body>

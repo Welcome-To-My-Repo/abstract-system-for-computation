@@ -16,11 +16,14 @@ Constructors:
 	Collection Constructor:
 		{ ... }
 		{ ... \ ... }
+	Dynamic Collection:
+		.\ _
+		_ /.
 	Function Constructor:
 		_ -> _
 	Dynamic Context:
 		.\ _
-		_ /.
+		_ /. 
 	Type Constructor:
 		[ ... ]
 	Syntax Constructor:
@@ -49,13 +52,13 @@ Operators:
 		Reference Location:
 			@ _
 		Clobber:
-			_ ! _
+			_ :- _
 		Cast: 
 			_ ~ _
 		Storage Size:
-			& _
+			## _
 		Derive Type:
-			^ _
+			& _
 		Symbol Quotation:
 			' _
 		Symbol Unquotation:
@@ -90,6 +93,8 @@ Operators:
 			_ :: _
 		Cardinality:
 			# _
+		Explode:
+			_ *
 	
 	Control:
 		Conditional Evaluation:
@@ -97,15 +102,15 @@ Operators:
 		Function Application:
 			_ _
 		Replace Active Context:
-			_ ! _
+			_ :- _
 	
 	Annotation:
 			_ ; _
 	
 	Reserved Symbols:
-		This
-		Any
-		None (alternatively the underscore)
+		This	(^)
+		Any	(*)
+		None (_)
 		Symbol
 		Constant
 		Expression
