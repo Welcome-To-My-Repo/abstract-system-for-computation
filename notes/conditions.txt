@@ -3,3 +3,7 @@ The condition abstraction
 What I want:
 	I want one generalized abstraction for message passing, defer, signal 
 	handling and effect programming.
+
+condition constructor is a bar "|"
+The right hand side is some entity or entity type.
+The left hand side is 
