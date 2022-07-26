@@ -1309,3 +1309,39 @@ Context entry is a fuction call or condition
 Context exit is the continue operator.
 
 what about dynamic contexts.
+
+
+Dynamic contexts 
+	.\ /.
+create a new dynamic context with the name ”x”
+	.\ x
+
+exit the dynamic context
+	x /.
+
+what does this do?
+It creates a collection of bindings resulting from the expressions evaluated
+in between.
+How does it work in scope?
+”x” shadows any previous bindings and appears as a local binding in all inner nested contexts.
+When ”x” is closed, the name of the context remains visible as a local binding until the outermost context containing the binding is closed.
+The dynamic context can be passed as an entity to other functions.
+
+dynamic functions parameterize dynamic functions
+instead of an expression or a collection, a dynamic context is given as the final parameter to the function constructor.
+
+------------------------------------------------
+
+Conditions are a means to dynamically define and evaluate an expression
+
+A condition is defined as an entity and expression pair.
+When the entity occurs, the expression is evaluated.
+
+c | e
+
+This applies to Collections as well.
+
+m = {a = 1 . c = 'n | a}
+m 'n
+
+in order for a condition to be attached to a context, it must be bound
