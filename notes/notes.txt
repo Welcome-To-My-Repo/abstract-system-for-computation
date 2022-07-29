@@ -1345,3 +1345,50 @@ m = {a = 1 . c = 'n | a}
 m 'n
 
 in order for a condition to be attached to a context, it must be bound
+
+--------------------------------------------------------------------------------
+
+Register is a data-level constructor which allows the programmer to create very
+low-level layouts of data.
+
+Primitive types are Nat for unsigned and Int for signed. Each the cannonical size
+of the environment's Register.
+
+Register takes a list of value ranges and other register types.
+The list is one indexed.
+
+Register < ... >
+
+--------------------------------------------------------------------------------
+
+Collections are encapsulated by default.
+Members are assigned by binding.
+
+How to talk about the type of a Collection?
+It can contain complex unification expressions and piece-wise bindings.
+First, I don't really know what gets an entity included as a member in a 
+collection. Does it get included simply by writing it? 
+	{ 1 }
+Is 1 a member of this collection now? Yes. How is it accessed? IDFK ugh
+Members are completely encapsulated. You can't access them from the outside.
+How do you access them from the inside?
+
+{ 1 x = This 0 }
+
+This keeps an index of all entities in the context.
+
+I want to be able to do the following declarations:
+
+	{1 2 3}
+	{x = 1. y = 2. z = 3.}
+	{'x | 1. 'y | 2. 'z | 3}
+	{x = p. y = q. z = r.}
+How do I access things that have no name?
+Also what is the use of members when they're encapsulated?
+Maybe non-bound members aren't encapsulated? 
+	But now you have implicit projections for only part of the set.
+	This just turns confusing.
+
+I want an encapsulated collection where all members are identified.
+
+	{ ;;"Everything in here is not accessible externally" }
