@@ -94,3 +94,33 @@ A collection can get destructured
 	c :- { 0|1 1|2 }
 	(c 0) = 1
 	(c 1) = 2
+
+Collection selector is 
+` c:Collection '/ t:Type `
+or
+` c:Collection '/ n:Nat t:Type `
+
+Selector can test membership by testing whether it's null or not.
+
+take a collection
+	c = {1 2 3}
+the type is 
+	c:[Nat Nat Nat]
+you can select each element by
+	c/ 0 Nat
+	c/ 1 Nat
+	c/ 2 Nat
+
+The order of each element of the Collection is not part of the structural 
+information.
+However, in the case of 
+	{ 1 2 }
+Selecting 
+	{ 1 2 } / 0 Nat
+or 
+	{ 1 2 } / 1 Nat
+will predictably follow the lexical order in which the members were 
+introduced.
+In the case of any two member types being repeated, they can always be 
+selected using an ordinal corresponding to their lexical position.
+Will predictably yeild

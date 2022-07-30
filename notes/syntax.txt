@@ -81,10 +81,8 @@ Operators:
 			~ _
 	
 	Collections:
-		Index Access:
+		Element Access:
 			_ / _
-		Membership:
-			_ :: _
 		Cardinality:
 			# _
 	

@@ -6,4 +6,25 @@ What I want:
 
 condition constructor is a bar "|"
 The right hand side is some entity or entity type.
-The left hand side is 
+
+A condition exposes an external interface for any collection it is bound in.
+It will evaluate an expression conditionally depending on a corresponding 
+element being issued to the collection.
+
+A condition is a unique type of entity and can be computed with.
+
+If a condition is bound in a Collection, it exposes the interface.
+
+Here's an example which creates a polymorphic function
+	f {
+		P | x -> m x
+		Q | x -> n x
+	  }
+
+Here's an example of case matching
+	x :- case,
+	{
+		1 | x -> p x
+		[5 < Nat < 10] | x -> q x
+		'purple | x -> r x
+	}
