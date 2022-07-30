@@ -1,0 +1,96 @@
+Collections are the fundamental composite construct of ASC.
+They are simply a grouping of entities in a context.
+They can also be defined piece-wise using unification.
+
+	{ 1 2 3 } ; "This is a simple collection"
+
+Collections are encapsulated by default.
+In the collection above, there is no means provided to destructure it.
+That makes no sense.
+It has a countable number of members.
+Couldn't you just access the members by counting them?
+Pattern matching?
+
+	{ 1 2 3 } * ( x y z )
+Nope, that's dumb and it doesn't help with arrays.
+
+	{ 1 2 3 } 1 = 1
+
+I want them 1 indexed because they're counted not ordered.
+No, 1 indexing is crap. Natural numbers begin with 0, so 0 should be the first  index, the "zeroth" element.
+The zeroth element isn't special, it's just the first.
+
+A collection is a context. 
+That means the only way to create a context explicitly is to create a collection
+
+How are collections destructured?
+It should be implicit.
+Destructure them by binding to variables in an operation.
+How to specify a collection as a collection of types.
+Given T = [t], T is replaceable with t.
+Therefore,
+	
+	T = [t]
+	n = { T }
+	m:n = { t }
+
+How to access a collection member?
+By index.
+A collection has a cardinality, which implies that all entities in the 
+collection can be counted.
+This means that a natural number can be associated with each entity.
+How do I make this different from associative mapping.
+Associative mapping should be the default interaction.
+Destructuring should require an operator.
+
+Are associative mappings only a syntax construct or are they computational?
+Say you have two functions
+	a :- x:T -> y
+	b :- x:t -> y
+And you want to use them under the same name.
+You would do this:
+	f = { 
+		T | x -> a x
+		t | x -> b x 
+	    }
+	;;"now you can say"
+	f T
+	f t
+
+So this is pretty neat but what kind of thing is this.
+An associative mapping, or message passing, or something else?
+An associative mapping.
+You can use this for events because evaluation creates nested contexts.
+Environment events just implicitly call a pre-defined mapping to the 
+current context. 
+If a mapping has been provided, then it's evaluated.
+Is a specific map a part of a collection, or is it it's own entity?
+Maybe it's a separate entity such that you can do something like
+	m = 'a | b
+	g = {b :- 1 . m}
+	h = {b :- 2 . m}
+So the type of a map is 
+	x :- y | z
+	^x = [^y | ^z]
+Is a map part of the type of a collection? Yes.
+Does order matter in a collection? Yes.
+
+Collections are used to keep an activation record.
+The activation record is a nesting of collections.
+
+Associative maps are kinda like functions.
+They parameterize a collection.
+
+	{ 'a  1 }
+	{ 'a -> 1 }
+So how is "|" different from "->"?
+Map yeilds its result outside the collection.
+Map accepts input from outside the collection.
+Functions function only in their context.
+You can't call a function which isn't bound outside your context.
+Functions parameterize expressions by default, but Maps just provide an association between values.
+But technically maps parameterize a collection from the inside.
+A collection can get destructured
+	c :- { 0|1 1|2 }
+	(c 0) = 1
+	(c 1) = 2
