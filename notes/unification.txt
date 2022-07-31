@@ -1,0 +1,24 @@
+ASC provides unification which is engaged with "=".
+If two expressions are unifiable, it returns true.
+This can be used for simple comparisons
+	1 = 1 
+	1 = 2
+It can be used for binding
+	x = y
+	x = 1
+It can also be used for more complex checks
+	f x = g x
+It can be used for optimization
+	x:t, slow x = fast x
+Does the compiler only do optimization it can prove? Yes.
+The compiler has to prove optimization via brute force.
+How far are optimizations propagated? 
+Are they applied outside their context? Possibly.
+	;;"Say you have a module"
+	M = {
+	     slow :- x -> y . 'slow | slow .
+	     fast :- x -> y . 'fast | fast .
+	     cons :- _ -> n . 'cons | cons .
+	     slow cons = fast cons ;"here's an optimization"
+	    }
+	M 'slow M 'cons ;;"Is the optimization applied here??"
