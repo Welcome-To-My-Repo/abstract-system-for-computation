@@ -1,0 +1,1 @@
+An algebraic system which includes types, structures, and functions.

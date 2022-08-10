@@ -15,9 +15,6 @@ Constructors:
 			x:Symbol, y:[Nat > 0], x(0) = "H" /\ x(y) = ["0" "1" "2" "3" "4" "5" "6" "7" "8" "9" "a" "b" "c" "d" "e" "f" "A" "B" "C" "D" "E" "F"]
 	Collection Constructor:
 		{ ... }
-	Dynamic Collection Constructor:
-		& _
-		_ & 
 	Function Constructor:
 		_ -> _
 	Type Constructor:
@@ -26,7 +23,7 @@ Constructors:
 		` ... `
 	Condition Constructor:
 		_ | _
-	Multiple Expression:
+	Block Constructor:
 		_ , _
 
 Operators:
@@ -48,13 +45,13 @@ Operators:
 		Reference Location:
 			@ _
 		Clobber:
-			_ :- _
+			_ << _
 		Cast: 
 			_ ~ _
 		Storage Size:
 			## _
 		Derive Type:
-			^ _
+			& _
 		Symbol Quotation:
 			' _
 		Symbol Unquotation:
@@ -78,7 +75,7 @@ Operators:
 		Disjunction:
 			_ \/ _
 		Negation:
-			~ _
+			-. _
 	
 	Collections:
 		Element Access:
@@ -89,12 +86,10 @@ Operators:
 	Control:
 		Boolean Conditional Evaluation:
 			? _ _ _
-		Case Conditional Evaluation:
-			?? _ _
 		Function Application:
 			_ _
 		Replace Active Context:
-			_ :- _
+			_ << _
 	
 	Annotation:
 			_ ; _

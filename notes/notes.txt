@@ -1392,3 +1392,34 @@ Maybe non-bound members aren't encapsulated?
 I want an encapsulated collection where all members are identified.
 
 	{ ;;"Everything in here is not accessible externally" }
+
+--------------------------------------------------------------------------------
+
+Collections
+
+Collections are multisets.
+You can have one or more elements repeat.
+Collections are compared structurally.
+Each element is distinct and countable.
+Elements are ordered.
+
+Elements can be selected from collections.
+
+c = {'a 'b 'c}
+c/'a
+
+
+--------------------------------------------------------------------------------
+
+What's my minimal language?
+
+Natural numbers only.
+Functions: _ -> _
+Collections: { ... }
+Types: [ ... ]
+Expressions: ` ... `
+
+
+--------------------------------------------------------------------------------
+
+` f:Function x:Expression ` -> 
