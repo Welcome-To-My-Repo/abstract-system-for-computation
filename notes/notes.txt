@@ -1419,7 +1419,17 @@ Collections: { ... }
 Types: [ ... ]
 Expressions: ` ... `
 
+================================================================================
+Low Level System API implements something like Vulkan for rendering and 
+general purpose compute
+================================================================================
 
---------------------------------------------------------------------------------
+What is an expression type?
+Is it like a function type? Yes. When a function occurs, it gets reduced.
+When an expression occurs, it gets reduced as well.
+An expression binds some parameters.
 
-` f:Function x:Expression ` -> 
+` 'F x:Nat `
+
+How do expressions work? Apply in the context they're bound in.
+
