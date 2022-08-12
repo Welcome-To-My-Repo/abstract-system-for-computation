@@ -1433,3 +1433,30 @@ An expression binds some parameters.
 
 How do expressions work? Apply in the context they're bound in.
 
+The expression constructor constructs a pattern to search the input for.
+
+Expressions are functions, "when you encounter this, do this"
+
+Should symbols or parameters be easier?
+Parameters should be easier, symbols should be explicit.
+
+When is an expression engaged? Is it first class? Does it return anything?
+
+An expression is first class. It's an expression itself and can occur inside a 
+type constructor.
+What are the semantics for how an expression can be engaged then?
+Is an expression valid in the context it's bound in? Yes.
+Does an expression include what it evaluates to, or does it sit by itself?
+
+` ... ` vs. ` ... -> ... `
+
+What's the concept of defining something that taints the contex it's bound in?
+Seems like an expression just by itself doesn't do much unless you explicitly 
+provide it to the context by operating on the context.
+Contexts are the same as images.
+
+--------------------------------------------------------------------------------
+
+What can images do?
+They can internalize or import parts of other images or entire images.
+They can provide encapsulation and interfaces.
