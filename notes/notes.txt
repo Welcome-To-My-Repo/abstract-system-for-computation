@@ -1460,3 +1460,6 @@ Contexts are the same as images.
 What can images do?
 They can internalize or import parts of other images or entire images.
 They can provide encapsulation and interfaces.
+Are images based on names or entities? Entities. Images have structure.
+
+Go back to the "Structure/Suface" object paradigm.

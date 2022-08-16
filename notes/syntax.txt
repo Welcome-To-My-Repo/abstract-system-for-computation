@@ -110,3 +110,4 @@ Operators:
 		Evaluate
 		Bind
 		Apply
++−×÷
