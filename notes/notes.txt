@@ -1463,3 +1463,8 @@ They can provide encapsulation and interfaces.
 Are images based on names or entities? Entities. Images have structure.
 
 Go back to the "Structure/Suface" object paradigm.
+
+--------------------------------------------------------------------------------
+
+Implementing modules is weird because in a pure type system, the line between 
+what is a specification and an implementation is blurred.

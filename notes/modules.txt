@@ -1,0 +1,17 @@
+What is a module?
+A Module is a pair of a type specification and an implementation where the 
+specification is visible to places outside the module and the implementation is
+hidden from those places.
+
+We'll call the specification the "surface" and the implemntation the 
+"structure".
+
+In an image based environment, the active image can be "cached" by storing it 
+in a serialized binary format to be loaded into an active state at some later
+point. An image can be "sharded" where one or more entities are stored as a 
+separate image. These images can then be "loaded" which incorporates them as an 
+immediate part of the active image, or "linked" where the image will be loaded
+at some unspecified point before or at the moment it is used.
+
+A module is an entity within an image based environment.
+It has a surface component and a structure component.
