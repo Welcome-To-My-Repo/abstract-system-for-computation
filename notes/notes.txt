@@ -1468,3 +1468,17 @@ Go back to the "Structure/Suface" object paradigm.
 
 Implementing modules is weird because in a pure type system, the line between 
 what is a specification and an implementation is blurred.
+
+--------------------------------------------------------------------------------
+
+Binding is 
+	x : 1
+where x is an unbound variable and 1 is an expression that x will evaluate to.
+Alternatively, you can bind expressions to each other, as long as the two 
+expressions can yield equivalent values.
+	1 : 1
+The expression on the right is allowed to yield a type of the value on the left.
+	1 : Nat
+
+--------------------------------------------------------------------------------
+
