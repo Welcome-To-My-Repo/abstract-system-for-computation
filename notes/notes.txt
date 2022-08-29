@@ -1482,3 +1482,64 @@ The expression on the right is allowed to yield a type of the value on the left.
 
 --------------------------------------------------------------------------------
 
+how does syntax work?
+
+if you look at lisp, you describe syntax as a macro.
+the macro is engaged using function syntax.
+
+in ASC, the macro is engaged by some matching pattern.
+the pattern can be composed of individual characters, symbols, unevaluated expressions, or typed entities.
+A sequence of characters is grouped into symbols using grouping rules.
+Symbols are grouped into expressions using binding rules.
+Expressions are evaluated into entities.
+
+What is the ordering. Is it possible to have ambiguity? 
+Say there's two expressions defined:
+	`'a x:a`,
+	`"a" x:b`,
+which comes first?
+the character match comes first?
+
+characters are matched first, then symbols, then expressions.
+
+two things:
+ how are expressions contextual? 
+  through types
+ how are expressions bound by context?
+  binding.
+
+binding is where an entity is bound to an occurrance within a context.
+There's a few ways things can occur within a context.
+An expression can be constructed in the context.
+A symbol representing the binding can occur in an expression.
+An expression can be bound to a condition.
+
+There's a concept of implicit bindings.
+No there's a concept of variables.
+
+If I say 
+	x : 1
+then where x occurs, it's guaranteed to evaluate to 1.
+But now what is x?
+For an unbound variable, `'x` : 1.
+Rather than talking about variables, talk about just syntax.
+No variables, you bind expressions.
+Expressions can be recursive, 
+	`'x id` : id
+	
+	`'add x:Nat y:Nat` : x + y
+	add 1 2
+	
+what happens when you do
+	`1 + 2`
+does it get evaluated?
+What happens when you put an expression inside an expression constructor?
+What happens when you put an entity inside an expression constructor?
+	` 1 ` 
+1 is now bound.
+When that expression occurs, it yields an expression.
+What happens when an expression is not bound to anything?
+Binding is implicit.
+What about expresisons.
+Expression as a data type is inherently unevaluated.
+
