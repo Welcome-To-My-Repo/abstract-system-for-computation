@@ -1542,4 +1542,22 @@ What happens when an expression is not bound to anything?
 Binding is implicit.
 What about expresisons.
 Expression as a data type is inherently unevaluated.
+so what happens if I say 
+	` 1 `
+But that's not actually the real question because 1 isn't primitive.
+What happens if I say
+	` _ `
+There's no bindings here.
+What if I say
+	x : ` _ `
 
+--------------------------------------------------------------------------------
+
+You describe an expression as 
+backtick followed by an expression description followed by an arrow.
+
+`x` 1
+m = (`x` 1)
+
+an expression enforces a bindidng. 
+where that syntax occurs in a context, that expression will be evaluated.
