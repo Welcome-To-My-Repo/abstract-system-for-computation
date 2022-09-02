@@ -1561,3 +1561,7 @@ m = (`x` 1)
 
 an expression enforces a bindidng. 
 where that syntax occurs in a context, that expression will be evaluated.
+
+when you construct an expression, it binds its corresponding expression in This.
+Then, evaluation of an expression becomes the process of determining an
+expression form and then searching for its map within This.
