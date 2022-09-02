@@ -1565,3 +1565,42 @@ where that syntax occurs in a context, that expression will be evaluated.
 when you construct an expression, it binds its corresponding expression in This.
 Then, evaluation of an expression becomes the process of determining an
 expression form and then searching for its map within This.
+
+--------------------------------------------------------------------------------
+the concept of This (%).
+"This" refers to the immediate context.
+The context is the collection of bindings.
+For example:
+in a block
+	x : 1 , This x = 1 . 
+
+in a collection
+	{x : 1 .  This x} = {x : 1 .  1}
+
+--------------------------------------------------------------------------------
+
+if code blocks are comma separated lists, how do you nest lists?
+
+	a, b, c
+	a, (x, y, z), b, c
+	a, n -> x, y, z . , b, c
+
+comma is an expression concatenator, if I have 
+	e , e
+then that's one expression
+	(e, e)
+the period delimits expressions so when you write
+	e, e .
+it's the same as
+	(e, e)
+and 
+	e, e . , e
+is
+	((e, e) e)
+Function constructor expects an expression but is also an expression itself.
+	e, x -> e .
+is equivalent to
+	(e, (x -> e))
+so you begin a nested expression with either parentheses or some other prefix
+delimiter such as "_ -> ..."
+the period always delimits the inner expression.
