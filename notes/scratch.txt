@@ -1,0 +1,1624 @@
+type system supports both extensional and intensional definitions of a type.
+they are treated as mutually dependent descriptors.
+Thus an extensional type can be defined as the explicit list of all the other types which share its qualities and an intensional type can be defined as the explicit list of the qualities which other types must possess.
+The distinction betwen the two approaches to definition is that extensional definitions of type can be reasoned about simply by referring to the list defined for that type whereas intensional types rely more on inference about whether the appropriate qualities are exhibited.
+
+ASC compiles to an arch-independent assembly.
+the assembly has an infinite number of general purpose registers.
+it also has a set number of special registers.
+	- Program Counter
+	- Base Pointer
+	- Zero
+Data types correspond to the data types in ASC.
+Operations are
+	- Add
+	- Subtract
+	- Multiply
+	- Quotient
+	- Remainder
+
+ASC syntax is created by patterns.
+There are a few notations which are determined using characters rather than symbols.
+This allows these notations to be represented with any format the programmer may chose.
+These character notations are:
+	-function declaration
+	-function definition
+	-sequence definition
+	-sequence access
+	-sequence introspection
+	-type declaration
+	-type assertion
+	-type introspection
+	-module definition
+	-module access
+	-conditional evaluation
+
+The function declaration specifies the name of the function and the names of each parameter.
+Function declarations may optionally specify a generic definition of the function.
+A function definition specifies the types allowed for each parameter and a definition which is applied when parameters of those types are given to the function.
+
+How do to sequence definition with just types and no names?
+
+{1 2 3} `a sequence of constants`
+{long long short} `a sequence with fields named "long", "long", "short"`
+Sequence(long long short) `a sequence with fields typed long, long, and short`
+Sequence(100) `a sequence with 100 fields`
+Should a sequence be allowed with no default values? No.
+
+Characters which are used directly in syntax.
+().:;"'`[]{}&#^@
+
+Default symbols...
+( ) [ ] { } . .. : " ' ` & # ## @ ^ ? ??
+
+Function declaration:
+name (p1 p2 p...) = expr(p1 p2 p...)
+name (p1 p2 p...) = expr(p1)
+name (p1 p2 p...) = p3 {expr1(p1) expr2(p...) p3 = expr3(p2)}
+name (p1 p2 p...) = p3 r... {p3 = p1 r... = p...}
+name (p1 = x p2 = y p... = z) = p3 {p3 = expr()}
+name (`...`) = p3 begin yeild name `returns in the immediate context`
+name (`...`) = p3 begin end name `returns to call site`
+
+Function call
+name()
+
+Pointer syntax just overloads the "@" character.
+@ of any type except location generates a location.
+@ of a location dereferences it.
+actually makes things safer.
+if you have nested structures then you don't need pointers to pointers because
+you would use data type declarations to assert a specific memory layout.
+
+Types are viewed as non-distinct geometric formations.
+The size, shape, positioning, and dimensions of a form are not known.
+Two things are considered: what (non-descript) features may be present on a form, and what features are shared between two forms.
+Types can be defined as a unique form, a combination of multiple forms, a difference of forms, or a superposition of multiple forms.
+A combination exhibits all the features of a collection of forms as a unique formation.
+A difference exhibits all the features present in one form that are not shared with another.
+A superposition is not a unique form, but instead may simultaneously exhibit any one form in a collection of existing forms.
+A sequence is then an ordered collection of forms.
+A function is a transformation from one collection of forms to another.
+The types of functions and sequences are also represented as forms.
+
+AND /\
+OR \/
+NOT ~
+
+notation prefix is semicolon ;
+
+
+Continuation design:
+To implement full continuations, they must have 6 capabilities...
+1.) Asymmetric; be able to move control back to the point where the continuation was called.
+2.) Stackful; act like a regular function with its own context and stack.
+3.) Delimited; have a finite definition that doesn't contain the entire program.
+4.) Multi-prompt; ability to be nested and recursive.
+5.) Reentrant; dynamically capture the program state at a given point as a callable continuation.
+6.) Cloneable; ability to duplicate any continuation object.
+
+Continuations as functions:
+	- Dynamic extent enables 1, 2, 3, and 4
+	- Function ends by returning to call site enables 1
+	- Function ends by continuing to the next lexical control point enables 2
+	- Declare a continuation as an immediate function enables 5
+	- Treating continuations as first-class functions enables 6
+
+Continuations only need dynamic extent and a delimited capture.
+A delimited capture works like call/cc but only includes the lexical extent of its context.
+The exclamation point (!) captures its context.
+actually the exclamation point isn't necessary because you can do a lot more using simple closures.
+
+So, now, full delimited continuations.
+Asymmetric:
+
+	cont () = {}
+	f() = { ? abort Null }
+
+a concern is that non-terminating control flow can cause memory leaking by dynamically generating contexts.
+
+Functions in ASC can be defined using one single expression or two separate expressions.
+
+A program is executed by evaluation.
+Evaluation involves the process of applying functions and reducing them to their return parameters.
+Through the process of evaluation, the program may change state and behavior.
+Each time a program changes state, a mode is implicitly created.
+A mode represents everything that is known about the program at the point where the mode is created.
+Modes can be nested and have similar extent to scope, however modes are also affected by assignment and conditional evaluation as these both are ways where a program may change its own state.
+
+How to do quoted macros and stuff like the backquote in common lisp?
+A good example is forcing heap allocated variables to work like regular variables...
+; . (x:Symbol) = ?? & (x) == Box Heap-Lookup(x) x
+
+ASC doesn't really require an IR because it's already at C's level.
+What it needs is a few operators for binary crap with registers.
+
+Top-down semantic description sucks, but is helpful for describing the interaction of types with a dynamic program.
+
+Evaluation schemes for Notation parameters.
+Normal evaluation is implicit so captures expressions are evaluated before the notation is applied.
+Deferred evaluation forces a captured expression to be preserved until after to notation is applied.
+A parameter that has been deferred can be evaluated during the notation application by writing it by itself inside parentheses.
+
+``Ex``
+
+T = [value]
+U = [value]
+V = [value]
+
+; . (x:T) = f(x) `normal`
+; . (,x:U) = f(x) `deferred`
+; . (,x:V) = f((x)) `deferred forced eval`
+
+j:T = value
+j `=> f(value), j is evaluated before f is called`
+
+k:U = value n:U = value
+(k + n):U `=> f(k + n), expression is evaluated after f is called`
+
+h(x) = x:V
+l:V = value
+h(l) `=> f(value), l is forced to be evaluated before f is called`
+
+if two types are alike? what does that represent?
+
+Zero is a superposition of all zero values in the number tower.
+
+0 = [0 +0 0.0]
+
+Notation for conditionals:
+Single conditional "if"... ? cond exp
+conditional "if-else"... ?? cond exp exp
+condition uses the following comparisions and boolean operators
+
+Generic Comparison:
+Equal		=
+
+Numerical Comparisons:
+Greater than 	>
+less than 	<
+
+Logical Connectives:
+and 		/\
+or		\/
+not		~
+
+Type Comparisons:
+supertype	>
+subtype		<
+alike		-
+
+Should default operators be special characters or should they follow normal symbol rules?
+
+Brackets are special characters because they are used as boundaries.
+The vertical bar is also a special character because it's used with modules.
+But what about operators such as pointers?
+
+
+What about foreign function calls and ABI mis-matches?
+honestly just make a foreign function call convention which matches the convention of one of GCC, MSCV, or Clang.
+should ASC compile directly to assembly? Yes, because it employs special context manipulation which isn't possible in any other language.
+
+what is type specification?
+
+Ex:
+	T = [x y z]
+	var:T(x) `what does this mean?`
+
+
+say you want a symbol with parentheses in it.
+the symbol quotation operator drops special notations and just does visible vs. spaces
+
+`(parens)
+
+now to use the symbol as a symbol, evaluate it with parentheses
+
+( `(parens) )
+
+actually parentheses randomly unquoting symbols is dangerous.
+i need an unquote operator.
+
+symbol quote:	`
+symbol unquote: ``
+`(symbol)
+
+
+
+primitive operators:
+
+symbol quotation
+symbol unquote
+
+entity location
+access location
+
+entity storage requirements
+entity cardinality
+
+entity index subscript
+entity member access
+
+type composition is just a sequence.
+In normal type systems, dependent types combine types and values, but in
+pure type systems, types and values are types.
+Take the classic List dependent type example. There's an abstract list type
+where the definition depends on a length value.
+In a pure type system, the list type is a type, and the length value is also a
+type.
+List types then become type tuples.
+The constraint that the List is the "interface" of the type and the length is
+part of the type information becomes a meta-logical decision.
+Now list types are simply a normal list type with a length just like how they're
+defined using records in other languages.
+
+So now if unit types are
+	U = [U]
+and type superpositions are
+	S = [t t t]
+
+then type compositions are
+	C = [k.l.m]
+where
+	C..1 == k
+	C..2 == l
+	C..3 == m
+and
+&{x:p y:q z:r} == [p.q.r]
+
+
+
+dependent types means that there's some value attached to type information which can be erased.
+if types are completely tied to structs as they exist during a program, type information can't be erased.
+how to attach random types to stuff which don't affect the interface?
+how to erase types?
+
+Ex:
+asserting that a list is longer without necessarily keeping track of the length.
+
+SLTN:
+Dependent types exist because of the explicit notion of type erasure.
+The types which depend on terms are discarded once the terms are proven sound.
+Pure type systems don't need this because everything is types. Terms are just
+unit types.
+
+Type erasure reduces to proving equality between two programs.
+For instance, functions across a dependent list type can be proven using a
+dependent list length annotation. But the same action can be achieved in a pure
+type system by proving the equality of functions over a list with an explicit
+length and functions over a list without an explicit length.
+Basically any compilation level optimization becomes a form of type erasure.
+
+Now I just need to prove equivalence between things.
+
+1 + 1 = 2
+
+f([Nat > 1]) = 0
+
+
+================================================================================
+SUPER IMPORTANT
+================================================================================
+
+support term rewriting instead of f expression style macros?
+
+What's the difference?
+
+macros involve invoking expressions which are matched and replaced.
+
+term rewriting involves substituting portions of the syntax tree and requires
+proof of equivalence.
+
+a simple example is constant folding. how would I explicitly define constant
+folding.
+
+1 + 1 = 2
+Constant + Constant = (Constant + Constant)
+; (x:Constant `+ y:Constant) = x + y `enforces all constant addition is performed at compilation`
+
+Say a function f of a certain expression is rewritable as a separate function application
+; (`f `( x:k `) ) = g(x)
+
+what if I want to say that a function f can be replaced with a function g
+; (`f `( ,x `) ) = g(x)
+; ('f ( ,x )') = g(x)
+
+; ; 'f ( ,x )' = g(x)
+
+; 'a' = b `rejected because terms are not equal`
+
+SKIP ALL THAT, JUST MAKE EXPRESSIONS COMPARABLE
+
+Comparing constant expressions is simple
+
+1 + 1 = 2
+
+(. (x = 1) = x + 1) = 2
+
+What about variables?t can be equal to any unit which is a subtype of the natural numbers`
+x:Natural = 1
+x = 1 `x can only equal one here because the most accurate type is the unit type, 1`
+`x being typed as a Natural means that i
+x:Natural = 2
+
+Register + 1 = 2 = 1 + Register
+
+Natural + Natural = Natural + Natural
+x:Natural + y:Natural = y:Natural + x:Natural
+
+equality rules:
+	- the expressions on both sides must evaluate to the same thing or else
+	  a semantic error occurs.
+
+Types are multisets of features.
+Superpositions are fuzzy multisets.
+Collections are just types with features.
+A collection of types is the same as a single type with all the features of those types.
+Imagine you had tgree squares in 2D space.
+Tge type of each square corresponds to the shape and position.
+The type of a collection of squares is simply the type of three square definitions.
+Trivially:
+	a:[x]
+	b:[y]
+	c:[a.b]
+	d:[x.y]
+	c = d
+
+
+rather than evaluation, make the execution model be term rewriting.
+it's a basic switch and doesn't affect stuff like modules, functions, or
+collections.
+the switch still affects what's fundamentally possible.
+it allows for full unification and equivalence expressions rather than simple variable binding.
+
+
+similar to tail call recursion, what's an optimization for functions that allows modification in place.
+
+n = 0
+f(x) =	? n = 9
+	 n
+	 f(x + 1)
+f(n)
+
+expression rewriting allows for visual programming in a node style.
+
+how to mutate variables.
+structural rules, weakening, contraction, exchange.
+language doesn't do entailment.
+all propositions which are proven true based on other propositions.
+different than sequent calculus.
+
+
+how do equalities correspond to entailment?
+
+each equality is probably true or probably false.
+equalities correspond to individual sequents.
+entailment is the conclusion of the program.
+
+structural rules for sequent calculus don't apply to unification.
+for example, given the equalities
+A: x = y
+B: y = z
+C: z = x
+
+Produces the sequents
+A, B |- C
+B, C |- A
+C, A |- B
+
+and each sequent involves the cut rule so the sequent calculus version explodes.
+much easier to create binding rules regarding variables.
+operations are bind and drop
+
+no sequent structural rules.
+equivalences are different.
+just variable binding and unbinding.
+if a variable appears by itself in an equivalence, opposite an expression, it becomes bound.
+otherwise an equivalence relation is established
+
+there's an expression.
+the expression is made out of symbols.
+symbols are made out of characters.
+notations are used to decide how expressions are formed from symbols.
+
+functions are a higher order version of equivalences.
+it binds variables within the function call syntax.
+Take this function example,
+	f(x : Register) = x + 1
+	^ ^   ^           ^   ^
+	1 2a  3           2b  4
+1 is the name of the function. This variable is bound as a function name.
+2a is a variable bound as a function parameter
+3 is the type of the parameter
+2b is the parameter as it is bound in the definition of the function
+4 is a constant
+
+according to equality, you can have two functions which are named the same thing, but differ in types. 
+Such as,
+	f(x:T) = y
+	f(x:t) = z
+However, two definitions which are equal levels of specificity and are not unifiable, are not accepted.
+	f(x:T) = y
+	f(x:T) = z
+or
+	f(x) = n
+	f(x) = n
+
+what about anonymous functions or things with don't depend on binding?
+functions aren't just equivalences, they're entities which affect context.
+
+equivalences are variable bindings
+higher order equivalences are cases.
+
+x = 1
+f(x) = y + x
+
+================================================================================
+
+New Function syntax:
+
+because ASC has equality expressions, something like,
+	f(x) = x
+also counts as an equality.
+This creates a problem because equality expressions evaluate to a boolean even 
+if they bind variables.
+So now I need a lambda constructor which does not rely on the equal sign or
+binding.
+
+lambda syntax needs a way to declare multiple parameters and a definition.
+say parameters x and y. Output will always be the last expression so parameters
+aren't necessary.
+
+1. Function type way
+	x y -> x + y
+
+2. Lambda Calculus way
+	/. x y . x + y
+
+3. anonymous function way
+	(x y) x + y
+
+4. alternate anonymous function
+	(x y) -> x + y
+
+5. Without lambda symbol
+	(x y) . x + y
+
+6. Using commas
+	x, y -> x + y
+
+7. currying (ew) ((ASC explicitly supports collections so functions should work
+over collections too
+	x -> y -> x + y
+
+8. {x y} -> {x + y}
+
+9. x, y . x + y
+
+10. , x y . x + y
+
+11. / x y . x + y
+
+12. * x y . x + y
+
+13. | x y . x + y
+
+14. (x y) . x + y
+
+Modules:
+	| ... | ...  | ... |
+Types:
+	[ ... ]
+Collections:
+	{ ... }
+Functions:
+	( ... )
+
+15. (x y -> x + y)
+
+16. (x y . x + y)
+
+17. (x y) -> x + y
+
+parens followed by arrow seems best and most recognizable.
+A function tuple followed by an arrow
+although using currying is interesting.
+or instead of currying, allow collections on either side.
+For example,
+	x -> x + 1
+or 
+	{x y} -> x + y
+and 
+	{x y} -> {z = x + y   z + 1}
+
+and then function application is simply juxtaposition
+	f = {x y} -> x + y
+	f(x y)
+
+
+mutation/assignment operator, _ << _ 
+is separate from equality and binding.
+instead of assigning variable, updates value.
+call it  "clobber".
+only works on Data.
+x:Register = 1
+x = 1
+x << 2
+x = 2
+
+
+function is not equality, it's rewriting.
+In math, 
+	f(x) = ...
+is used as both definition and to refer to the function object itself,
+as soon as higher order functions are used, function names become variable bindings again.
+
+f(x) = -> x + 1
+f(x) = x -> x + 1
+
+function is a context to evaluate some expressions.
+
+x -> x + 1
+
+(x y) -> x + y
+is actually 
+{x y} -> x + y
+{x y} -> {y + 1  x + 1}
+
+f = {x y} -> x + y
+f = {x:T y:T} -> 
+(x) . x + 1
+(x y) . x + y
+(x y) -> x + y
+
+
+how to do multiple parameter functions?
+
+what are functions? they're contexts.
+you can inline every function and still get the same behavior.
+
+there's different notations though.
+do you want to declare all types and parameters up front, or have them be natural parts of an expression?
+
+	x:t -> y:T
+vs.
+	x:t -> t {y}
+
+functions are important and need to be distinct from other syntax.
+just write down what I want them to look like.
+
+f = x -> x + 1
+f(x) -> x + 1
+(x) -> x + 1
+
+f(x:T) = -> x + 1
+f = x:n -> y
+f = x:m -> y
+
+in geometric meta language, there's transformations between features.
+	x = [x]
+	y = [y]
+	x -> y
+it can be multiple types as in
+	x = [x] y = [y] z = [z] 
+	p = [p] q = [q] r = [r]
+	x.y.z -> p.q.r
+
+polymorphic functions are piecewise case-matching over different parameters.
+
+a transformation is 
+	x -> y
+a function is
+	f = x -> y
+where f is bound and x is unbound such that
+	f(p) => (x = p) -> y
+
+what does it mean to parameterize something?
+parameterization adds independent variables.
+
+a variable becomes bound at the point in a program where it is certain that 
+the variable can only be substituted with a single existing entity.
+
+variables are bound using equality and functions.
+
+--------------------------------------------------------------------------------
+
+
+functions are transformations between features.
+functions can transform a collection of features.
+the syntax is 
+	x -> y
+
+what is a polymorphic function?
+it's a collection of transformations which are mapped piecewise to cases of
+parameter types.
+
+	t_a = []
+	t_b = []
+	f(x) = -> p(x)
+	f(x:t_a) = -> q(x)
+	f(x:t_b) = -> r(x)
+
+	f = {x y} -> {g(x) m(y)}
+same as
+	f(x y) = -> {g(x) m(y)}
+
+Is notation a lambda or an equality.
+probably an equality because you don't necessarily need a function for everything.
+
+; x 'yuck y ; = yuck-fun (x y)
+
+
+--------------------------------------------------------------------------------
+
+no comments, annotations instead.
+you can ask the compiler to look up documentation about bound variables.
+annotation operator is ` and it takes a string after it.
+so 
+	x = 1 
+	x ` "bound to 1"
+
+--------------------------------------------------------------------------------
+how to explain the top level?
+can't assume that compiler writers will know how to evaluate expressions.
+there's no such thing as order of operations.
+all expressions are left associative because things are read left-to-right.
+
+prefix stuff is always done before suffix stuff. THIS IS GOING TO BE ANNOYING THO
+take this example:
+	x = {1 2 3}
+	y = {1 2 3}
+	y.0 + x.0 = ((y.0) + x).0
+	`when what i want is:` (y.0) + (x.0)
+is this order of operations? yes.
+do i do order of operations for notations? maybe.
+
+
+what about supertypes.
+
+	T = []
+	U = [T]
+	V = [T]
+	x:T
+
+associativity based on types.
+
+say there's operations across some type
+
+; x `+ y = add(x y)
+
+now depending on the types of x and y, you can change associativity.
+	; x:T `+ y:Expression(T) = add(x y)
+is left-associative because the Expression syntax type makes explicit that 
+some other stuff must be evaluated first.
+	; x:Expression(T) `* y:T = add(x y)
+is right-associative.
+
+a + b + c = (a + (b + (c)))
+x * y * z = (((x) * y) * z)
+
+This also helps enforce general operator precedence.
+Take for example addition and collection access.
+
+given an expression without precedence:
+	1 + x.y = (1 + x) . y
+but when addition is defined as 
+	; x:Expression(Number) + y:Expression(Number) = add((x) (y))
+then 
+	1 + x.y = (1) + (x.y)
+due to the definition of Expression being an entire notation, not a constant, variable
+or symbol.
+
+That gets me into syntax types because there's several...
+- Character:
+	Everything that can be written uses one or more characters
+- Symbol:
+	A sequence of characters delimited by blanks (unless some other delimiting rule is applied)
+- Constant:
+	A specific sub-class of symbols which correspond to numeric values
+- Terminal:
+	A symbol which represents an operation and is not evaluated.
+	- Variable
+	A symbol which evaluates to an entity.
+- Notation
+	A single operation supplied with operands which are not other notations.
+- Expression
+	A single notation supplied with operands which may be other notations.
+
+--------------------------------------------------------------------------------
+
+what's the deal with equality, is it full unification?
+how is this enforced?
+anything that requires evaluation is reserved for runtime checks? idk
+
+say
+	1 = 1
+those are both constants which are evaluated at compile time.
+unification is special though, so does it get clobbered by macros? yes
+
+equality has to do with variables and determining which entity a variable evaluates to.
+a special case of equality is assignment.
+if an equality is written where only one side has a single variable, then that variable is always bound to whatever is on the other side.
+if there are previous bindings which are not possible with the new binding, those bindings are undone.
+
+given bound and unbound variables, there's also the notion of dependent and independent variables.
+
+there's also the special case of function polymorphism. i.e.
+	f(x:T) = -> g(x)
+	f(x:U) = -> h(x)
+
+so variable binding is 
+	x = 1
+where x is bound to 1
+
+Independent variables allow for constraints and refinements, but how to specify that independent variables are being used?
+Take the expressions,
+	x = 1
+	y + x = z + x
+
+so the three things I want to do with variables:
+- bind them
+- use them independently of their bindings
+- automatically drop previous bindings that conflict with a new one
+
+binding variables:
+	x = 1
+	y = 2
+	b = 3
+equality comparison:
+	x = 1
+	(x) = 1
+using independent variables
+	z = 1
+	f(z) + x = g(z) + y
+
+but how to use independent variables which are the same symbol as bound variables?
+
+--------------------------------------------------------------------------------
+
+very excellent analogy:
+
+ASC is a tool, just like any other.
+More specifically, ASC is like an angle grinder. 
+Angle grinders are used in almost every craft because they are powerful, precise, and highly versatile.
+The only stipulation is that you have to know how to use one properly.
+For example, the object you're grinding must be held in a stable position and there's only a few safe ways to hold the angle grinder.
+If you use one the right way, angle grinders come with many safety features so that you will never be surprised or hurt.
+Unfortunately most craftspeople don't bother to learn proper safety techniques before they use an angle grinder.
+This often results in cases of permanent maiming or even death.
+When you use ASC properly and safely, you'll create practical and beautiful things.
+Make sure to learn what proper use and safety mean for ASC or else you and others could get hurt.
+
+--------------------------------------------------------------------------------
+
+what things are declarative in my language?
+equality statements are declarative.
+they affect what things may be true in a context.
+do lambdas affect things? no, they're entities.
+there's no syntactic unification because lambdas don't rewrite, they evaluate.
+thus there's evaluational unification.
+
+what about lambdas as used to make independent variables?
+usually you say
+	y = x + 1
+where y represents the return value of some f(x) and x is independent.
+but in ASC, you would have to do
+	y = f(x) = -> x + 1
+but what about non-functional independent variables?
+	x + 1 = y + 2
+this would look like
+	{x y} -> x + 1 = y + 2
+The unification is now stuck inside a lambda context.
+
+what I want is quantification.
+higher order quantification?
+how does this work with types?
+
+existential involves binding a variable so
+	x = 1
+is the same as
+	"there exists an x which is 1"
+
+quantification is... types?
+
+is this higher order logic, or lower order logic.
+I can't do pure existential or universal quantification.
+
+here's the thing though, unification can be reduced
+	x + 1 = y - 2
+	x = y - 2 - 1
+	y = x + 1 + 2
+
+
+so how do I do binding in my language?
+is it explicit, or is it implicit as part of equality and unification?
+
+unification takes two expressions
+; x:Expression `= y:Expression ; = ? (x) = (y) True False
+
+--------------------------------------------------------------------------------
+
+how to talk about collections.
+collections are 
+	{ ... }
+things inside them can be named
+	{ a b c }
+they can be given values 
+	{ a = 1 b = 2 c = 3 }
+
+but now I want to talk about sequences.
+its a collection where everything is the same type and only the cardinality matters
+what do those look like?
+
+using the sequence type
+	Sequence(3 Byte)
+--------------------------------------------------------------------------------
+
+dependent types?
+
+stuff where types can depend on values.
+that's called a function.
+to make a list type that depends on a length, you define the list type as a function of length.
+
+what does polymorphism look like
+well the function form 
+	( _ ) -> _
+means that the function is evaluated immediately (a let notation)
+when you supply the function with variables, but on new bindings, then it enforces those variables to be independent on the RHS
+	((x = 1) -> x + 1) = 2
+	((x) -> x + 1) 
+
+(x) -> f(x) = x -> i
+(x:P) -> f(x) = x -> j
+(x:Q) -> f(x) = x -> k
+(x:Q) -> f(x):l = x -> l
+
+--------------------------------------------------------------------------------
+
+unification algorithm:
+
+unification is an equality of two expressions which returns a boolean true if the expressions are equal or a boolean false if they are not equal.
+	(1 = 1) = true
+	(1 = 2) = false
+unification is evaluational so two expressions must yeild equivilant entities otherwise the unification will not hold.
+
+unification is effectful because it will implicitly bind variables.
+so in 
+	x + 1 = 3
+x is bound to two. And in
+	g(y) = f(2)
+y is bound to a value where if g is applied to it, it's equivalent to f applied to 2
+
+there is a special case of binding where a variable appearing by itself on one side of the equality will always be bound to the other side
+any previous bindings that conflict with the new binding are discarded.
+
+--------------------------------------------------------------------------------
+
+expression types:
+
+symbol
+	a symbol
+constant
+	a symbol which is a number
+notation
+	a single operation such as function application with no nested expressions
+expression
+	any operation with or without expression nesting
+
+--------------------------------------------------------------------------------
+
+functions:
+
+the function constructor:
+	; x:Any `-> y:Any ;
+function application
+	; x:Function y:Any ;
+
+so now i can say 
+	f = 1 -> 2
+	f 1 = 2
+
+you can do polymorphism like
+	f:Function
+	f 1 = -> 2
+	f 2 = -> 3
+
+--------------------------------------------------------------------------------
+
+a collection is { ... }
+and inside it has a bunch of bound variables.
+it can also contain equality constraints.
+a simple collection is
+	{1 2 3}
+collections are just sequences of expressions
+	{f 1  g 2  h 3}
+how are bindings managed in collections?
+the collection constructor enforces that all bindings are local to the collection.
+
+--------------------------------------------------------------------------------
+
+Evaluation model:
+
+Evaluation is based on reducing expressions by substitution.
+Expressions are built of constructors, variables, function applications, and modules.
+These can be organized in terms of variable binding orders.
+
+Constructors are 0-th or bottom order because they do not involve any binding.
+
+Equalities are first-order binding.
+A single variable is bound to a single entity.
+That variable may be replaced with that entity wherever that variable appears.
+
+Function applications are second-order binding.
+Rather than being directly subsituted with an entity, function application corresponds to one or more expressions.
+Those expressions must be reduced in order to substitute the function.
+
+--------------------------------------------------------------------------------
+
+special operations which have implicit or effectful behavior.
+
+Evaluation: ( ... )
+Equality: ... = ...
+Function Construction: ... -> ...
+Type Construction: [ ... ]
+Collection Construction: { ... }
+Function Application: _ ...
+Module Construction: | ... | ... | ... |
+
+these expressions all affect variable binding
+
+--------------------------------------------------------------------------------
+
+What is an effect system?
+It's a method for declaring an abstract typed event and assigning some function to be evaluated when that effect occurs in code.
+Allows for safe(er) non-determinism.
+
+What is the effect model.
+Same as object model? Yes.
+Instead of context, object which has effect handlers and may emit effects.
+Where does an object fit into the language model? Object is a type.
+Because types are geometrical objects.
+
+Are operations objects too? Yes, functions are objects according to the type system.
+
+So a type has effects, effect triggers, and effect handlers.
+
+two objects can emit the same kind of effect so handlers can be designated to handle an effect for a specific object.
+
+what is an effect?
+An effect is an event that results from evaluating an expression, including the evaluation itself.
+An effect is part of the system of types like everything else.
+There is an effect type which classifies all effects.
+An object can emit an effect.
+
+An effect has a trigger and a handler.
+A trigger is some event which is classified by that effect.
+A handler is some expression that is evaluated when the effect is triggered.
+
+from the high level, an algorithm may be complex enough to arrive at an invalid step.
+the environment may also become invalid while an algorithm is still executing.
+effects allow an algorithm to react to an invalid environment or to restart from handling an invalid step.
+
+--------------------------------------------------------------------------------
+
+context switching
+rosetta code task:
+"Using either native language concurrency syntax or frely available libraries,
+writea program to display the strings "Enjoy", "Rosetta", "Code", one string 
+per line, in random order.
+Concurrency syntax must use threads, tasks, co-routines, or whatever 
+concurrency is called in your language."
+
+	f = {	r -> {display "Enjoy" (r 's1 )}
+		r -> {display "Rosetta" (r 's2 )}
+		r -> {display "Code" (r 's3 )} }
+
+	print-all = null -> {
+		(thread f.0 a  thread f.1 a  thread f.2 a)
+		a = x -> ...
+		f <<< filter f x
+		(f.0 b  f.1 b)
+		b = x -> ...
+		f <<< filter f x
+		f.0
+	}
+--------------------------------------------------------------------------------
+
+variable binding with recursive functions.
+
+the rule of independent variables appearing on both sides doesn't work because
+everything appears on both sides.
+	f = x -> f x
+
+	x = y 
+	x:t y:t
+
+--------------------------------------------------------------------------------
+
+Continuations, exceptions, all control flow is contexts.
+
+A context contains a set of bindings, an entry point, an exit point, and a part 
+of a program.
+
+context operations:
+	create		- creates a context
+	enter		- enters a context
+	exit		- exits a context
+	bind		- binds an object in a context
+	clobber		- destrutively changes a binding
+	handle		- handles an effect
+	emit		- emits an effect
+
+--------------------------------------------------------------------------------
+
+functions are used to enter contexts.
+contexts are nested.
+handlers are registers per-context.
+contexts are dynamic instead of lexical.
+a context is some control point bundled with all the bindings required to continue at that control point.
+
+
+--------------------------------------------------------------------------------
+DYNAMIC FUNCTIONS ARE ACTUALLY A TERRIBLE IDEA
+THEY SUCK DON'T DO THEM
+
+the flow of control for any program outside of a parallel environment will always 
+be linear.
+things like coroutines and delimited continuations will always reduce to 
+continuation passing.
+
+
+
+--------------------------------------------------------------------------------
+
+modules and collections are the same.
+only difference is encapsulation.
+also inclusion.
+
+--------------------------------------------------------------------------------
+
+semantic model:
+
+objects have features.
+objects can be typed according to their features.
+objects can be applied to other objects.
+object application may yeild another object or change something about the object its applied to
+applying an object may emit an effect. 
+
+--------------------------------------------------------------------------------
+
+Full delimited continuations must have 6 capabilities...
+1.) 	Asymmetric: be able to move control back to the point where the 
+	continuation was called.
+2.)	Stackful: act like a regular function with its own context and stack.
+3.)	Delimited: have a finite definition that doesn't contain the entire 
+	program.
+4.)	Multi-prompt: ability to be nested and recursive.
+5.)	Reentrant: dynamically capture the program state at a given point as a
+	callable continuation.
+6.)	Clonable: ability to duplicate any continuation object.
+
+--------------------------------------------------------------------------------
+
+how do functions do multiple arity?
+take a function "f" that requires parameters "x" and "y".
+
+f x y -> x op y
+f z -> z.x op z.y
+f {x y} -> x op y
+f = (x y) -> x op y
+f = {x y} -> x op y
+z = {x y}
+f z
+
+a function constructor after a collection construtor exposes the names inside 
+the collection to the function body.
+
+a function constructor after an expression constructor causes the body of 
+
+--------------------------------------------------------------------------------
+
+Events, Event Triggers, and Event Handlers
+
+The underlying environment and objects within the environment may change 
+due to external conditions. When they change, an event may be triggered.
+Triggers may be external or internal.
+
+--------------------------------------------------------------------------------
+
+functions create contexts and destroy them.
+continuations are additional operators to preserve a context and to create 
+additional entry points.
+
+--------------------------------------------------------------------------------
+"continuations"
+contexts as first class entities
+
+three operators:
+	- continue
+	enforces that the immediate context and any bindings it closes over is
+	preserved until the expression has been evaluated
+
+	- begin
+	creates a new context with dynamic extent
+
+	- end
+	discards a dynamic context
+
+--------------------------------------------------------------------------------
+
+continuation test:
+two functions
+
+	f = x -> {print 'a  print 'b}
+	g = x -> {print 'c  print 'd}
+
+how to get evaluation order so that "a c b d"
+
+h << _ -> _ {
+
+}
+
+--------------------------------------------------------------------------------
+
+Contexts
+
+given "(1 + 1)", there are two resources, the left and right operands, which 
+become bound while the operation is performed. Once the operation is complete, 
+the resources and their bindings can be discarded.
+A "Context" is the combination some operations and the bindings required to 
+complete the operations.
+given "x << 1, y << 2, z << 1, y + z, x + y" you can group these expressions 
+by the contexts they create. "(x << 1, y << 2, (z << 3, y + z) x + y)" notice how
+the second nested context allows z to be discarded before the 
+last operation is performed.
+functions allow a context to be declared lexically.
+the above expressions can be rewritten using the function constructor "->"
+"(x -> y -> { (z -> y + z)(3), x + y})(1)(2)"
+functions defined this way have a lexically bounded context.
+
+
+--------------------------------------------------------------------------------
+
+code pages:
+Basic Latin
+Mathematical Alphanumeric Symbols
+
+
+--------------------------------------------------------------------------------
+
+one continuation operator which replaces a context with another.
+contexts are delimited as functions.
+you have the option to create dynamic functions which implement dynamic contexts.
+
+_ ... _
+
+contexts are named as functions.
+lambdas have a "this" operator.
+
+normal function definition uses a collection of expressions.
+x -> { a b c ... }
+
+dynamic function uses a dynamic collection of expressions determined as the program runs
+k -* 1 ... y *- k
+
+dynamic function have to be named so they can be closed
+
+the create operator names a new dynamic function and yeilds an initial value.
+k -* 1
+
+the close operator delimits the body of the dynamic function and yeilds a
+value that the dynamic function will return if it's called again.
+
+the context switch operator replaces a function with another expression
+
+f = x -> ? x = 1 f ... 1
+f 1 = 1 
+
+(x = 1) -* k
+
+what does 
+	x -* k
+mean?
+x is not provided a value so any use of x cannot be evaluated.
+
+maybe it means 
+
+	x -* k
+	y = x + 1
+	k *- y
+
+that anything in between the create and close operators is not evaluated.
+But what if you do this?
+everything is an expression there are no control statements in the language 
+primitives.
+you can create functions that return null
+
+what does replace return?
+the result of its second operand.
+
+in 
+	_ -> <> ... null
+	is null
+
+dynamic scope is delimited?
+
+take f _ -> {
+
+	( _ ) -> {
+		(x = 1) -* k
+	}
+	'does k still exist here?'
+
+--------------------------------------------------------------------------------
+
+VERY IMPORTANT!!
+
+Variable binding and function binding is sugar for syntax binding.
+
+` 'x ` = 1
+is the more verbose version of 
+x = 1
+
+Syntax data types capture syntax which can be evaluated in several different 
+orders.
+
+Take an expression that captures a nested expression.
+	`'e x:Expression` = (x)
+This expression simply evaluates to the expression it captures. 
+It does not evaluate the captured expression.
+There is no real difference in the order that the expression is evaluated here
+because as soon as the syntax is evaluated, the expression is immediately 
+evaluated after.
+
+	`'e x:Expression` = (~'x)
+This version of the syntax evaluates the expression immediately.
+
+
+--------------------------------------------------------------------------------
+
+;; "Test of dynamic scope and the continue operator using the sandwich analogy"
+kitchen _ -> {
+	? open-fridge = sandwitch, 
+	  eat-sandwitch,
+	  (_ -> {
+		_ .\ make-a-sandwitch
+		bread, meat, vegetables, condiments, (assemble)
+		make-a-sandwitch ... eat-sandwitch
+	  })
+}
+
+
+
+
+dynamic function
+
+x = 1 | f
+f | p
+
+----------
+
+Contexts, Continuations, Conditions.
+
+How to make a notation for that.
+Contexts are collections of bindings and expressions you evaluate.
+Functions and collections are refinements of contexts.
+Context constructor is { ... }
+Create a context by constructing and binding one
+Discard a context by discarding the binding.
+Context entry is a fuction call or condition
+Context exit is the continue operator.
+
+what about dynamic contexts.
+
+
+Dynamic contexts 
+	.\ /.
+create a new dynamic context with the name ”x”
+	.\ x
+
+exit the dynamic context
+	x /.
+
+what does this do?
+It creates a collection of bindings resulting from the expressions evaluated
+in between.
+How does it work in scope?
+”x” shadows any previous bindings and appears as a local binding in all inner nested contexts.
+When ”x” is closed, the name of the context remains visible as a local binding until the outermost context containing the binding is closed.
+The dynamic context can be passed as an entity to other functions.
+
+dynamic functions parameterize dynamic functions
+instead of an expression or a collection, a dynamic context is given as the final parameter to the function constructor.
+
+------------------------------------------------
+
+Conditions are a means to dynamically define and evaluate an expression
+
+A condition is defined as an entity and expression pair.
+When the entity occurs, the expression is evaluated.
+
+c | e
+
+This applies to Collections as well.
+
+m = {a = 1 . c = 'n | a}
+m 'n
+
+in order for a condition to be attached to a context, it must be bound
+
+--------------------------------------------------------------------------------
+
+Register is a data-level constructor which allows the programmer to create very
+low-level layouts of data.
+
+Primitive types are Nat for unsigned and Int for signed. Each the cannonical size
+of the environment's Register.
+
+Register takes a list of value ranges and other register types.
+The list is one indexed.
+
+Register < ... >
+
+--------------------------------------------------------------------------------
+
+Collections are encapsulated by default.
+Members are assigned by binding.
+
+How to talk about the type of a Collection?
+It can contain complex unification expressions and piece-wise bindings.
+First, I don't really know what gets an entity included as a member in a 
+collection. Does it get included simply by writing it? 
+	{ 1 }
+Is 1 a member of this collection now? Yes. How is it accessed? IDFK ugh
+Members are completely encapsulated. You can't access them from the outside.
+How do you access them from the inside?
+
+{ 1 x = This 0 }
+
+This keeps an index of all entities in the context.
+
+I want to be able to do the following declarations:
+
+	{1 2 3}
+	{x = 1. y = 2. z = 3.}
+	{'x | 1. 'y | 2. 'z | 3}
+	{x = p. y = q. z = r.}
+How do I access things that have no name?
+Also what is the use of members when they're encapsulated?
+Maybe non-bound members aren't encapsulated? 
+	But now you have implicit projections for only part of the set.
+	This just turns confusing.
+
+I want an encapsulated collection where all members are identified.
+
+	{ ;;"Everything in here is not accessible externally" }
+
+--------------------------------------------------------------------------------
+
+Collections
+
+Collections are multisets.
+You can have one or more elements repeat.
+Collections are compared structurally.
+Each element is distinct and countable.
+Elements are ordered.
+
+Elements can be selected from collections.
+
+c = {'a 'b 'c}
+c/'a
+
+
+--------------------------------------------------------------------------------
+
+What's my minimal language?
+
+Natural numbers only.
+Functions: _ -> _
+Collections: { ... }
+Types: [ ... ]
+Expressions: ` ... `
+
+================================================================================
+Low Level System API implements something like Vulkan for rendering and 
+general purpose compute
+================================================================================
+
+What is an expression type?
+Is it like a function type? Yes. When a function occurs, it gets reduced.
+When an expression occurs, it gets reduced as well.
+An expression binds some parameters.
+
+` 'F x:Nat `
+
+How do expressions work? Apply in the context they're bound in.
+
+The expression constructor constructs a pattern to search the input for.
+
+Expressions are functions, "when you encounter this, do this"
+
+Should symbols or parameters be easier?
+Parameters should be easier, symbols should be explicit.
+
+When is an expression engaged? Is it first class? Does it return anything?
+
+An expression is first class. It's an expression itself and can occur inside a 
+type constructor.
+What are the semantics for how an expression can be engaged then?
+Is an expression valid in the context it's bound in? Yes.
+Does an expression include what it evaluates to, or does it sit by itself?
+
+` ... ` vs. ` ... -> ... `
+
+What's the concept of defining something that taints the contex it's bound in?
+Seems like an expression just by itself doesn't do much unless you explicitly 
+provide it to the context by operating on the context.
+Contexts are the same as images.
+
+--------------------------------------------------------------------------------
+
+What can images do?
+They can internalize or import parts of other images or entire images.
+They can provide encapsulation and interfaces.
+Are images based on names or entities? Entities. Images have structure.
+
+Go back to the "Structure/Suface" object paradigm.
+
+--------------------------------------------------------------------------------
+
+Implementing modules is weird because in a pure type system, the line between 
+what is a specification and an implementation is blurred.
+
+--------------------------------------------------------------------------------
+
+Binding is 
+	x : 1
+where x is an unbound variable and 1 is an expression that x will evaluate to.
+Alternatively, you can bind expressions to each other, as long as the two 
+expressions can yield equivalent values.
+	1 : 1
+The expression on the right is allowed to yield a type of the value on the left.
+	1 : Nat
+
+--------------------------------------------------------------------------------
+
+how does syntax work?
+
+if you look at lisp, you describe syntax as a macro.
+the macro is engaged using function syntax.
+
+in ASC, the macro is engaged by some matching pattern.
+the pattern can be composed of individual characters, symbols, unevaluated expressions, or typed entities.
+A sequence of characters is grouped into symbols using grouping rules.
+Symbols are grouped into expressions using binding rules.
+Expressions are evaluated into entities.
+
+What is the ordering. Is it possible to have ambiguity? 
+Say there's two expressions defined:
+	`'a x:a`,
+	`"a" x:b`,
+which comes first?
+the character match comes first?
+
+characters are matched first, then symbols, then expressions.
+
+two things:
+ how are expressions contextual? 
+  through types
+ how are expressions bound by context?
+  binding.
+
+binding is where an entity is bound to an occurrance within a context.
+There's a few ways things can occur within a context.
+An expression can be constructed in the context.
+A symbol representing the binding can occur in an expression.
+An expression can be bound to a condition.
+
+There's a concept of implicit bindings.
+No there's a concept of variables.
+
+If I say 
+	x : 1
+then where x occurs, it's guaranteed to evaluate to 1.
+But now what is x?
+For an unbound variable, `'x` : 1.
+Rather than talking about variables, talk about just syntax.
+No variables, you bind expressions.
+Expressions can be recursive, 
+	`'x id` : id
+	
+	`'add x:Nat y:Nat` : x + y
+	add 1 2
+	
+what happens when you do
+	`1 + 2`
+does it get evaluated?
+What happens when you put an expression inside an expression constructor?
+What happens when you put an entity inside an expression constructor?
+	` 1 ` 
+1 is now bound.
+When that expression occurs, it yields an expression.
+What happens when an expression is not bound to anything?
+Binding is implicit.
+What about expresisons.
+Expression as a data type is inherently unevaluated.
+so what happens if I say 
+	` 1 `
+But that's not actually the real question because 1 isn't primitive.
+What happens if I say
+	` _ `
+There's no bindings here.
+What if I say
+	x : ` _ `
+
+--------------------------------------------------------------------------------
+
+You describe an expression as 
+backtick followed by an expression description followed by an arrow.
+
+`x` 1
+m = (`x` 1)
+
+an expression enforces a bindidng. 
+where that syntax occurs in a context, that expression will be evaluated.
+
+when you construct an expression, it binds its corresponding expression in This.
+Then, evaluation of an expression becomes the process of determining an
+expression form and then searching for its map within This.
+
+--------------------------------------------------------------------------------
+the concept of This (%).
+"This" refers to the immediate context.
+The context is the collection of bindings.
+For example:
+in a block
+	x : 1 , This x = 1 . 
+
+in a collection
+	{x : 1 .  This x} = {x : 1 .  1}
+
+--------------------------------------------------------------------------------
+
+if code blocks are comma separated lists, how do you nest lists?
+
+	a, b, c
+	a, (x, y, z), b, c
+	a, n -> x, y, z . , b, c
+
+comma is an expression concatenator, if I have 
+	e , e
+then that's one expression
+	(e, e)
+the period delimits expressions so when you write
+	e, e .
+it's the same as
+	(e, e)
+and 
+	e, e . , e
+is
+	((e, e) e)
+Function constructor expects an expression but is also an expression itself.
+	e, x -> e .
+is equivalent to
+	(e, (x -> e))
+so you begin a nested expression with either parentheses or some other prefix
+delimiter such as "_ -> ..."
+the period always delimits the inner expression.
+
+--------------------------------------------------------------------------------
+
+functions are both binding and parameterizing.
+
+to describe a function you need a parameter type and a result type.
+to construct a function, you need a parameter name and an expression.
+
+to describe a function, you write
+	[Function T : T]
+to construct a function, you write
+	f = x -> y
+together, you would write
+	f:[Function T : T] = x -> y
+
+Can I do 
+	f: Function T : T
+yes, Function is the type of all functions and can be applied.
