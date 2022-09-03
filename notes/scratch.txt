@@ -1664,4 +1664,8 @@ a series is a place in an expression where an unknown multiple expressions can b
 
 the following expression contains one of a parameter, symbol, string, and series.
 
-` 'add n m * "end" `  sum : Nat, i : 0 
+--------------------------------------------------------------------------------
+
+recurse without a function?
+
+	dec : n -> 
