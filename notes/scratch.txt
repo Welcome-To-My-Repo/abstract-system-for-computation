@@ -1622,3 +1622,46 @@ together, you would write
 Can I do 
 	f: Function T : T
 yes, Function is the type of all functions and can be applied.
+
+--------------------------------------------------------------------------------
+what is the mechanism behind refinement typing?
+refinement typing happens by using two things:
+	implicit quantification
+	type constructor
+
+implicit quantification is where types and values are the same entity, however
+types imply that multiple values can occur at the place where the type is used.
+value should be yielded.
+If a type is used where a value can be used, then the expression over that type is computed for all possible values of that type, producing another type containing all the possible values of that type.
+
+the type constructor accepts any set of unique values and produces a type representing those values.
+
+Thus
+	A = [1 2 3],
+	f = n -> ? (n = 2) n _ . ,
+	B = [f A]
+or alternatively
+	A = [1 2 3],
+	B = [n:A, ? (n = 2) n _]
+where the entire type is computed at runtime.
+
+--------------------------------------------------------------------------------
+
+Expression constructor describes how an expression is formed.
+An expression can have several components:
+	- parameter
+	- symbol
+	- string
+	- series
+a parameter is a place in an expression where another expression can be nested.
+the result of the nested expression is bound to a variable.
+
+a symbol is a form of punctuation which uses a non-evaluatable symbol to demarcate the form of an expression.
+
+a string is a form of punctuation which uses a non-evaluatable string to demarcate the form of an expression. it is different from symbols because a string can be identified in any character sequence without following symbol grammar.
+
+a series is a place in an expression where an unknown multiple expressions can be nested.
+
+the following expression contains one of a parameter, symbol, string, and series.
+
+` 'add n m * "end" `  sum : Nat, i : 0 
