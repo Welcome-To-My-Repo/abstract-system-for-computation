@@ -1666,6 +1666,9 @@ the following expression contains one of a parameter, symbol, string, and series
 
 --------------------------------------------------------------------------------
 
-recurse without a function?
-
-	dec : n -> 
+can you include the same number of types in a type definition?
+	[a a] = [a]
+is that the same type? not necessarily.
+are both types 
+	[a]
+yes
