@@ -1682,3 +1682,44 @@ I say that C can be the values of A and B by
 If I say that C is the diffefence between A and B
 	C = A - B
 
+--------------------------------------------------------------------------------
+
+there should be a sub-language where all variables are bound and there are no 
+uses of the colon. in other words, type checking has been erased because the 
+program is provably sound.
+
+Issue is conditions which are determined at runtime. Right now, every condition
+has to be guarded by a conditional evaluation.
+
+	x : (n:Nat, ? n > 1 n _),
+	y : (n:Nat, ? n < 99 n _),
+	100 {
+		x | 1 .
+		y | 2 .
+	}
+
+--------------------------------------------------------------------------------
+
+Different kinds of code blocks using expressions P, Q, and R:
+
+Expression List (implicit delimination)
+	P , Q , R
+
+Expression List (explicit delimination)
+	P , Q , R .
+
+C-like code block
+	{P , Q , % := R}
+
+--------------------------------------------------------------------------------
+
+syntax binding problems
+you can bind symbols as variables by putting them into expressions unbound,
+	x : 1
+	x = 1
+but you can't do the same with 
+	`'x` : 1
+	`'x` = 1
+what's 
+	` 'x p:t l * "k" `
+by itself? An expression.
