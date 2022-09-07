@@ -1723,3 +1723,39 @@ but you can't do the same with
 what's 
 	` 'x p:t l * "k" `
 by itself? An expression.
+
+functions over syntax are separate from macros.
+
+how to treat syntax as data?
+
+in lisp everything is a paren delimited list.
+lisp has cons for making new lists.
+what does ASC have? Collections.
+how do you represent syntax as collections?
+in lisp, the head of the list is the function, and the rest of the list is the
+arguments.
+in ASC, the collection type corresponds to the function and the elements of the 
+collection are the arguments.
+so 
+	1 + 1
+in lisp is 
+	(+ 1 1)
+and in asc is
+	(1 '+ 1)
+which returns a collection
+	{1 '+ 1}
+you can do nested expressions this way
+	((3 '- 1) '+ (7 '- 5)) = 
+	{{3 '- 1} '+ {7 '- 5}}
+You can interleave evaluation like so
+	(2 + 2 '+ 2 + 2) =
+	{4 '+ 4}
+so how do you evaluate this?
+	you just evaluate it
+	(1 '+ 1) = {1 '+ 1}
+	({1 '+ 1}) = {1 '+ 1}
+	({1 '+ 1}:Expression) = 2
+
+--------------------------------------------------------------------------------
+
+semantics of first class expressions
