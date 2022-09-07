@@ -1759,3 +1759,10 @@ so how do you evaluate this?
 --------------------------------------------------------------------------------
 
 semantics of first class expressions
+
+Expression is a construction of values.
+The structural type of the collection corresponds to the expression it 
+represents.
+Nested expressions are represented by nesting collections.
+How is an expression different than a regular collection? It has semantics for 
+what to do with the values in the collection.
