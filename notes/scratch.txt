@@ -1766,3 +1766,8 @@ represents.
 Nested expressions are represented by nesting collections.
 How is an expression different than a regular collection? It has semantics for 
 what to do with the values in the collection.
+
+An expression is constructed anonymously like all other computable entities.
+
+Binding an expression in a context makes the expression available within the 
+context.
