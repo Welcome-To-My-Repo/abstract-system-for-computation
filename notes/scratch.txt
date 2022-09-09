@@ -1771,3 +1771,69 @@ An expression is constructed anonymously like all other computable entities.
 
 Binding an expression in a context makes the expression available within the 
 context.
+
+--------------------------------------------------------------------------------
+
+The concept of `This`
+
+Evaluation takes place within a context. 
+The context contains all entities.
+Additionally, the context contains the mappings between expressions and their
+meaning.
+Evaluation is performed by determining the expression and then fetching its map
+from the context.
+The context is a structure of nested collections.
+It represents the activation record of functions and blocks.
+
+--------------------------------------------------------------------------------
+
+I should not provide any operations for combining sets.
+Say that you have a type T.
+You can extend the definition of T with a new type, t, by writing
+	T := [x -> x T t]
+where you provide an identity function on T and a new type.
+It is possible to extend T as
+	[T t]
+however, the new definition of T has the old definition of T as a value such 
+that
+	T' > t
+But if you use an identity function, then implicit quantification separates T
+into its values.
+
+--------------------------------------------------------------------------------
+
+Should you be able to type the parameter of a function? Yes, however you do it
+in the function body.
+	f : x -> x:T
+alternatively, you specify the function type, then the function itself.
+	id = Function T:T . : x -> x
+or use a block
+	id:Function,
+	id T = x -> x
+
+--------------------------------------------------------------------------------
+
+How are expression sequences delimited.
+	a , b c
+	a , b , c
+	a , b , c .
+	a . , b . , c .
+There's three expressions above, how are they delimited.
+	(a, b) (c)
+	(a , b , c)
+	(a , b , c)
+	((a),(b)),(c)
+Function definitions are a problem because they have no ending delimiter.
+That's fine if the function just composes other functions, but it gets ambiguous when you define a function over a block.
+
+	f : x -> g h x
+vs.
+	f : x -> y : g x, z : h y
+in the second example, if this function was defined inside another list
+
+--------------------------------------------------------------------------------
+
+A module is a single file.
+You write a bunch of expressions inside the file.
+Expressions that you bind are visible in the context when you import the module.
+
