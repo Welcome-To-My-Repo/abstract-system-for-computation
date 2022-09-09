@@ -1837,3 +1837,9 @@ A module is a single file.
 You write a bunch of expressions inside the file.
 Expressions that you bind are visible in the context when you import the module.
 
+--------------------------------------------------------------------------------
+
+Collection accessor operation is the backslash.
+Ex:
+	c = {'a ”b” 3} .
+	c\'a, c\Nat, c\Character
