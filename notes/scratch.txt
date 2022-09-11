@@ -1843,3 +1843,16 @@ Collection accessor operation is the backslash.
 Ex:
 	c = {'a ”b” 3} .
 	c\'a, c\Nat, c\Character
+
+
+-- Execution Model
+
+How does ASC execute stuff?
+Execution is part of the ASC module.
+The environment initializes the default ASC module. 
+The module provides functions for handling file and text submission.
+
+Implicit Qualification:
+Implicit quantification involves applying an operation to a type, implying that
+the operation is performed for all values of that type, producing a new type 
+that represents all the values possibly returned from that type.
