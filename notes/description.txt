@@ -1,0 +1,17 @@
+A.S.C.
+The Absctract System for Computation
+
+This document describes the methods for writing and evaluating ASC programs.
+
+ASC is a programming environment.
+
+It consists of an image which can be executed to provide an environment where ASC programs can be run.
+
+The functions are
+... read
+... print
+... find
+... describe
+... inspect
+
+The environment is event-based meaning that on certain events happening, a function will be evaluated.
