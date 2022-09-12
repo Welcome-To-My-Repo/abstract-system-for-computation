@@ -1856,3 +1856,69 @@ Implicit Qualification:
 Implicit quantification involves applying an operation to a type, implying that
 the operation is performed for all values of that type, producing a new type 
 that represents all the values possibly returned from that type.
+
+
+
+How do I describe a self describing system?
+Corecursion.
+I say that a system "x" is given the properties "y", which are defined by a system "x".
+I describe ASC as a program which interprets ASC, written in ASC.
+Then the definition is a matter of what external information is required to comprehend the program.
+What external information is required?
+... Default expression syntax
+... Default expression semantics
+... Requirements of a correct program
+... Requirements of the default module
+... The manner in which evaluation can be reconciled with the real environment.
+Oddly enough type rules are not external information, but are part of the interpreter.
+
+
+
+How does execution happen?
+You submit a program definition to the environment.
+This program can affect other programs by modifying the context.
+A program depends on the context.
+
+
+
+What does the environment provide?
+... Storage
+... Placement
+
+What does evaluation provide?
+... entity duration
+... structured context
+
+
+
+How are expressions typed?
+An expression is a sequence of syntax primitives, a collection.
+So it is typed as a collection.
+You instantiate an expression by listing syntax values inside a pair of backticks.
+Expression parameters are filled by non-quoted expressions or more quoted expressions.
+Because expressions are also structured data, building a quoted expression is as simple as constructing a collection.
+Constructing an expression type requires a new kind of notation.
+Or does it?
+If an expression is a collection of syntax primitives, then the combimation of a collection and function is an expression.
+The pairing represents the correspondence between syntax structure and semantics.
+How is the function paired?
+By constructing a condition dependent on Null.
+This way, a collection formed as
+	e = {_ | 1}
+will immediately evaluate its condition wherever its used,
+	(e) = 1
+Eval inspects a quoted expression to determine if if matches any of the structures of the expressions bound in the context.
+A quoted expression is not required to provode null conditions because it only represents a structure, without semantics.
+Now I don't need backticks.
+
+How to insert and delete elements of collections?
+It involves clobbering.
+Setting something to null erases the binding.
+Using destructuring provides direct access.
+Use clobbering assignment.
+Remove an element
+	c/e := null
+add an element
+	c/e := e
+or 
+	c//#c := e
