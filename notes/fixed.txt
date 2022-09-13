@@ -6,62 +6,62 @@ Syntax:
 underscore signifies one expression
 elipses signifies multiple expressions.
 
-Collection:	{ ... }
-Type:		[ ... ]
-Function:	_ -> _
-Expression:	( ... )
-Expression:	... .
+	Collection:	{ ... }
+	Type:		[ ... ]
+	Function:	_ -> _
+	Expression:	( ... )
+	Expression:	... .
+	
+	logic and:	_ /\ _
+	logic or	_ \/ _
+	logic not:	_ -. _
+	
+	boolean cond:	? _ _ _
+	cond:		_ | _
+	
+	add:		_ + _
+	mul:		_ * _
+	sub:		_ - _
+	div:		_ / _
+	mod:		_ // _
+	
+	type select:	_ / _
+	index select:	_ \ _
+	cardinality:	# _
+	
+	type:		& _
+	size:		^ _
 
-logic and:	_ /\ _
-logic or	_ \/ _
-logic not:	_ -. _
+	address of:	_ @
+	at address:	@ _
 
-boolean cond:	? _ _ _
-cond:		_ | _
-
-add:		_ + _
-mul:		_ * _
-sub:		_ - _
-div:		_ / _
-mod:		_ // _
-
-union:		_ + _
-intersection:	_ * _
-complement:	_ - _
-
-type select:	_ / _
-index select:	_ \ _
-cardinality:	# _
-
-type:		& _
-size:		^ _
-
-address of:	_ @
-at address:	@ _
-
-function call:	_ _
-condition:	_ _
+	function call:	_ _
+	condition:	_ _
 
 Special Constants:
-This		(%)
-Any		(*)
-Nul		(_)
-Boolean
-True
-False
-Register
-Byte
-Character
-Symbol
-Collection
-Function
-Type
-Expression
-Place
+	This		(%)
+	Any		(*)
+	Nul		(_)
+	Boolean
+	True
+	False
+	Register
+	Byte
+	Character
+	Symbol
+	Collection
+	Function
+	Type
+	Expression
+	Place
+
+Thete's no operations for union, intersection, and complement because those can be created from functions.
+Algebraic operations are provided because they work on Registers in constant space.
 
 The concept of "this" which represents the evaluational context as a collection.
 Collections and functions create new contexts.
 When evaluation of a function or collection completes normally, the context is replaced with the result.
+The context can be replaced with the result because the context is not connected to the data flow of expressions being evaluated.
 When evaluating inside a function or collection, you can clobber This to yeild a
 result of whatever you clobber it with.
 
