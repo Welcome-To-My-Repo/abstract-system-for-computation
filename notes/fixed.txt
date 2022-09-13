@@ -10,6 +10,7 @@ Collection:	{ ... }
 Type:		[ ... ]
 Function:	_ -> _
 Expression:	( ... )
+Expression:	... .
 
 logic and:	_ /\ _
 logic or	_ \/ _
@@ -23,6 +24,10 @@ mul:		_ * _
 sub:		_ - _
 div:		_ / _
 mod:		_ // _
+
+union:		_ + _
+intersection:	_ * _
+complement:	_ - _
 
 type select:	_ / _
 index select:	_ \ _
@@ -41,12 +46,18 @@ Special Constants:
 This		(%)
 Any		(*)
 Nul		(_)
+Boolean
+True
+False
+Register
+Byte
 Character
 Symbol
 Collection
 Function
 Type
 Expression
+Place
 
 The concept of "this" which represents the evaluational context as a collection.
 Collections and functions create new contexts.
