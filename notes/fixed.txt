@@ -25,7 +25,7 @@ div:		_ / _
 mod:		_ // _
 
 type select:	_ / _
-pos select:	_ \ _
+index select:	_ \ _
 cardinality:	# _
 
 type:		& _
