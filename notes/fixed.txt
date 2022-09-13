@@ -1,0 +1,5 @@
+This text file describes what aspects of ASC have been fixed.
+
+ASC is an environment for reasoning about and performing computation.
+
+
