@@ -2,4 +2,61 @@ This text file describes what aspects of ASC have been fixed.
 
 ASC is an environment for reasoning about and performing computation.
 
+Syntax: 
+underscore signifies one expression
+elipses signifies multiple expressions.
 
+Collection:	{ ... }
+Type:		[ ... ]
+Function:	_ -> _
+Expression:	( ... )
+
+logic and:	_ /\ _
+logic or	_ \/ _
+logic not:	_ -. _
+
+boolean cond:	? _ _ _
+cond:		_ | _
+
+add:		_ + _
+mul:		_ * _
+sub:		_ - _
+div:		_ / _
+mod:		_ // _
+
+type select:	_ / _
+pos select:	_ \ _
+cardinality:	# _
+
+type:		& _
+size:		^ _
+
+address of:	_ @
+at address:	@ _
+
+function call:	_ _
+condition:	_ _
+
+Special Constants:
+This		(%)
+Any		(*)
+Nul		(_)
+Character
+Symbol
+Collection
+Function
+Type
+Expression
+
+The concept of "this" which represents the evaluational context as a collection.
+Collections and functions create new contexts.
+When evaluation of a function or collection completes normally, the context is replaced with the result.
+When evaluating inside a function or collection, you can clobber This to yeild a
+result of whatever you clobber it with.
+
+
+Collections encapsulate all their bindings.
+They are not visible to the external context.
+
+Everything in the environment has a type, location, and size.
+Any entity in the context can be queried for its type, location, or size.
