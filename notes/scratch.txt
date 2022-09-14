@@ -1929,3 +1929,20 @@ When parsing expressions, the Read function takes a written program and builds a
 The problem is that part of the expression may alter how Read builds the expression.
 Now you need to interleave Read and Evaluate so that once an expression is determined, it's evaluated in order to accurately reflect any changes that the expression might make to other parts of the program.
 Read and Eval can be interleaved by evaluating an expression as soon as it's built.
+
+
+
+Should it be possible to construct the same type twice?
+Yes.
+How then do you construct a comoletely new type?
+	t = x:Type, ? -. (x = *) x _
+Create a unique subtype
+	p:T = -. (Type:T = *:T)
+	q:T = -. (Type:T = *:T)
+The converse should be possible.
+If every new type is unique, create two of the same type.
+Just copy
+	p = [*]
+	q = [*]
+	r = p
+	-. r = q
