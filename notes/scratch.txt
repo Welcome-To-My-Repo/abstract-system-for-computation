@@ -1922,3 +1922,10 @@ add an element
 	c/e := e
 or 
 	c//#c := e
+
+
+
+When parsing expressions, the Read function takes a written program and builds an expression.
+The problem is that part of the expression may alter how Read builds the expression.
+Now you need to interleave Read and Evaluate so that once an expression is determined, it's evaluated in order to accurately reflect any changes that the expression might make to other parts of the program.
+Read and Eval can be interleaved by evaluating an expression as soon as it's built.
