@@ -71,3 +71,16 @@ They are not visible to the external context.
 
 Everything in the environment has a type, location, and size.
 Any entity in the context can be queried for its type, location, or size.
+
+
+
+ASC has a bunch of built in reflection.
+It should be possible to create a program that generates an expression structure, compiles it, and exports it to a standalone executable.
+
+
+
+Compilation and interpretation are just forms of the eval function.
+Compilation is the process of caching an evaluation so that it can be quickly repeated.
+Caching an entity involves anticipating the state it will be in after evaluation and only leaving components unevaluated if they depend on external values.
+Interpreting is just plain eval.
+Expressions have to be queried and their results calculated.
