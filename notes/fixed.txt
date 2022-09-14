@@ -84,3 +84,7 @@ Compilation is the process of caching an evaluation so that it can be quickly re
 Caching an entity involves anticipating the state it will be in after evaluation and only leaving components unevaluated if they depend on external values.
 Interpreting is just plain eval.
 Expressions have to be queried and their results calculated.
+
+
+
+Read and Eval are interleaved.
