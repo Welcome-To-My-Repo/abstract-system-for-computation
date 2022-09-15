@@ -1974,3 +1974,26 @@ Collections have maps which allow you to match on an object.
 	t = ['a 'b 'c],
 	c = {a:t b:t c:t},
 	
+
+
+ASC environment functions:
+... Compute (effectful)
+... Compile (discrete)
+... Describe (discrete)
+... Display (discrete)
+... Export (discrete)
+... Import (effectful)
+... Link (effectful)
+
+Functions are classified as either discrete or effectful.
+A discrete function changes the environment but has no effect on the image.
+An effectful function has an effect on the image.
+Compile, Describe, Display, and Export evaluate to null values.
+Compute, Import, and Link can be used in a program.
+Effectful functions should be given operators as they are part of the primitive language.
+
+
+
+There should be a sublanguage within ASC that resembles Forth. 
+All types are fixed.
+Variables are reduced to context accesses.

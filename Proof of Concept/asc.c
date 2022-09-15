@@ -17,34 +17,18 @@ You should have recived a copy of the GNU General Public License along with
 this program. If not, see <https://www.gnu.org/licenses/>.
 */
 
-#define linux_intel 1
-#define linux_arm 2
-#define microsoft_intel 3
-#define apple_m1 4
-#define apple_intel 5
-
-//set target to one of the definitions above
-#define target linux_intel
+#include <stdlib.h>
 
 typedef unsigned long Char;
 typedef unsigned long Nat;
 
-int main (){
+int main (int argc, char **argv){
 	
 }
 
-#if target == linux_intel
-#elif target == linux_arm
-#elif target == microsoft_intel
-#elif target == apple_m1
-#elif target == apple_intel
-#else
-#error No system target is defined
-#endif
-
 /*
                   GNU GENERAL PUBLIC LICENSE
-                       Version 3, 29 June 2007
+        	    Version 3, 29 June 2007
 
  Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
  Everyone is permitted to copy and distribute verbatim copies
