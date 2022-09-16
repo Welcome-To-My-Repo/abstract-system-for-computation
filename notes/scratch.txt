@@ -1980,10 +1980,13 @@ ASC environment functions:
 ... Compute (effectful)
 ... Compile (discrete)
 ... Describe (discrete)
+... Disassemble (discrete)
 ... Display (discrete)
 ... Export (discrete)
 ... Import (effectful)
+... Inspect (discrete)
 ... Link (effectful)
+... Obfuscate (discrete)
 
 Functions are classified as either discrete or effectful.
 A discrete function changes the environment but has no effect on the image.
@@ -1997,3 +2000,46 @@ Effectful functions should be given operators as they are part of the primitive 
 There should be a sublanguage within ASC that resembles Forth. 
 All types are fixed.
 Variables are reduced to context accesses.
+
+
+
+assume a POSIX environment
+start the utility
+opens an input line
+compute what gets entered
+
+
+
+Can images have a function that executes automatically? Yes.
+
+
+
+How to compute?
+
+
+
+Documentation comments, how do they work?
+You have a string and a semicolon and a string.
+On the other side of the string is an entity.
+If the enity is a symbol constant, then the documentation is affixed to the 
+symbol.
+If the entity is an expression, then the documentation is affixed to that 
+position in the written program.
+When you ask to describe something, you can submit either a symbol or some program.
+
+
+
+How does the system exist?
+You have to invoke the environment which consists of the environment commands
+which affect the environment. The environment supports an image.
+Every time you invoke the environment, it opens a new image.
+The image contains any bindings that are computed.
+The image also contains the default context with all the definitions.
+
+Basic image functions:
+- Compute
+- Display
+- Describe
+- Import
+- Export
+

@@ -22,6 +22,11 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 typedef unsigned long Char;
 typedef unsigned long Nat;
 
+/*
+Command Line Options:
+	asc 
+	asc [program]
+	asc [image] [program]
 int main (int argc, char **argv){
 	
 }

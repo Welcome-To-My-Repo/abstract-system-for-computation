@@ -11,13 +11,14 @@ elipses signifies multiple expressions.
 	Function:	_ -> _
 	Expression:	( ... )
 	Expression:	... .
+	Compound:	... , ...
 	
 	logic and:	_ /\ _
 	logic or	_ \/ _
 	logic not:	_ -. _
 	
 	boolean cond:	? _ _ _
-	cond:		_ | _
+	map:		_ | _
 	
 	add:		_ + _
 	mul:		_ * _
@@ -26,17 +27,17 @@ elipses signifies multiple expressions.
 	mod:		_ // _
 	
 	type select:	_ / _
-	index select:	_ \ _
+	index select:	_ - _
 	cardinality:	# _
 	
 	type:		& _
 	size:		^ _
 
-	address of:	_ @
-	at address:	@ _
+	Location of:	_ @
+	at Location:	@ _
 
 	function call:	_ _
-	condition:	_ _
+	map:		_ _
 
 Special Constants:
 	This		(%)
@@ -53,7 +54,7 @@ Special Constants:
 	Function
 	Type
 	Expression
-	Place
+	Location
 
 Thete's no operations for union, intersection, and complement because those can be created from functions.
 Algebraic operations are provided because they work on Registers in constant space.
@@ -87,4 +88,6 @@ Expressions have to be queried and their results calculated.
 
 
 
-Read and Eval are interleaved.
+Read and Eval are interleaved as the function "Compute"
+It accepts any input assuming the input represents a program.
+The input can be a string, or some other structure representing a program.
