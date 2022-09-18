@@ -2042,3 +2042,46 @@ Basic image functions:
 - Describe
 - Import
 - Export
+
+
+
+What is the minimal subset of the language?
+Algebra over registers.
+Boolean logic over registers.
+Collections.
+Locations.
+
+A function call looks like instantiating a new collection in This and then setting it as This.
+Different than a stack. That's because architectures may become different.
+Key is all bindings are erased so there's only context accesses.
+Need context switching.
+Operations on Registers.
+Activate and Exit Context.
+In the sub-language, these are explicit.
+In the normal languahe, these are implicit in function calls.
+Is the operator hidden? If so, then it's a DSL.
+It should be possible to set a context to anything.
+What does switching a context look like?
+Entering and exiting the context is an address.
+No what is %?
+It's a special binding with special semantics?
+No, you should just be able to set it and find the previous context.
+Maybe that's %\0. 
+Yeah the external context.
+So what is the minimal subset?
+
+This	%
+Index	\
+Clobber	<<
+Number	0123456789
+Arithmetic
+	+
+	-
+	*
+	/
+	//
+Logic
+	/\
+	\/
+	-.
+
