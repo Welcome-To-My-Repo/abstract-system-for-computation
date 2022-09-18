@@ -2084,4 +2084,25 @@ Logic
 	/\
 	\/
 	-.
+What is the sub-language?
+Collections of Registers and Bytes.
+Add elements to the collection.
+Add collections as elements.
+Types are Register, Byte, Collection.
+Operations:
+Access element		_ \ _
+clobber			_ << _
+arithmetic		_ +-*/ _
+logic			_ \/ /\ -. _
+location 		_ @
+dereference		@ _
+collection		{ ... }
+this			%
+conditional		? _ _ _
 
+This is the subset.
+It does not have abstract types, everything is a program with registers and bytes.
+It has collections.
+All binding is reduced to indexed contexts.
+There's no function calls.
+Contexts hold both code and data.
