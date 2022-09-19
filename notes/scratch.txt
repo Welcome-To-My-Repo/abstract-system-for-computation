@@ -2106,3 +2106,30 @@ It has collections.
 All binding is reduced to indexed contexts.
 There's no function calls.
 Contexts hold both code and data.
+
+
+
+What can be represented by a program in my language?
+It's clear that everything is metacircular except for the string that Compute reads from.
+What about maps?
+Submitting an entity to a collection where it decides if the type is correct or not.
+That counts as a program.
+Not really.
+
+
+
+So lets just go with the fact that everything in my programming language is primitive and maps to a program. 
+That was the original goal anyways.
+At least it has more explicit semantics for how it maps to hardware with datatypes than C does.
+Can you make a new Register type?
+That's just a collection.
+You have to pad collections.
+That's easy, just throw a byte or two in between stuff.
+You can make a macro that does that.
+
+
+
+Should GC be part of the primitive language?
+Yes, it's how the context gets managed. 
+Entities that are still accessible cannot be discarded.
+Can't really consider this full GC, but rather callee cleanup.
