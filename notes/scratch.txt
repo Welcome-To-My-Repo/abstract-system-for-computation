@@ -2133,3 +2133,24 @@ Should GC be part of the primitive language?
 Yes, it's how the context gets managed. 
 Entities that are still accessible cannot be discarded.
 Can't really consider this full GC, but rather callee cleanup.
+
+
+
+What does the structure of the implementation look like?
+
+There is a managed execution environment which provides the initial context and the Compute function.
+The environment also provides discrete functions for getting documentation about entities and programs.
+All you need is the compute function and the initial environment.
+
+
+
+How do I represent syntax as data?
+In Lisp it's just a list.
+In ASC it's a collection, I know that much.
+How do I set the difference between a normal collection and an expression?
+It depends on how the Compute algorithm treats them.
+Is there a type difference between an expression and a normal collection? 
+No, an expression is just a normal collection.
+
+Should I have a means of describing an expression?
+No it's just a collection.

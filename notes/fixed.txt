@@ -91,3 +91,7 @@ Expressions have to be queried and their results calculated.
 Read and Eval are interleaved as the function "Compute"
 It accepts any input assuming the input represents a program.
 The input can be a string, or some other structure representing a program.
+
+
+
+The environment is an image.
