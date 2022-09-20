@@ -2226,4 +2226,31 @@ This also makes the context more easily searchable by type because you can simpl
 	% / (Expression | *) to get the collection of all the expressions.
 
 How does select by type work?
-Say you have 
+It compares the possible values of the selecting type and if an element is value-equivalent to any of them, then it is yielded.
+
+
+
+How to do multi-expression functions?
+	x = 1, f : n -> n + 1, y = f x
+In the line here, it's ambiguous that the last expression is separate from the function definition.
+What I want is
+	x = 1, f : n -> (n + 1), y = f x
+But what parses is
+	x = 1, f : n -> (n + 1, y = f x)
+This is the same problem with nested lists.
+	1, 2.1, 2.2, 2.3, 3
+as
+	1, (2.1, 2.2, 2.3), 3
+but it's ambiguous without the parentheses.
+Similarly, the function constructor grabs the expression following it, but it's ambiguous.
+A possible solution is to enclose the entire function definition in parentheses,
+	x = 1, f : (n -> n + 1) , y = f x
+This is the problem with lists having no delimiters. 
+Functions also have no delimiters.
+How do I fix this?
+"Begin" and "End"?
+No, how about the period?
+I already have it, it should be fine to use.
+	x = 1, f : n -> n + 1 ., y = f x .
+Yeah this works just fine.
+So everything I alreay have works anyways.

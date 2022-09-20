@@ -1,6 +1,18 @@
-The Abstract System for Computation
-Copyright Daniel Smith 2022
+ASC
+the Abstract System for Computation
+Standard Documentation
+Revision 0
 
-	The Abstract System for Computation is a language and environment for describing computations, computing them, and reasoning about them.
+Overview
+	The Abstract System for Computation (abbreviated as ASC) is a tool 
+designed for describing, performing, an reasoning about computation. It exists 
+as a written notation and an environment for verifying and interpreting the
+notation. This document outlines the capabilities and requirements of a 
+verified implementation of ASC.
 
-	The ASC environment must provide the basic functions for ASC to work.
+	ASC is a minimal language designed such that it can be adapted to the
+widest possible range of computational scenarios. It provides a simple set of 
+constructs: functions, collections, types. It also introuces new constructs 
+which are generalized forms of multiple different concepts in computation: 
+surfaces, contexts, and reflection.
+
