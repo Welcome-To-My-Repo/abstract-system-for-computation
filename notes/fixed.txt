@@ -6,6 +6,7 @@ Syntax:
 underscore signifies one expression
 elipses signifies multiple expressions.
 
+	Register:	$ ... $
 	Collection:	{ ... }
 	Type:		[ ... ]
 	Function:	_ -> _
@@ -16,6 +17,14 @@ elipses signifies multiple expressions.
 	logic and:	_ /\ _
 	logic or	_ \/ _
 	logic not:	_ -. _
+
+	less:		_ < _
+	greater		_ > _
+	equal:		_ = _
+	inequal:	_ /= _
+
+	bind:		_ : _
+	clobber:	_ << _
 	
 	boolean cond:	? _ _ _
 	map:		_ | _
@@ -27,7 +36,7 @@ elipses signifies multiple expressions.
 	mod:		_ // _
 	
 	type select:	_ / _
-	index select:	_ - _
+	index select:	_ _ _
 	cardinality:	# _
 	
 	type:		& _

@@ -1,0 +1,6 @@
+The Abstract System for Computation
+Copyright Daniel Smith 2022
+
+	The Abstract System for Computation is a language and environment for describing computations, computing them, and reasoning about them.
+
+	The ASC environment must provide the basic functions for ASC to work.

@@ -2154,3 +2154,47 @@ No, an expression is just a normal collection.
 
 Should I have a means of describing an expression?
 No it's just a collection.
+It's all in the notation.
+The apostrophe is the quotation symbol.
+You build an expression from quoted stuff.
+Anything unquoted is evaluated to build the quoted thing.
+	'(1 + 1)
+in this quoted expression, what is evaluated? Nothing.
+What about in this quoted expression?
+	'(1 + 2 - 3)
+What if I get rid of patentheses?
+Then I need a symbol quote and an expression quote.
+	'Symbol
+	'' Expression
+How do I evaluate stuff inside the expression?
+You just evaluate it before you put it in the expression.
+	x = 1, y = 2, '' x + y
+
+
+
+The context (%) or This has special maps for default objects.
+	This 'Function
+returns the function that is currently being evaluated.
+	This 'Context
+returns the context containing This.
+
+Elements of a context are not required to be positioned relative to each other spacially.
+
+
+
+No keyword. What symbol makes a new register? $
+The dollar sign makes a new register.
+	$ Register Byte Byte Register $
+
+
+
+What should I call a map?
+{1 | 1} .
+- Condition
+- Map
+- Association
+- Effect
+- Trigger
+- Handle
+- Surface
+A surface
