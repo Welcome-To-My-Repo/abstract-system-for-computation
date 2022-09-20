@@ -2198,3 +2198,32 @@ What should I call a map?
 - Handle
 - Surface
 A surface
+
+
+
+How does an image work? What do you do with it?
+An image is a collection of entities.
+When you import an image, it's as a collection.
+You interact with the image as a collection.
+An image is everything defined in a single file.
+Each full expression counts as an entity.
+
+Import command is ! or !!
+single exclamation imports the entire image at the point where it's evaluated.
+double exclamation leaves the cache separate from the image and imports at the point where parts of the cache are used.
+
+
+
+How to introduce a new expression?
+An expression is a collection of types and symbols provided as the surface for the context.
+
+	(Expression ".") : Expression. | e -> (e_0)
+	(Expression "\n") : Expression. | e -> (e_0)
+	("(" Expression ")") : Expression. | e -> (e_1)
+
+You want to be explicit that you're making an expression, not just another surface.
+This also makes the context more easily searchable by type because you can simply do
+	% / (Expression | *) to get the collection of all the expressions.
+
+How does select by type work?
+Say you have 

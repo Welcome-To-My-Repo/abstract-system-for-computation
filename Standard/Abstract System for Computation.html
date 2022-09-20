@@ -23,7 +23,7 @@
 		p{padding:1ch;}
 		article, ul, ol{width:70%;max-width:160ch;margin:auto;}
 		aside{width:50%;margin:auto;border:solid 3px var(--nt);}
-		figure{border:solid 3px var(--nt);margin:auto;width:80ch;padding:1ch;}
+		figure{border:solid 3px var(--nt);margin:auto;width:80ch;padding:1ch;margin-bottom:1ch;}
 		figure code{font-family:monospace;display:block;width:fit-content;margin:auto;}
 		figcaption{text-align:center;width:80ch;margin:auto;}
 		h1, h3, aside, figure, table{border-top-left-radius:20px;border-bottom-right-radius:20px;}
@@ -52,20 +52,105 @@
 		<hr>
 		<span style="font-size:calc(1vh + 0.7vh);">Standard Documentation<br>Revision 0</span>
 	</div>
-	<h1 id="Abstract">Abstract</h1>
-	<article>
-		<p>
-			This document describes the notation, semantics, and interpretation of the Abstract System for Computation (ASC).
-			ASC is a small language which is useful for describing and reasoning about complex programs.
-		</p>
-	</article>
-	<h1 id="Introduction">Introduction</h1>
-	<article>
-		<p>More Text</p>
-	</article>
 	<h1 id="Table_of_Contents">Table of Contents</h1>
 	<ol>
-		<li><a href="#Introduction">Introduction</a></li>
 		<li><a href="#Table_of_Contents">Table of Contents</a></li>
+		<li><a href="#Overview">Overview</a></li>
 	</ol>
+	<h1 id="Overview">Overview</h1>
+	<article>
+		<p>
+			The Abstract System for Computation (abbreviated as ASC) is a tool designed for describing, performing, and reasoning about computation.
+			It exists as a written notation and an environment for verifying and interpreting the notation.
+			This document outlines the capabilities and requirements of a verified implementation of ASC.			
+		</p>
+		<p>
+			ASC is a minimal language designed to be as general as possible so it can be adapted to the widest possible range of computational scenarios.
+			It provides a reduced set of constructs: functions, collections, types, and evaluation context.
+			Every entity is represented as some computable value in ASC, including programs themselves.
+		</p>
+	</article>
+	<h1 id="Syntax">Syntax</h1>
+	<article>
+		<p>
+			ASC syntax represents the correspondence between a written program and its computable model.
+			Syntax is composed of a sequence of characters divided into sub-sequences called <a href="#Symbols">Symbols</a>.
+			These symbols are grouped into <a href="#Expressions">Expressions</a>.
+			Expressions are then nested in a structure representing the computable model of a program.
+		</p>
+	</article>
+	<h2 id="Minimum Required Character Set">Minimum Required Character Set</h2>
+	<article>
+		<p>
+			The <a href="#Character Visualization">figure</a> below shows a block composed of the characters required for writing an ASC program.
+			There are two additional required characters, the blank space and the line break which are not shown because they are both invisible.
+		</p>
+	</article>
+	<figure id="Character Visualization">
+		<code>
+			0 1 2 3 4 5 6 7 8 9<br>
+			A B C D E F G H I J K L M N O P Q R S T U V W X Y Z<br>
+			a b c d e f g h i j k l m n o p q r s t u v w x y z<br>
+			+ - * / < > =<br>
+			@ # % ^ & | \ ~ !<br>
+			' " ` . , ; :<br>
+			( ) [ ] { }  ?  _
+		</code>
+		<hr>
+		<figcaption>Visualization of the characters required for ASC.</figcaption>
+	</figure>
+	<h3 id="Character Encoding">Character Encoding</h3>
+	<article>
+		<p>
+			Each character in ASC must correspond to a unique numerical value in an encoding scheme.
+			The specific encoding scheme used depends on the implemntation. 
+			If no encoding scheme is used, an ASC program may assume the default encoding is the <a href="https://www.unicode.org/main.html">Unicode standard encoding</a>.
+		</p>
+	</article>
+	<h2 id="Determining Symbols">Determining Symbols</h2>
+	<article>
+		<p>
+			In a sequence of characters, a symbol is either a sequence of characters where no space or line break occurrs, or it is a punctuation.
+			The <a href="#Valid Symbols">figure</a> below demonstrates valid symbols.
+		</p>
+	</article>
+	<figure>
+		<code>
+			symbol<br>
+			SYMBOL<br>
+			S*Y%M#B!O|L<br>
+		</code>
+		<hr>
+		<figcaption>
+			Examples of individual symbols.
+		</figcaption>
+	</figure>
+	<article>
+		<p>
+			In this next figure, note how symbols are only separated by space and by line breaks, but not by any character.
+		</p>
+	</article>
+	<figure>
+		<code>
+			one two three<br>
+			one1 two2<br>
+			%$* ABC<br>
+		</code>
+		<hr>
+		<figcaption>
+			Examples of two and three individual symbols on the same line.
+		</figcaption>
+	</figure>
+	<article>
+		<p>
+			A special case of symbol is one comprised only of decimal digits (<code>0123456789</code>).
+			Symbols which are all digits are treated as numbers.
+		</p>
+	</article>
+	<h1 id="Default Expressions">Default Expressions</h1>
+	<h2 id="Constructor Expressions">Constructor Expressions</h2>
+	<h3 id="Register Constructor">Register Constructor</h3>
+	<article>
+		<p>The register constructor</p>
+	</article>
 </body>

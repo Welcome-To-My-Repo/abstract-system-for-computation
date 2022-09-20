@@ -6,13 +6,15 @@ Syntax:
 underscore signifies one expression
 elipses signifies multiple expressions.
 
-	Register:	$ ... $
+	Register:	^ ... ^
 	Collection:	{ ... }
 	Type:		[ ... ]
 	Function:	_ -> _
 	Expression:	( ... )
 	Expression:	... .
 	Compound:	... , ...
+	Import:		! _
+	Link:		!! _
 	
 	logic and:	_ /\ _
 	logic or	_ \/ _
@@ -40,7 +42,7 @@ elipses signifies multiple expressions.
 	cardinality:	# _
 	
 	type:		& _
-	size:		^ _
+	size:		## _
 
 	Location of:	_ @
 	at Location:	@ _
