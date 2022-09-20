@@ -14,5 +14,11 @@ verified implementation of ASC.
 widest possible range of computational scenarios. It provides a simple set of 
 constructs: functions, collections, types. It also introuces new constructs 
 which are generalized forms of multiple different concepts in computation: 
-surfaces, contexts, and reflection.
+surfaces, contexts, and reflection. 
+
+Syntax
+	ASC syntax represents the correspondence between a written program and 
+its computable model. Syntax is composed of a sequence of characters divided 
+into sub-sequences called Symbols. These symbols are grouped into Expressions.
+Expressions are then composed into the computable model of a program.
 
