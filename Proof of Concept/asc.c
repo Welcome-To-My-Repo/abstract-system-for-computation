@@ -20,15 +20,21 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 #include <stdlib.h>
 
 typedef unsigned long Char;
-typedef unsigned long Nat;
+typedef unsigned long long Register;
+typedef unsigned char Byte;
+typedef void* Location;
 
-/*
-Command Line Options:
-	asc 
-	asc [program]
-	asc [image] [program]
-int main (int argc, char **argv){
-	
+Char *Input;
+
+int main ()
+{
+	READ:
+	COMPUTE:
+	COMPILE:
+	DESCRIBE:
+	IMPORT:
+	EXPORT:
+	return 0;
 }
 
 /*
