@@ -49,7 +49,8 @@ line breaks. Symbols may also be punctuation defined for an expression.
 
 Expressions
 	Expressions are a sequence of symbols which are associated with a 
-function. Defined expressions are exposed as surfaces in the Context.
+function. Defined expressions are exposed as surfaces in the Context. An 
+Expression is formed as a collection of 
 
 Default Operations
 	When the environment is initialized, it must be provided a set of 

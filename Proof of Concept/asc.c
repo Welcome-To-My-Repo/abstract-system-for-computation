@@ -31,7 +31,6 @@ int main ()
 	READ:
 	COMPUTE:
 	COMPILE:
-	DESCRIBE:
 	IMPORT:
 	EXPORT:
 	return 0;

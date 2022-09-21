@@ -2254,3 +2254,33 @@ I already have it, it should be fine to use.
 	x = 1, f : n -> n + 1 ., y = f x .
 Yeah this works just fine.
 So everything I alreay have works anyways.
+
+
+
+How do I make a new expression?
+It depends on how the Compute function works.
+I know expressions are collections of stuff.
+	{'a "b" [c]}
+But symbols and strings can also be parameters in the expression.
+How would I do function application?
+	{Function Expression} | e -> ((e _ 0) (e _ 1))
+How would I do addition?
+	{Register '+ Register} | e -> add (e _ 0  e _ 1)
+How do you differentiate between punctuation and a parameter?
+By type.
+Constructors are punctuation, types are parameters.
+You can be specific as you want in the type, including the type of a type, but that way it's clear everything else is punctuation.
+How do you tell an expression apart from everything else though?
+By typing the collection as an expression. Then you can discriminate.
+
+
+
+How can things be associative?
+
+	{'k *}
+	{'k Symbol}
+	{'k Expression}
+
+How are these three different?
+The first two are the same. They do not look ahead, but consume the first computable value.
+The third looks ahead until the end of an expression.

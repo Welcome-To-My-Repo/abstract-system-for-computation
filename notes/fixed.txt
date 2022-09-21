@@ -9,7 +9,7 @@ elipses signifies multiple expressions.
 	Register:	^ ... ^
 	Collection:	{ ... }
 	Type:		[ ... ]
-	Function:	_ -> _
+	Function:	_ -> _ 
 	Expression:	( ... )
 	Expression:	... .
 	Compound:	... , ...
@@ -26,7 +26,7 @@ elipses signifies multiple expressions.
 	inequal:	_ /= _
 
 	bind:		_ : _
-	clobber:	_ << _
+	clobber:	_ <- _
 	
 	boolean cond:	? _ _ _
 	map:		_ | _
