@@ -22,3 +22,36 @@ its computable model. Syntax is composed of a sequence of characters divided
 into sub-sequences called Symbols. These symbols are grouped into Expressions.
 Expressions are then composed into the computable model of a program.
 
+	The character block below visualizes the minimum characters required 
+for the ASC notation.
+
+	0 1 2 3 4 5 6 7 8 9
+	A B C D E F G H I J K K M N O P Q R S T U V W X Y Z
+	a b c d e f g h i j k l m n o p q r s t u v w x y z
+	+ - * / < > =
+	@ # % ^ & | \ ~ !
+	' " ` . , ; :
+	( ) [ ] { } _ ?
+
+	The block consists of the ten decimal digits, the upper and lower case
+English alphabet, plus, dash, asterisk, forward slash, less-than, greater-than,
+equality, the "at" symbol, the number sign, percent, caret, ampersand, vertical
+bar, backwars slash, tilde, exclamation, apostrophe, double quote, backquote,
+period, comma, semicolon, colon, round brackets, square brackets, curly 
+brackets, underscore, and the question mark.
+
+	In addition to the required characters above, the blank space and line
+break characters are also required.
+
+Symbols
+	Symbols are sequences of characters that do not include blank space or
+line breaks. Symbols may also be punctuation defined for an expression.
+
+Expressions
+	Expressions are a sequence of symbols which are associated with a 
+function. Defined expressions are exposed as surfaces in the Context.
+
+Default Operations
+	When the environment is initialized, it must be provided a set of 
+entities enabling the default ASC notation.
+
