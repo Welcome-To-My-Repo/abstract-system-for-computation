@@ -2284,3 +2284,20 @@ How can things be associative?
 How are these three different?
 The first two are the same. They do not look ahead, but consume the first computable value.
 The third looks ahead until the end of an expression.
+
+
+
+Should the size of a type and the size of the values of a type be different?
+	x : t,
+	## t /= ## x.
+No, if a type is
+	[Register]
+then 
+	## [Register] = ## Register
+
+
+
+Types are just programs. 
+If you want to determine if a value is included as part of that type, run the programs for that type.
+What about a crazy kind of type?
+	[x:t, y:t, z:k, ?(x p y)(y q z)(z r x)]

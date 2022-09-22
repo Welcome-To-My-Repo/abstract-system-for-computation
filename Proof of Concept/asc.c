@@ -14,9 +14,17 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 */
 
 #include <stdlib.h>
+#include <stdio.h>
+
+typedef long long unsigned int Register;
+typedef unsigned char Byte;
+typedef struct {void *Type; void *Data;} Entity;
 
 int main ()
 {
+	Read:
+	Compute:
+	Display:
 	return 0;
 }
 

@@ -6,7 +6,6 @@ Syntax:
 underscore signifies one expression
 elipses signifies multiple expressions.
 
-	Register:	^ ... ^
 	Collection:	{ ... }
 	Type:		[ ... ]
 	Function:	_ -> _ 
@@ -27,6 +26,7 @@ elipses signifies multiple expressions.
 
 	bind:		_ : _
 	clobber:	_ <- _
+	cast:		_ ~ _
 	
 	boolean cond:	? _ _ _
 	map:		_ | _
