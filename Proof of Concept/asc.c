@@ -1,8 +1,4 @@
 /*
-******* The Abstract System for Computation ************************************
-*************** an implementation in C *****************************************
-
-
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public Licens as published by the 
 Free Software Foundation, either version 2 of the License, or (at your 
@@ -19,20 +15,8 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 
 #include <stdlib.h>
 
-typedef unsigned long Char;
-typedef unsigned long long Register;
-typedef unsigned char Byte;
-typedef void* Location;
-
-Char *Input;
-
 int main ()
 {
-	READ:
-	COMPUTE:
-	COMPILE:
-	IMPORT:
-	EXPORT:
 	return 0;
 }
 
