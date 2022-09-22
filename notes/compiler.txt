@@ -1,63 +1,15 @@
-Compiler uses a crud database design.
+The ASC Compiler
 
-Communication protocol sends code and compilation commands to the compiler.
+It has a single function: Compute.
+Compute accepts written programs, programs as data, or any other format of a program.
+It also has import, link, compile, decompile, and display.
+These are discrete functions because they change the environmet not the image.
 
-executables are extracted by specifying a function or module.
+You invoke the compiler with one or more files you want to run.
+Alternatively, you can invoke the compiler with no files in which case it will open a listener to accept program text.
 
-entities are stored as conflict free replicated data types
+Files are run in sequential order.
 
-syntax highlighting has colors for each category of syntax:
-	- single-character notation strings
-	- multi-character notation strings
-	- notation symbols
-	- constants
-	- type names (collections are types)
-	- function names
-	- module names
-	- ability to assign an extra color to a notation
-
-Compiler is a server entity.
-Keeps a database of code entities that are defined.
-Can have multiple communication sockets sending code and recieving stats
-Sockets can be over the network
-multiple compilers can be chained together and synchronized.
-
-compiler has a visual programming mode where functions are nodes.
-
-calling convention literally matches C so you can just call shit.
-that is to say that the calling convention matches the convention of the 
-underlying system. 
-
---------------------------------------------------------------------------------
-
-compiler api full reflection.
-queries depend on what information is stored.
-types and bound names.
-
-
-
-compiler can provide syntax highlighting hints for code snippets.
-syntax types:
-symbol
-constant
-collection
-function
-type
-module
-expression
-operator
-separator
-
-how should coloring work?
-================================================================================
-
-Compilation environment is image based.
-Image contains code, libraries, executables.
-There is no concept of a "folder of source files".
-The source is collated into one big archival file.
-
-The compilation environment allows multiple simultaneous users.
-Each new user is given a signature.
-The image format performs like a database.
-Code compiled into the image follows the CRUD pattern.
-Images can be merged.
+How does the compiler fit the semantics of ASC?
+It has an initial environment.
+The initial environment contains a mode exposing an interface that accepts programs and feeds them to Compute.
