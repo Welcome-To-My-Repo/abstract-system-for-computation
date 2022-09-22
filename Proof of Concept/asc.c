@@ -18,13 +18,16 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 
 typedef long long unsigned int Register;
 typedef unsigned char Byte;
-typedef struct {void *Type; void *Data;} Entity;
+typedef long long unsigned int Register;
+typedef struct {Register *Type; Register *Data;} Entity;
+
+
 
 int main ()
 {
-	Read:
 	Compute:
 	Display:
+	
 	return 0;
 }
 

@@ -2301,3 +2301,4 @@ Types are just programs.
 If you want to determine if a value is included as part of that type, run the programs for that type.
 What about a crazy kind of type?
 	[x:t, y:t, z:k, ?(x p y)(y q z)(z r x)]
+The easiest way to check a type is to check whether
