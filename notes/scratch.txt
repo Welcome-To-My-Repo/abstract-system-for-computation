@@ -2301,4 +2301,17 @@ Types are just programs.
 If you want to determine if a value is included as part of that type, run the programs for that type.
 What about a crazy kind of type?
 	[x:t, y:t, z:k, ?(x p y)(y q z)(z r x)]
-The easiest way to check a type is to check whether
+
+
+
+Expressions are just a specially interpreted collection.
+Except that everything can be a specially interpreted collection and I turn into a lisp. blech!
+Expressions are their own datatype.
+Quoting expressions and stuff is hard to represent as a collection.
+You start overloading collection semantics with special cases for computation.
+A quoted expression represents a whole program rather than just a collection.
+What's the notation for a collection then?
+The semicolon
+	; "a” T 'T ;
+That makes a new expression.
+
