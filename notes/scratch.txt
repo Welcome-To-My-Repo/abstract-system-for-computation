@@ -2311,7 +2311,8 @@ Quoting expressions and stuff is hard to represent as a collection.
 You start overloading collection semantics with special cases for computation.
 A quoted expression represents a whole program rather than just a collection.
 What's the notation for a collection then?
-The semicolon
+The semicolon,
 	; "a” T 'T ;
 That makes a new expression.
+What operations are available for an expession?
 
