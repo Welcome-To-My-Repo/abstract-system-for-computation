@@ -2315,4 +2315,60 @@ The semicolon,
 	; "a” T 'T ;
 That makes a new expression.
 What operations are available for an expession?
+- quote
+- unquote
+- destructure
+But aren't expressions the same as collections?
+What if I want to write an expression that builds an expression that writes itself?
+That would be a collection.
+You can just take an expression to be a collection though.
+	('f 'x):Expression
+	{'f 'x}:Expression
+	; 'f 'x ;
+these are all the same, but the last line allows you to avoid writing out the type when its use is obvious to the user.
+In all instances, an expression is a collection of syntax entities.
+	Expression: (( 2 '- 1) '+ 1)
+
+
+
+Need semantics for interpreting numerical and string constants.
+There's textual data which acts as a constructor.
+All symbols are strings.
+Numerical symbols are constant values.
+The value expressed by a number is exact.
+Semantics for how a number is interpreted should be at the program level, not a compiler thing.
+The rest of the syntax is the same.
+A numerical symbol is a constant.
+A string is not a constant.
+
+
+
+How to clobber stuff.
+What is a binding?
+A binding is a program that yields some entity held in the context.
+There's two ways, accessing a collection or using an expression.
+Binding is
+	x = 1
+resulting in
+	; 'x ; | %\(# %) <- 1
+in plain english, binding an unbound symbol first clobbers the value being bound into the context. Then it exposes it as a surface using an expression containing the symbol being bound.
+
+
+
+Compute has a type which is dependent on the value the expression produces.
+If I say 
+	(n -> n + 1) (compute "string")
+I get a type error because compute doesn't produce a numerical value.
+
+
+
+Should there be error effects?
+Say
+	f = x -> x + 1. ,
+	f (1 2)
+should application use an error handling thing?
+No.
+What about
+	x : [n = Value, ? n > 30 n _],
+	x = random.
 
