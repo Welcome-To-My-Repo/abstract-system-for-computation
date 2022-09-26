@@ -12,14 +12,26 @@ verified implementation of ASC.
 
 	ASC is a minimal language designed such that it can be adapted to the
 widest possible range of computational scenarios. It provides a simple set of 
-constructs: functions, collections, types. It also introuces new constructs 
-which are generalized forms of multiple different concepts in computation: 
-surfaces, contexts, and reflection. 
+constructs: functions, collections, types.
+
+Environment
+	The environment provides the resources for computation to take place.
+These resources are abstracted as the functions, "Compute", "Display", "Read",
+"Import", and "Export".
+
+Syntax
+Data
+Collections
+Types
+Functions
+Expressions
+
+
 
 Syntax
 	ASC syntax represents the correspondence between a written program and 
-its computable model. Syntax is composed of a sequence of characters divided 
-into sub-sequences called Symbols. These symbols are grouped into Expressions.
+its computable model. Syntax is composed of a sequence of characters grouped 
+into sub-sequences called Symbols. These symbols are combined into Expressions.
 Expressions are then composed into the computable model of a program.
 
 	The character block below visualizes the minimum characters required 
@@ -33,13 +45,8 @@ for the ASC notation.
 	' " ` . , ; :
 	( ) [ ] { } _ ?
 
-	The block consists of the ten decimal digits, the upper and lower case
-English alphabet, plus, dash, asterisk, forward slash, less-than, greater-than,
-equality, the "at" symbol, the number sign, percent, caret, ampersand, vertical
-bar, backwars slash, tilde, exclamation, apostrophe, double quote, backquote,
-period, comma, semicolon, colon, round brackets, square brackets, curly 
-brackets, underscore, and the question mark. In addition to the required 
-characters above, the blank space and line break characters are also required.
+	In addition to the required characters above, the blank space and line 
+break characters are also required.
 
 Symbols
 	Symbols are sequences of characters that do not include blank space or
@@ -54,14 +61,11 @@ Default Operations
 entities enabling the default ASC notation.
 
 Default Types
-	ASC assumes the presence of a collection of initial types. They are:
-- Any
-- Nil
-- Value
-- Data
-- Collection
-- Function
-- Type
-- Expression
-- Symbol
-- Constant
+	ASC assumes the presence of a collection of initial types. The initial 
+types are "Any", "Nil", "Value", "Data", "Collection", "Function", "Type",
+"Expression", "Symbol", and "Constant.
+
+Environment
+	The ASC environment is responsible for marshalling the resources 
+required for computing. It provides functions for accessing resources. They 
+are, "Compute", "Export", "Cache", "Import", "Read", "Display". 
