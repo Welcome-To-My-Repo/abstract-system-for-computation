@@ -1,5 +1,4 @@
-ASC
-the Abstract System for Computation
+A.S.C. the Abstract System for Computation
 Standard Documentation
 Revision 0
 
@@ -15,8 +14,9 @@ Environment
 	The environment provides the resources for computation to take place.
 These resources are abstracted as the functions, "Compute", "Display", "Read", "Import", and "Export".
 
-	The "Compute" function accepts a program model as the result of an invocation of "Read" or another function which creates a model. 
-"Compute" shall 
+	The "Compute" function accepts a program model as the result of an invocation of "Read" or any other function which creates a model. 
+"Compute" shall iteratively replace expressions in the model with the result of submitting that expression to a surface of the context.
+"Compute" choses which expression to submit next by searching the program model for an expression which has no nested expressions and is reached by subscripting the lowest possible index at each nested level.
 
 
 Syntax
