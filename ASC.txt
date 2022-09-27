@@ -19,6 +19,13 @@ Environment
 These resources are abstracted as the functions, "Compute", "Display", "Read",
 "Import", and "Export".
 
+	The "Compute" function accepts a program as the result of "Read" or 
+another function which creates a program.
+
+Computation
+	Computation is the process of deriving a result from a program by 
+performing the operations that compose that program.
+
 Syntax
 Data
 Collections

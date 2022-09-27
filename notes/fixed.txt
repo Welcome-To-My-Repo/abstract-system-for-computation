@@ -7,6 +7,7 @@ underscore signifies one expression
 elipses signifies multiple expressions.
 
 	Collection:	{ ... }
+	Adjacent:	_ ^ _
 	Type:		[ ... ]
 	Function:	_ -> _ 
 	Expression:	( ... )
@@ -38,7 +39,7 @@ elipses signifies multiple expressions.
 	mod:		_ // _
 	
 	type select:	_ / _
-	index select:	_ _ _
+	index select:	_ \ _
 	cardinality:	# _
 	
 	type:		& _
@@ -106,3 +107,7 @@ The input can be a string, or some other structure representing a program.
 
 
 The environment is an image.
+
+
+
+Elements of a collection are not required to be physically adjacent unless they are specified as adjacent using the constructor ^.
