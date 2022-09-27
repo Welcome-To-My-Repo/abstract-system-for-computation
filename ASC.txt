@@ -4,27 +4,20 @@ Standard Documentation
 Revision 0
 
 Overview
-	The Abstract System for Computation (abbreviated as ASC) is a tool 
-designed for describing, performing, an reasoning about computation. It exists 
-as a written notation and an environment for verifying and interpreting the
-notation. This document outlines the capabilities and requirements of a 
-verified implementation of ASC.
+	The Abstract System for Computation (abbreviated as ASC) is a tool designed for describing, performing, an reasoning about computation. 
+It exists as a written notation and an environment for verifying and interpreting the notation. 
+This document outlines the capabilities and requirements of a verified implementation of ASC.
 
-	ASC is a minimal language designed such that it can be adapted to the
-widest possible range of computational scenarios. It provides a simple set of 
-constructs: functions, collections, types.
+	ASC is a minimal language designed such that it can be adapted to the widest possible range of computational scenarios. 
+It provides a simple set of constructs: functions, collections, types.
 
 Environment
 	The environment provides the resources for computation to take place.
-These resources are abstracted as the functions, "Compute", "Display", "Read",
-"Import", and "Export".
+These resources are abstracted as the functions, "Compute", "Display", "Read", "Import", and "Export".
 
-	The "Compute" function accepts a program as the result of "Read" or 
-another function which creates a program.
+	The "Compute" function accepts a program model as the result of an invocation of "Read" or another function which creates a model. 
+"Compute" shall 
 
-Computation
-	Computation is the process of deriving a result from a program by 
-performing the operations that compose that program.
 
 Syntax
 Data
@@ -36,13 +29,12 @@ Expressions
 
 
 Syntax
-	ASC syntax represents the correspondence between a written program and 
-its computable model. Syntax is composed of a sequence of characters grouped 
-into sub-sequences called Symbols. These symbols are combined into Expressions.
+	ASC syntax represents the correspondence between a written program and its computable model. 
+Syntax is composed of a sequence of characters grouped into sub-sequences called Symbols. 
+These symbols are combined into Expressions.
 Expressions are then composed into the computable model of a program.
 
-	The character block below visualizes the minimum characters required 
-for the ASC notation.
+	The character block below visualizes the minimum characters required for the ASC notation.
 
 	0 1 2 3 4 5 6 7 8 9
 	A B C D E F G H I J K K M N O P Q R S T U V W X Y Z
@@ -52,27 +44,12 @@ for the ASC notation.
 	' " ` . , ; :
 	( ) [ ] { } _ ?
 
-	In addition to the required characters above, the blank space and line 
-break characters are also required.
+In addition to the required characters above, the blank space and line break characters are also required.
 
 Symbols
-	Symbols are sequences of characters that do not include blank space or
-line breaks. Symbols may also be punctuation defined for an expression.
+	Symbols are sequences of characters that do not include blank space or line breaks. 
+Symbols may also be punctuation defined for an expression.
 
 Expressions
-	Expressions are a sequence of symbols which are associated with a 
-function. Defined expressions are exposed as surfaces in the Context.
-
-Default Operations
-	When the environment is initialized, it must be provided a set of 
-entities enabling the default ASC notation.
-
-Default Types
-	ASC assumes the presence of a collection of initial types. The initial 
-types are "Any", "Nil", "Value", "Data", "Collection", "Function", "Type",
-"Expression", "Symbol", and "Constant.
-
-Environment
-	The ASC environment is responsible for marshalling the resources 
-required for computing. It provides functions for accessing resources. They 
-are, "Compute", "Export", "Cache", "Import", "Read", "Display". 
+	Expressions are a sequence of symbols which are associated with a function. 
+Defined expressions are exposed as surfaces in the Context.

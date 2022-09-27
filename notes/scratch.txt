@@ -2371,3 +2371,12 @@ No.
 What about
 	x : [n = Value, ? n > 30 n _],
 	x = random.
+
+
+
+what happens when I run a program?
+I have an expression
+	1 + 1
+this is Read as 
+	;1 '+ 1;
+which can be passed to the context to recieve a result.
