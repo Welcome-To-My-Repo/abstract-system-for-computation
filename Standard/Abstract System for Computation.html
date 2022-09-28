@@ -1,122 +1,122 @@
 <!DOCTYPE html>
 <head>
-	<title>Abstract System for Computation</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<style>
-		:root{--bg:#fff7ea;--db:#aa7b58;--fg:#4b2f00;--nt:#00c4aa;--red:#b83f3f;--green:#4dad44;--blue:#5a71d8;--yellow:#c0ae48;--grey:#9e9e9e;--purple:#d431cc;}
-		html{height:100%;width:100%;overflow-x:hidden;}
-		body{height:100%;color:var(--fg);background-color:var(--bg);padding:none;font-size:calc(1vh + 1vw);}
-		hr {color:var(--nt);border-width:3px;border-top:none;border-bottom:solid;}
-		h1, h2, h3, h4 {box-shadow: 0px 0px 0px var(--db);font-size:inherit;text-align:center;margin:auto;font-size:calc(1.4vh + 0.7vw);}
-		h1 {margin-top:1ch;}
-		h1, h3{background-color:var(--nt);padding:1ch;}
-		h2, h4{padding:1ch;}
-		table{border:3px solid var(--nt);width:50%;margin:auto;}
-		h3, h4{margin:auto;}
-		h1{width:95%;}
-		h2{width:70%;border-bottom:solid 3px var(--nt);}
-		h3{width:33%;}
-		h4{border-bottom:solid 3px var(--nt);width:20%;}
-		a{text-decoration:none;color:var(--nt);}
-		a:hover{text-decoration:underline;}
-		p{padding:1ch;}
-		article, ul, ol{width:70%;max-width:160ch;margin:auto;}
-		aside{width:50%;margin:auto;border:solid 3px var(--nt);}
-		figure{border:solid 3px var(--nt);margin:auto;width:95%;padding:1ch;margin-bottom:1ch;overflow:auto;}
-		figure code{font-family:monospace;display:block;width:80ch;margin:auto;font-size:calc(0.8vh + 0.8vw);}
-		figcaption{text-align:center;width:100%;margin:auto;}
-		h1, h3, aside, figure, table{border-top-left-radius:20px;border-bottom-right-radius:20px;}
-		pre{display:inline;}
-		svg{height:60vh;width:50vw;display:block;margin:auto;background-color:var(--nt);border-bottom-right-radius:50px;border-top-left-radius:50px;border:3px solid var(--nt);margin-bottom:5vh;margin-top:5vh;padding:17px;}
-		@media only screen and (max-width: 900px) {article, aside, ul, ol, table{width:100%;}}
-		@media print{h1, h2, h3, h4{page-break-after:avoid;}figure{page-break-inside:avoid;}}
+<title>Abstract System for Computation</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+:root{--bg:#fff7ea;--db:#aa7b58;--fg:#4b2f00;--nt:#00c4aa;--red:#b83f3f;--green:#4dad44;--blue:#5a71d8;--yellow:#c0ae48;--grey:#9e9e9e;--purple:#d431cc;}
+html{height:100%;width:100%;overflow-x:hidden;}
+body{height:100%;color:var(--fg);background-color:var(--bg);padding:none;font-size:calc(1vh + 1vw);}
+hr {color:var(--nt);border-width:3px;border-top:none;border-bottom:solid;}
+h1, h2, h3, h4 {box-shadow: 0px 0px 0px var(--db);font-size:inherit;text-align:center;margin:auto;font-size:calc(1.4vh + 0.7vw);}
+h1 {margin-top:1ch;}
+h1, h3{background-color:var(--nt);padding:1ch;}
+h2, h4{padding:1ch;}
+table{border:3px solid var(--nt);width:50%;margin:auto;}
+h3, h4{margin:auto;}
+h1{width:95%;}
+h2{width:70%;border-bottom:solid 3px var(--nt);}
+h3{width:33%;}
+h4{border-bottom:solid 3px var(--nt);width:20%;}
+a{text-decoration:none;color:var(--nt);}
+a:hover{text-decoration:underline;}
+p{padding:1ch;}
+article, ul, ol{width:70%;max-width:160ch;margin:auto;}
+aside{width:50%;margin:auto;border:solid 3px var(--nt);}
+figure{border:solid 3px var(--nt);margin:auto;width:95%;padding:1ch;margin-bottom:1ch;overflow:auto;}
+figure code{font-family:monospace;display:block;width:80ch;margin:auto;font-size:calc(0.8vh + 0.8vw);}
+figcaption{text-align:center;width:100%;margin:auto;}
+h1, h3, aside, figure, table{border-top-left-radius:20px;border-bottom-right-radius:20px;}
+pre{display:inline;}
+svg{height:60vh;width:50vw;display:block;margin:auto;background-color:var(--nt);border-bottom-right-radius:50px;border-top-left-radius:50px;border:3px solid var(--nt);margin-bottom:5vh;margin-top:5vh;padding:17px;}
+@media only screen and (max-width: 900px) {article, aside, ul, ol, table{width:100%;}}
+@media print{h1, h2, h3, h4{page-break-after:avoid;}figure{page-break-inside:avoid;}}
 </style>
 </head>
 <body>
-	<svg viewBox="0 0 50 70" version="1.1" id="ASC-logo" xmlns="http://www.w3.org/2000/svg">
-		<ellipse 
-			style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-			ry="11" rx="27" cy="5" cx="36" transform="matrix(0.8,0.6,-0.7,0.7,0,0)">
-		</ellipse>
-		<path
-			style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:5;stroke-dasharray:none;stroke-opacity:1"
-			d="M 36,43 A 13,13 0 0 1 23,57 13,13 0 0 1 11,43 13,13 0 0 1 23,30 13,13 0 0 1 36,44" />
-		<path
-			style="fill:none;stroke:var(--fg);stroke-width:1.85208;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-			d="M 32,1 16,68"/>
-	</svg>
-	<div style="text-align:center;break-after:all;height:30vh;">
-		<span style="font-size:calc(2.8vh + 1vw);">ASC<br></span>
-		<span style="font-size:calc(1.4vh + 0.7vw);">the Abstract System for Computation</span>
-		<hr>
-		<span style="font-size:calc(1vh + 0.7vh);">Standard Documentation<br>Revision 0</span>
-	</div>
-	<h1 id="Table_of_Contents">Table of Contents</h1>
-	<ol>
-		<li><a href="#Table_of_Contents">Table of Contents</a></li>
-		<li><a href="#Overview">Overview</a></li>
-	</ol>
-	<h1 id="Overview">Overview</h1>
-	<article>
-		<p>
-			The Abstract System for Computation (abbreviated as ASC) is a tool designed for describing, performing, and reasoning about computation.
-			It exists as a written notation and an environment for verifying and interpreting the notation.
-			This document outlines the capabilities and requirements of a verified implementation of ASC.			
-		</p>
-		<p>
-			ASC is a minimal language designed to be as general as possible so it can be adapted to the widest possible range of computational scenarios.
-			It provides a reduced set of constructs: functions, collections, types, and evaluation context.
-			Every entity is represented as some computable value in ASC, including programs themselves.
-		</p>
-	</article>
-	<h1 id="Syntax">Syntax</h1>
-	<article>
-		<p>
-			ASC syntax represents the correspondence between a written program and its computable model.
-			Syntax is composed of a sequence of characters divided into sub-sequences called <a href="#Symbols">Symbols</a>.
-			These symbols are grouped into <a href="#Expressions">Expressions</a>.
-			Expressions are then nested in a structure representing the computable model of a program.
-		</p>
-	</article>
-	<h2 id="Minimum Required Character Set">Minimum Required Character Set</h2>
-	<article>
-		<p>
-			The <a href="#Character Visualization">figure</a> below shows a block composed of the characters required for writing an ASC program.
-			There are two additional required characters, the blank space and the line break which are not shown because they are both invisible.
-		</p>
-	</article>
-	<figure id="Character Visualization">
-		<code>
-			0 1 2 3 4 5 6 7 8 9<br>
-			A B C D E F G H I J K L M N O P Q R S T U V W X Y Z<br>
-			a b c d e f g h i j k l m n o p q r s t u v w x y z<br>
-			+ - * / &lt; &gt; =<br>
-			@ # % ^ &amp; | \ ~ !<br>
-			' " ` . , ; :<br>
-			( ) [ ] { }  ?  _
-		</code>
-		<hr>
-		<figcaption>Visualization of the characters required for ASC.</figcaption>
-	</figure>
-	<h3 id="Character Encoding">Character Encoding</h3>
-	<article>
-		<p>
-			Each character in ASC must correspond to a unique numerical value in an encoding scheme.
-			The specific encoding scheme used depends on the implemntation. 
-			If no encoding scheme is used, an ASC program may assume the default encoding is the <a href="https://www.unicode.org/main.html">Unicode standard encoding</a>.
-		</p>
-	</article>
-	<h2 id="Determining Symbols">Determining Symbols</h2>
-	<article>
-		<p>
-			In a sequence of characters, a symbol is either a sequence of characters where no space or line break occurrs, or it is a punctuation.
-		</p>
-	</article>
-	<aside>
-		<p>
-			A special case of symbol is one comprised only of decimal digits (<code>0123456789</code>).
-			Symbols which are all digits are treated as <a href="#Numbers">numbers</a>.
-		</p>
-	</aside>
+<svg viewBox="0 0 50 70" version="1.1" id="ASC-logo" xmlns="http://www.w3.org/2000/svg">
+<ellipse 
+style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+ry="11" rx="27" cy="5" cx="36" transform="matrix(0.8,0.6,-0.7,0.7,0,0)">
+</ellipse>
+<path
+style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:5;stroke-dasharray:none;stroke-opacity:1"
+d="M 36,43 A 13,13 0 0 1 23,57 13,13 0 0 1 11,43 13,13 0 0 1 23,30 13,13 0 0 1 36,44" />
+<path
+style="fill:none;stroke:var(--fg);stroke-width:1.85208;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+d="M 32,1 16,68"/>
+</svg>
+<div style="text-align:center;break-after:all;height:30vh;">
+<span style="font-size:calc(2.8vh + 1vw);">ASC<br></span>
+<span style="font-size:calc(1.4vh + 0.7vw);">the Abstract System for Computation</span>
+<hr>
+<span style="font-size:calc(1vh + 0.7vh);">Standard Documentation<br>Revision 0</span>
+</div>
+<h1 id="Table_of_Contents">Table of Contents</h1>
+<ol>
+<li><a href="#Table_of_Contents">Table of Contents</a></li>
+<li><a href="#Overview">Overview</a></li>
+</ol>
+<h1 id="Overview">Overview</h1>
+<article>
+<p>
+The Abstract System for Computation (abbreviated as ASC) is a tool designed for describing, performing, and reasoning about computation.
+It exists as a written notation and an environment for verifying and interpreting the notation.
+This document outlines the capabilities and requirements of a verified implementation of ASC.			
+</p>
+<p>
+ASC is a minimal language designed to be as general as possible so it can be adapted to the widest possible range of computational scenarios.
+It provides a reduced set of constructs: functions, collections, types, and evaluation context.
+Every entity is represented as some computable value in ASC, including programs themselves.
+</p>
+</article>
+<h1 id="Syntax">Syntax</h1>
+<article>
+<p>
+ASC syntax represents the correspondence between a written program and its computable model.
+Syntax is composed of a sequence of characters divided into sub-sequences called <a href="#Symbols">Symbols</a>.
+These symbols are grouped into <a href="#Expressions">Expressions</a>.
+Expressions are then nested in a structure representing the computable model of a program.
+</p>
+</article>
+<h2 id="Minimum Required Character Set">Minimum Required Character Set</h2>
+<article>
+<p>
+The <a href="#Character Visualization">figure</a> below shows a block composed of the characters required for writing an ASC program.
+There are two additional required characters, the blank space and the line break which are not shown because they are both invisible.
+</p>
+</article>
+<figure id="Character Visualization">
+<code>
+0 1 2 3 4 5 6 7 8 9<br>
+A B C D E F G H I J K L M N O P Q R S T U V W X Y Z<br>
+a b c d e f g h i j k l m n o p q r s t u v w x y z<br>
++ - * / &lt; &gt; =<br>
+@ # % ^ &amp; | \ ~ !<br>
+' " ` . , ; :<br>
+( ) [ ] { }  ?  _
+</code>
+<hr>
+<figcaption>Visualization of the characters required for ASC.</figcaption>
+</figure>
+<h3 id="Character Encoding">Character Encoding</h3>
+<article>
+<p>
+Each character in ASC must correspond to a unique numerical value in an encoding scheme.
+The specific encoding scheme used depends on the implemntation. 
+If no encoding scheme is used, an ASC program may assume the default encoding is the <a href="https://www.unicode.org/main.html">Unicode standard encoding</a>.
+</p>
+</article>
+<h2 id="Determining Symbols">Determining Symbols</h2>
+<article>
+<p>
+In a sequence of characters, a symbol is either a sequence of characters where no space or line break occurrs, or it is a punctuation.
+</p>
+</article>
+<aside>
+<p>
+A special case of symbol is one comprised only of decimal digits (<code>0123456789</code>).
+Symbols which are all digits are treated as <a href="#Numbers">numbers</a>.
+</p>
+</aside>
 </body>
