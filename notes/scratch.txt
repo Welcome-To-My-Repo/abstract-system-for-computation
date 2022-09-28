@@ -2372,7 +2372,7 @@ What about
 	x : [n = Value, ? n > 30 n _],
 	x = random.
 
-D@niel13
+
 
 what happens when I run a program?
 I have an expression
@@ -2393,3 +2393,20 @@ How to tell the difference between an expression and a collection?
 	{ {'a 'b 'c} '/ 'a}
 Because you need to have a quote and unquote.
 	quote ({'a 'b 'c} / 'a)
+
+
+
+How do you treat a symbol as data?
+The single quote
+	'symbol
+How do you treat an expression as data?
+Single quote with parentheses
+	'(expression)
+How do you evaluate a quoted symbol?
+	('symbol)
+How do you evaluate a quoted expression?
+	('(expression))
+How do you destructure a quoted expression?
+'(1 + 1)\0 = 1
+'(1 + 1)\1 = '+
+'(1 + 1)\2 = 1
