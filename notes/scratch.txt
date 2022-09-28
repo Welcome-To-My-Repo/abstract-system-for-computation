@@ -2385,7 +2385,9 @@ which can be passed to the context to recieve a result.
 
 Is there a way to cause a dynamic error during computation? 
 Yes, but it's hard to achieve.
-	; 1 '+ (; 'x ;) ;
+	c = {% ``x},
+	% <- c .
+This is a type error
 
 
 
@@ -2414,3 +2416,9 @@ Why are some symbols quoted but other symbols are not?
 It depends on the expression form.
 In the case of addition, it's 
 	; Value '+ Value ;
+
+
+
+How does evaluation work?
+The initial context has a number of built-in functions which facilitate the default expression semantics.
+
