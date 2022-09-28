@@ -2410,3 +2410,7 @@ How do you destructure a quoted expression?
 '(1 + 1)\0 = 1
 '(1 + 1)\1 = '+
 '(1 + 1)\2 = 1
+Why are some symbols quoted but other symbols are not?
+It depends on the expression form.
+In the case of addition, it's 
+	; Value '+ Value ;
