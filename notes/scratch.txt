@@ -2372,7 +2372,7 @@ What about
 	x : [n = Value, ? n > 30 n _],
 	x = random.
 
-
+D@niel13
 
 what happens when I run a program?
 I have an expression
@@ -2380,3 +2380,16 @@ I have an expression
 this is Read as 
 	;1 '+ 1;
 which can be passed to the context to recieve a result.
+
+
+
+Is there a way to cause a dynamic error during computation? 
+Yes, but it's hard to achieve.
+	; 1 '+ (; 'x ;) ;
+
+
+
+How to tell the difference between an expression and a collection?
+	{ {'a 'b 'c} '/ 'a}
+Because you need to have a quote and unquote.
+	quote ({'a 'b 'c} / 'a)
