@@ -2416,9 +2416,31 @@ Why are some symbols quoted but other symbols are not?
 It depends on the expression form.
 In the case of addition, it's 
 	; Value '+ Value ;
+quotation works by using the apostrophe to quote an expression
+	' 1 + 1
+	' n -> n + 1
+You quote a symbol as
+	` x
+or
+	` x.
+to avoid ambiguity
+
+The expression constructor is two semicolons.
+It allows shorthand notation for various forms of repetition.
+	; Value 'x "%" [A B] * ;
 
 
 
 How does evaluation work?
 The initial context has a number of built-in functions which facilitate the default expression semantics.
-
+A function entity has an implementation dependent representation.
+All the default types depend on the implementation and environment.
+What is my evaluation model?
+Compute gets an expression, it passes the expression to the context surface.
+It the expression is defined, then the context returns some other expression to compute.
+This process repeats until compute passes a default expression and recieves an entity.
+What about functions?
+Functions are an assumed type and application is a default expression.
+Applying a function is managed by the environment.
+Functions contain expressions though.
+Functions are equivalent to binding a symbol and computing a quoted expression.
