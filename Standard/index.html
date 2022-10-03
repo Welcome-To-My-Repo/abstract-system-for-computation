@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="asc/style.css">
 <style>
-body{width:100vw;height:100vh;}
-iframe{border:none;width:100%;height:100%;}
+body{width:100vw;height:100vh;padding:0;margin:0;}
+iframe{border:none;width:100%;height:100%;margin:0;}
 #ASC-icon{cursor:move;width:5ch;height:7ch;background-color:var(--bg);border:none;padding:none;margin:0;padding:0;margin-left:auto;margin-right:auto;}
 #contents{width:fit-content;height:fit-content;display:block;position:fixed;z-index:100;margin:auto;;border-bottom-right-radius:50px;border-top-left-radius:50px;border:3px solid var(--nt);background-color:var(--bg);text-align:center;font-size:calc(1vh + 1vw);padding:1ch;}
 #contents a{display:inline-block;background-color:var(--bg);color:var(--fg);border:none;font-size:calc(1vh + 1vw);padding:0.5ch;}
@@ -29,7 +29,7 @@ iframe{border:none;width:100%;height:100%;}
 		d="M 32,1 16,68"/>
 		</svg>
 		</div>
-		<a>&lsaquo;</a> <a>&#x205d;</a> <a>&rsaquo;</a>
+		<a>&lsaquo;</a> <a href="asc/contents.html" target="view">&#x205d;</a> <a>&rsaquo;</a>
 	</div>
 	<iframe src="asc/cover.html" name="view"></iframe>
 </body>
@@ -38,7 +38,7 @@ iframe{border:none;width:100%;height:100%;}
 	function dragElement(elmnt)
 	{
 		var pos1 = 0; pos2 = 0; pos3 = 0; pos4 = 0;
-		elmnt.onmousedown = dragMouseDown;
+		document.onmousedown = dragMouseDown;
 		function dragMouseDown(e)
 		{
 			e = e || window.event;
