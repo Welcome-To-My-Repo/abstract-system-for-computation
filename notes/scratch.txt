@@ -2472,3 +2472,40 @@ It recieves another expression and calls Compute on it.
 What computes compute?
 The environment.
 The environment provides the basic functions from outside the scope of the language even though the language can inspect its own environment.
+
+
+
+Collections use result polymorphism.
+	1 {1 | 'a  1 | 'b} : 'b = 'b
+
+Can functions be defined for multiple things?
+Yes.
+	f : x -> x + 1,
+	f : x -> x / T,
+	f {n:T} = T,
+	f 1 = 2.
+
+
+
+What happens when you clobber the context?
+How does it affect control?
+Because the expression being evaluated is inside the context.
+	n = 1,
+	n <- n + 1,
+	% <- n + 1,
+	"code beyond here is not evalutated",
+	n <- n + 1.
+Why?
+
+
+
+What is the context model?
+In a context, you have
+- The expression being evaluated
+- The external context
+- Bindings
+How is this structured?
+External context is first.
+Then the expression being evaluated.
+Functions are deferred computation.
+
