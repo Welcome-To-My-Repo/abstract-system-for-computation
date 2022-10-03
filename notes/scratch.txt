@@ -2508,3 +2508,8 @@ How is this structured?
 External context is first.
 Then the expression being evaluated.
 Functions are deferred computation.
+
+
+
+Compute takes an experession and passes it to the context.
+The context returns another expression.

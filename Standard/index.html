@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<head>
+<title>Abstract System for Computation</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="asc/style.css">
+<style>
+body{width:100vw;height:100vh;}
+iframe{border:none;width:100%;height:100%;}
+#ASC-icon{cursor:move;width:5ch;height:7ch;background-color:var(--bg);border:none;padding:none;margin:0;padding:0;margin-left:auto;margin-right:auto;}
+#contents{width:fit-content;height:fit-content;display:block;position:fixed;z-index:100;margin:auto;;border-bottom-right-radius:50px;border-top-left-radius:50px;border:3px solid var(--nt);background-color:var(--bg);text-align:center;font-size:calc(1vh + 1vw);padding:1ch;}
+#contents a{display:inline-block;background-color:var(--bg);color:var(--fg);border:none;font-size:calc(1vh + 1vw);padding:0.5ch;}
+#contents a:hover{background-color:var(--nt);}
+</style>
+</head>
+<body>
+	<div id="contents">
+		<div id="icon">
+		<svg viewBox="-6 0 60 70" version="1.1" id="ASC-icon" xmlns="http://www.w3.org/2000/svg">
+		<ellipse 
+		style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+		ry="11" rx="27" cy="5" cx="36" transform="matrix(0.8,0.6,-0.7,0.7,0,0)">
+		</ellipse>
+		<path
+		style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:5;stroke-dasharray:none;stroke-opacity:1"
+		d="M 36,43 A 13,13 0 0 1 23,57 13,13 0 0 1 11,43 13,13 0 0 1 23,30 13,13 0 0 1 36,44" />
+		<path
+		style="fill:none;stroke:var(--fg);stroke-width:1.85208;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+		d="M 32,1 16,68"/>
+		</svg>
+		</div>
+		<a>&lsaquo;</a> <a>&#x205d;</a> <a>&rsaquo;</a>
+	</div>
+	<iframe src="asc/cover.html" name="view"></iframe>
+</body>
+<script>
+	dragElement(document.getElementById("contents"));
+	function dragElement(elmnt)
+	{
+		var pos1 = 0; pos2 = 0; pos3 = 0; pos4 = 0;
+		elmnt.onmousedown = dragMouseDown;
+		function dragMouseDown(e)
+		{
+			e = e || window.event;
+			e.preventDefault();
+			pos3 = e.clientX;
+			pos4 = e.clientY;
+			document.onmouseup = closeDragElement;
+			document.onmousemove = elementDrag;
+		}
+		function elementDrag(e)
+		{
+			e = e || window.event;
+			e.preventDefault();
+			pos1 = pos3 - e.clientX;
+			pos2 = pos4 - e.clientY;
+			pos3 = e.clientX;
+			pos4 = e.clientY;
+			elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+			elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+		}
+		function closeDragElement () {
+			document.onmouseup = null;
+			document.onmousemove = null;
+		}
+	}
+</script>
