@@ -2444,3 +2444,31 @@ Functions are an assumed type and application is a default expression.
 Applying a function is managed by the environment.
 Functions contain expressions though.
 Functions are equivalent to binding a symbol and computing a quoted expression.
+
+
+
+Evaluation model is this, for every function call and surface interaction, a new context is created.
+In each context is
+	{ External-Context : Collection
+	  Current-Expression : Expression
+	  Other-Stuff : * }
+Once Compute completes the current expression, it replaces the context with the result in the external context.
+If you replace the context with a value, it short circuits the computation.
+If you replace the current expression with another expression, it short circuits the computation, but you keep the same context.
+
+
+
+How is an expression evaluated?
+	"First bind an expression as a surface",
+	% + {{'add Value 'to Value}| e -> e\1 + e\3},
+	"Then you use the expression",
+	add 1 to 2.
+Now read reads in the expression.
+You get 
+	{'add 1 'to 2}
+Compute passes it to the context surface
+	(e\Expression %)
+It recieves another expression and calls Compute on it.
+What computes compute?
+The environment.
+The environment provides the basic functions from outside the scope of the language even though the language can inspect its own environment.
