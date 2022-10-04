@@ -3,47 +3,20 @@
 <title>Abstract System for Computation</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-:root{--bg:#fff7ea;--db:#aa7b58;--fg:#4b2f00;--nt:#00c4aa;--red:#b83f3f;--green:#4dad44;--blue:#5a71d8;--yellow:#c0ae48;--grey:#9e9e9e;--purple:#d431cc;}
-html{height:100%;width:100%;overflow-x:hidden;}
-body{height:100%;color:var(--fg);background-color:var(--bg);padding:none;font-size:calc(1vh + 1vw);}
-hr {color:var(--nt);border-width:3px;border-top:none;border-bottom:solid;}
-h1, h2, h3, h4 {box-shadow: 0px 0px 0px var(--db);font-size:inherit;text-align:center;margin:auto;font-size:calc(1.4vh + 0.7vw);}
-h1 {margin-top:1ch;}
-h1, h3{background-color:var(--nt);padding:1ch;}
-h2, h4{padding:1ch;}
-table{border:3px solid var(--nt);width:50%;margin:auto;}
-h3, h4{margin:auto;}
-h1{width:95%;}
-h2{width:70%;border-bottom:solid 3px var(--nt);}
-h3{width:33%;}
-h4{border-bottom:solid 3px var(--nt);width:20%;}
-a{text-decoration:none;color:var(--nt);}
-a:hover{text-decoration:underline;}
-p{padding:1ch;}
-article, ul, ol{width:70%;max-width:160ch;margin:auto;}
-aside{width:50%;margin:auto;border:solid 3px var(--nt);}
-figure{border:solid 3px var(--nt);margin:auto;width:95%;padding:1ch;margin-bottom:1ch;overflow:auto;}
-figure code{font-family:monospace;display:block;width:80ch;margin:auto;font-size:calc(0.8vh + 0.8vw);}
-figcaption{text-align:center;width:100%;margin:auto;}
-h1, h3, aside, figure, table{border-top-left-radius:20px;border-bottom-right-radius:20px;}
-pre{display:inline;}
-svg{height:60vh;width:50vw;display:block;margin:auto;background-color:var(--nt);border-bottom-right-radius:50px;border-top-left-radius:50px;border:3px solid var(--nt);margin-bottom:5vh;margin-top:5vh;padding:17px;}
-@media only screen and (max-width: 900px) {article, aside, ul, ol, table{width:100%;}}
-@media print{h1, h2, h3, h4{page-break-after:avoid;}figure{page-break-inside:avoid;}}
-</style>
+<link rel="stylesheet" href="asc/style.css">
 <style>
 body{width:100vw;height:100vh;padding:0;margin:0;}
-iframe{border:none;width:100%;height:100%;margin:0;}
+iframe{border:none;width:100%;height:100%;margin:0;position:fixed;top:0;left:0;}
 #ASC-icon{cursor:move;width:5ch;height:7ch;background-color:var(--bg);border:none;padding:none;margin:0;padding:0;margin-left:auto;margin-right:auto;}
-#contents{width:fit-content;height:fit-content;display:block;position:fixed;z-index:100;margin:auto;;border-bottom-right-radius:50px;border-top-left-radius:50px;border:3px solid var(--nt);background-color:var(--bg);text-align:center;font-size:calc(1vh + 1vw);padding:1ch;}
+#contents{overflow:hidden;width:7ch;height:10ch;display:block;position:fixed;z-index:100;top:0;left:0;margin:auto;border-bottom-right-radius:50px;border-top-left-radius:50px;border:3px solid var(--nt);background-color:var(--bg);text-align:center;font-size:calc(1vh + 1vw);padding:1ch;box-shadow: 0px 0px 15px 0px var(--fg);transition: width 1s, height 1s;}
 #contents a{display:inline-block;background-color:var(--bg);color:var(--fg);border:none;font-size:calc(1vh + 1vw);padding:0.5ch;}
-#contents a:hover{background-color:var(--nt);}
+#contents a:hover{color:var(--nt);text-decoration:none;}
+#links{display:none;width:20ch;height:20ch;overflow-x:hidden;overflow-y:scroll;position:relative;top:-10ch;left:7ch;}
 </style>
 </head>
 <body>
 	<div id="contents">
-		<div id="icon">
+		<div id="icon" style="position:relative;top:0;left:1ch;width:5ch;">
 		<svg viewBox="-6 0 60 70" version="1.1" id="ASC-icon" xmlns="http://www.w3.org/2000/svg">
 		<ellipse 
 		style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -56,40 +29,64 @@ iframe{border:none;width:100%;height:100%;margin:0;}
 		style="fill:none;stroke:var(--fg);stroke-width:1.85208;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
 		d="M 32,1 16,68"/>
 		</svg>
+		<a onclick="showcontents();">&#x25a2;</a>
 		</div>
-		<a>&lsaquo;</a> <a href="asc/contents.html" target="view">&#x205d;</a> <a>&rsaquo;</a>
+		<div id="links">
+			<ol>
+				<li><a href="asc/cover.html" target="view">Cover</a></li>
+				<li><a href="asc/rationale.html" target="view">Rationale</a></li>
+			</ol>
+		</div>
 	</div>
+	<div id="blank" style="background-color:none;color:none;opacity:0;position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9;display:none;"></div>
 	<iframe src="asc/cover.html" name="view"></iframe>
+	<script>
+		draggable(document.getElementById("contents"));
+		function draggable(tab)
+		{
+			document.getElementById("ASC-icon").onmousedown = activate;
+			clientXoff = 0;
+			clientYoff = 0;
+			function activate(x)
+			{
+				document.getElementById("blank").style.display = "block";
+				x.preventDefault();
+				clientXoff = x.clientX - tab.offsetLeft;
+				clientYoff = x.clientY - tab.offsetTop;
+				document.onmouseup = deactivate;
+				document.onmousemove = move;
+			}
+			function move(x)
+			{
+				x.preventDefault();
+				tab.style.top = (x.clientY - clientYoff) + "px";
+				tab.style.left = (x.clientX - clientXoff) + "px";
+			}
+			function deactivate () {
+				document.onmouseup = null;
+				document.onmousemove = null;
+				document.getElementById("blank").style.display = "none";
+			}
+		}
+		links = document.getElementById("links").style.display = "none";
+		function showcontents()
+		{
+			links = document.getElementById("links");
+			tab = document.getElementById("contents");
+			if (links.style.display == "none") 
+			{
+				links.style.display = "block";
+				tab.style.width = "25ch";
+				tab.style.height = "30ch";
+			}
+			else 
+			{
+				links.style.display = "none";
+				tab.style.width = "7ch";
+				tab.style.height = "10ch";
+			}
+			
+		}
+	</script>
 </body>
-<script>
-	dragElement(document.getElementById("contents"));
-	function dragElement(elmnt)
-	{
-		var pos1 = 0; pos2 = 0; pos3 = 0; pos4 = 0;
-		document.onmousedown = dragMouseDown;
-		function dragMouseDown(e)
-		{
-			e = e || window.event;
-			e.preventDefault();
-			pos3 = e.clientX;
-			pos4 = e.clientY;
-			document.onmouseup = closeDragElement;
-			document.onmousemove = elementDrag;
-		}
-		function elementDrag(e)
-		{
-			e = e || window.event;
-			e.preventDefault();
-			pos1 = pos3 - e.clientX;
-			pos2 = pos4 - e.clientY;
-			pos3 = e.clientX;
-			pos4 = e.clientY;
-			elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-			elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-		}
-		function closeDragElement () {
-			document.onmouseup = null;
-			document.onmousemove = null;
-		}
-	}
-</script>
+
