@@ -2534,6 +2534,8 @@ all expressions are reduced to
 - evaluation
 	(x)
 	(x y z)
+- Conditional Evaluation
+	? p q r
 - sequence
 	f x, g x
 - interaction
@@ -2542,5 +2544,16 @@ all expressions are reduced to
 	1
 	'1
 	"1"
-	{1}
-	[1]
+	{1 1}
+	[1 1]
+- Default Operation
+	Algebra
+	Boolean logic
+	Comparison
+	Subscript
+	Destructure
+	Type of
+	Size of
+	Reference
+	Dereferece
+
