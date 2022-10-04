@@ -2513,3 +2513,30 @@ Functions are deferred computation.
 
 Compute takes an experession and passes it to the context.
 The context returns another expression.
+What does that look like?
+
+
+	Compute = e -> 
+	 e:Collection,
+
+
+What is a surface? 
+It's a way to access information inside a collection.
+When are surface interactions evaluated?
+During execution.
+	x : 1,
+	c : {1 | 1},
+	c x = 1
+
+all expressions are reduced to 
+- function application
+	f x
+- evaluation
+	(x)
+	(x y z)
+- sequence
+	f x, g x
+- interaction
+	x c
+- constant
+	1 "abc" {1 2 3}

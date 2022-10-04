@@ -7,7 +7,6 @@ underscore signifies one expression
 elipses signifies multiple expressions.
 
 	Collection:	{ ... }
-	Adjacent:	_ ^ _
 	Type:		[ ... ]
 	Function:	_ -> _ 
 	Expression:	( ... )
@@ -43,7 +42,7 @@ elipses signifies multiple expressions.
 	cardinality:	# _
 	
 	type:		& _
-	size:		## _
+	size:		^ _
 
 	Location of:	_ @
 	at Location:	@ _

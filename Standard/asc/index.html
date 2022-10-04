@@ -1,21 +1,28 @@
+<!--
+This file is part of 
+"ASC: the Abstract System for Computation, Standard Documentation"
+Copyright (C) 2022
+Daniel Smith
+see 'asc/copyright.html' for copying conditions.
+-->
 <!DOCTYPE html>
 <head>
 <title>Abstract System for Computation</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="asc/style.css">
+<link rel="stylesheet" href="style.css">
 <style>
 body{width:100vw;height:100vh;padding:0;margin:0;}
 iframe{border:none;width:100%;height:100%;margin:0;position:fixed;top:0;left:0;}
 #ASC-icon{cursor:move;width:5ch;height:7ch;background-color:var(--bg);border:none;padding:none;margin:0;padding:0;margin-left:auto;margin-right:auto;}
-#contents{overflow:hidden;width:7ch;height:10ch;display:block;position:fixed;z-index:100;top:0;left:0;margin:auto;border-bottom-right-radius:50px;border-top-left-radius:50px;border:3px solid var(--nt);background-color:var(--bg);text-align:center;font-size:calc(1vh + 1vw);padding:1ch;box-shadow: 0px 0px 15px 0px var(--fg);transition: width 1s, height 1s;}
+#contents{overflow:hidden;width:7ch;height:10ch;display:block;position:fixed;z-index:100;top:1ch;left:1ch;margin:auto;border-bottom-right-radius:50px;border-top-left-radius:50px;border:3px solid var(--nt);background-color:var(--bg);text-align:center;font-size:calc(1vh + 1vw);padding:1ch;box-shadow: 0px 0px 15px 0px var(--fg);transition: width 1s, height 1s;}
 #contents a{display:inline-block;background-color:var(--bg);color:var(--fg);border:none;font-size:calc(1vh + 1vw);padding:0.5ch;}
 #contents a:hover{color:var(--nt);text-decoration:none;}
-#links{display:none;width:20ch;height:20ch;overflow-x:hidden;overflow-y:scroll;position:relative;top:-10ch;left:7ch;}
+#links{display:none;text-align:left;padding-left:1ch;width:17ch;height:30ch;overflow:scroll;position:relative;top:-10ch;left:7ch;}
 </style>
 </head>
 <body>
-	<div id="contents">
+	<div id="contents" onmouseleave="hidecontents()">
 		<div id="icon" style="position:relative;top:0;left:1ch;width:5ch;">
 		<svg viewBox="-6 0 60 70" version="1.1" id="ASC-icon" xmlns="http://www.w3.org/2000/svg">
 		<ellipse 
@@ -29,17 +36,27 @@ iframe{border:none;width:100%;height:100%;margin:0;position:fixed;top:0;left:0;}
 		style="fill:none;stroke:var(--fg);stroke-width:1.85208;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
 		d="M 32,1 16,68"/>
 		</svg>
-		<a onclick="showcontents();">&#x25a2;</a>
+		<a onclick="showcontents();">&#x2630;</a>
 		</div>
 		<div id="links">
 			<ol>
-				<li><a href="asc/cover.html" target="view">Cover</a></li>
-				<li><a href="asc/rationale.html" target="view">Rationale</a></li>
+				<li><a href="cover.html" target="view">Cover</a></li>
+				<li><a href="overview.html" target="view">Overview</a></li>
+				<li><a href="environment.html" target="view">Environment</a></li>
+				<li><a href="computation.html" target="view">Computation</a></li>
+				<li><a href="syntax.html" target="view">Syntax</a></li>
+				<li><a href="types.html" target="view">Types</a></li>
+				<li><a href="collections.html" target="view">Collections</a></li>
+				<li><a href="functions.html" target="view">Functions</a></li>
+				<li><a href="numbers.html" target="view">Numbers</a></li>
+				<li><a href="defaults.html" target="view">Defaults</a></li>
+				<li><a href="rationale.html" target="view">Rationale</a></li>
+				<li><a href="copyright.html" target="view">Copyright</a></li>
 			</ol>
 		</div>
 	</div>
 	<div id="blank" style="background-color:none;color:none;opacity:0;position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9;display:none;"></div>
-	<iframe src="asc/cover.html" name="view"></iframe>
+	<iframe src="cover.html" name="view"></iframe>
 	<script>
 		draggable(document.getElementById("contents"));
 		function draggable(tab)
@@ -68,7 +85,7 @@ iframe{border:none;width:100%;height:100%;margin:0;position:fixed;top:0;left:0;}
 				document.getElementById("blank").style.display = "none";
 			}
 		}
-		links = document.getElementById("links").style.display = "none";
+		document.getElementById("links").style.display = "none";
 		function showcontents()
 		{
 			links = document.getElementById("links");
@@ -81,11 +98,22 @@ iframe{border:none;width:100%;height:100%;margin:0;position:fixed;top:0;left:0;}
 			}
 			else 
 			{
+				tab.style.width = "7ch";
+				tab.style.height = "10ch";
+				links.style.display = "none";
+			}
+			
+		}
+		function hidecontents()
+		{
+			links = document.getElementById("links");
+			tab = document.getElementById("contents");
+			if (links.style.display != "none")
+			{
 				links.style.display = "none";
 				tab.style.width = "7ch";
 				tab.style.height = "10ch";
 			}
-			
 		}
 	</script>
 </body>
