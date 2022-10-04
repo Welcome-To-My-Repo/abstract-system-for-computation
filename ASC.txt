@@ -46,10 +46,7 @@ Expressions are then composed into the computable model of a program.
 
 In addition to the required characters above, the blank space and line break characters are also required.
 
-Symbols
-	Symbols are sequences of characters that do not include blank space or line breaks. 
-Symbols may also be punctuation defined for an expression.
 
-Expressions
-	Expressions are a sequence of symbols which are associated with a function. 
-Defined expressions are exposed as surfaces in the Context.
+"A.S.C. the Abstract System for Computation, Standard Documentation"
+is Copyright (C) 2022,
+Daniel Smith
