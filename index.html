@@ -61,7 +61,7 @@ iframe{border:none;width:100vw;height:100vh;margin:0;position:fixed;top:0;left:0
 		draggable(document.getElementById("contents"));
 		function draggable(tab)
 		{
-			document.getElementById("ASC-icon").onmousedown = activate;
+			tab.onmousedown = activate;
 			clientXoff = 0;
 			clientYoff = 0;
 			function activate(x)
