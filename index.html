@@ -14,8 +14,8 @@ see 'asc/copyright.html' for copying conditions.
 <style>
 body{width:100vw;height:100vh;padding:0;margin:0;overflow:hidden;}
 iframe{border:none;width:100vw;height:100vh;margin:0;position:fixed;top:0;left:0;padding:none;margin:none;}
-#ASC-icon{cursor:move;width:5ch;height:7ch;background-color:var(--bg);border:none;padding:none;margin:0;padding:0;margin-left:auto;margin-right:auto;}
-#contents{overflow:hidden;width:7ch;height:10ch;display:block;position:fixed;z-index:100;top:80vh;left:calc(50vw - 5ch);margin:auto;border-bottom-right-radius:calc(1vh + 1vw);border-top-left-radius:calc(1vh + 1vw);border:3px solid var(--nt);background-color:var(--bg);text-align:center;font-size:calc(1vh + 1vw);padding:1ch;box-shadow: 0px 0px 14px 7px var(--fg);transition: width 0.5s, height 0.5s, box-shadow 0.2s;}
+#ASC-icon{cursor:move;width:7ch;height:7ch;background-color:var(--bg);border:none;padding:none;margin:0;padding:0;margin-left:auto;margin-right:auto;}
+#contents{overflow:hidden;padding:1ch;width:7ch;height:10ch;display:block;position:fixed;z-index:100;top:80vh;left:calc(50vw - 5ch);margin:auto;border-bottom-right-radius:calc(1vh + 1vw);border-top-left-radius:calc(1vh + 1vw);border:3px solid var(--nt);background-color:var(--bg);text-align:center;font-size:calc(1vh + 1vw);box-shadow: 0px 0px 14px 7px var(--fg);transition: width 0.5s, height 0.5s, box-shadow 0.2s;}
 #contents a{display:inline-block;background-color:var(--bg);color:var(--fg);border:none;font-size:calc(1vh + 1vw);padding:0.5ch;padding-left:1ch;padding-right:1ch;border:solid 3px var(--nt);border-radius:calc(1vh + 1vw);}
 #contents a:hover{color:var(--nt);text-decoration:none;}
 #links{display:none;text-align:left;padding-left:1ch;width:20ch;height:30ch;overflow:scroll;position:relative;top:-10ch;left:7ch;}
@@ -23,18 +23,16 @@ iframe{border:none;width:100vw;height:100vh;margin:0;position:fixed;top:0;left:0
 </head>
 <body>
 <div id="contents">
-<div id="icon" style="position:relative;top:0;left:1ch;width:5ch;">
-<svg viewBox="-17 0 80 80" version="1.1" id="ASC-icon" xmlns="http://www.w3.org/2000/svg">
-<ellipse 
-style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-ry="11" rx="27" cy="5" cx="36" transform="matrix(0.8,0.6,-0.7,0.7,0,0)">
-</ellipse>
-<path
-style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:5;stroke-dasharray:none;stroke-opacity:1"
-d="M 36,43 A 13,13 0 0 1 23,57 13,13 0 0 1 11,43 13,13 0 0 1 23,30 13,13 0 0 1 36,44" />
-<path
-style="fill:none;stroke:var(--fg);stroke-width:1.85208;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-d="M 32,1 16,68"/>
+<div id="icon" style="position:relative;top:0;width:7ch;">
+<svg viewBox="0 0 100 100" version="1.1" id="ASC-icon" width="100" height="100" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+<defs id="defs54" />
+<ellipse style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+ry="15.550441" rx="38.556782" cy="-1.5364231" cx="62.654388" transform="matrix(0.8,0.6,-0.70710678,0.70710678,0,0)" id="ellipse45" />
+<path style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:5;stroke-dasharray:none;stroke-opacity:1"
+d="M 66.489828,62.06793 A 18.564376,18.564376 0 0 1 47.925452,82.060335 18.564376,18.564376 0 0 1 30.789107,62.06793 18.564376,18.564376 0 0 1 47.925452,43.503554 18.564376,18.564376 0 0 1 66.489828,63.495959"
+id="path47" />
+<path style="fill:none;stroke:var(--fg);stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+d="M 60.777712,2.0907162 37.92925,97.768652" id="path49" />
 </svg>
 <a onclick="showcontents();">&#x2507;</a>
 </div>
