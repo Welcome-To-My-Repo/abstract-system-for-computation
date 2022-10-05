@@ -59,39 +59,38 @@ d="M 32,1 16,68"/>
 <iframe src="cover.html" name="view"></iframe>
 <script>
 draggable(document.getElementById("contents"));
-function draggable(tab)
+function draggable (tab)
 {
-e = document.getElementById("ASC-icon");
-e.onmousedown = activate;
-e.ontouchstart = activate;
-clientXoff = 0;
-clientYoff = 0;
+ e = document.getElementById("ASC-icon");
+ e.onpointerdown = activate;
+ xOff = 0;
+ yOff = 0;
 
-function activate(x)
-{
-document.getElementById("blank").style.display = "block";
-x.preventDefault();
-clientXoff = x.clientX - tab.offsetLeft;
-clientYoff = x.clientY - tab.offsetTop;
-document.onmouseup = deactivate;
-document.ontouchend = deactivate;
-document.onmousemove = move;
-document.ontouchmove = move;
+ function activate(x)
+ {
+  document.getElementById("blank").style.display = "block";
+  x.preventDefault();
+  xOff = x.clientX - tab.offsetLeft;
+  yOff = x.clientY - tab.offsetTop;
+  document.onpointerup = deactivate;
+  document.onpointermove = move;
+ }
+
+ function move(x)
+ {
+  x.preventDefault();
+  tab.style.top = (x.clientY - yOff) + "px";
+  tab.style.left = (x.clientX - xOff) + "px"
+ }
+
+ function deactivate()
+ {
+  document.onpointerup = null;
+  document.onpointermove = null;
+  document.getElementById("blank").style.display = "none";
+ }
 }
-function move(x)
-{
-x.preventDefault();
-tab.style.top = (x.clientY - clientYoff) + "px";
-tab.style.left = (x.clientX - clientXoff) + "px";
-}
-function deactivate () {
-document.onmouseup = null;
-document.onmousemove = null;
-document.ontouchend = null;
-document.ontouchmove = null;
-document.getElementById("blank").style.display = "none";
-}
-}
+
 document.getElementById("links").style.display = "none";
 function showcontents()
 {
