@@ -1,0 +1,54 @@
+A.S.C. the Abstract System for Computation
+Standard Documentation
+Revision 0
+
+Overview
+	The Abstract System for Computation (abbreviated as ASC) is a tool designed for describing, performing, an reasoning about computation. 
+It exists as a written notation and an environment for verifying and interpreting the notation. 
+This document outlines the capabilities and requirements of a verified implementation of ASC.
+
+	ASC is a minimal language designed such that it can be adapted to the widest possible range of computational scenarios. 
+It provides a simple set of constructs: functions, collections, types.
+
+Environment
+	The environment provides the resources for computation to take place.
+These resources are abstracted as the functions, "Compute", "Display", "Read", "Import", and "Export".
+
+	The "Compute" function accepts a program model as the result of an invocation of "Read" or any other function which creates a model. 
+"Compute" shall iteratively replace expressions in the model with the result of submitting that expression to a surface of the context.
+"Compute" choses which expression to submit next by searching the program model for an expression which has no nested expressions and is reached by subscripting the lowest possible index at each nested level.
+
+
+Syntax
+Data
+Collections
+	A collection is an association of a number of entities under a context.
+
+Types
+Functions
+Expressions
+
+
+
+Syntax
+	ASC syntax represents the correspondence between a written program and its computable model. 
+Syntax is composed of a sequence of characters grouped into sub-sequences called Symbols. 
+These symbols are combined into Expressions.
+Expressions are then composed into the computable model of a program.
+
+	The character block below visualizes the minimum characters required for the ASC notation.
+
+	0 1 2 3 4 5 6 7 8 9
+	A B C D E F G H I J K K M N O P Q R S T U V W X Y Z
+	a b c d e f g h i j k l m n o p q r s t u v w x y z
+	+ - * / < > =
+	@ # % ^ & | \ ~ !
+	' " ` . , ; :
+	( ) [ ] { } _ ?
+
+In addition to the required characters above, the blank space and line break characters are also required.
+
+
+"A.S.C. the Abstract System for Computation, Standard Documentation",
+Copyright (C) 2022,
+Daniel Smith
