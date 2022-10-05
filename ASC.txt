@@ -22,6 +22,8 @@ These resources are abstracted as the functions, "Compute", "Display", "Read", "
 Syntax
 Data
 Collections
+	A collection is an association of a number of entities under a context.
+
 Types
 Functions
 Expressions
@@ -47,6 +49,6 @@ Expressions are then composed into the computable model of a program.
 In addition to the required characters above, the blank space and line break characters are also required.
 
 
-"A.S.C. the Abstract System for Computation, Standard Documentation"
-is Copyright (C) 2022,
+"A.S.C. the Abstract System for Computation, Standard Documentation",
+Copyright (C) 2022,
 Daniel Smith
