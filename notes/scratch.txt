@@ -1,4 +1,4 @@
-type system supports both extensional and intensional definitions of a type.
+	type system supports both extensional and intensional definitions of a type.
 they are treated as mutually dependent descriptors.
 Thus an extensional type can be defined as the explicit list of all the other types which share its qualities and an intensional type can be defined as the explicit list of the qualities which other types must possess.
 The distinction betwen the two approaches to definition is that extensional definitions of type can be reasoned about simply by referring to the list defined for that type whereas intensional types rely more on inference about whether the appropriate qualities are exhibited.
@@ -2519,7 +2519,6 @@ What does that look like?
 	Compute = e -> 
 	 e:Collection,
 
-
 What is a surface? 
 It's a way to access information inside a collection.
 When are surface interactions evaluated?
@@ -2558,3 +2557,15 @@ all expressions are reduced to
 	Dereferece
 
 These operations are built into the environment and computing them produces implementation dependent behavior
+
+
+
+What is my model for expressions?
+An individual expression is a collection of constructors, punctuation, and nested expressions.
+A quoted expression allows you to read in an expression as an unevaluated expression structure.
+So 
+	`1 + 1 = (1 '+ 1) = {1 '+ 1}
+What about
+	`1 + 2 - 3 = ((1 '+ 2) '- 3) = {{1 '+ 2} '- 3}
+How do you tell the difference between an expression and a collection?
+
