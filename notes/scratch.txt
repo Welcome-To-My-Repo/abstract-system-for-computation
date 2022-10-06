@@ -2568,4 +2568,25 @@ So
 What about
 	`1 + 2 - 3 = ((1 '+ 2) '- 3) = {{1 '+ 2} '- 3}
 How do you tell the difference between an expression and a collection?
+You quote punctuation differently than you quote a symbol.
+Punctuation and types determine an expression.
+Lisp only needs one quotation notation because the function is always the first in the list.
+I can't because the function may have any form such as juxtaposition of two types of elements.
+So how do I quote an expression?
+The backquote.
 
+
+
+How do I treat an expression as data?
+An expression is a collection of symbols and other expressions.
+How do you create an expression?
+	e : Expression
+	e\0 : 1
+	e\1 : '+
+	e\2 : 1
+	e = `1 + 1
+	e = (1 '+ 1)
+If I say
+	x : 1
+then
+	Compute ('x) = 1
