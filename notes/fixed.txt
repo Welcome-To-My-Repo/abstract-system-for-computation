@@ -15,9 +15,9 @@ elipses signifies multiple expressions.
 	Import:		! _
 	Link:		!! _
 	
-	logic and:	_ /\ _
-	logic or	_ \/ _
-	logic not:	_ -. _
+	logic and:	_ \/ _
+	logic or	_ /\ _
+	logic not:	  - _
 
 	less:		_ < _
 	greater		_ > _
@@ -40,6 +40,8 @@ elipses signifies multiple expressions.
 	type select:	_ / _
 	index select:	_ \ _
 	cardinality:	# _
+	union:		_ + _
+	remove:		_ - _
 	
 	type:		& _
 	size:		^ _

@@ -2603,3 +2603,9 @@ Given an expression definition,
 VERY IMPORTANT PROPERTY
 	c <- {x = y  y = x}
 	c\0 = c\1
+
+
+
+recursive expression possible?
+
+	% + 
