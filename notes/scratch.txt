@@ -2593,13 +2593,6 @@ then
 
 
 
-Unification algorithm
-
-Given an expression definition,
-(a b c)
-
-
-
 VERY IMPORTANT PROPERTY
 	c <- {x = y  y = x}
 	c\0 = c\1
@@ -2607,5 +2600,6 @@ VERY IMPORTANT PROPERTY
 
 
 recursive expression possible?
-
-	% + 
+	% + {'a} | 'b,
+	% + {'b} | 'a,
+	'a
