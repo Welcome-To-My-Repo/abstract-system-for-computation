@@ -16,6 +16,7 @@ h4{border-bottom:solid 0.1ch var(--nt);}
 a{text-decoration:none;color:var(--nt);}
 a:hover{text-decoration:underline;}
 p, ol, ul, table{padding:1ch;width:70%;margin:auto;}
+table{margin-top:1ch;}
 ul, ol{max-width:160ch;}
 aside{width:50%;margin:auto;border:solid 0.1ch var(--nt);}
 figure{border:solid 0.1ch var(--nt);margin:auto;width:95%;padding:1ch;margin-bottom:1ch;overflow:auto;}
@@ -25,5 +26,6 @@ h1, h3, aside, figure, table{border-top-left-radius:calc(1vh + 1vw);border-botto
 pre{display:inline;}
 svg{height:30ch;width:30ch;display:block;margin:auto;background-color:var(--nt);border-bottom-right-radius:calc(1vh + 1vw);border-top-left-radius:calc(1vh + 1vw);border:3px solid var(--nt);margin-bottom:5vh;margin-top:5vh;padding:17px;}
 footer a{text-align:center;position:absolute;bottom:0;width:100%;}
+nav {text-align:center;width:100%;}
 @media only screen and (max-width: 900px) {article, aside, ul, ol, table{width:100%;}}
-@media print{h1, h2, h3, h4{page-break-after:avoid;}figure{page-break-inside:avoid;}}
+@media print{h1, h2, h3, h4{page-break-after:avoid;}article{page-break-inside:avoid;page-break-after:always;}figure{page-break-inside:avoid;}}
