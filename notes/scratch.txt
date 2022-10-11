@@ -2603,3 +2603,18 @@ recursive expression possible?
 	% + {'a} | 'b,
 	% + {'b} | 'a,
 	'a
+
+
+
+how does string syntax work?
+You say that there's some stuff in between two quotation marks.
+Inside quotations, the backslash character has special syntax.
+What you need is a character-by-character parsing algorithm.
+I need two things, the type of a stream and the ability to express something that repeats.
+A character type is any expression that's evaluated to produce a character.
+Read is different. 
+It has a collection of characters.
+Can't be reader macros because you can jump in and out of interpreting characters.
+Read takes a string and turns it into a data structure.
+Does read bind things?
+No.
