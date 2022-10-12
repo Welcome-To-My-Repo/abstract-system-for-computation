@@ -2618,3 +2618,10 @@ Can't be reader macros because you can jump in and out of interpreting character
 Read takes a string and turns it into a data structure.
 Does read bind things?
 No.
+
+
+
+IMPORTANT-----------------------------------------------------------------------
+	? e : T 
+	  T : e
+	  ^e \= T
