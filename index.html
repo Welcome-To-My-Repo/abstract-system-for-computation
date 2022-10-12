@@ -20,6 +20,7 @@ iframe{border:none;width:100vw;height:100vh;margin:0;position:fixed;top:0;left:0
 <div id="contents">
 <style>
 #ASC-icon{cursor:move;width:6ch;height:7ch;background-color:var(--bg);border:none;margin:auto;padding:0;padding-top:0;margin-left:auto;margin-right:auto;}
+#icon{width:7ch;height:10ch;margin:0;}
 #contents{overflow:hidden;padding:1ch;width:7ch;height:10ch;display:block;position:fixed;z-index:100;top:1ch;left:1.5%;margin:auto;border-bottom-right-radius:calc(1vh + 1vw);border-top-left-radius:calc(1vh + 1vw);border:0.1ch solid var(--nt);background-color:var(--bg);text-align:center;font-size:calc(1vh + 1vw);box-shadow: 0px 0px 15px 0px var(--fg);transition: width 0.5s, height 0.5s, box-shadow 0.2s;}
 #contents a{display:inline-block;background-color:var(--bg);color:var(--fg);border:none;font-size:calc(1vh + 1vw);padding:0.5ch;padding-left:1ch;padding-right:1ch;border:solid 0.1ch var(--nt);border-radius:calc(1vh + 1vw);}
 #contents a:hover{color:var(--nt);text-decoration:none;}
@@ -60,7 +61,7 @@ d="M 60.777712,2.0907162 37.92925,97.768652" id="path49" />
 <iframe src="cover.html" name="view" id="view"></iframe>
 <script>
 draggable(document.getElementById("contents"));
-function draggable (tab){e = document.getElementById("ASC-icon");e.onpointerdown = activate;xOff = 0;yOff = 0;
+function draggable (tab){e = document.getElementById("icon");e.onpointerdown = activate;xOff = 0;yOff = 0;
 function activate(x){document.getElementById("blank").style.display = "block";x.preventDefault();xOff = x.clientX - tab.offsetLeft;yOff = x.clientY - tab.offsetTop;document.onpointerup = deactivate;document.onpointermove = move;}
 function move(x){x.preventDefault();tab.style.top = (x.clientY - yOff) + "px";tab.style.left = (x.clientX - xOff) + "px"}
 function deactivate(){document.onpointerup = null;document.onpointermove = null;document.getElementById("blank").style.display = "none";}}
