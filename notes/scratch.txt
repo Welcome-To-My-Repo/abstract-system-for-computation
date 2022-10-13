@@ -2629,19 +2629,6 @@ IMPORTANT-----------------------------------------------------------------------
 
 
 
-How to do contextual syntax?
-Simple quotation requires two states.
-Before the quotation and after the quotation.
-Two cases
-	FirstChar : (Character [FirstChar LastChar]) | k -> {k\0} + 
-	LastChar : (Character "\"")
-
-Alternative aproach:
-	(
-	 "\""
-	 [
-	  (Character Character)
-	  (Character)
-	 ]
-	 "\"" 
-	)
+How to make a list?
+You have to create a new context where you grab everything.
+Then you have to set a new context where you build the list structure.
