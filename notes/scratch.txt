@@ -2632,3 +2632,29 @@ IMPORTANT-----------------------------------------------------------------------
 How to make a list?
 You have to create a new context where you grab everything.
 Then you have to set a new context where you build the list structure.
+
+
+Expressions for a context are stored in a collection.
+	% 'Expressions
+They are distinct from the rest of the collections by location.
+
+
+
+what are maps? 
+Aren't they just closures?
+Can't you do that with syntax?
+Not really.
+	d : {'a | 'b  'c | {1}}
+	'a 'c d = 'b
+You can't do this with closures.
+There's a mechanism for propagating across contexts.
+
+
+
+ASC is an inductive pure type system.
+The ":" and "[ .. ]" operators allow the construction of new types which are just terms on a higher stratification.
+
+So then the ASC type system consists of sorts or entities "A"
+And has the rules,
+	(A_0,A_0)				.... Base
+	(A_n,A_n),(A_n,A_m),(A_m,A_n),(A_m,A_m)	.... Inductive
