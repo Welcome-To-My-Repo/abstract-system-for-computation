@@ -1,4 +1,4 @@
-	type system supports both extensional and intensional definitions of a type.
+type system supports both extensional and intensional definitions of a type.
 they are treated as mutually dependent descriptors.
 Thus an extensional type can be defined as the explicit list of all the other types which share its qualities and an intensional type can be defined as the explicit list of the qualities which other types must possess.
 The distinction betwen the two approaches to definition is that extensional definitions of type can be reasoned about simply by referring to the list defined for that type whereas intensional types rely more on inference about whether the appropriate qualities are exhibited.
@@ -2658,3 +2658,12 @@ So then the ASC type system consists of sorts or entities "A"
 And has the rules,
 	(A_0,A_0)				.... Base
 	(A_n,A_n),(A_n,A_m),(A_m,A_n),(A_m,A_m)	.... Inductive
+so what does this look like in ASC?
+
+
+
+Symbols are any sequence of alphabetic characters with no white space.
+Values are symbols prefixed with a single quote.
+Types are one or more unique values.
+Types can occur as values in other types.
+
