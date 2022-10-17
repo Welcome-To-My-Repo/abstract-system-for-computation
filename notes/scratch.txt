@@ -2667,3 +2667,25 @@ Values are symbols prefixed with a single quote.
 Types are one or more unique values.
 Types can occur as values in other types.
 
+
+
+not worrying about the inductive proof.
+
+
+
+what is the nature of maps and collection surfaces?
+theres a collection.
+it has some elements.
+you can access those elements by destructuring the collection.
+you can also provide more complex polymorphic interactions.
+what do i mean by interaction?
+is this a function?
+
+
+IMPORTANT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ASC is not based on the Lambda Calculus, It's based on objects.
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+what do I mean by that?
+A function is actually an abstraction in my language.
+The most primitive abstraction for "doing something" in my language is 
+passing an event to a collection.
