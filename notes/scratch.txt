@@ -2689,3 +2689,26 @@ what do I mean by that?
 A function is actually an abstraction in my language.
 The most primitive abstraction for "doing something" in my language is 
 passing an event to a collection.
+The primitive ops are
+- collection constructor	{ ... }
+- clobber			_ <- _
+- bind				_ | _
+- sequence			... , ...
+- this				%
+- deconstruct			_ \ _
+- cardinality			# _
+- value				' _
+
+is this all I need?
+Yes
+So how to do recursion?
+By an event passing it to itself.
+Self reference.
+{* | % *}
+
+
+
+
+Semantics are based on interactions.
+Rather than message passing, one object is introduced to another with a reaction defined.
+
