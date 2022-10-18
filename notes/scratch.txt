@@ -2712,3 +2712,30 @@ Self reference.
 Semantics are based on interactions.
 Rather than message passing, one object is introduced to another with a reaction defined.
 
+
+
+If I have a collection
+	c : {'a 'a 'a}
+and I compute
+	c / 'a
+i get 
+	{'a 'a 'a}
+but how do i get one of the elements when they're the same type?
+By casting. 
+If I have the same collection and I cast it to a nested collection
+	c ~ {'a {}} / 'a = 'a
+This is a terrible kludge for just indexing.
+However the index of a collection is unique to each collection.
+What if you can index based on anything?
+
+
+
+Get rid of function notation an functions alltogether.
+You don't need them.
+Instead of passing functions, you pass around collections.
+If you want to make a function, all you do is
+{* -> p}
+You can't really shadow anything though which makes things hard.
+But on the other hand, context and binding in the context are first-class structures.
+How would this look?
+It would look terrible.
