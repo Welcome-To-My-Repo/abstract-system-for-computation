@@ -2636,7 +2636,10 @@ I need a way to set a new context for a specific expression.
 Say you can have any "c" between "a" and "b".
 The expression returns the number of "c".
 This requires two things, an intermediary value holding the number of "c".
-And 
+And an order in which the "c"'s occur.
+Order is determined by the order of the stream.
+The "c"'s are in a sequence already.
+	{'a}:Expression | x -> (count:Value <- 0, % <- % + ({'c}:Expression | ) 
 
 
 Expressions for a context are stored in a collection.
