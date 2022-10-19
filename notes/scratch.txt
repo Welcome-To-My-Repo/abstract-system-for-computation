@@ -2632,6 +2632,11 @@ IMPORTANT-----------------------------------------------------------------------
 How to make a list?
 You have to create a new context where you grab everything.
 Then you have to set a new context where you build the list structure.
+I need a way to set a new context for a specific expression.
+Say you can have any "c" between "a" and "b".
+The expression returns the number of "c".
+This requires two things, an intermediary value holding the number of "c".
+And 
 
 
 Expressions for a context are stored in a collection.
@@ -2739,3 +2744,9 @@ You can't really shadow anything though which makes things hard.
 But on the other hand, context and binding in the context are first-class structures.
 How would this look?
 It would look terrible.
+
+
+
+What is binding?
+Binding is when you use a symbol as an expression.
+	(Expression : {'x}) | 'value
