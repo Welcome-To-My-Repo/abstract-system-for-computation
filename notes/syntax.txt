@@ -1,113 +1,29 @@
-Constructors:
-	Numerical Constant:
-		Natural (Nat):
-			x:Symbol, y:Nat, x(y) = ["0" "1" "2" "3" "4" "5" "6" "7" "8" "9"]
-		Integer (Int):
-			`"-" x:Constant`
-			`"+" x:Constant`
-		Decimal (Float):
-			`x:Int "." y:Nat`
-			`x:Int "/" y:Int`
-			`x:Int "." y:Nat "e" z:Int`
-		Binary:
-			x:Symbol, y:[Nat > 0], x(0) = "B" /\ x(y) = ["0" "1"]
-		Hexadecimal:
-			x:Symbol, y:[Nat > 0], x(0) = "H" /\ x(y) = ["0" "1" "2" "3" "4" "5" "6" "7" "8" "9" "a" "b" "c" "d" "e" "f" "A" "B" "C" "D" "E" "F"]
-	Collection Constructor:
-		{ ... }
-	Function Constructor:
-		_ -> _
-	Type Constructor:
-		[ ... ]
-	Syntax Constructor:
-		` ... `
-	Condition Constructor:
-		_ | _
-	Block Constructor:
-		_ , _
+Assume capital and lower case english alphabet a-zA-Z
+Assume arabic numerals 0-9
+Punctuation common across most keyboards.
 
-Operators:
-	Algebra:
-		_ + _
-		_ - _
-		_ * _
-		_ / _
-		_ // _
-	Parentheses:
-		( _ )
-		( ... )
-	Period Delimiter:
-		... .
-	
-	Environment:
-		Derive Location:
-			_ @
-		Reference Location:
-			@ _
-		Clobber:
-			_ << _
-		Cast: 
-			_ ~ _
-		Storage Size:
-			## _
-		Derive Type:
-			& _
-		Symbol Quotation:
-			' _
-		Symbol Unquotation:
-			~' _
-	
-	Comparison:
-		Unifiable:
-			_ = _
-		Not Unifiable:
-			_ ~= _
-		Less Than:
-			_ < _
-			_ <=
-		Greater Than:
-			_ > _
-			_ >= _
-	
-	Logic:
-		Conjunction:
-			_ /\ _
-		Disjunction:
-			_ \/ _
-		Negation:
-			-. _
-	
-	Collections:
-		Element Access:
-			_ / _
-		Cardinality:
-			# _
-	
-	Control:
-		Boolean Conditional Evaluation:
-			? _ _ _
-		Function Application:
-			_ _
-		Replace Active Context:
-			_ << _
-	
-	Annotation:
-			_ ; _
-	
-	Reserved Symbols:
-		This	(%)
-		Any	(*)
-		None	(_)
-		Symbol
-		Constant
-		Expression
-		Collection
-		Type
-		Function
-		Condition
-	
-	Default Conditions:
-		Evaluate
-		Bind
-		Apply
-+−×÷
+.,/\|&(){}[]?!"'=-+%#@_:
+
+Collection:		{ ... }
+Type:			[ ... ]
+Compute:		( _ )
+			( ... )
+Function:		_ . ...
+Surface:		_ | ...
+
+Add:			_ + _
+Subtract:		_ - _
+Multiply:		_ * _
+Divide:			_ / _
+Modulus:		_ // _
+
+And:			_ \/ _
+Or:			_ /\ _
+Not:			- _
+
+Value Select:		_ / _
+Index Select:		_ // _
+Cardinality:		# _
+
+At Place:		@ _
+Place Of:		_ @

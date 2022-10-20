@@ -2639,8 +2639,13 @@ This requires two things, an intermediary value holding the number of "c".
 And an order in which the "c"'s occur.
 Order is determined by the order of the stream.
 The "c"'s are in a sequence already.
-	{'a}:Expression | x -> (count:Value <- 0, % <- % + ({'c}:Expression | )
-good lord this is so much more complex than lisp's "defmacro"
+So the solution is to allow new context to be set around a specific expression.
+Given the expression form 
+	{'a 'b ... 'c}
+There's two expressions,
+	{'a e 'c} 
+and
+	{'b ['b _]}
 
 
 Expressions for a context are stored in a collection.
@@ -2754,4 +2759,25 @@ It would look terrible.
 What is binding?
 Binding is when you use a symbol as an expression.
 	(Expression : {'x}) | 'value
-an unbound symbol causes an error during compilation.
+Binding is another form of macro.
+
+
+
+What are my semantics for computation.
+Compute is given a program representation as some "p" where
+	(p)
+and P is composed of one or more nested expressions.
+
+
+
+What order should computation reduce expressions?
+Example program
+	% <- % + (
+	          {'e Expression} | (
+			             
+	                             e -> (e\2)),
+
+
+What if I use period like a lambda abstraction?
+
+x . x + x

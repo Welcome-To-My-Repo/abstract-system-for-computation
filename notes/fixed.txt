@@ -8,9 +8,8 @@ elipses signifies multiple expressions.
 
 	Collection:	{ ... }
 	Type:		[ ... ]
-	Function:	_ -> _ 
+	Function:	_ . _ 
 	Expression:	( ... )
-	Expression:	... .
 	Compound:	... , ...
 	Import:		! _
 	Link:		!! _
