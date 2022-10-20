@@ -2639,7 +2639,8 @@ This requires two things, an intermediary value holding the number of "c".
 And an order in which the "c"'s occur.
 Order is determined by the order of the stream.
 The "c"'s are in a sequence already.
-	{'a}:Expression | x -> (count:Value <- 0, % <- % + ({'c}:Expression | ) 
+	{'a}:Expression | x -> (count:Value <- 0, % <- % + ({'c}:Expression | )
+good lord this is so much more complex than lisp's "defmacro"
 
 
 Expressions for a context are stored in a collection.
@@ -2753,3 +2754,4 @@ It would look terrible.
 What is binding?
 Binding is when you use a symbol as an expression.
 	(Expression : {'x}) | 'value
+an unbound symbol causes an error during compilation.
