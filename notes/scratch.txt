@@ -2781,3 +2781,12 @@ Example program
 What if I use period like a lambda abstraction?
 
 x . x + x
+
+
+
+	x <- 1
+	y <- x @
+	z <- y @
+How do pointers work?
+Are they typed?
+Yes.

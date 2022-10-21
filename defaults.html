@@ -25,17 +25,6 @@ The actual mechanism with which the implementation provides reactions for the de
 </p>
 <figure>
 <code>
-{Value '+ Value} | e . default 'add (e\1 e\3)<br>
-{Value '- Value} | e . default 'subtract (e\1 e\3)<br>
-{Value '* Value} | e . default 'multiply (e\1 e\3)<br>
-{Value '/ Value} | e . default 'quotient (e\1 e\3)<br>
-{Value '// Value} | e . default 'remainder (e\1 e\3)<br>
-</code>
-<hr>
-<figcaption>Arithmetic Expressions</figcaption>
-</figure>
-<figure>
-<code>
 {'? Expression Expression Expression} | e . e\2 {true | (e\3)<br>
 <pre>                                                         </pre>false | (e/4)}<br><br>
 {Expression "," Expression} | e . <br>{x <- (e\1)<br><pre> </pre>y <- (e\3)<br><pre> </pre>% <- y}<br><br>
@@ -46,8 +35,53 @@ The actual mechanism with which the implementation provides reactions for the de
 <pre>                             </pre>%\#% <- {")"} | % <- result )
 </code>
 <hr>
-<figcaption>Control Expressions</figcaption>
+<figcaption>Control Forms</figcaption>
 </figure>
+<figure>
+<code>
+{Value '+ Value} | e . default 'add (e\1 e\3)<br>
+{Value '- Value} | e . default 'subtract (e\1 e\3)<br>
+{Value '* Value} | e . default 'multiply (e\1 e\3)<br>
+{Value '/ Value} | e . default 'quotient (e\1 e\3)<br>
+{Value '// Value} | e . default 'remainder (e\1 e\3)<br>
+</code>
+<hr>
+<figcaption>Arithmetic</figcaption>
+</figure>
+<figure>
+<code>
+{Boolean '\/ Boolean} | e . default 'conjunction (e\1 e\3)<br>
+{Boolean '/\ Boolean} | e . default 'disjunction (e\1 e\3)<br>
+{'- Boolean} | e . default 'negation (e\2)
+</code>
+<hr>
+<figcaption>Boolean Logic</figcaption>
+</figure>
+<figure>
+<code>
+{* "@"} | e . default 'derive-location e\2<br>
+{"@" *} | e . default 'reference-location e\2<br>
+{"&" *} | e . default 'derive-supertype e\2<br>
+{"#" *} | e . default 'derive-cardinality e\2<br>
+{"##" *} | e . default 'derive-size e\2
+</code>
+<hr>
+<figcaption>Reflection</figcaption>
+</figure>
+<figure>
+<code>
+{Collection "/" *} | default 'select (e\1 e\3)<br>
+{Collection "\" *} | default 'subscript (e\1 e\3)
+</code>
+<hr>
+<figcaption>Collection Destructuring</figcaption>
+</figure>
+</article>
+<article>
+<h2 id="Default Constructors">Default Constructors</h2>
+<p>
+Default constructors have 
+</p>
 </article>
 <nav>
 <a href="numbers.html">&lt;&lt;</a>
