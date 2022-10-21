@@ -1,3 +1,5 @@
-Abstract System for Computation
-
-ASC consists of two constructs, the multiset (referred to as a collection) and
+ASC implements two constructs, the collection and the surface.
+A collection is a multiset where every elment is counted.
+A surface allows collections to interact.
+In addition to respective constructors for collections and surfaces, there are some fundamental operations.
+These are clobber, destructure, subscript, and interact.

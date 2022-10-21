@@ -16,6 +16,39 @@ see 'asc/copyright.html' for copying conditions.
 <article>
 <h1>Defaults</h1>
 </article>
+<article>
+<h2 id="Default Syntax">Default Expressions</h2>
+<p>
+For the purposes of this document a collection <i>default</i> is assumed to contain all the required capabilities for reactions to default expressions.
+Interacting with <i>default</i> yields a function which can be applied to the data from the default expression.
+The actual mechanism with which the implementation provides reactions for the default expressions is implementation defined.
+</p>
+<figure>
+<code>
+{Value '+ Value} | e . default 'add (e\1 e\3)<br>
+{Value '- Value} | e . default 'subtract (e\1 e\3)<br>
+{Value '* Value} | e . default 'multiply (e\1 e\3)<br>
+{Value '/ Value} | e . default 'quotient (e\1 e\3)<br>
+{Value '// Value} | e . default 'remainder (e\1 e\3)<br>
+</code>
+<hr>
+<figcaption>Arithmetic Expressions</figcaption>
+</figure>
+<figure>
+<code>
+{'? Expression Expression Expression} | e . e\2 {true | (e\3)<br>
+<pre>                                                         </pre>false | (e/4)}<br><br>
+{Expression "," Expression} | e . <br>{x <- (e\1)<br><pre> </pre>y <- (e\3)<br><pre> </pre>% <- y}<br><br>
+{"(" Expression ")"} | e . default 'compute e\2<br><br>
+{"(" Expression} | e . ( result <- {},<br>
+<pre>                             </pre>%\#% <- {Expression} |<br>
+<pre>                                       </pre>e . result\#result <- (e\1),<br>
+<pre>                             </pre>%\#% <- {")"} | % <- result )
+</code>
+<hr>
+<figcaption>Control Expressions</figcaption>
+</figure>
+</article>
 <nav>
 <a href="numbers.html">&lt;&lt;</a>
 <a href="index.html" target="_parent">Top</a>
