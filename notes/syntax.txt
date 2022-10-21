@@ -24,6 +24,14 @@ Not:			- _
 Value Select:		_ / _
 Index Select:		_ // _
 Cardinality:		# _
+Size:			## _
 
 At Place:		@ _
 Place Of:		_ @
+
+String:			" ... "
+Quote:			' _
+
+This:			%
+Any:			*
+Nul:			_

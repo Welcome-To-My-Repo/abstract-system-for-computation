@@ -2771,14 +2771,22 @@ and P is composed of one or more nested expressions.
 
 
 What order should computation reduce expressions?
-Example program
-	% <- % + (
-	          {'e Expression} | (
-			             
-	                             e -> (e\2)),
+It finds the first expression that has no nested expressions.
+It uses that expression to interact with the context.
+The context produces more data or another expression.
+
 
 
 What if I use period like a lambda abstraction?
+	x . x + x
+How do I talk about functions in a generic way?
+when i talk about the type of a function, i don't talk about the symbol used as a parameter.
+
+
+
+
+how do pointers work?
+they arent typed.
 
 x . x + x
 
