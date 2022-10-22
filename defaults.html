@@ -25,8 +25,16 @@ The actual mechanism with which the implementation provides reactions for the de
 </p>
 <figure>
 <code>
-{'? Expression Expression Expression} | e . e\2 {true | (e\3)<br>
-<pre>                                                         </pre>false | (e/4)}<br><br>
+{"{"} | e . ( c ; {},<br>
+<pre>                     </pre>%\#% ; {Expression} | e . (% ; c, c\#c ; (e)),
+<pre>                     </pre>%\#% ; {"}"} | % ; c )
+</code>
+<figcaption>Collection Constructor<figcaption>
+</figure>
+<figure>
+<code>
+{'? Expression Expression Expression} | e . e\2 {True | (e\3)<br>
+<pre>                                                         </pre>False | (e/4)}<br><br>
 {Expression "," Expression} | e . <br>{x ; (e\1)<br><pre> </pre>y ; (e\3)<br><pre> </pre>% ; y}<br><br>
 {"(" Expression ")"} | e . default 'compute e\2<br><br>
 {"("} | e . ( result ; {},<br>
@@ -52,14 +60,16 @@ The actual mechanism with which the implementation provides reactions for the de
 <code>
 {Value '&lt; Value} | e . default 'less (e\1 e\3) : Boolean<br>
 {Value '&gt; Value} | e . default 'greater (e\1 e\3) : Boolean<br>
+{Value '= Value} | e . default 'equal (e\1 e\3) : Boolean<br>
+{Value '/= Value} | e . default 'inequal (e\1 e\3) : Boolean<br>
 </code>
 <figcaption>Comparisons</figcaption>
 </figure>
 <figure>
 <code>
-{Boolean "\/" Boolean} | e . default 'conjunction (e\1 e\3)<br>
-{Boolean "/\" Boolean} | e . default 'disjunction (e\1 e\3)<br>
-{'- Boolean} | e . default 'negation (e\2)
+{Boolean "\/" Boolean} | e . default 'conjunction (e\1 e\3) : Boolean<br>
+{Boolean "/\" Boolean} | e . default 'disjunction (e\1 e\3) : Boolean<br>
+{'- Boolean} | e . default 'negation (e\2) : Boolean
 </code>
 <hr>
 <figcaption>Boolean Logic</figcaption>
@@ -82,6 +92,13 @@ The actual mechanism with which the implementation provides reactions for the de
 </code>
 <hr>
 <figcaption>Collection Destructuring</figcaption>
+</figure>
+<figure>
+<code>
+{Symbol '; *} | e . default 'clobber (e\1 e\3) : e\3<br>
+{* ': *} | e . default 'bind (e\1 e\3) : e\3
+</code>
+<figcaption>Binding</figcaption>
 </figure>
 </article>
 <article>
