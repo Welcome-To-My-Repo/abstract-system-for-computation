@@ -2798,3 +2798,42 @@ x . x + x
 How do pointers work?
 Are they typed?
 Yes.
+
+
+
+So what's my fucking notation now???
+
+Assignment: _ ; _
+Binding: _ : _
+Parameterization: _ . _
+Application: _ _ 
+Interaction: _ _
+
+How does juxtaposition work?
+Can you juxtapose in either direction?
+
+	f : Function,
+	c : Collection,
+	x c f,
+	x f c,
+	f x c,
+	f c x,
+	c x f,
+	c f x
+
+so you can actually juxtapose in any direction.
+What about currying?
+	
+	g : (Function *): Function,
+	g c f x x = g(c f x)(x),
+	g c f x c = g((c (f x))c)
+what is the algorithm here for application?
+you have a sequence of juxtaposed terms.
+how are they reduced?
+You have an something that can be applied and something that can't, then there's several cases
+- a a	the first is applied on the second
+- a c	the first is applied on the second
+- c a	the second is applied on the first
+- c c	none are applied, this is two separate expressions.
+So aren't infix operators just
+{* | x . {* | y . op(x y)}}
