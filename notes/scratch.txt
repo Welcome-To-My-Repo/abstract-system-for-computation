@@ -2837,3 +2837,52 @@ You have an something that can be applied and something that can't, then there's
 - c c	none are applied, this is two separate expressions.
 So aren't infix operators just
 {* | x . {* | y . op(x y)}}
+
+
+
+I don't know if I like my syntax.
+The symbols and names for things aren't that great.
+How do I do better?
+
+Constructors are obvious
+Types:		[ ... ]
+Collections:	{ ... }
+Compute:	( ... )
+
+Type Binding is the colon	:
+Clobber is the semicolon	;
+They're both forms of binding.
+
+I also need shortcuts to refer to
+Type of Types:		[]
+Type of Collections:	{}
+Type of Functions:	()
+Type of Expressions:	()
+Type of Symbols:	Symbol
+Type of Anything:	*
+Type of Nothing:	_
+Is there any point where I would need an empty version of any of these?
+No, in most cases where I'm talking about empty constructors, I'm talking about the generalized types of those.
+
+What about destructuring collections?
+You can select by type or by position.
+Select by type:		_ / _
+Select by index:	_ \ _
+Might be a complaint that these operators aren't clear.
+What else can be used for selecting?
+Underscore, colon, semicolon, period...
+I think the forward and backward slash are fine for this.
+
+Should the function constructor be an arrow or a dot?
+x . x + x
+x -> x + x
+An arrow. It's more clear what's going on.
+If that's the constructor, how do I write a function type?
+It's different than a function constructor because I'm not talking about which symbols I'm binding as parameters.
+It would be more like 
+"Something applied to something computes to something"
+Is a function the same as an expression?
+Yes actually.
+So then a function of A to B would be 
+	(()A : B)
+
