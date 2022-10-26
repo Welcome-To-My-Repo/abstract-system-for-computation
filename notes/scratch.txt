@@ -2884,5 +2884,64 @@ It would be more like
 Is a function the same as an expression?
 Yes actually.
 So then a function of A to B would be 
-	(()A : B)
+	(Function A : B)
 
+
+
+What's minimal ASC?
+no types
+everything is a Value
+You have arithmetic
+the ability to clobber
+equality comparison
+no variable names, everything is from the context.
+
+
+
+Fixed context elements:
+% / Expression
+% / 
+
+
+How to identify what is an expression in the context and what is a normal binding?
+Make an expression type.
+({'b} | 1) : Expression
+
+
+
+A property where
+(x -> x : 1) *  = 1
+
+
+
+What happens when I clobber a surface?
+% ; % + 1 | 1, % 1 ; 2
+You can't actually clobber a surface.
+You can replace it with another surface.
+
+
+
+If you need a context then you need to forcibly enter a new context.
+How do you do that?
+
+%\#% <- Expression : 
+	{'a} | % <- 	{
+			% 
+			count : Value 
+			(Expression : {'b} | count <- count + 1)
+			(Expression : {'c} | % <- %)
+      			}
+
+
+
+What's the minimal syntax?
+	{ ... }
+	( ... )
+	_ <- _
+	%
+	_ = _
+	_ /= _
+	_ < _
+	_ > _
+	@ _
+	^ _
