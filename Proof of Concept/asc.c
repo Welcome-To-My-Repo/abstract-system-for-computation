@@ -16,11 +16,6 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 #include <stdlib.h>
 #include <stdio.h>
 
-typedef unsigned long long int Val; //primitive
-typedef struct {Register *Type; Register *Data;} Entity;
-
-
-
 int main ()
 {
 	return 0;
