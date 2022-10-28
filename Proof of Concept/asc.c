@@ -16,7 +16,11 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 #include <stdlib.h>
 #include <stdio.h>
 
+typedef unsigned long long int Value;
+
 int main ()
 {
+	Value c;
+	c = fgetc(stdin);
 	return 0;
 }

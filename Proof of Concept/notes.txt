@@ -1,0 +1,44 @@
+parsing needs to be able to handle streaming.
+you have a context.
+the context has some punctuation characters, symbols, and bound tokens.
+if you get a symbol, it's either bound, unbound, or part of an expression.
+
+primitive capabilities:
+	- claim memory from the system
+	- initiate a new process to execute code
+	- convert a program into something executable
+so the actual dynamic environment can use malloc or whatever it wants.
+It holds an abstract model of the program.
+To compute it converts a model to an executable form.
+Any time something gets computed, it's compiled.
+
+how to serialize collections?
+Everything is either a Value, Byte or Collection.
+Value is n Bytes.
+Byte is 1 Byte.
+Collection is m elements of x Bytes.
+Each of these things also has a type.
+A type is a reference to another Collection storing some values.
+So for every object there is at least a triple, the Size, the Type, and the Data.
+In the case of the Collection, the first Value following the triple is the number of elements.
+
+
+What are the most primitive operations?
+Environmental Operations
+	- Compute
+	- Display
+	- Read
+	- Load
+Program Operations
+	- Claim Memory
+	- Process Exit
+	- Consolidate Memory
+
+How do I serialize stuff in memory?
+Values are one register.
+Bytes are one byte.
+Not everything needs a type tag.
+Only sometimes if multiple values can are accepted at one point.
+Not everything has to have a type tag.
+I think vectors are a common enough case where there should be a notation for it.
+There should also be the option to erase the type for elements that are all the same type.
