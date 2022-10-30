@@ -2951,3 +2951,10 @@ What's the minimal syntax?
 how does construction work?
 You claim a portion of storage not less than the storage requirements of the constructed object.
 The storage portion is treated as a place and is given a unique place value.
+
+
+
+how are collections made?
+Can elements in a collection be in separate locations?
+Yes. 
+The collection is an object and the objects "in" the collection are separate.
