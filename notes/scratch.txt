@@ -2958,3 +2958,38 @@ how are collections made?
 Can elements in a collection be in separate locations?
 Yes. 
 The collection is an object and the objects "in" the collection are separate.
+Does this mean that the entities in the collection can be in non-adjacent locations?
+Yes.
+How to enforce something has an adjacent location?
+What information does a collection actually contain then?
+The location of each of its elements.
+Is there any case where type information should be dynamically included?
+Type information is stored separately from the program.
+So what happens if I query the type of something?
+	^ x
+The type information is constant.
+What is type information?
+The program that results in the type.
+So if 
+	x : T
+then
+	^ x = T
+you're not actually querying the type of the binding.
+You're querying the type of the entity that the binding evaluates to.
+So 
+	^ [a b c] = Type
+	^ (a : [a b c]) = [a b c]
+	^ 1 : [1] = [1]
+How are types held in a context?
+Say that you make a new type. 
+How is it incorporated with other types?
+
+
+
+The type system is not affected by context?
+Or is it?
+If I have 
+	a = Type, b = Type, c = Type,
+	x : [a b] = b,
+	y : [a b c] = b,
+	^ x, ^ y
