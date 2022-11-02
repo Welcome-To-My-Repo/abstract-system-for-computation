@@ -20,7 +20,6 @@ p, ol, ul, table, details{padding:1ch;width:70%;margin:auto;}
 table{margin-top:1ch;}
 ul, ol{max-width:160ch;}
 article{counter-increment:article;}
-/*article:after{content:counter(article);position:relative;display:block;left:calc(95% - 6ch);top:0;border-bottom:solid var(--nt) 0.1ch;border-right:solid var(--nt) 0.1ch;width:7ch;text-align:right;border-bottom-right-radius:calc(1vh + 1vw);padding:1ch;}*/
 code, pre{font-family:monospace;}
 aside{width:50%;margin:auto;border:solid 0.1ch var(--nt);}
 figure{border:solid 0.1ch var(--nt);margin:auto;width:fit-content;padding:1ch;margin-bottom:1ch;overflow:auto;}

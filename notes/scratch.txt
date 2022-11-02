@@ -3014,6 +3014,8 @@ how does each expression handle unbound symbols?
 3: returns a semantic error that "a" is not computable
 4: binds "a" to 'e
 5: binds "a" to t
+Are these computed?
+Yes, compute dispatches a program which decides how to bind the unbound symbols.
 
 
 
