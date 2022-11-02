@@ -15,48 +15,34 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <errno.h>
 
 typedef unsigned long long int Value;
 Value *Buffer;
 Value Length = 0, Chars = 0;
-void Abort () {exit("There was a problem!");}
+void Abort () {perror("There was a problem!\n"); exit(errno);}
 void Read ();
-
+void Compute ();
+void *This;
 int main ()
 {
-	Buffer = malloc(1024);
-	Length = 1024;
-	Value c = 0, c_1 = 0;
-	for (;;)
-	{
-		c = fgetc(stdin);
-		Chars ++;
-		if (Chars >= Length)
-		{
-			Buffer = realloc(Buffer, Length * 2);
-			Length = Length * 2;
-		}
-		Buffer[Chars] = c;
-		if (c == '\n' && c_1 == '\n') break;
-		c_1 = c;
-	}
-	for (Value i = 0; i < Chars; i ++)
-	{
-		printf("%c", Buffer[i]);
-	}
+	Read();
 	return 0;
 }
 
 void Read ()
 {
 	if (Length == 0) {Buffer = malloc(1024); Length = 1024;}
+	Value c = 0, c_1 = 0;
 	for (;;)
 	{
-		Value c = 0, c_1 = 0;
-		for (;;)
-		{
-			c = fgetc(stdin);
-			
-		}
+		c = fgetc(stdin);
+		Chars ++;
+		if (Chars >= Length) {Buffer = realloc(Buffer, (Length =  Length * 2));}
+		Buffer[Chars] = c;
+		if (c == '\n' && c_1 == '\n') break;
+		c_1 = c;
 	}
 }
+
+void Compute()
