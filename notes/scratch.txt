@@ -2993,3 +2993,40 @@ If I have
 	x : [a b] = b,
 	y : [a b c] = b,
 	^ x, ^ y
+the type needs to be bound in the context.
+if the type is released from a context then you can't use it.
+Also how about enums?
+	T = [a:Type b:Type c:Type]
+what does an unbound symbol in a type mean?
+That it's a value of that type.
+
+
+
+how does each expression handle unbound symbols?
+1	(a)
+2	[a]
+3	{a}
+4	a = 'e
+5	a : t
+
+1: returns a semantic error that "a" is not computable
+2: binds 'a as a value to the type
+3: returns a semantic error that "a" is not computable
+4: binds "a" to 'e
+5: binds "a" to t
+
+
+
+a collection is a separate entity from its elements.
+a collection and each of its elements each have unique locations.
+what about data that's adjacent?
+use a value type for that.
+you have default values and you can create new compound values from that.
+
+
+
+what about operator precedence in arithmetic?
+	Sum : Number
+	Product : Number
+	Exponent : Number
+	% <- % + {}

@@ -17,10 +17,46 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 #include <stdio.h>
 
 typedef unsigned long long int Value;
+Value *Buffer;
+Value Length = 0, Chars = 0;
+void Abort () {exit("There was a problem!");}
+void Read ();
 
 int main ()
 {
-	Value c;
-	c = fgetc(stdin);
+	Buffer = malloc(1024);
+	Length = 1024;
+	Value c = 0, c_1 = 0;
+	for (;;)
+	{
+		c = fgetc(stdin);
+		Chars ++;
+		if (Chars >= Length)
+		{
+			Buffer = realloc(Buffer, Length * 2);
+			Length = Length * 2;
+		}
+		Buffer[Chars] = c;
+		if (c == '\n' && c_1 == '\n') break;
+		c_1 = c;
+	}
+	for (Value i = 0; i < Chars; i ++)
+	{
+		printf("%c", Buffer[i]);
+	}
 	return 0;
+}
+
+void Read ()
+{
+	if (Length == 0) {Buffer = malloc(1024); Length = 1024;}
+	for (;;)
+	{
+		Value c = 0, c_1 = 0;
+		for (;;)
+		{
+			c = fgetc(stdin);
+			
+		}
+	}
 }
