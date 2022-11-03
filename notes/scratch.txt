@@ -2608,4 +2608,29 @@ The ability to store data while it is not being held.
 A minimum of two data formats are required, a format for transformations and a 
 format for storage.
 The storage format is called a Byte.
-The transformation format is called a Word. 
+The transformation format is called a Word.
+
+
+
+What are my terms?
+A collection can include a surface as an element.
+A surface maps some entity to another entity, the reaction.
+A program may interact with a Collection by providing it with an entity matching the type of entity in the surface.
+The collection will then produce the reaction entity.
+
+
+
+How do I create expressions?
+By backtick and parens.
+`(1 '+ 1)
+It's the same as asserting that you're creating an expression
+(1 '+ 1):Expression
+So how would you do a macro?
+	% <- % + `{'o T} | t, o T
+	`(`(`(%) '<- `(% '+ `(`({'o T}:Expression) '| `(t))) ', `('o T))
+
+
+
+
+
+How do macros work if they require the interleaving of Read and Compute?

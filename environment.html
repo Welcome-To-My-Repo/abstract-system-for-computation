@@ -24,8 +24,24 @@ It provides some basic capabilities and abstractions such that all ASC programs 
 <h2 id="Environment Functions">Environment Functions</h2>
 <h3 id="Compute">Compute</h3>
 <p>
-The Compute function accepts a program model
+The Compute function accepts a program model.
+It will iteratively reduce the structure of the model until a single constant is left.
+This process is not required to halt.
 </p>
+<aside>
+<p>
+The Compute function will also accept a string instead of a program model.
+It will apply the Read function to that string and then apply itself to the program model resulting from that application.
+</p>
+</aside>
+<p>
+Compute performs a reduction in the following steps...
+</p>
+<ol>
+<li>Find the first (leftmost) expression which does not itself contain a nested expression.</li>
+<li>Interact with the Context using that expression.</li>
+<li>Substitute that expression with the Reaction.</li>
+</ol>
 <h3 id="Read">Read</h3>
 <h3 id="Display">Display</h3>
 <h3 id="Export">Export</h3>
@@ -33,6 +49,9 @@ The Compute function accepts a program model
 </article>
 <article>
 <h2 id="Program Model">The Program Model</h2>
+</article>
+<article>
+<h2 id="Context">The Context</h2>
 </article>
 <article>
 <h2 id="Images">Images</h2>

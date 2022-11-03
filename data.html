@@ -37,6 +37,10 @@ All entities in the Environment may be stored using one or more bytes.
 A Byte format is assumed to be capable of representing some number of whole, positive values.
 A Byte must be convertable to a Word value.
 </p>
+<p>
+In the case of multiple viable formats being available to the Environment, the Byte must correspond to the smallest uniquely identifiable storage unit available to the Environment.
+The ability to uniquely identify a single unit may include indirection.
+</p>
 <h3 id="Size">Size</h3>
 <p>
 The number of Bytes required to completely store an entity is referred to as the "size" of an entity.
@@ -45,10 +49,9 @@ A program may <a>query</a> the size of any entity.
 </p>
 <h3 id="Locations">Location</h3>
 <p>
-Each Byte must be uniquely identifiable.
 The Environment assumes that the available storage resources collectively provide a countable number of Bytes.
 Each byte may then be assigned a unique whole, positive number.
-The Environment assumes this numbering is arbitrary and does not correspond to the physical positionin of bytes in a storage medium.
+The Environment assumes this numbering is arbitrary and does not correspond to the physical position of bytes in a storage medium.
 The unique number identifying a Byte is considered a constant value and does not require computation.
 A program may <a>query</a> the identifying number of a Byte.
 </p>
