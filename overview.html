@@ -16,7 +16,7 @@ see 'asc/copyright.html' for copying conditions.
 <article>
 <h1>Overview</h1>
 <p>
-This document describes the properties of an Abstract System for Computation, a general purpose tool for creating programs.
+This document describes the properties of an Abstract System for Computation (ASC), a general purpose tool for computing.
 </p>
 </article>
 <article>
@@ -25,23 +25,31 @@ This document describes the properties of an Abstract System for Computation, a 
 This document specifies...
 </p>
 <ul>
-<li>the syntactic and semantic properties of the ASC language</li>
-<li>all assumptions made about the capabilities of the underlying environment.</li>
-<li>any algorithms which should be provided by default</li>
-<li>the constructs which should be provided by default</li>
+<li>the syntactic and semantic properties of the ASC language.</li>
+<li>the capabilities and limitations of the ASC environment.</li>
+<li>all assumptions made about the world outside the environment.</li>
+<li>any data which should be provided by default</li>
 <li>the methods for interpreting the ASC language</li>
 </ul>
 <p>
 This document does not specify...
 </p>
 <ul>
-<li>requirements for the underlying environment.</li>
+<li>requirements for anything outside the environment.</li>
 <li>methods for translating the ASC language to another language</li>
+<li>the storage format of the environment and data in it</li>
 </ul>
 </article>
 <article>
-<h2 id="Summary">Summary</h2>
+<h2 id="Features">Features</h2>
 <p>
+ASC provides a session-based environment where data is held in an <a>image</a>.
+The image is an archival format which can be exported from and imported to a session.
+This allows data to persist between multiple sessions.
+</p>
+<p>
+Each session allows one or more bidirectional streams for input and output to the environment.
+These streams are used to submit programs to the environment for computation and to recieve data resulting from any invocations of the <a>display</a> function.
 </p>
 </article>
 <nav>
