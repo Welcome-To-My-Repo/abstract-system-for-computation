@@ -17,6 +17,7 @@ see 'asc/copyright.html' for copying conditions.
 <h1>Overview</h1>
 <p>
 This document describes the properties of an Abstract System for Computation (ASC), a general purpose tool for computing.
+ASC consists of two interdependent components, an algorithmic language and an environment for computing programs described in that language.
 </p>
 </article>
 <article>
@@ -43,13 +44,20 @@ This document does not specify...
 <article>
 <h2 id="Features">Features</h2>
 <p>
-ASC provides a session-based environment where data is held in an <a>image</a>.
-The image is an archival format which can be exported from and imported to a session.
+ASC provides a session-based interface with one or more bidirectional streams.
+These streams convey character data representing the ASC language.
+Data can be entered into the environment for computation through these streams.
+The environment can send data back out across the stream using a pre-defined <a href="environment.html#Display">display</a> function.
+</p>
+<p>
+The environment holds all data in an <a>image</a>.
+An image is an archival format which can be exported from and imported to a session.
 This allows data to persist between multiple sessions.
 </p>
 <p>
-Each session allows one or more bidirectional streams for input and output to the environment.
-These streams are used to submit programs to the environment for computation and to recieve data resulting from any invocations of the <a>display</a> function.
+ASC represents programs as data.
+The ASC language as it is written is translated to a structured data format before it is computed.
+The process of computation involves inspecting the program data structure for pre-defined substructural patterns and performing transformations.
 </p>
 </article>
 <nav>

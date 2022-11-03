@@ -14,8 +14,9 @@ h2{width:70%;border-bottom:solid 0.1ch var(--nt);}
 h3{width:33%;}
 h4{border-bottom:solid 0.1ch var(--nt);}
 h1, h2, h3, h4 {margin-bottom:1ch;}
-a{text-decoration:none;color:var(--nt);}
-a:hover{text-decoration:underline;}
+a, summary{text-decoration:none;color:var(--nt);}
+a:hover, summary:hover{text-decoration:underline;}
+summary::marker{content:none;}
 p, ol, ul, table, details{padding:1ch;width:70%;margin:auto;}
 table{margin-top:1ch;}
 ul, ol{max-width:160ch;}

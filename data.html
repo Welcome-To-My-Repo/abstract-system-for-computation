@@ -1,0 +1,75 @@
+<!--
+This file is part of 
+"ASC: the Abstract System for Computation, Standard Documentation"
+Copyright (C) 2022
+Daniel Smith
+see 'asc/copyright.html' for copying conditions.
+-->
+<!DOCTYPE html>
+<head>
+<title>ASC: Data</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<article>
+<h1>Data</h1>
+<p>
+The environment assumes at least two capabilities: 
+the ability to hold data temporarily while a transformation is being applied
+and the ability to store data in between transforms.
+Two formats are required, one for performing transformations on data and one for storing data.
+The <a href="#Word">Word</a> is the format for transforming data.
+The <a href="#Byte">Byte</a> is the format for storing data.
+</p>
+<aside>
+<p>
+If multiple storage or transform formats are available to the environment, then they may be provided in ASC as data formats in addition to Words and Bytes.
+</p>
+</aside>
+</article>
+<article>
+<h2 id="Byte">The Byte</h2>
+<p>
+The Byte corresponds to a single unit of storage.
+All entities in the Environment may be stored using one or more bytes.
+A Byte format is assumed to be capable of representing some number of whole, positive values.
+A Byte must be convertable to a Word value.
+</p>
+<h3 id="Size">Size</h3>
+<p>
+The number of Bytes required to completely store an entity is referred to as the "size" of an entity.
+The size of an entity is considered a constant value and does not require computation.
+A program may <a>query</a> the size of any entity.
+</p>
+<h3 id="Locations">Location</h3>
+<p>
+Each Byte must be uniquely identifiable.
+The Environment assumes that the available storage resources collectively provide a countable number of Bytes.
+Each byte may then be assigned a unique whole, positive number.
+The Environment assumes this numbering is arbitrary and does not correspond to the physical positionin of bytes in a storage medium.
+</p>
+</article>
+<article>
+<h2 id="Word">The Word</h2>
+<p>
+The Word corresponds to the the implementation specific format used for transforming data.
+The Word format must allow the basic arithmetic operations, addition, subtraction, multiplication, division yielding a quotient, and division yielding a remainder.
+These operations shall follow the natural behavior of arithmetic over the set of Integers as far as the Word format is capable of representing Integer values.
+If any of these operations are available to the environment as part of the implementation specific Word format, then the environment is not required to simulate those operations and may use the ones supplied with the format.
+</p>
+<p>
+In the case of multiple viable formats being available to the Environment, the Word must correspond to the format that offers the most complete set of arithmetic operations.
+Additionally, the format which is most natural to the computer must be used.
+That is to say a format which is preferable for the Environment may not be the format most conducive to efficient computation.
+This may disqualify some formats which would otherwise be judged suitable.
+The ultimate choice of format is completely implementation dependent and is purposefully left vague.
+</p>
+</article>
+<nav>
+<a href="environment.html">&lt;&lt;</a>
+<a href="index.html" target="_parent">Top</a>
+<a href="computation.html">&gt;&gt;</a>
+</nav>	
+</body>
