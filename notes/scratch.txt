@@ -2627,8 +2627,36 @@ It's the same as asserting that you're creating an expression
 (1 '+ 1):Expression
 So how would you do a macro?
 	% <- % + `{'o T} | t, o T
+=
 	`(`(`(%) '<- `(% '+ `(`({'o T}:Expression) '| `(t))) ', `('o T))
-
+=
+	`(
+		`(
+			`(%)
+			'<-
+			`(
+				%
+				'+
+				`(
+					`(
+						{'o T} : Expression
+					)
+					'|
+					`(t)
+				)
+			)
+		)
+		',
+		`(
+			'o
+			T
+		)
+	)
+Here's the problem, this is a nested expression which introduces a macro to the context and then uses that macro.
+How is this possible?
+Read determines the innermost expression, then computes it.
+So this means that Read and Compute must be interleaved.
+Or this means that Compute is the same function as Read.
 
 
 
