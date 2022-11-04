@@ -935,3 +935,12 @@ and I combine them,
 I get a type error when the reader determines 
 	(f a)
 without evaluating the function.
+
+
+
+the type of an expression is known ahead of time because it's an interaction and interactions are typed just like functions are.
+
+
+
+what if a function includes new syntax?
+	f = x -> (% <- % + {'a x} | n -> n\1, a 1)
