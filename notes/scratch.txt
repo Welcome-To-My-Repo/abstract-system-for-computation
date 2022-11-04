@@ -108,80 +108,6 @@ It compares the possible values of the selecting type and if an element is value
 
 
 
-How to do multi-expression functions?
-	x = 1, f : n -> n + 1, y = f x
-In the line here, it's ambiguous that the last expression is separate from the function definition.
-What I want is
-	x = 1, f : n -> (n + 1), y = f x
-But what parses is
-	x = 1, f : n -> (n + 1, y = f x)
-This is the same problem with nested lists.
-	1, 2.1, 2.2, 2.3, 3
-as
-	1, (2.1, 2.2, 2.3), 3
-but it's ambiguous without the parentheses.
-Similarly, the function constructor grabs the expression following it, but it's ambiguous.
-A possible solution is to enclose the entire function definition in parentheses,
-	x = 1, f : (n -> n + 1) , y = f x
-This is the problem with lists having no delimiters. 
-Functions also have no delimiters.
-How do I fix this?
-"Begin" and "End"?
-No, how about the period?
-I already have it, it should be fine to use.
-	x = 1, f : n -> n + 1 ., y = f x .
-Yeah this works just fine.
-So everything I alreay have works anyways.
-
-
-
-How do I make a new expression?
-It depends on how the Compute function works.
-I know expressions are collections of stuff.
-	{'a "b" [c]}
-But symbols and strings can also be parameters in the expression.
-How would I do function application?
-	{Function Expression} | e -> ((e _ 0) (e _ 1))
-How would I do addition?
-	{Register '+ Register} | e -> add (e _ 0  e _ 1)
-How do you differentiate between punctuation and a parameter?
-By type.
-Constructors are punctuation, types are parameters.
-You can be specific as you want in the type, including the type of a type, but that way it's clear everything else is punctuation.
-How do you tell an expression apart from everything else though?
-By typing the collection as an expression. Then you can discriminate.
-
-
-
-How can things be associative?
-
-	{'k *}
-	{'k Symbol}
-	{'k Expression}
-
-How are these three different?
-The first two are the same. They do not look ahead, but consume the first computable value.
-The third looks ahead until the end of an expression.
-
-
-
-Should the size of a type and the size of the values of a type be different?
-	x : t,
-	## t /= ## x.
-No, if a type is
-	[Register]
-then 
-	## [Register] = ## Register
-
-
-
-Types are just programs. 
-If you want to determine if a value is included as part of that type, run the programs for that type.
-What about a crazy kind of type?
-	[x:t, y:t, z:k, ?(x p y)(y q z)(z r x)]
-
-
-
 Expressions are just a specially interpreted collection.
 Except that everything can be a specially interpreted collection and I turn into a lisp. blech!
 Expressions are their own datatype.
@@ -993,4 +919,19 @@ Or this means that Compute is the same function as Read.
 
 
 
-How do macros work if they require the interleaving of Read and Compute?
+A hard limit of the universe is that if I have a compound expression
+	e1, e2
+where the well-formedness of "e2" depends on computing "e1",
+then I cannot verify that "e2" is well-formed without first computing "e1".
+
+
+
+If my language is dynamically typed, can I stil check expressions?
+Say I have two functions,
+	f : (a) -> b
+	g : (d) -> c
+and I combine them,
+	(g f a)
+I get a type error when the reader determines 
+	(f a)
+without evaluating the function.
