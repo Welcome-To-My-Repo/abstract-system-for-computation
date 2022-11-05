@@ -11,7 +11,7 @@ table{border:0.1ch solid var(--nt);width:50%;margin:auto;}
 h3, h4{margin:auto;}
 h1{width:95%;}
 h2{width:70%;border-bottom:solid 0.1ch var(--nt);}
-h3{width:33%;}
+h3{width:33%;padding:0;}
 h4{border-bottom:solid 0.1ch var(--nt);}
 h1, h2, h3, h4 {margin-bottom:1ch;}
 a, summary{text-decoration:underline;color:var(--fg);}
