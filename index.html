@@ -74,7 +74,7 @@ function activate(x){document.getElementById("blank").style.display = "block";x.
 function move(x){x.preventDefault();tab.style.top = (x.clientY - yOff) + "px";tab.style.left = (x.clientX - xOff) + "px"}
 function deactivate(){document.onpointerup = null;document.onpointermove = null;document.getElementById("blank").style.display = "none";}}
 document.getElementById("links").style.display = "none";
-function showcontents(){links = document.getElementById("links");tab = document.getElementById("contents");tab.onpointerleave = function(){hidecontents();};if (links.style.display == "none"){links.style.display = "block";tab.style.width = "29ch";tab.style.height = "30ch";}else{tab.style.width = "7ch";tab.style.height = "11ch";links.style.display = "none";}}
+function showcontents(){links = document.getElementById("links");tab = document.getElementById("contents");tab.onmouseleave = function(){hidecontents();};if (links.style.display == "none"){links.style.display = "block";tab.style.width = "29ch";tab.style.height = "30ch";}else{tab.style.width = "7ch";tab.style.height = "11ch";links.style.display = "none";}}
 function hidecontents(){links = document.getElementById("links");tab = document.getElementById("contents");tab.onpointerleave = null;if (links.style.display != "none"){links.style.display = "none";tab.style.width = "7ch";tab.style.height = "11ch";}}
 nav = ['cover.html', 'overview.html', 'environment.html', 'data.html', 'computation.html', 'syntax.html', 'types.html', 'collections.html', 'functions.html', 'defaults.html', 'rationale.html', 'reference.html', 'copyright.html'];
 current = 0;
