@@ -982,9 +982,11 @@ how do I expression these four things?
 just specific indicies in %?
 or do I use names?
 I should use a combination of names and types
+
 %/Expression yields the current expression
 %/% yields the external context
 %/Collection yields all the bindings
+So there's a triple of a context, an expression structure, and a collection of bindings.
 
 
 
@@ -999,3 +1001,48 @@ no just iterate or provide a macro.
 
 
 so how do I iterate?
+
+
+
+What's the notation for creating an expression.
+It's just ( ... )
+What if I want to quote a constructor?
+("{" 'a 'b 'c "})
+That's how you quote a constructor.
+
+
+
+Say I have two collections
+A : Collection, B : Collection
+how would I make them contain each other?
+A = {B}, B = {A}
+This works because the collection is a separate structure than the entities. 
+Rather than an infinite nested chain, it's a cycle.
+
+
+
+collections are just vectors of pointers.
+so you can easily filter append and delete from them.
+How do you do that?
+addition and subtraction
+can you add one at a time?
+no you can add multiple
+{a} + {b} = {a b}
+{a b} - {a} = {b}
+{a} + {{b}} = {a {b}}
+
+
+
+how do I interleave computation?
+Like with my "dependent" contexts thing.
+how do I say `e1` before reading `e2`?
+	(e1), e2
+	Compute e1, e2
+how do I quote an expression?
+	x <- ` 1 + 1
+just the backquote
+that makes an unevaluated expression
+then you can eval it a bunch of times
+	x <- ` 1 + 1, (x) + (x)
+or you can do a tagbody
+	n = 10, (loop <- ` ?(n > 0) n <- n - 1, (loop) n)

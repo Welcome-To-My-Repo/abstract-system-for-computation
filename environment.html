@@ -21,8 +21,7 @@ It provides some basic capabilities and abstractions such that all ASC programs 
 </p>
 </article>
 <article>
-<h2 id="Environment Functions">Environment Functions</h2>
-<h3 id="Compute">Compute</h3>
+<h2 id="Compute">The Compute Program</h2>
 <p>
 The Compute function accepts a program model.
 It will iteratively reduce the structure of the model until a single constant is left.
@@ -49,10 +48,15 @@ It follows that the first expression which does not contain another nested expre
 Thus finding the minimal sum of index values to reach an expression will identify the first expression.
 </p>
 </aside>
-<h3 id="Read">Read</h3>
+</article>
+<article>
+<h2 id="Read">The Read Program</h2>
 <p>
 The Read function accepts a <i>String</i> containing a written program.
 It will build a program model which must be equivalent to the written program.
+</p>
+<p>
+Read uses
 </p>
 <aside>
 <h4>Deciding Equivalence</h4>
@@ -63,20 +67,38 @@ Thus equivalence between two programs can be expressed as the following program,
 where <code>Pm</code> corresponds to a program model and <code>Pw</code> corresponds to a written program and computing this program results in a boolean value signifying the equivalence or non-equivalence of the two programs.
 </p>
 </aside>
-<h3 id="Display">Display</h3>
+</article>
+<article>
+<h2 id="Display">The Display Program</h2>
 <p>
 Display accepts any object and will emit a <a>String</a> containing a written program that results in that object when computed.
 Display will always produce a well-formed written program such that <br>
 <code>x : *, Compute Read Display x = x</code>
 </p>
-<h3 id="Export">Export</h3>
-<h3 id="Import">Import</h3>
+</article>
+<article>
+<h2 id="Export">The Export Program</h2>
+</article>
+<article>
+<h2 id="Import">The Import Program</h2>
 </article>
 <article>
 <h2 id="Program Model">The Program Model</h2>
+<p>
+The program model is a representation of a program as structured data.
+</p>
 </article>
 <article>
 <h2 id="Context">The Context</h2>
+<p>
+The Context is a <a>Collection</a> of entities which are used to compute a program.
+They are, 
+</p>
+<ul>
+<li>the external Context</li>
+<li>the program model</li>
+<li>a Collection of Surfaces representing syntactic forms</li>
+</ul>
 </article>
 <article>
 <h2 id="Images">Images</h2>
