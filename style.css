@@ -2,7 +2,7 @@
 html{height:100%;width:100%;overflow-x:hidden;}
 body{color:var(--fg);background-color:var(--bg);padding:none;font-size:calc(1vh + 1vw);counter-reset:article;}
 hr {color:var(--nt);border-width:0.1ch;border-top:none;border-bottom:solid;}
-h1, h2, h3 {font-size:inherit;text-align:center;margin:auto;font-size:calc(1.4vh + 0.7vw);}
+h1, h2, h3, h4{font-size:inherit;text-align:center;margin:auto;font-size:calc(1.4vh + 0.7vw);}
 h1 {margin-top:1ch;}
 h1 {box-shadow: 0px 0px 15px 0px var(--fg);}
 h1, h3{background-color:var(--nt);padding:1ch;}
@@ -21,10 +21,11 @@ p, ol, ul, table, details{padding:1ch;width:70%;margin:auto;}
 table{margin-top:1ch;}
 ul, ol{max-width:160ch;}
 article{counter-increment:article;}
-code, pre{font-family:monospace;}
-aside{width:50%;margin:auto;border:solid 0.1ch var(--nt);}
+code, pre{font-family:monospace;color:var(--nt);}
+aside{width:70%;margin:auto;border:solid 0.1ch var(--nt);margin-bottom:1ch;}
+aside>*{width:90%;}
 figure{border:solid 0.1ch var(--nt);margin:auto;width:fit-content;padding:1ch;margin-bottom:1ch;overflow:auto;}
-figure code{display:block;width:80ch;margin:auto;font-size:calc(0.8vh + 0.8vw);}
+figure code{display:block;width:80ch;margin:auto;font-size:calc(0.8vh + 0.8vw);color:var(--fg);}
 figcaption{text-align:center;width:100%;margin:auto;}
 h1, h3, aside, figure, table{border-top-left-radius:calc(1vh + 1vw);border-bottom-right-radius:calc(1vh + 1vw);}
 pre{display:inline;}

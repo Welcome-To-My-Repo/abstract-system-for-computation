@@ -28,21 +28,41 @@ The Compute function accepts a program model.
 It will iteratively reduce the structure of the model until a single constant is left.
 This process is not required to halt.
 </p>
-<aside>
 <p>
-The Compute function will also accept a string instead of a program model.
-It will apply the Read function to that string and then apply itself to the program model resulting from that application.
+The Compute function will also accept a <i>String</i> instead of a program model.
+It will apply the <i>Read</i> function to that string and then apply itself to the program model resulting from that application.
 </p>
-</aside>
 <p>
 Compute performs a reduction in the following steps...
 </p>
 <ol>
-<li>Find the first (leftmost) expression which does not itself contain a nested expression.</li>
-<li>Interact with the Context using that expression.</li>
-<li>Substitute that expression with the Reaction.</li>
+<li>Find the first (leftmost) expression which does not contain a nested expression.</li>
+<li><a>Interact</a> with the <a>Context</a> using that expression.</li>
+<li>Substitute that expression with the <i>Reaction</i>.</li>
 </ol>
+<aside>
+<h4>Choosing an Expression</h3>
+<p>
+A simple algorithm for determining which expression should be used to interact with the Context is to chose the expression which can be reached with the smallest sum of indicies.
+Given that the program model consists of nested <i>Collections</i>, every nested expression can be reached by <a>index subscripting</a>.
+It follows that the first expression which does not contain another nested expression should be reachable by the smallest index for each subscript operation performed.
+Thus finding the minimal sum of index values to reach an expression will identify the first expression.
+</p>
+</aside>
 <h3 id="Read">Read</h3>
+<p>
+The Read function accepts a <i>String</i> containing a written program.
+It will build a program model which must be equivalent to the written program.
+</p>
+<aside>
+<h4>Deciding Equivalence</h4>
+<p>
+The equivalence of a program model to a written program is decided by observing if the <i>Context</i>s resulting from computing both forms of the program are equivalent.
+Thus equivalence between two programs can be expressed as the following program,<br>
+<code>(Pm), A &lt;- %, (Pw), B &lt;- %, A = B</code><br>
+where <code>Pm</code> corresponds to a program model and <code>Pw</code> corresponds to a written program and computing this program results in a boolean value signifying the equivalence or non-equivalence of the two programs.
+</p>
+</aside>
 <h3 id="Display">Display</h3>
 <h3 id="Export">Export</h3>
 <h3 id="Import">Import</h3>
