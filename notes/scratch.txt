@@ -949,3 +949,53 @@ what if a function includes new syntax?
 
 how are types taken into account?
 
+
+
+evaluation model is stratified
+you have a compound expression, 
+	e1, e2
+and reading e2 depends on evaluating e1, so then you would compute e1 explicitly
+	compute e1, e2
+
+
+
+so I have a context, %
+it's a collection containing the grammar, the expression being computed, and any context-bounded data.
+	% = {g = {}, e, d_0, d_1, d_2, ..., d_n}
+I can change the grammar, the expression being evaluated, or any of the data.
+I want specific behavior, when I write
+	% <- e
+I want the context to be replaced entirely with one evaluating "e".
+when I write
+	% <- {}
+I want the entire context to be replaced with the new collection.
+what form does the context have?
+the address of the external context.
+so I'm replacing part of the context.
+what does the context contain?
+- the address of the external context
+- the collection of grammars
+- the expression being evaluated
+- the collection of data
+so there's four things.
+how do I expression these four things?
+just specific indicies in %?
+or do I use names?
+I should use a combination of names and types
+%/Expression yields the current expression
+%/% yields the external context
+%/Collection yields all the bindings
+
+
+
+what higher order operators should I use with collections?
+i have a filter operation already
+	c / t
+I want an operation that does something for each element.
+that's just iteration.
+but is it built in?
+no just iterate or provide a macro.
+
+
+
+so how do I iterate?
