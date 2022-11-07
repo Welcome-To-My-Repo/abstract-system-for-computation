@@ -21,7 +21,7 @@ It provides some basic capabilities and abstractions such that all ASC programs 
 </p>
 </article>
 <article>
-<h2 id="Compute">The Compute Program</h2>
+<h2 id="Compute">The Compute Function</h2>
 <p>
 The Compute function accepts a program model.
 It will iteratively reduce the structure of the model until a single constant is left.
@@ -50,7 +50,7 @@ Thus finding the minimal sum of index values to reach an expression will identif
 </aside>
 </article>
 <article>
-<h2 id="Read">The Read Program</h2>
+<h2 id="Read">The Read Function</h2>
 <p>
 The Read function accepts a <i>String</i> containing a written program.
 It will build a program model which must be equivalent to the written program.
@@ -69,7 +69,7 @@ where <code>Pm</code> corresponds to a program model and <code>Pw</code> corresp
 </aside>
 </article>
 <article>
-<h2 id="Display">The Display Program</h2>
+<h2 id="Display">The Display Function</h2>
 <p>
 Display accepts any object and will emit a <a>String</a> containing a written program that results in that object when computed.
 Display will always produce a well-formed written program such that <br>
@@ -77,10 +77,10 @@ Display will always produce a well-formed written program such that <br>
 </p>
 </article>
 <article>
-<h2 id="Export">The Export Program</h2>
+<h2 id="Export">The Export Function</h2>
 </article>
 <article>
-<h2 id="Import">The Import Program</h2>
+<h2 id="Import">The Import Function</h2>
 </article>
 <article>
 <h2 id="Program Model">The Program Model</h2>
@@ -92,7 +92,8 @@ The program model is a representation of a program as structured data.
 <h2 id="Context">The Context</h2>
 <p>
 The Context is a <a>Collection</a> of entities which are used to compute a program.
-They are, 
+The Context is structured as <br>
+<code>{Context, Expression, Collection}</code>
 </p>
 <ul>
 <li>the external Context</li>

@@ -17,14 +17,15 @@ iframe{border:none;width:100vw;height:100vh;margin:0;position:fixed;top:0;left:0
 </style>
 </head>
 <body>
-<a id="next" onclick="next();">&gt;</a>
-<a id="previous" onclick="prev();">&lt;</a>
+<div id="next" onclick="next();"></div>
+<div id="previous" onclick="prev();"></div>
 <div id="contents">
 <style>
-#next, #previous{text-decoration:none;color:var(--fg);z-index:99;height:100vh;display:block;position:fixed;top:0;text-align:center;padding-top:calc(50vh - 1ch);padding-bottom:50vh;width:3ch;box-shadow:none;transition: all 0.5s;}
-#next:hover, #previous:hover{width:7ch;}
-#next{right:0;background-image:linear-gradient(to right, #00000000, var(--bg) 70%);}
-#previous{left:0;background-image:linear-gradient(to left, #00000000, var(--bg) 70%);}
+#next, #previous{text-decoration:none;color:var(--fg);z-index:99;position:fixed;top:0;text-align:center;padding:1ch;border-radius:calc(1vh + 1vw);height:3ch;width:1ch;margin-top:50%;margin-bottom:50%;box-shadow:none;transition: all 0.5s;}
+#next{right:0;background-image:linear-gradient(to right, #00000000, var(--nt));}
+#next:hover{width:30%;}
+#previous{left:0;background-image:linear-gradient(to left, #00000000, var(--nt));}
+#previous:hover{width:30%;}
 #contents{overflow:hidden;padding:1ch;width:7ch;height:11ch;display:block;position:fixed;z-index:100;top:1ch;left:1.5%;border-bottom-right-radius:calc(1vh + 1vw);border-top-left-radius:calc(1vh + 1vw);border:0.2ch solid var(--nt);background-color:var(--bg);font-size:calc(1vh + 1vw);box-shadow: 0px 0px 15px 0px var(--db);transition: width 0.5s, height 0.5s;}
 #icon{width:7ch;height:11ch;text-align:center;}
 #ASC-icon{width:7ch;height:7ch;background-color:var(--bg);border:none;margin:auto;padding:0;}
@@ -64,7 +65,6 @@ d="M 60.777712,2.0907162 37.92925,97.768652" id="path49" />
 </div>
 </div>
 <div id="blank" style="background-color:none;color:none;opacity:0;position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9;display:none;"></div>
-
 <iframe src="cover.html" name="view" id="view"></iframe>
 <script>
 
