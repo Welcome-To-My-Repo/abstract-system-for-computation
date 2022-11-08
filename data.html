@@ -63,6 +63,7 @@ The Word corresponds to the the implementation specific format used for transfor
 The Word format must allow the basic arithmetic operations, addition, subtraction, multiplication, division yielding a quotient, and division yielding a remainder.
 These operations shall follow the natural behavior of arithmetic over the set of Integers as far as the Word format is capable of representing Integer values.
 If any of these operations are available to the environment as part of the implementation specific Word format, then the environment is not required to simulate those operations and may use the ones supplied with the format.
+This is conditional on the provided operations being at least as accurate as simulated operations.
 </p>
 <p>
 In the case of multiple viable formats being available to the Environment, the Word must correspond to the format that offers the most complete set of arithmetic operations.
@@ -74,6 +75,7 @@ The ultimate choice of format is completely implementation dependent and is purp
 </article>
 <article>
 <h2>Compound Data</h2>
+
 </article>
 <nav>
 <a href="environment.html">&lt;&lt;</a>
