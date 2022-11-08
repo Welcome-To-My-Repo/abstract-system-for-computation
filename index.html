@@ -60,9 +60,8 @@ d="M 60.777712,2.0907162 37.92925,97.768652" id="path49" />
 <div id="blank" style="background-color:none;color:none;opacity:0;position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9;display:none;"></div>
 <iframe src="cover.html" name="view" id="view"></iframe>
 <script>
-
 draggable(document.getElementById("contents"));
-function draggable (tab){e = document.getElementById("icon");e.onpointerdown = activate;xOff = 0;yOff = 0;
+function draggable (tab){e = document.getElementById("contents");e.onpointerdown = activate;xOff = 0;yOff = 0;
 function activate(x){document.getElementById("blank").style.display = "block";x.preventDefault();xOff = x.clientX - tab.offsetLeft;yOff = x.clientY - tab.offsetTop;document.onpointerup = deactivate;document.onpointermove = move;}
 function move(x){x.preventDefault();tab.style.top = (x.clientY - yOff) + "px";tab.style.left = (x.clientX - xOff) + "px"}
 function deactivate(){document.onpointerup = null;document.onpointermove = null;document.getElementById("blank").style.display = "none";}}
