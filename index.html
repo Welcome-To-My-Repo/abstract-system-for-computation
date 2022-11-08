@@ -17,8 +17,6 @@ iframe{border:none;width:100vw;height:100vh;margin:0;position:fixed;top:0;left:0
 </style>
 </head>
 <body>
-<div id="next" onclick="next();"></div>
-<div id="previous" onclick="prev();"></div>
 <div id="contents">
 <style>
 #next, #previous{text-decoration:none;color:var(--fg);z-index:99;position:fixed;top:0;text-align:center;padding:1ch;border-radius:calc(1vh + 1vw);height:3ch;width:1ch;margin-top:50%;margin-bottom:50%;box-shadow:none;transition: all 0.5s;}
@@ -76,11 +74,6 @@ function deactivate(){document.onpointerup = null;document.onpointermove = null;
 document.getElementById("links").style.display = "none";
 function showcontents(){links = document.getElementById("links");tab = document.getElementById("contents");tab.onmouseleave = function(){hidecontents();};if (links.style.display == "none"){links.style.display = "block";tab.style.width = "29ch";tab.style.height = "30ch";}else{tab.style.width = "7ch";tab.style.height = "11ch";links.style.display = "none";}}
 function hidecontents(){links = document.getElementById("links");tab = document.getElementById("contents");tab.onpointerleave = null;if (links.style.display != "none"){links.style.display = "none";tab.style.width = "7ch";tab.style.height = "11ch";}}
-nav = ['cover.html', 'overview.html', 'environment.html', 'data.html', 'computation.html', 'syntax.html', 'types.html', 'collections.html', 'functions.html', 'defaults.html', 'rationale.html', 'reference.html', 'copyright.html'];
-current = 0;
-function next(){current = current + 1;if(current >= nav.length){current = 0;};document.getElementById('view').src = nav[current];}
-function prev(){current = current - 1;if(current < 0){current = (nav.length - 1);};document.getElementById('view').src = nav[current];}
-document.onkeydown = function(k){if (k.key == 'ArrowLeft') prev();else if (k.key == 'ArrowRight') next();}
 </script>
 </body>
 

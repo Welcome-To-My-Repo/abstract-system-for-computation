@@ -4,125 +4,903 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-:root{--bg:#fff7ea;--db:#aa7b58;--fg:#4b2f00;--nt:#00c4aa;--red:#b83f3f;--green:#4dad44;--blue:#5a71d8;--yellow:#c0ae48;--grey:#9e9e9e;--purple:#d431cc;}
+:root{--bg:#fff9ee;--db:#aa7b58;--fg:#322000;--nt:#00d0b5;--red:#b83f3f;--green:#4dad44;--blue:#5a71d8;--yellow:#c0ae48;--grey:#9e9e9e;--purple:#d431cc;}
 html{height:100%;width:100%;overflow-x:hidden;}
-body{height:100%;color:var(--fg);background-color:var(--bg);padding:none;font-size:calc(1vh + 1vw);}
-hr {color:var(--nt);border-width:3px;border-top:none;border-bottom:solid;}
-h1, h2, h3, h4 {box-shadow: 0px 0px 0px var(--db);font-size:inherit;text-align:center;margin:auto;font-size:calc(1.4vh + 0.7vw);}
+body{color:var(--fg);background-color:var(--bg);padding:none;font-size:calc(1vh + 1vw);counter-reset:article;}
+hr {color:var(--nt);border-width:0.1ch;border-top:none;border-bottom:solid;}
+h1, h2, h3, h4{font-size:inherit;text-align:center;margin:auto;font-size:calc(1.4vh + 0.7vw);}
 h1 {margin-top:1ch;}
+h1 {box-shadow: 0px 0px 15px 0px var(--fg);}
 h1, h3{background-color:var(--nt);padding:1ch;}
 h2, h4{padding:1ch;}
-table{border:3px solid var(--nt);width:50%;margin:auto;}
+table{border:0.1ch solid var(--nt);width:50%;margin:auto;}
 h3, h4{margin:auto;}
 h1{width:95%;}
-h2{width:70%;border-bottom:solid 3px var(--nt);}
-h3{width:33%;}
-h4{border-bottom:solid 3px var(--nt);width:20%;}
-a{text-decoration:none;color:var(--nt);}
-a:hover{text-decoration:underline;}
-p{padding:1ch;}
-article, ul, ol{width:70%;max-width:160ch;margin:auto;}
-aside{width:50%;margin:auto;border:solid 3px var(--nt);}
-figure{border:solid 3px var(--nt);margin:auto;width:95%;padding:1ch;margin-bottom:1ch;overflow:auto;}
-figure code{font-family:monospace;display:block;width:80ch;margin:auto;font-size:calc(0.8vh + 0.8vw);}
+h2{width:70%;border-bottom:solid 0.1ch var(--nt);}
+h3{width:33%;padding:0;}
+h4{border-bottom:solid 0.1ch var(--nt);}
+h1, h2, h3, h4 {margin-bottom:1ch;}
+a, summary{text-decoration:underline;color:var(--fg);}
+a:hover, summary:hover{color:var(--nt);}
+summary::marker{content:none;}
+p, ol, ul, table, details{padding:1ch;width:70%;margin:auto;}
+table{margin-top:1ch;}
+ul, ol{max-width:160ch;}
+article{counter-increment:article;}
+code, pre{font-family:monospace;color:var(--nt);}
+aside{width:70%;margin:auto;border:solid 0.1ch var(--nt);margin-bottom:1ch;}
+aside>*{width:90%;}
+figure{border:solid 0.1ch var(--nt);margin:auto;width:fit-content;padding:1ch;margin-bottom:1ch;overflow:auto;}
+figure code{display:block;width:80ch;margin:auto;font-size:calc(0.8vh + 0.8vw);color:var(--fg);}
 figcaption{text-align:center;width:100%;margin:auto;}
-h1, h3, aside, figure, table{border-top-left-radius:20px;border-bottom-right-radius:20px;}
+h1, h3, aside, figure, table{border-top-left-radius:calc(1vh + 1vw);border-bottom-right-radius:calc(1vh + 1vw);}
 pre{display:inline;}
-svg{height:60vh;width:50vw;display:block;margin:auto;background-color:var(--nt);border-bottom-right-radius:50px;border-top-left-radius:50px;border:3px solid var(--nt);margin-bottom:5vh;margin-top:5vh;padding:17px;}
+svg{height:30ch;width:30ch;display:block;margin:auto;background-color:var(--nt);border-bottom-right-radius:calc(1vh + 1vw);border-top-left-radius:calc(1vh + 1vw);border:3px solid var(--nt);margin-bottom:5vh;margin-top:5vh;padding:17px;}
+footer a{text-align:center;position:absolute;bottom:0;width:100%;}
+nav {text-align:center;width:100%;}
 @media only screen and (max-width: 900px) {article, aside, ul, ol, table{width:100%;}}
-@media print{h1, h2, h3, h4{page-break-after:avoid;}figure{page-break-inside:avoid;}}
+@media print{h1, h2, h3, h4{page-break-after:avoid;}article{page-break-inside:avoid;page-break-after:always;}figure{page-break-inside:avoid;}}
 </style>
 </head>
 <body>
-<svg viewBox="0 0 50 70" version="1.1" id="ASC-logo" xmlns="http://www.w3.org/2000/svg">
-<ellipse 
-style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-ry="11" rx="27" cy="5" cx="36" transform="matrix(0.8,0.6,-0.7,0.7,0,0)">
-</ellipse>
-<path
-style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:5;stroke-dasharray:none;stroke-opacity:1"
-d="M 36,43 A 13,13 0 0 1 23,57 13,13 0 0 1 11,43 13,13 0 0 1 23,30 13,13 0 0 1 36,44" />
-<path
-style="fill:none;stroke:var(--fg);stroke-width:1.85208;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-d="M 32,1 16,68"/>
+<article style="height:100vh;">
+<svg viewBox="0 0 100 100" version="1.1" id="ASC-logo" width="100" height="100" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+<defs id="defs54" />
+<ellipse style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+ry="15.550441" rx="38.556782" cy="-1.5364231" cx="62.654388" transform="matrix(0.8,0.6,-0.70710678,0.70710678,0,0)" id="ellipse45" />
+<path style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:5;stroke-dasharray:none;stroke-opacity:1"
+d="M 66.489828,62.06793 A 18.564376,18.564376 0 0 1 47.925452,82.060335 18.564376,18.564376 0 0 1 30.789107,62.06793 18.564376,18.564376 0 0 1 47.925452,43.503554 18.564376,18.564376 0 0 1 66.489828,63.495959"
+id="path47" />
+<path style="fill:none;stroke:var(--fg);stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+d="M 60.777712,2.0907162 37.92925,97.768652" id="path49" />
 </svg>
-<div style="text-align:center;break-after:all;height:30vh;">
-<span style="font-size:calc(2.8vh + 1vw);">ASC<br></span>
-<span style="font-size:calc(1.4vh + 0.7vw);">the Abstract System for Computation</span>
+<div style="text-align:center;">
+<span style="font-size:calc(3vh + 3vw);">A.S.C.<br></span>
+<span style="font-size:calc(2vh + 2vw);">the Abstract System for Computation</span>
 <hr>
-<span style="font-size:calc(1vh + 0.7vh);">Standard Documentation<br>Revision 0</span>
+<span>Standard Documentation<br>Revision 0</span>
+<hr>
+<p>
+Copyright &copy; 2022 Daniel Smith.
+</p>
+<p>
+Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation; 
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+A copy of the license is included in the section entitled <a href="copyright.html">"GNU Free Documentation License"</a>.
+</p>
 </div>
+</article>
 
-<h1 id="Table_of_Contents">Table of Contents</h1>
+<article>
+<h1>Overview</h1>
+<p>
+This document describes the properties of an Abstract System for Computation (ASC), a general purpose tool for computing.
+ASC consists of two interdependent components, an algorithmic language and an environment for computing programs described in that language.
+</p>
+</article>
+<article>
+<h2>Scope</h2>
+<p>
+This document specifies...
+</p>
+<ul>
+<li>the syntactic and semantic properties of the ASC language.</li>
+<li>the capabilities and limitations of the ASC environment.</li>
+<li>all assumptions made about the world outside the environment.</li>
+<li>any data which should be provided by default</li>
+<li>the methods for interpreting the ASC language</li>
+</ul>
+<p>
+This document does not specify...
+</p>
+<ul>
+<li>requirements for anything outside the environment.</li>
+<li>methods for translating the ASC language to another language</li>
+<li>the storage format of the environment and data in it</li>
+</ul>
+</article>
+<article>
+<h2 id="Features">Features</h2>
+<p>
+ASC provides a session-based interface with one or more bidirectional streams.
+These streams convey character data representing the ASC language.
+Data can be entered into the environment for computation through these streams.
+The environment can send data back out across the stream using a pre-defined <a href="environment.html#Display">display</a> function.
+</p>
+<p>
+The environment holds all data in an <a>image</a>.
+An image is an archival format which can be exported from and imported to a session.
+This allows data to persist between multiple sessions.
+</p>
+<p>
+ASC represents programs as data.
+The ASC language as it is written is translated to a structured data format before it is computed.
+The process of computation involves inspecting the program data structure for pre-defined substructural patterns and performing transformations.
+</p>
+</article>
+
+
+<article>
+<h1>Environment</h1>
+<p>
+The environment facilitates the process of computation.
+It provides some basic capabilities and abstractions such that all ASC programs recieve the same view of the external environment.
+</p>
+</article>
+<article>
+<h2 id="Compute">The Compute Function</h2>
+<p>
+The Compute function accepts a program model.
+It will iteratively reduce the structure of the model until a single constant is left.
+This process is not required to halt.
+</p>
+<p>
+The Compute function will also accept a <i>String</i> instead of a program model.
+It will apply the <i>Read</i> function to that string and then apply itself to the program model resulting from that application.
+</p>
+<p>
+Compute performs a reduction in the following steps...
+</p>
 <ol>
-<li><a href="#Table_of_Contents">Table of Contents</a></li>
-<li><a href="#Overview">Overview</a></li>
+<li>Find the first (leftmost) expression which does not contain a nested expression.</li>
+<li><a>Interact</a> with the <a>Context</a> using that expression.</li>
+<li>Substitute that expression with the <i>Reaction</i>.</li>
 </ol>
-
-<h1 id="Overview">Overview</h1>
-<article>
-<p>
-The Abstract System for Computation (abbreviated as ASC) is a tool designed for describing, performing, and reasoning about computation.
-It exists as a written notation and an environment for verifying and interpreting the notation.
-This document outlines the capabilities and requirements of a verified implementation of ASC.			
-</p>
-<p>
-ASC is a minimal language designed to be as general as possible so it can be adapted to the widest possible range of computational scenarios.
-It provides a reduced set of constructs: functions, collections, types, and evaluation context.
-Every entity is represented as some computable value in ASC, including programs themselves.
-</p>
-</article>
-
-<h1 id="Syntax">Syntax</h1>
-<article>
-<p>
-ASC syntax represents the correspondence between a written program and its computable model.
-Syntax is composed of a sequence of characters divided into sub-sequences called <a href="#Symbols">Symbols</a>.
-These symbols are grouped into <a href="#Expressions">Expressions</a>.
-Expressions are then nested in a structure representing the computable model of a program.
-</p>
-</article>
-
-<h2 id="Minimum Required Character Set">Minimum Required Character Set</h2>
-<article>
-<p>
-The <a href="#Character Visualization">figure</a> below shows a block composed of the characters required for writing an ASC program.
-There are two additional required characters, the blank space and the line break which are not shown because they are both invisible.
-</p>
-</article>
-<figure id="Character Visualization">
-<code>
-0 1 2 3 4 5 6 7 8 9<br>
-A B C D E F G H I J K L M N O P Q R S T U V W X Y Z<br>
-a b c d e f g h i j k l m n o p q r s t u v w x y z<br>
-+ - * / &lt; &gt; =<br>
-@ # % ^ &amp; | \ ~ !<br>
-' " ` . , ; :<br>
-( ) [ ] { }  ?  _
-</code>
-<hr>
-<figcaption>Visualization of the characters required for ASC.</figcaption>
-</figure>
-
-<h3 id="Character Encoding">Character Encoding</h3>
-<article>
-<p>
-Each character in ASC must correspond to a unique numerical value in an encoding scheme.
-The specific encoding scheme used depends on the implemntation. 
-If no encoding scheme is used, an ASC program may assume the default encoding is the <a href="https://www.unicode.org/main.html">Unicode standard encoding</a>.
-</p>
-</article>
-
-<h2 id="Determining Symbols">Determining Symbols</h2>
-<article>
-<p>
-In a sequence of characters, a symbol is either a sequence of characters where no space or line break occurrs, or it is a punctuation.
-</p>
-</article>
 <aside>
+<h4>Choosing an Expression</h3>
 <p>
-A special case of symbol is one comprised only of decimal digits (<code>0123456789</code>).
-Symbols which are all digits are treated as <a href="#Numbers">numbers</a>.
+A simple algorithm for determining which expression should be used to interact with the Context is to chose the expression which can be reached with the smallest sum of indicies.
+Given that the program model consists of nested <i>Collections</i>, every nested expression can be reached by <a>index subscripting</a>.
+It follows that the first expression which does not contain another nested expression should be reachable by the smallest index for each subscript operation performed.
+Thus finding the minimal sum of index values to reach an expression will identify the first expression.
 </p>
 </aside>
+</article>
+<article>
+<h2 id="Read">The Read Function</h2>
+<p>
+The Read function accepts a <i>String</i> containing a written program.
+It will build a program model which must be equivalent to the written program.
+</p>
+<p>
+Read uses
+</p>
+<aside>
+<h4>Deciding Equivalence</h4>
+<p>
+The equivalence of a program model to a written program is decided by observing if the <i>Context</i>s resulting from computing both forms of the program are equivalent.
+Thus equivalence between two programs can be expressed as the following program,<br>
+<code>(Pm), A &lt;- %, (Pw), B &lt;- %, A = B</code><br>
+where <code>Pm</code> corresponds to a program model and <code>Pw</code> corresponds to a written program and computing this program results in a boolean value signifying the equivalence or non-equivalence of the two programs.
+</p>
+</aside>
+</article>
+<article>
+<h2 id="Display">The Display Function</h2>
+<p>
+Display accepts any object and will emit a <a>String</a> containing a written program that results in that object when computed.
+Display will always produce a well-formed written program such that <br>
+<code>x : *, Compute Read Display x = x</code>
+</p>
+</article>
+<article>
+<h2 id="Export">The Export Function</h2>
+</article>
+<article>
+<h2 id="Import">The Import Function</h2>
+</article>
+<article>
+<h2 id="Program Model">The Program Model</h2>
+<p>
+The program model is a representation of a program as structured data.
+</p>
+</article>
+<article>
+<h2 id="Context">The Context</h2>
+<p>
+The Context is a <a>Collection</a> of entities which are used to compute a program.
+The Context is a collection,<br>
+<code>{Context, Expression, Collection}</code>
+</p>
+<ul>
+<li>the external Context</li>
+<li>the program model</li>
+<li>a Collection of Surfaces representing syntactic forms</li>
+</ul>
+</article>
+<article>
+<h2 id="Images">Images</h2>
+</article>
+
+<article>
+<h1>Data</h1>
+<p>
+The environment assumes at least two capabilities: 
+the ability to hold data temporarily while a transformation is being applied
+and the ability to store data in between transforms.
+Two formats are required, one for performing transformations on data and one for storing data.
+The <a href="#Word">Word</a> is the format for transforming data.
+The <a href="#Byte">Byte</a> is the format for storing data.
+</p>
+<aside>
+<p>
+If multiple storage or transform formats are available to the environment, then they may be provided in ASC as data formats in addition to Words and Bytes.
+</p>
+</aside>
+</article>
+<article>
+<h2 id="Byte">The Byte</h2>
+<p>
+The Byte corresponds to a single unit of storage.
+All entities in the Environment may be stored using one or more bytes.
+A Byte format is assumed to be capable of representing some number of whole, positive values.
+A Byte must be convertable to a Word value.
+</p>
+<p>
+In the case of multiple viable formats being available to the Environment, the Byte must correspond to the smallest uniquely identifiable storage unit available to the Environment.
+The ability to uniquely identify a single unit may include indirection.
+</p>
+<h3 id="Size">Size</h3>
+<p>
+The number of Bytes required to completely store an entity is referred to as the "size" of an entity.
+The size of an entity is considered a constant value and does not require computation.
+A program may <a>query</a> the size of any entity.
+</p>
+<h3 id="Locations">Location</h3>
+<p>
+The Environment assumes that the available storage resources collectively provide a countable number of Bytes.
+Each byte may then be assigned a unique whole, positive number.
+The Environment assumes this numbering is arbitrary and does not correspond to the physical position of bytes in a storage medium.
+The unique number identifying a Byte is considered a constant value and does not require computation.
+A program may <a>query</a> the identifying number of a Byte.
+</p>
+</article>
+<article>
+<h2 id="Word">The Word</h2>
+<p>
+The Word corresponds to the the implementation specific format used for transforming data.
+The Word format must allow the basic arithmetic operations, addition, subtraction, multiplication, division yielding a quotient, and division yielding a remainder.
+These operations shall follow the natural behavior of arithmetic over the set of Integers as far as the Word format is capable of representing Integer values.
+If any of these operations are available to the environment as part of the implementation specific Word format, then the environment is not required to simulate those operations and may use the ones supplied with the format.
+</p>
+<p>
+In the case of multiple viable formats being available to the Environment, the Word must correspond to the format that offers the most complete set of arithmetic operations.
+Additionally, the format which is most natural to the computer must be used.
+That is to say a format which is preferable for the Environment may not be the format most conducive to efficient computation.
+This may disqualify some formats which would otherwise be judged suitable.
+The ultimate choice of format is completely implementation dependent and is purposefully left vague.
+</p>
+</article>
+
+
+<article>
+<h1>Reference</h1>
+<h2 id="The ASCII Table">The ASCII Table</h2>
+<details>
+<summary>Show ASCII encoding table.</summary>
+<table>
+<tr><th>Hexadecimal</th><th>Glyph/Name</th></tr>
+<tr><td>00</td><td>Null</td></tr>
+<tr><td>01</td><td>Start of Heading</td></tr>
+<tr><td>02</td><td>Start of Text</td></tr>
+<tr><td>03</td><td>End of Text</td></tr>
+<tr><td>04</td><td>End of Transmission</td></tr>
+<tr><td>05</td><td>Enquiry</td></tr>
+<tr><td>06</td><td>Acknowledgement</td></tr>
+<tr><td>07</td><td>Bell</td></tr>
+<tr><td>08</td><td>Backspace</td></tr>
+<tr><td>09</td><td>Horizontal Tab</td></tr>
+<tr><td>0a</td><td>Line Feed</td></tr>
+<tr><td>0b</td><td>Vertical Tab</td></tr>
+<tr><td>0c</td><td>Form Feed</td></tr>
+<tr><td>0d</td><td>Carriage Return</td></tr>
+<tr><td>0e</td><td>Shift Out</td></tr>
+<tr><td>0f</td><td>Shift In</td></tr>
+<tr><td>10</td><td>Data Link Escape</td></tr>
+<tr><td>11</td><td>Device Control 1</td></tr>
+<tr><td>12</td><td>Device Control 2</td></tr>
+<tr><td>13</td><td>Device Control 3</td></tr>
+<tr><td>14</td><td>Device Control 4</td></tr>
+<tr><td>15</td><td>Negative Acknowledgement</td></tr>
+<tr><td>16</td><td>Synchronous Idle</td></tr>
+<tr><td>17</td><td>End of Transmission Block</td></tr>
+<tr><td>18</td><td>Cancel</td></tr>
+<tr><td>19</td><td>End of Medium</td></tr>
+<tr><td>1a</td><td>Substitute</td></tr>
+<tr><td>1b</td><td>Escape</td></tr>
+<tr><td>1c</td><td>File Separator</td></tr>
+<tr><td>1d</td><td>Group Separator</td></tr>
+<tr><td>1e</td><td>Record Separator</td></tr>
+<tr><td>1f</td><td>Unit Separator</td></tr>
+<tr><td>20</td><td>Space</td></tr>
+<tr><td>21</td><td>!</td></tr>
+<tr><td>22</td><td>"</td></tr>
+<tr><td>23</td><td>#</td></tr>
+<tr><td>24</td><td>$</td></tr>
+<tr><td>25</td><td>%</td></tr>
+<tr><td>26</td><td>&</td></tr>
+<tr><td>27</td><td>'</td></tr>
+<tr><td>28</td><td>(</td></tr>
+<tr><td>29</td><td>)</td></tr>
+<tr><td>2a</td><td>*</td></tr>
+<tr><td>2b</td><td>+</td></tr>
+<tr><td>2c</td><td>,</td></tr>
+<tr><td>2d</td><td>-</td></tr>
+<tr><td>2e</td><td>.</td></tr>
+<tr><td>2f</td><td>/</td></tr>
+<tr><td>30</td><td>0</td></tr>
+<tr><td>31</td><td>1</td></tr>
+<tr><td>32</td><td>2</td></tr>
+<tr><td>33</td><td>3</td></tr>
+<tr><td>34</td><td>4</td></tr>
+<tr><td>35</td><td>5</td></tr>
+<tr><td>36</td><td>6</td></tr>
+<tr><td>37</td><td>7</td></tr>
+<tr><td>38</td><td>8</td></tr>
+<tr><td>39</td><td>9</td></tr>
+<tr><td>3a</td><td>:</td></tr>
+<tr><td>3b</td><td>;</td></tr>
+<tr><td>3c</td><td><</td></tr>
+<tr><td>3d</td><td>=</td></tr>
+<tr><td>3e</td><td>></td></tr>
+<tr><td>3f</td><td>?</td></tr>
+<tr><td>40</td><td>@</td></tr>
+<tr><td>41</td><td>A</td></tr>
+<tr><td>42</td><td>B</td></tr>
+<tr><td>43</td><td>C</td></tr>
+<tr><td>44</td><td>D</td></tr>
+<tr><td>45</td><td>E</td></tr>
+<tr><td>46</td><td>F</td></tr>
+<tr><td>47</td><td>G</td></tr>
+<tr><td>48</td><td>H</td></tr>
+<tr><td>49</td><td>I</td></tr>
+<tr><td>4a</td><td>J</td></tr>
+<tr><td>4b</td><td>K</td></tr>
+<tr><td>4c</td><td>L</td></tr>
+<tr><td>4d</td><td>M</td></tr>
+<tr><td>4e</td><td>N</td></tr>
+<tr><td>4f</td><td>O</td></tr>
+<tr><td>50</td><td>P</td></tr>
+<tr><td>51</td><td>Q</td></tr>
+<tr><td>52</td><td>R</td></tr>
+<tr><td>53</td><td>S</td></tr>
+<tr><td>54</td><td>T</td></tr>
+<tr><td>55</td><td>U</td></tr>
+<tr><td>56</td><td>V</td></tr>
+<tr><td>57</td><td>W</td></tr>
+<tr><td>58</td><td>X</td></tr>
+<tr><td>59</td><td>Y</td></tr>
+<tr><td>5a</td><td>Z</td></tr>
+<tr><td>5b</td><td>[</td></tr>
+<tr><td>5c</td><td>\</td></tr>
+<tr><td>5d</td><td>]</td></tr>
+<tr><td>5e</td><td>^</td></tr>
+<tr><td>5f</td><td>_</td></tr>
+<tr><td>60</td><td>`</td></tr>
+<tr><td>61</td><td>a</td></tr>
+<tr><td>62</td><td>b</td></tr>
+<tr><td>63</td><td>c</td></tr>
+<tr><td>64</td><td>d</td></tr>
+<tr><td>65</td><td>e</td></tr>
+<tr><td>66</td><td>f</td></tr>
+<tr><td>67</td><td>g</td></tr>
+<tr><td>68</td><td>h</td></tr>
+<tr><td>69</td><td>i</td></tr>
+<tr><td>6a</td><td>j</td></tr>
+<tr><td>6b</td><td>k</td></tr>
+<tr><td>6c</td><td>l</td></tr>
+<tr><td>6d</td><td>m</td></tr>
+<tr><td>6e</td><td>n</td></tr>
+<tr><td>6f</td><td>o</td></tr>
+<tr><td>70</td><td>p</td></tr>
+<tr><td>71</td><td>q</td></tr>
+<tr><td>72</td><td>r</td></tr>
+<tr><td>73</td><td>s</td></tr>
+<tr><td>74</td><td>t</td></tr>
+<tr><td>75</td><td>u</td></tr>
+<tr><td>76</td><td>v</td></tr>
+<tr><td>77</td><td>w</td></tr>
+<tr><td>78</td><td>x</td></tr>
+<tr><td>79</td><td>y</td></tr>
+<tr><td>7a</td><td>z</td></tr>
+<tr><td>7b</td><td>{</td></tr>
+<tr><td>7c</td><td>|</td></tr>
+<tr><td>7d</td><td>}</td></tr>
+<tr><td>7e</td><td>~</td></tr>
+<tr><td>7F</td><td>Delete</td></tr>
+</table>
+</details>
+</article>
+<article>
+<h2 id="Unicode">Unicode&reg;</h2>
+<p>
+Unicode&reg; is a standard for a consistent digital encoding of a variety of glyphs and symbols from many different languages.
+As it includes the ASCII character encoding, ASC implementations are encouraged to support Unicode&reg; encoding rather than only ASCII encoding.
+</p>
+<p>
+<i>"Unicode" is a registered trademark of Unicode, Inc., in the United States and other countries.</i><br>
+The latest Unicode standard and other documentation can be found online at <a href="https://www.unicode.org/versions/latest/" target="_blank">https://www.unicode.org/versions/latest</a>.
+</p>
+</article>
+
+<article>
+
+<h1 style="text-align: center;">GNU Free Documentation License</h1>
+
+<p style="text-align: center;">Version 1.3, 3 November 2008</p>
+
+<p> Copyright &copy; 2000, 2001, 2002, 2007, 2008 Free Software Foundation, Inc.
+&lt;<a href="https://fsf.org/">https://fsf.org/</a>&gt;
+</p><p>Everyone is permitted to copy and distribute verbatim copies
+of this license document, but changing it is not allowed.</p>
+
+<h4 id="section0">0. PREAMBLE</h4>
+
+<p>The purpose of this License is to make a manual, textbook, or other
+functional and useful document &quot;free&quot; in the sense of freedom: to
+assure everyone the effective freedom to copy and redistribute it,
+with or without modifying it, either commercially or noncommercially.
+Secondarily, this License preserves for the author and publisher a way
+to get credit for their work, while not being considered responsible
+for modifications made by others.</p>
+
+<p>This License is a kind of &quot;copyleft&quot;, which means that derivative
+works of the document must themselves be free in the same sense.  It
+complements the GNU General Public License, which is a copyleft
+license designed for free software.</p>
+
+<p>We have designed this License in order to use it for manuals for free
+software, because free software needs free documentation: a free
+program should come with manuals providing the same freedoms that the
+software does.  But this License is not limited to software manuals;
+it can be used for any textual work, regardless of subject matter or
+whether it is published as a printed book.  We recommend this License
+principally for works whose purpose is instruction or reference.</p>
+
+<h4 id="section1">1. APPLICABILITY AND DEFINITIONS</h4>
+
+<p>This License applies to any manual or other work, in any medium, that
+contains a notice placed by the copyright holder saying it can be
+distributed under the terms of this License.  Such a notice grants a
+world-wide, royalty-free license, unlimited in duration, to use that
+work under the conditions stated herein.  The &quot;Document&quot;, below,
+refers to any such manual or work.  Any member of the public is a
+licensee, and is addressed as &quot;you&quot;.  You accept the license if you
+copy, modify or distribute the work in a way requiring permission
+under copyright law.</p>
+
+<p>A &quot;Modified Version&quot; of the Document means any work containing the
+Document or a portion of it, either copied verbatim, or with
+modifications and/or translated into another language.</p>
+
+<p>A &quot;Secondary Section&quot; is a named appendix or a front-matter section of
+the Document that deals exclusively with the relationship of the
+publishers or authors of the Document to the Document's overall
+subject (or to related matters) and contains nothing that could fall
+directly within that overall subject.  (Thus, if the Document is in
+part a textbook of mathematics, a Secondary Section may not explain
+any mathematics.)  The relationship could be a matter of historical
+connection with the subject or with related matters, or of legal,
+commercial, philosophical, ethical or political position regarding
+them.</p>
+
+<p>The &quot;Invariant Sections&quot; are certain Secondary Sections whose titles
+are designated, as being those of Invariant Sections, in the notice
+that says that the Document is released under this License.  If a
+section does not fit the above definition of Secondary then it is not
+allowed to be designated as Invariant.  The Document may contain zero
+Invariant Sections.  If the Document does not identify any Invariant
+Sections then there are none.</p>
+
+<p>The &quot;Cover Texts&quot; are certain short passages of text that are listed,
+as Front-Cover Texts or Back-Cover Texts, in the notice that says that
+the Document is released under this License.  A Front-Cover Text may
+be at most 5 words, and a Back-Cover Text may be at most 25 words.</p>
+
+<p>A &quot;Transparent&quot; copy of the Document means a machine-readable copy,
+represented in a format whose specification is available to the
+general public, that is suitable for revising the document
+straightforwardly with generic text editors or (for images composed of
+pixels) generic paint programs or (for drawings) some widely available
+drawing editor, and that is suitable for input to text formatters or
+for automatic translation to a variety of formats suitable for input
+to text formatters.  A copy made in an otherwise Transparent file
+format whose markup, or absence of markup, has been arranged to thwart
+or discourage subsequent modification by readers is not Transparent.
+An image format is not Transparent if used for any substantial amount
+of text.  A copy that is not &quot;Transparent&quot; is called &quot;Opaque&quot;.</p>
+
+<p>Examples of suitable formats for Transparent copies include plain
+ASCII without markup, Texinfo input format, LaTeX input format, SGML
+or XML using a publicly available DTD, and standard-conforming simple
+HTML, PostScript or PDF designed for human modification.  Examples of
+transparent image formats include PNG, XCF and JPG.  Opaque formats
+include proprietary formats that can be read and edited only by
+proprietary word processors, SGML or XML for which the DTD and/or
+processing tools are not generally available, and the
+machine-generated HTML, PostScript or PDF produced by some word
+processors for output purposes only.</p>
+
+<p>The &quot;Title Page&quot; means, for a printed book, the title page itself,
+plus such following pages as are needed to hold, legibly, the material
+this License requires to appear in the title page.  For works in
+formats which do not have any title page as such, &quot;Title Page&quot; means
+the text near the most prominent appearance of the work's title,
+preceding the beginning of the body of the text.</p>
+
+<p>The &quot;publisher&quot; means any person or entity that distributes copies of
+the Document to the public.</p>
+
+<p>A section &quot;Entitled XYZ&quot; means a named subunit of the Document whose
+title either is precisely XYZ or contains XYZ in parentheses following
+text that translates XYZ in another language.  (Here XYZ stands for a
+specific section name mentioned below, such as &quot;Acknowledgements&quot;,
+&quot;Dedications&quot;, &quot;Endorsements&quot;, or &quot;History&quot;.)  To &quot;Preserve the Title&quot;
+of such a section when you modify the Document means that it remains a
+section &quot;Entitled XYZ&quot; according to this definition.</p>
+
+<p>The Document may include Warranty Disclaimers next to the notice which
+states that this License applies to the Document.  These Warranty
+Disclaimers are considered to be included by reference in this
+License, but only as regards disclaiming warranties: any other
+implication that these Warranty Disclaimers may have is void and has
+no effect on the meaning of this License.</p>
+
+<h4 id="section2">2. VERBATIM COPYING</h4>
+
+<p>You may copy and distribute the Document in any medium, either
+commercially or noncommercially, provided that this License, the
+copyright notices, and the license notice saying this License applies
+to the Document are reproduced in all copies, and that you add no
+other conditions whatsoever to those of this License.  You may not use
+technical measures to obstruct or control the reading or further
+copying of the copies you make or distribute.  However, you may accept
+compensation in exchange for copies.  If you distribute a large enough
+number of copies you must also follow the conditions in section 3.</p>
+
+<p>You may also lend copies, under the same conditions stated above, and
+you may publicly display copies.</p>
+
+<h4 id="section3">3. COPYING IN QUANTITY</h4>
+
+<p>If you publish printed copies (or copies in media that commonly have
+printed covers) of the Document, numbering more than 100, and the
+Document's license notice requires Cover Texts, you must enclose the
+copies in covers that carry, clearly and legibly, all these Cover
+Texts: Front-Cover Texts on the front cover, and Back-Cover Texts on
+the back cover.  Both covers must also clearly and legibly identify
+you as the publisher of these copies.  The front cover must present
+the full title with all words of the title equally prominent and
+visible.  You may add other material on the covers in addition.
+Copying with changes limited to the covers, as long as they preserve
+the title of the Document and satisfy these conditions, can be treated
+as verbatim copying in other respects.</p>
+
+<p>If the required texts for either cover are too voluminous to fit
+legibly, you should put the first ones listed (as many as fit
+reasonably) on the actual cover, and continue the rest onto adjacent
+pages.</p>
+
+<p>If you publish or distribute Opaque copies of the Document numbering
+more than 100, you must either include a machine-readable Transparent
+copy along with each Opaque copy, or state in or with each Opaque copy
+a computer-network location from which the general network-using
+public has access to download using public-standard network protocols
+a complete Transparent copy of the Document, free of added material.
+If you use the latter option, you must take reasonably prudent steps,
+when you begin distribution of Opaque copies in quantity, to ensure
+that this Transparent copy will remain thus accessible at the stated
+location until at least one year after the last time you distribute an
+Opaque copy (directly or through your agents or retailers) of that
+edition to the public.</p>
+
+<p>It is requested, but not required, that you contact the authors of the
+Document well before redistributing any large number of copies, to
+give them a chance to provide you with an updated version of the
+Document.</p>
+
+<h4 id="section4">4. MODIFICATIONS</h4>
+
+<p>You may copy and distribute a Modified Version of the Document under
+the conditions of sections 2 and 3 above, provided that you release
+the Modified Version under precisely this License, with the Modified
+Version filling the role of the Document, thus licensing distribution
+and modification of the Modified Version to whoever possesses a copy
+of it.  In addition, you must do these things in the Modified Version:</p>
+
+<ul>
+
+
+<li>A. Use in the Title Page (and on the covers, if any) a title distinct
+from that of the Document, and from those of previous versions
+(which should, if there were any, be listed in the History section
+of the Document).  You may use the same title as a previous version
+if the original publisher of that version gives permission.
+</li>
+
+<li>B. List on the Title Page, as authors, one or more persons or entities
+responsible for authorship of the modifications in the Modified
+Version, together with at least five of the principal authors of the
+Document (all of its principal authors, if it has fewer than five),
+unless they release you from this requirement.
+</li>
+
+<li>C. State on the Title page the name of the publisher of the
+Modified Version, as the publisher.
+</li>
+
+<li>D. Preserve all the copyright notices of the Document.
+</li>
+
+<li>E. Add an appropriate copyright notice for your modifications
+adjacent to the other copyright notices.
+</li>
+
+<li>F. Include, immediately after the copyright notices, a license notice
+giving the public permission to use the Modified Version under the
+terms of this License, in the form shown in the Addendum below.
+</li>
+
+<li>G. Preserve in that license notice the full lists of Invariant Sections
+and required Cover Texts given in the Document's license notice.
+</li>
+
+<li>H. Include an unaltered copy of this License.
+</li>
+
+<li>I. Preserve the section Entitled &quot;History&quot;, Preserve its Title, and add
+to it an item stating at least the title, year, new authors, and
+publisher of the Modified Version as given on the Title Page.  If
+there is no section Entitled &quot;History&quot; in the Document, create one
+stating the title, year, authors, and publisher of the Document as
+given on its Title Page, then add an item describing the Modified
+Version as stated in the previous sentence.
+</li>
+
+<li>J. Preserve the network location, if any, given in the Document for
+public access to a Transparent copy of the Document, and likewise
+the network locations given in the Document for previous versions
+it was based on.  These may be placed in the &quot;History&quot; section.
+You may omit a network location for a work that was published at
+least four years before the Document itself, or if the original
+publisher of the version it refers to gives permission.
+</li>
+
+<li>K. For any section Entitled &quot;Acknowledgements&quot; or &quot;Dedications&quot;,
+Preserve the Title of the section, and preserve in the section all
+the substance and tone of each of the contributor acknowledgements
+and/or dedications given therein.
+</li>
+
+<li>L. Preserve all the Invariant Sections of the Document,
+unaltered in their text and in their titles.  Section numbers
+or the equivalent are not considered part of the section titles.
+</li>
+
+<li>M. Delete any section Entitled &quot;Endorsements&quot;.  Such a section
+may not be included in the Modified Version.
+</li>
+
+<li>N. Do not retitle any existing section to be Entitled &quot;Endorsements&quot;
+or to conflict in title with any Invariant Section.
+</li>
+
+<li>O. Preserve any Warranty Disclaimers.</li>
+
+</ul>
+
+<p>If the Modified Version includes new front-matter sections or
+appendices that qualify as Secondary Sections and contain no material
+copied from the Document, you may at your option designate some or all
+of these sections as invariant.  To do this, add their titles to the
+list of Invariant Sections in the Modified Version's license notice.
+These titles must be distinct from any other section titles.</p>
+
+<p>You may add a section Entitled &quot;Endorsements&quot;, provided it contains
+nothing but endorsements of your Modified Version by various
+parties&mdash;for example, statements of peer review or that the text has
+been approved by an organization as the authoritative definition of a
+standard.</p>
+
+<p>You may add a passage of up to five words as a Front-Cover Text, and a
+passage of up to 25 words as a Back-Cover Text, to the end of the list
+of Cover Texts in the Modified Version.  Only one passage of
+Front-Cover Text and one of Back-Cover Text may be added by (or
+through arrangements made by) any one entity.  If the Document already
+includes a cover text for the same cover, previously added by you or
+by arrangement made by the same entity you are acting on behalf of,
+you may not add another; but you may replace the old one, on explicit
+permission from the previous publisher that added the old one.</p>
+
+<p>The author(s) and publisher(s) of the Document do not by this License
+give permission to use their names for publicity for or to assert or
+imply endorsement of any Modified Version.</p>
+
+<h4 id="section5">5. COMBINING DOCUMENTS</h4>
+
+<p>You may combine the Document with other documents released under this
+License, under the terms defined in section 4 above for modified
+versions, provided that you include in the combination all of the
+Invariant Sections of all of the original documents, unmodified, and
+list them all as Invariant Sections of your combined work in its
+license notice, and that you preserve all their Warranty Disclaimers.</p>
+
+<p>The combined work need only contain one copy of this License, and
+multiple identical Invariant Sections may be replaced with a single
+copy.  If there are multiple Invariant Sections with the same name but
+different contents, make the title of each such section unique by
+adding at the end of it, in parentheses, the name of the original
+author or publisher of that section if known, or else a unique number.
+Make the same adjustment to the section titles in the list of
+Invariant Sections in the license notice of the combined work.</p>
+
+<p>In the combination, you must combine any sections Entitled &quot;History&quot;
+in the various original documents, forming one section Entitled
+&quot;History&quot;; likewise combine any sections Entitled &quot;Acknowledgements&quot;,
+and any sections Entitled &quot;Dedications&quot;.  You must delete all sections
+Entitled &quot;Endorsements&quot;.</p>
+
+<h4 id="section6">6. COLLECTIONS OF DOCUMENTS</h4>
+
+<p>You may make a collection consisting of the Document and other
+documents released under this License, and replace the individual
+copies of this License in the various documents with a single copy
+that is included in the collection, provided that you follow the rules
+of this License for verbatim copying of each of the documents in all
+other respects.</p>
+
+<p>You may extract a single document from such a collection, and
+distribute it individually under this License, provided you insert a
+copy of this License into the extracted document, and follow this
+License in all other respects regarding verbatim copying of that
+document.</p>
+
+<h4 id="section7">7. AGGREGATION WITH INDEPENDENT WORKS</h4>
+
+<p>A compilation of the Document or its derivatives with other separate
+and independent documents or works, in or on a volume of a storage or
+distribution medium, is called an &quot;aggregate&quot; if the copyright
+resulting from the compilation is not used to limit the legal rights
+of the compilation's users beyond what the individual works permit.
+When the Document is included in an aggregate, this License does not
+apply to the other works in the aggregate which are not themselves
+derivative works of the Document.</p>
+
+<p>If the Cover Text requirement of section 3 is applicable to these
+copies of the Document, then if the Document is less than one half of
+the entire aggregate, the Document's Cover Texts may be placed on
+covers that bracket the Document within the aggregate, or the
+electronic equivalent of covers if the Document is in electronic form.
+Otherwise they must appear on printed covers that bracket the whole
+aggregate.</p>
+
+<h4 id="section8">8. TRANSLATION</h4>
+
+<p>Translation is considered a kind of modification, so you may
+distribute translations of the Document under the terms of section 4.
+Replacing Invariant Sections with translations requires special
+permission from their copyright holders, but you may include
+translations of some or all Invariant Sections in addition to the
+original versions of these Invariant Sections.  You may include a
+translation of this License, and all the license notices in the
+Document, and any Warranty Disclaimers, provided that you also include
+the original English version of this License and the original versions
+of those notices and disclaimers.  In case of a disagreement between
+the translation and the original version of this License or a notice
+or disclaimer, the original version will prevail.</p>
+
+<p>If a section in the Document is Entitled &quot;Acknowledgements&quot;,
+&quot;Dedications&quot;, or &quot;History&quot;, the requirement (section 4) to Preserve
+its Title (section 1) will typically require changing the actual
+title.</p>
+
+<h4 id="section9">9. TERMINATION</h4>
+
+<p>You may not copy, modify, sublicense, or distribute the Document
+except as expressly provided under this License.  Any attempt
+otherwise to copy, modify, sublicense, or distribute it is void, and
+will automatically terminate your rights under this License.</p>
+
+<p>However, if you cease all violation of this License, then your license
+from a particular copyright holder is reinstated (a) provisionally,
+unless and until the copyright holder explicitly and finally
+terminates your license, and (b) permanently, if the copyright holder
+fails to notify you of the violation by some reasonable means prior to
+60 days after the cessation.</p>
+
+<p>Moreover, your license from a particular copyright holder is
+reinstated permanently if the copyright holder notifies you of the
+violation by some reasonable means, this is the first time you have
+received notice of violation of this License (for any work) from that
+copyright holder, and you cure the violation prior to 30 days after
+your receipt of the notice.</p>
+
+<p>Termination of your rights under this section does not terminate the
+licenses of parties who have received copies or rights from you under
+this License.  If your rights have been terminated and not permanently
+reinstated, receipt of a copy of some or all of the same material does
+not give you any rights to use it.</p>
+
+<h4 id="section10">10. FUTURE REVISIONS OF THIS LICENSE</h4>
+
+<p>The Free Software Foundation may publish new, revised versions of the
+GNU Free Documentation License from time to time.  Such new versions
+will be similar in spirit to the present version, but may differ in
+detail to address new problems or concerns.  See
+<a href="https://www.gnu.org/licenses/">https://www.gnu.org/licenses/</a>.</p>
+
+<p>Each version of the License is given a distinguishing version number.
+If the Document specifies that a particular numbered version of this
+License &quot;or any later version&quot; applies to it, you have the option of
+following the terms and conditions either of that specified version or
+of any later version that has been published (not as a draft) by the
+Free Software Foundation.  If the Document does not specify a version
+number of this License, you may choose any version ever published (not
+as a draft) by the Free Software Foundation.  If the Document
+specifies that a proxy can decide which future versions of this
+License can be used, that proxy's public statement of acceptance of a
+version permanently authorizes you to choose that version for the
+Document.</p>
+
+<h4 id="section11">11. RELICENSING</h4>
+
+<p>&quot;Massive Multiauthor Collaboration Site&quot; (or &quot;MMC Site&quot;) means any
+World Wide Web server that publishes copyrightable works and also
+provides prominent facilities for anybody to edit those works.  A
+public wiki that anybody can edit is an example of such a server.  A
+&quot;Massive Multiauthor Collaboration&quot; (or &quot;MMC&quot;) contained in the site
+means any set of copyrightable works thus published on the MMC site.</p>
+
+<p>&quot;CC-BY-SA&quot; means the Creative Commons Attribution-Share Alike 3.0 
+license published by Creative Commons Corporation, a not-for-profit 
+corporation with a principal place of business in San Francisco, 
+California, as well as future copyleft versions of that license 
+published by that same organization.</p>
+
+<p>&quot;Incorporate&quot; means to publish or republish a Document, in whole or in 
+part, as part of another Document.</p>
+
+<p>An MMC is &quot;eligible for relicensing&quot; if it is licensed under this 
+License, and if all works that were first published under this License 
+somewhere other than this MMC, and subsequently incorporated in whole or 
+in part into the MMC, (1) had no cover texts or invariant sections, and 
+(2) were thus incorporated prior to November 1, 2008.</p>
+
+<p>The operator of an MMC Site may republish an MMC contained in the site
+under CC-BY-SA on the same site at any time before August 1, 2009,
+provided the MMC is eligible for relicensing.</p>
+
+<h3 id="addendum">ADDENDUM: How to use this License for your documents</h3>
+
+<p>To use this License in a document you have written, include a copy of
+the License in the document and put the following copyright and
+license notices just after the title page:</p>
+
+<pre>    Copyright (C)  YEAR  YOUR NAME.
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+A copy of the license is included in the section entitled &quot;GNU
+Free Documentation License&quot;.
+</pre>
+
+<p>If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts,
+replace the &quot;with &hellip; Texts.&quot; line with this:</p>
+
+<pre>    with the Invariant Sections being LIST THEIR TITLES, with the
+Front-Cover Texts being LIST, and with the Back-Cover Texts being LIST.
+</pre>
+
+<p>If you have Invariant Sections without Cover Texts, or some other
+combination of the three, merge those two alternatives to suit the
+situation.</p>
+
+<p>If your document contains nontrivial examples of program code, we
+recommend releasing these examples in parallel under your choice of
+free software license, such as the GNU General Public License,
+to permit their use in free software.
+</p>
+</article>
+
 </body>
