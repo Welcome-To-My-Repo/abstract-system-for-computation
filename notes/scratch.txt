@@ -1046,3 +1046,18 @@ then you can eval it a bunch of times
 	x <- ` 1 + 1, (x) + (x)
 or you can do a tagbody
 	n = 10, (loop <- ` ?(n > 0) n <- n - 1, (loop) n)
+
+
+
+So how are Read and Compute interleaved?
+Every sub-expression is treated as an individual program.
+Contexts are built up as each program is computed.
+Lets take a very confusing program.
+
+
+	(x <- ` %/Collection <- %/Collection + {")"} | 1)
+this modifies the context so that the closing paren evaluates to the number 1 rather than bounding an expression.
+but it's quoted so it's not evaluated right away.
+It's evaluated after it's bound.
+so then the expression is equivalent to 
+	(x) 1

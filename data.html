@@ -75,7 +75,28 @@ The ultimate choice of format is completely implementation dependent and is purp
 </article>
 <article>
 <h2>Compound Data</h2>
-
+<p>
+Words, Bytes, and all other <a>Types</a> may be used to form compound formats.
+A compound data format is treated as a single unit of data, but transformations are still performed on individual Word and Byte elements.
+Each individual component in a compound data format is referred to as a "member".
+</p>
+<h3>Constructing Compound Data</h3>
+<p>
+Compound data is constructed by declaring a list of one or more individual formats.
+Each individual format is given an index beginning with zero for the first member and increasing by one for each additional member.
+Individual members are accessed by performing a <a>subscript</a> operation.
+</p>
+<h3>Size</h3>
+<p>
+The size of a unit of compound data is the sum of the size of each member.
+The size may be a larger number of bytes to account for any additional spacing required by the <a>Environment</a>
+</p>
+<h3>Location</h3>
+<p>
+A single unit of compound data is assumed to occupy a contiguous series of Bytes in storage.
+Depending on the size of a compound data unit, a contiguous storage segment may not be available.
+If a contiguous storage segment is not available, then constructing a compound data unit of that size must be rejected.
+</p>
 </article>
 <nav>
 <a href="environment.html">&lt;&lt;</a>
