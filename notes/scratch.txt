@@ -1061,3 +1061,22 @@ but it's quoted so it's not evaluated right away.
 It's evaluated after it's bound.
 so then the expression is equivalent to 
 	(x) 1
+So it depends on how the expression is read in and when computation is dispatched on a program representation.
+What I have right now is that Read identifies an expression form and 
+
+
+
+What is the language hidden in the language?
+Function application.
+Surface interactions.
+Flexible left-or-right juxtaposition.
+Currying.
+Collections.
+Types.
+The context model.
+Addition and Subtraction on everything.
+
+
+
+how to do a collection?
+	%/Collection <- %/Collection + {"{"} | x -> 
