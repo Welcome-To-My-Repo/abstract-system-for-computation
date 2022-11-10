@@ -1078,5 +1078,33 @@ Addition and Subtraction on everything.
 
 
 
-how to do a collection?
-	%/Collection <- %/Collection + {"{"} | x -> 
+Do I need to allow reader macros?
+Shouldn't there be some kind of reserved characters?
+Sure. 
+If you want crazy synax, make your own parser.
+You can always hand strings to stuff.
+So I should be able to reserve some characters and still allow for macros and stuff.
+Or I should allow for anything.
+I think I can allow for anything.
+
+
+
+
+How to do contexts?
+Say I have syntax
+	%/Collection <- {{'a t} | T . {'b} | t .}
+now how do I do contexts for the expression "a b"
+The reader reads in "a" and determines the expression {'a t}
+Another expression follows "a" so it constructs
+	(a (%))
+and reads some more until it determines {'b}
+then it has
+	(a (b))
+which turns into 
+	(a t)
+which turns into
+	(T)
+so now i've learned two things,
+having a complete program model requires you to compute the program.
+A compiled program computes until it reaches a program model with only default syntax.
+	
