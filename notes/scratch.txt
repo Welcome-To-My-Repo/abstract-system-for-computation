@@ -1149,3 +1149,19 @@ Or is it?
 How can I quote an expression that defines its own custom syntax?
 I add delimiters in.
 ` (% <- % + ('a x) | e -> e\2, a 1)
+But how does it get read in if I don't know the form of the expression.
+Or what case would exist where I want to define new syntax in the middle of the program?
+
+
+
+I have a constructor for functions which are just dealing with contexts.
+I have a constructor for collections which reduce to sparse vectors.
+I have a constructor for types which reduces to collections of unique values.
+Therefore I should have a constructor for syntax.
+
+
+
+The problem is that my programs are stringly typed. 
+You need to read them and compute as you go.
+That's slow and expensive, but highly expressive.
+I want the structure to be explicit from the types rather than from punctuation.
