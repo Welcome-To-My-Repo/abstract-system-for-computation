@@ -1165,3 +1165,18 @@ The problem is that my programs are stringly typed.
 You need to read them and compute as you go.
 That's slow and expensive, but highly expressive.
 I want the structure to be explicit from the types rather than from punctuation.
+What do I actually want from my syntax?
+I want the ability to parse ANY grammar.
+This means I need to have an unrestricted grammar.
+In my langauge I have an expression which is a map and is treated as a production rule.
+	('a b) | c
+
+
+
+Maybe I'm overthinking.
+Say I have some values,
+	a : [], b : [], c : []
+Make a grammar...
+	% <- {('f a) | b . ('g b) | c}
+Make an expression...
+	g f a
