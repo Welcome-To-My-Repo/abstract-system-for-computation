@@ -1107,4 +1107,45 @@ which turns into
 so now i've learned two things,
 having a complete program model requires you to compute the program.
 A compiled program computes until it reaches a program model with only default syntax.
-	
+
+
+
+I do want my code to be self modifying or at least reflective which should work fine since i have homoiconicity.
+I also want to do it without parentheses.
+in scheme you have 
+	(define x 1)
+	(lambda (x) x)
+and 
+	(define (f x) x)
+in ASC you have
+	x : 1
+	x -> x
+and 
+	f = x -> x
+which are structured as 
+	('x ': 1)
+	('x '-> 'x)
+and
+	('f '= ('x '-> 'x))
+
+I want a specific constructor for an expression so that it can be typed differently than a collection.
+What does that look like?
+Just type the thing as an expression.
+It doesn't help with nested expressions though.
+So multiple things in parens are expressions
+Multiple things in curly brackets are collections
+
+` {'a 'b 'c} '- 'a
+({'a 'b 'c} '- 'a)
+Does this mean complexity, or I just have two separate ways to create the same thing?
+I just have two separate ways.
+
+
+This language is getting complex.
+Or is it?
+
+
+
+How can I quote an expression that defines its own custom syntax?
+I add delimiters in.
+` (% <- % + ('a x) | e -> e\2, a 1)
