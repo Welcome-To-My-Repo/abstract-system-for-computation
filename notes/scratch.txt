@@ -1180,3 +1180,29 @@ Make a grammar...
 	% <- {('f a) | b . ('g b) | c}
 Make an expression...
 	g f a
+But this is all one program
+	a : [], b : [], c : [],
+	% <- %+ {('f a) | b . ('g b) | c},
+	g f a.
+
+
+
+How can the context have the current computation if the current computation hasn't been read in yet?
+How does this expression work?
+	dotimes	= n -> e ->
+	      (k <- ` ? n > 1 
+	      		(e), n <- n - 1, % / Expression <- k
+			(e))
+Lisp-ified
+	(bind dotimes (lambda n (lambda e 
+		(clobber k (quote (if (greater n 1) 
+			((eval e), (clobber n (- n 1)), (clobber (in this Expression) k))
+			(eval e))))))
+remove parens
+	bind dotimes lambda n lambda e
+		clobber k quote if greater n 1
+			eval e, clobber n - n 1 clobber in this Expression k
+			eval e
+The structure is still almost clear since every word is either a function or a parameter.
+My language has infix operators and all sorts of crap so it's harder.
+Read "harder" as more ambiguous.
