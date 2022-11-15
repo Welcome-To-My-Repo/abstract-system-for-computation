@@ -1206,3 +1206,23 @@ remove parens
 The structure is still almost clear since every word is either a function or a parameter.
 My language has infix operators and all sorts of crap so it's harder.
 Read "harder" as more ambiguous.
+
+
+
+how does reading work?
+Say I have an expression,
+	"x + y"
+and it's program model is
+	(('x) '+ ('y))
+It's computed as
+	(compute(((compute ('x)) '+ (compute('y)))
+How is read interleaved into this?
+Not sure since Read has to determine the structure.
+How to determine when Read should read more things?
+Read has to go by expression.
+Or the context does not contain expression bindings.
+That doesn't make sense because you can bind tokens in a context.
+There's the structural part. 
+Every token is delimited by space.
+Expressions have no set delimiter unless you're lisp and you use parentheses.
+Expressions are not ambiguous though, you just need to infer the boundaries.
