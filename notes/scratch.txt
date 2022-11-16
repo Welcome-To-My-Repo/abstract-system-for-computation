@@ -1269,4 +1269,22 @@ Expressions...
 	Conditional	? _ _ _
 	Application	_ _
 	Interaction	_ _
-	
+
+
+
+Aren't interaction and application the same thing??
+Yeah.
+A function is constructed as
+	{Symbol, Expression}
+When you apply the function, it's
+	* {Symbol, Expression, * | p -> %/Symbol <- p, (%/Expression)}
+
+
+
+How to quote an expression that defines new syntax?
+Parentheses.
+How to bind an expression?
+Can I just create an expression and then bind it?
+	('if p:Boolean 'then m:Expression 'else n:Expression) = ? p (m) (n)
+Or do I have to do
+	% <- % + ('if Boolean 'then Expression 'else Expression) | 
