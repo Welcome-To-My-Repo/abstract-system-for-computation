@@ -1226,3 +1226,47 @@ There's the structural part.
 Every token is delimited by space.
 Expressions have no set delimiter unless you're lisp and you use parentheses.
 Expressions are not ambiguous though, you just need to infer the boundaries.
+
+
+
+
+So the read function accepts a string describing a program model and produces the program model.
+It determines an expression by matching symbols to declared patterns.
+So how then do I make the switch between undelimited expressions and delimited expressions?
+A sub-lisp.
+Parens form collections without creating a new context.
+One expression for each pair of parens.
+Constructors and constants can skip parens.
+I can also construct this by the expression quotation.
+I get the structure automatically.
+So then I can add parens as I want for visual clarity or to remove any possible ambiguity in application order.
+
+
+
+What's my syntax then?
+Constructors...
+	Collection	{ ... }
+	Type		[ ... ]
+	Expression	( ... )
+	Function	_ -> _
+	Number		0123456789
+	Byte		Byte
+	Word		Value
+
+Expressions...
+	Add		_ + _
+	Sub		_ - _
+	Mul		_ * _
+	Div		_ / _
+	Mod		_ | _
+	And		_ /\ _
+	Or		_ \/ _
+	Not		  - _
+	Less		_ < _
+	Greater		_ > _
+	Equal		_ = _
+	Inequal		_ /= _
+	Conditional	? _ _ _
+	Application	_ _
+	Interaction	_ _
+	
