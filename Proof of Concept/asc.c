@@ -1,48 +1,40 @@
 /*
-This program is free software: you can redistribute it and/or modify it under
-the terms of the GNU General Public Licens as published by the 
-Free Software Foundation, either version 2 of the License, or (at your 
-option) any later version.
-
-This program is distributed in the hope that it will be useful, but WITHOUT
-ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or 
-FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for 
-more details.
-
-You should have recived a copy of the GNU General Public License along with 
-this program. If not, see <https://www.gnu.org/licenses/>.
+ * ASC Portable Bootstrap Interpreter
 */
 
-#include <stdlib.h>
 #include <stdio.h>
-#include <errno.h>
-
-typedef unsigned long long int Value;
+#include <stdlib.h>
+typedef long long unsigned int Value;
+int main () {
 Value *Buffer;
-Value Length = 0, Chars = 0;
-void Abort () {perror("There was a problem!\n"); exit(errno);}
-void Read ();
-void Compute ();
-void *This;
-int main ()
-{
-	Read();
-	return 0;
-}
+Value BufferLength = 0;
+Value BufferSize = 512;
+Value c, c1 = '\0';
+Buffer = malloc(BufferSize);
 
-void Read ()
-{
-	if (Length == 0) {Buffer = malloc(1024); Length = 1024;}
-	Value c = 0, c_1 = 0;
-	for (;;)
-	{
-		c = fgetc(stdin);
-		Chars ++;
-		if (Chars >= Length) {Buffer = realloc(Buffer, (Length =  Length * 2));}
-		Buffer[Chars] = c;
-		if (c == '\n' && c_1 == '\n') break;
-		c_1 = c;
+OuterLoop:
+
+FillBuffer:
+	c = getchar();
+	if (c == '\n' && c1 == '\n') goto Compute;
+	if (! BufferLength < BufferSize) {
+		if (BufferSize < BufferSize * 2) BufferSize = BufferSize * 2;
+		else {printf("The input is too large!\n"); goto Exit;}
+		Value *tmp = malloc(BufferSize);
+		for (Value i = 0; i < BufferLength; i ++)
+			tmp[i] = Buffer[i];
+		free(Buffer);
+		Buffer = tmp;
 	}
-}
+	Buffer[BufferLength] = c;
+	BufferLength ++;
+	c1 = c;
+	goto FillBuffer;
+Read:
+	Value Pos = 0; 
+	
+Compute:	
 
-void Compute()
+
+Exit: return 0;
+}
