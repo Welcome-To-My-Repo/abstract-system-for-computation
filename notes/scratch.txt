@@ -1252,6 +1252,7 @@ Constructors...
 	Number		0123456789
 	Byte		Byte
 	Word		Value
+	Composite	_ ; _
 
 Expressions...
 	Add		_ + _
@@ -1269,6 +1270,20 @@ Expressions...
 	Conditional	? _ _ _
 	Application	_ _
 	Interaction	_ _
+	Type of		^ _
+	Address of	@ _
+	At address	@ _
+	Size		## _
+	Cardinality	# _
+	Type Select	_ / _
+	Index Select	_ \ _
+	
+
+Constants...
+	This		&
+	Any		*
+	Nul		_
+
 
 
 
@@ -1288,3 +1303,10 @@ Can I just create an expression and then bind it?
 	('if p:Boolean 'then m:Expression 'else n:Expression) = ? p (m) (n)
 Or do I have to do
 	% <- % + ('if Boolean 'then Expression 'else Expression) | 
+		e -> ? e\1 (e\3) (e\5)
+
+
+
+You can't quote an expression that defines syntax and then uses it.
+The point of defining syntax is that it's evaluated before the expression that uses it.
+In lisp you can quote a macrolet form because the macro form that's used has a defined structure.
