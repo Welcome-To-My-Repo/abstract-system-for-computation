@@ -1304,9 +1304,20 @@ Can I just create an expression and then bind it?
 Or do I have to do
 	% <- % + ('if Boolean 'then Expression 'else Expression) | 
 		e -> ? e\1 (e\3) (e\5)
+In lisp, you can do something like macrolet where you define a macro which is used in a temporary context.
+In my langauge, you can define new syntax for any context.
+The problem is how you can quote an expression that modifies the part of the context that Read uses.
+The answer is to just use lisp forms. 
+If you want to quote an expression, you simply build the program model.
+You don't need quoting because you just go straight to making the data structure.
 
 
 
-You can't quote an expression that defines syntax and then uses it.
-The point of defining syntax is that it's evaluated before the expression that uses it.
-In lisp you can quote a macrolet form because the macro form that's used has a defined structure.
+How should I set the expression in the context.
+It should be an interaction.
+	& x , "sets the expression to whatever 'x' is"
+Here's the problem though, what happens if a function needs to return an unevaluated expression?
+If you try to say that the final result is an expression, then that expression just gets computed.
+	"exit a context", & <- d
+	"set a new current expression", & e
+	"set a new binding", & <- & + b
