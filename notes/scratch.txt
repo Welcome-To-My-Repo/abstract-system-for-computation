@@ -1321,3 +1321,77 @@ If you try to say that the final result is an expression, then that expression j
 	"exit a context", & <- d
 	"set a new current expression", & e
 	"set a new binding", & <- & + b
+
+
+
+A surface shouldn't need a function to work.
+There should be a parameterization method that is not a function.
+Parameterization is syntactic though.
+Binding of a symbol is deferred until computation.
+What about currying though.
+How to add two numbers by currying collections?
+	add = {Number | { Number | x + y}}
+So can it just be that the first symbol is bound to the argument?
+Is there any problem to that?
+Nope, the algorithm for resolving symbols can just keep a list of everything that needs to be bound and then bind them as it discovers parameters.
+
+
+
+I don't like that the program model isn't static.
+I can't have a program model that must be partially evaluated to make sense.
+The structure of it must be in the syntax.
+With lisp, that's parentheses.
+I have no structured syntax.
+You have to determine subexpressions from punctuation and type information.
+
+
+
+The decision is this: a program is the composition of some computations which are repeated in the same way for each time the program is run. 
+Some of these computations are only required to be run once for all possible repetitions of the program. Maybe to configure the initial state of the program, or to abbreviate repetition in the program model. 
+How do I decide which computations are run exactly once for a program?
+I would place the results of these computations as constant values.
+How do I make constant values? I create types.
+Compare
+	x = 1
+	y : 1
+here "x" is bound every time the program is run, but "y" is only bound once.
+How about complex programs?
+	z : [f x]
+here "z" is bound to the result of some sub-program which is computed only once ever to produce the final program.
+Is this the same issue as syntax or a separate issue?
+Possibly the same.
+It's a tiny bit insane that a program must be read and executed all at the same time.
+It's more than a tiny bit insane that reading one part of the program is dependent on computing a previous part of the program.
+I also can't switch between this and static checking of a program.
+Or can I?
+Technically the program I write can be one that builds a program model, which is checked as it goes, representing the final program.
+So if I want a complete statically checked program then I build a program that checks everything before it completes.
+So then this means I start with a completely dynamic program and slowly build up static checking.
+
+
+
+Should an assembler and other stuff be part of the implementation or part of the standard library?
+It should be part of the implementation.
+The assembler should also take some kind of minimum subset.
+An "untyped" langauge where everything is just Words and Bytes.
+What does that language include?
+	Collections 	{}
+	Clobber		_ <- _
+	Equality	=
+	
+
+
+A whole program is read in and a complete model is constructed before it's computed.
+This means that a program cannot define new syntax and then use it.
+This sucks and isn't necessary.
+It's better to have a static verifyer as part of the library.
+Use meta to its fullest.
+
+
+
+What types of errors can result from not writing a correct program?
+-	"program is mal-formed"
+-	"contradicting bindings"
+-	"no matching definition"
+- 	"ambiguous expression"
+- 	"

@@ -2,15 +2,5 @@ ASC, the Abstract System for Computation
 Standardized Description
 Revision 0
 
-ASC is an environment for creating and reasoning about programs.
-It consists of two discrete interdependent components, a program description language and an environment which facilitates computation.
-
-The environment provides some basic capabilities which are accessible as entities defined in the language.
-Capabilities are bound to the following symbols, 
-"Compute"
-"Cache"
-"Read"
-"Display"
-"Import"
-"Export"
+The Abstract System for Computation is a utility for creating and reasoning about programs.
 
