@@ -1386,6 +1386,26 @@ This means that a program cannot define new syntax and then use it.
 This sucks and isn't necessary.
 It's better to have a static verifyer as part of the library.
 Use meta to its fullest.
+Enforce portions of a program which are verified as part of compilation.
+This is super duper meta.
+How does new syntax fit into this?
+Think of the progression of 
+"I am going to"
+"Im going to"
+"Im gonna"
+"Imma"
+Abbreviation for commonly repeated things in a domain is useful.
+And 20% of the time you can't just abbreviate using built in function notation.
+Some languages like smalltalk or forth are lose enough where it doesn't matter.
+Here's a compromise, Read and Compute use a copy of the syntax that's defined when they were called.
+That copy is internal to their state and can't be modified.
+Because variable binding and expression binding are different mechanisms.
+Variable binding is taking a symbol constant and interacting with the context
+	x
+	& 'x
+Expression binding is algorithmically replacing part of the program model with a different part.
+Variable binding is resolved as a context access.
+Expression binding requires the compute function to fullfill.
 
 
 
@@ -1394,4 +1414,31 @@ What types of errors can result from not writing a correct program?
 -	"contradicting bindings"
 -	"no matching definition"
 - 	"ambiguous expression"
-- 	"
+
+
+How is an expression typed?
+An expression is either a constructor, in which case it's replaced with data, 
+	('k) | "data"
+or it has some "holes" where sub-expressions are placed
+	('k t) | 'e -> e\1
+A hole is signified by a type.
+Punctuation is signified by a value.
+An expression returns a type which is either some data or another expression.
+Is the type of something that returns an expression, an expression?
+Not when Read is verifying the program model.
+Expressions are assumed to be computed so the type is never an Expression unless
+you are computing something that constructs a program model.
+So then the type of an expression is what results from computing it.
+How do you determine the type of an expression?
+By observing the types of the sub-expressions.
+Sometimes the type of a computed expression may depend on the type of the sub-expression.
+
+
+
+The type of an expression is the type of the element produced when it is computed.
+In the case of an expression comprised of nested expressions, the type produced 
+by computation may depend on the result of computing one or more of the sub-expressions.
+
+
+
+Should I provide functionality as C or as bytecode?
