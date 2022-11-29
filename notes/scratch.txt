@@ -1442,3 +1442,7 @@ by computation may depend on the result of computing one or more of the sub-expr
 
 
 Should I provide functionality as C or as bytecode?
+If I provide it as bytecode then you can port it anywhere.
+I'm thinking about it wrong though.
+All I'm coding in C is the read, compile, and display functions.
+Anything else is compiled straight to assembly.
