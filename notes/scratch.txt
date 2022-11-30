@@ -1446,3 +1446,19 @@ If I provide it as bytecode then you can port it anywhere.
 I'm thinking about it wrong though.
 All I'm coding in C is the read, compile, and display functions.
 Anything else is compiled straight to assembly.
+There's a lot of type stuff which I would like to be statically checked before computation.
+But there's also a bunch of dynamic stuff which is useful to have.
+What's a compromise between each.
+Expressions are computed as they are encountered.
+
+
+
+Binding can associate symbols with entities or entire expressions with entities.
+Binding requires unification.
+I can unify variables.
+	x + 1 = 1 + 1
+Unification of higher order terms is hard because now you need to be able to reverse functions.
+	f(x y) = m
+This should probably be rejected.
+What about
+	f x = m
