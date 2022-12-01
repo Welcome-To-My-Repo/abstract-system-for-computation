@@ -1455,10 +1455,19 @@ Expressions are computed as they are encountered.
 
 Binding can associate symbols with entities or entire expressions with entities.
 Binding requires unification.
-I can unify variables.
-	x + 1 = 1 + 1
-Unification of higher order terms is hard because now you need to be able to reverse functions.
-	f(x y) = m
-This should probably be rejected.
-What about
-	f x = m
+The goal of Unification is to find for each unbound variable a type with the least number of values.
+I would like to bind both variables and expressions.
+I would bind a variable by 
+	x = 1
+assuming x is unbound.
+I would bind an expression by
+	('if Expression 'then Expression 'else Expression) = ? Expression (Expression) (Expression)
+	('loop [('for Number) ('while Boolean)] Expression) = 
+
+
+What does labelling an expression look like?
+do : Number -> Function -> * =
+'n -> 'f -> (
+	( l : `	? n > 1 
+		(f), n <- n - 1, (l) 
+		(f) )
