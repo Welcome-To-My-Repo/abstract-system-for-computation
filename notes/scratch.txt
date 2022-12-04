@@ -1471,3 +1471,7 @@ do : Number -> Function -> * =
 	( l : `	? n > 1 
 		(f), n <- n - 1, (l) 
 		(f) )
+
+
+
+How to use a labelled expression?
