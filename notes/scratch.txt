@@ -1466,12 +1466,56 @@ I would bind an expression by
 
 
 What does labelling an expression look like?
-do : Number -> Function -> * =
-'n -> 'f -> (
-	( l : `	? n > 1 
-		(f), n <- n - 1, (l) 
-		(f) )
+	do : Number -> Function -> * =
+	'n -> 'f -> (
+		( l : `	? n > 1 
+			(f), n <- n - 1, (l) 
+			(f) )
+as a one-liner
+	do : Number -> Function -> * = 
+	'n -> 'f -> (l : ` ? n > 1 (f), n <- n - 1, (l) (f))
+
+Is this the same as goto?
+No.
+Goto is if you set the context to an expression.
+
+	do : Number -> FUnction -> Number =
+	'n -> 'f -> 
+			& l : ` ? 
+				n > 1 
+				(f), 'n <- n - 1, (& l) 
+				(& f)
+
+Both arrows produce special behavior with symbol constants.
+The function constructor takes a symbol constant to create a parameterized expression.
+The clobber constructor will create or update a binding when given a symbol constant.
 
 
 
-How to use a labelled expression?
+
+How to bind expressions?
+An expression is a collection subtype consisting of symbol constants, strings, values, and types.
+It's formed using parentheses as
+	('a b "c")
+But how to bind an expression to some semantics?
+The easiest way is to use a function.
+	('a b "c") -> ...
+But then how do you destructure the parts of the expression?
+Do you use a static placeholder?
+That prevents currying.
+You need a way to bind something to parameterize the expression.
+Originally, I combined surface and function notations so that an expression was defined as 
+	('a b "c") | 'd -> ...
+where the expression was bound to the symbol used as the parameter.
+
+
+
+What does the string constructor look like?
+	("\"") | _ -> 'str <- {},
+		& 'r <- `
+			(Read : Char) {
+				"\"" | & <- str .
+				"\\" | 'str <- str + (Read : Char) .
+				Character | 'c -> 'str <- str + c .
+			}, 
+			(& r) .
