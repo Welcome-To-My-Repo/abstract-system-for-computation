@@ -1519,3 +1519,21 @@ What does the string constructor look like?
 				Character | 'c -> 'str <- str + c .
 			}, 
 			(& r) .
+
+
+What's the deal with commas and periods?
+If I'm defining a function, I want
+	f = 'x -> a, b, c .
+But if I'm defining a function inside a block, I want
+	block = (
+		f = 'x -> a, b . ,
+		f k
+	)
+a period and then a comma works.
+	a , b . , c
+is the same as 
+	((a , b) , c)
+
+What if I only used parentheses?
+How would that look?
+Would that even be useful?
