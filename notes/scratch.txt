@@ -1570,3 +1570,37 @@ So I start with
 	Number : [Natural Negative Integer].
 This should work because addition, subtraction, multiplication, and division across these whole numbers works properly.
 Anything beyond this should require type abstractions rather than being default.
+
+
+
+What if I used parentheses instead?
+How would it look?
+	
+	"Bubble Sort",
+	BS : List -> List = 
+		'l ->
+			'n <- 1, 
+			& 's <- `
+				? (l \ n) > l \ (n - 1)
+					swap (l n n - 1),
+					& s .
+					'n <- n + 1 ,
+					& s .
+
+vs a delimited expression form
+
+	[ "Bubble sort,
+	[[BS : [List -> List]] = 
+		['l -> [
+			['n <- 1] ,
+			[& ['s <- [? [[l \ n] < [l \ [n - 1]]]
+				[[swap [l n [n - 1]]] ,	
+				['n <- 0]
+				[& s]]
+				[['n <- [n + 1] ,
+				[& s]]]]]]]
+
+The one without delimited expressions is objectively better. 
+You can read it easier. 
+There's no huge clump of parens at the end of the top level expression.
+Parens are used to delimite sub-expressions where necessary.
