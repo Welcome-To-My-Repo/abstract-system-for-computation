@@ -1537,3 +1537,36 @@ is the same as
 What if I only used parentheses?
 How would that look?
 Would that even be useful?
+I am so tempted to give up and use parentheses instead of inferring the structure.
+
+
+
+So I have a number type which can represent complex numbers.
+The types are as follows...
+	Natural : [], Negative : [], Fraction : [], Irrational : [], Imaginary : [], 
+	Integer : [Natural Negative],
+	Rational : [Integer Fraction],
+	Real : [Rational Irrational],
+	Complex : [Real Imaginary],
+	Number : 
+		[
+			Natural
+			Negative
+			Fraction
+			Irrational
+			Imaginary
+			Integer
+			Rational
+			Real
+			Complex
+		]
+The first row of value types are default types where the resources required to represent those types are different.
+This is not a good idea because it's not extensible. 
+The hierarchy stops at the complex numbers and does not admit extensions to any of the types.
+Better to use primitives.
+At most I should provide Integers and anything beyond that should compose from some kind of ordinal numerical abstractions.
+So I start with
+	Natural : [], Negative : [], Integer : [Natural Negative],
+	Number : [Natural Negative Integer].
+This should work because addition, subtraction, multiplication, and division across these whole numbers works properly.
+Anything beyond this should require type abstractions rather than being default.
