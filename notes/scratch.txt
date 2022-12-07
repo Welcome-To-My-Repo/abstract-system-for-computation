@@ -1653,3 +1653,21 @@ Take a simple program...
 	[[f : [T -> T]] = [[x] -> x]]
 	{{f : {T -> T}} = {{x} -> x}}
 Definitely parentheses are the way to go.
+
+
+
+So if I'm using parentheses, what's my syntax?
+I can take full advantage of structural cues.
+
+Expression 	("(" * ")")
+Function	[(* '-> *) (Expression '-> *)]
+Collection 	("{" * "}")
+Type		("[" * "]")
+Sequence	(* "," *)
+Binding		(Symbol Expression)
+Interaction	(* *)
+Addition	(* '+ *)
+Subtraction	(* '- *)
+Multiplication 	(* '* *)
+Division	(* '/ *)
+Remainder	(* '// *)
