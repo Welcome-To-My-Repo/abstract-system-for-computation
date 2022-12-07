@@ -1615,3 +1615,41 @@ I need to decide because compound data is part of the language.
 All the more complex constructs must have a cannonical representation as bytes.
 The trick is that all this stuff can have any format it wants because the 
 default operations for them ase already supplied.
+
+
+
+How is stuff represented in memory.
+Each thing has a representation as a compound data type.
+Data is one of 
+Byte, Word, Reference.
+
+Symbol is a sequence of bytes.
+Collection is sequence of References.
+Function is a pair of a Symbol and an Expression.
+Number is a sequence of bytes.
+What is a type?
+A collection of unique values.
+What about a quantified type?
+	"A normal type is ", [1 2 3],
+	"but a quantified type is ", [x : T, f x]
+	"where the values may not be finite."
+
+So the reader has to infer the structure of the program model from punctuation.
+This is easier than you would think because the punctuation usually makes sense.
+Also the read direction is always from left to right.
+Nope, I'd rather do a Lisp.
+The point is that grammar can be whatever you want for any given expression because 
+individual expressions are always delimited.
+There are things that count as expression though.
+() [] {} "" '
+Nobody's going to care that much about the syntax as long as the language does cool stuff.
+What's my expression delimiter?
+<> () [] {}?
+Parens are a traditional delimiter, but my language is not a lisp. 
+It can be emulated as a lisp, but it's not.
+Take a simple program...
+	((f : (T -> T)) = ((x) -> x))
+	<<f : <T -> T>> = <<x> -> x>>
+	[[f : [T -> T]] = [[x] -> x]]
+	{{f : {T -> T}} = {{x} -> x}}
+Definitely parentheses are the way to go.

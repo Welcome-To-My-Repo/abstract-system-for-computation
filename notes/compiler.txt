@@ -1,15 +1,27 @@
-The ASC Compiler
+How do I want to do the implementation?
+It requires a dynamic environment so that things which are bound at the top level are preserved.
+The reader and compiler are programs in the environment.
+Are the built in as routines?
+I should stick with my original philosophy that there should be an interpreted bytecode paired with an interpreter application which can be implemented anywhere.
+So now what does my interpreted bytecode look like?
+Nope, the bootstrap should be a complete interpreter environment in C.
+The interpreter only needs an input and output stream of bytes.
+Is compute and read the same thing?
+What should be included in the bootstrap?
+- Read
+- Compute
+- Import
+- Export
+- Cache
 
-It has a single function: Compute.
-Compute accepts written programs, programs as data, or any other format of a program.
-It also has import, link, compile, decompile, and display.
-These are discrete functions because they change the environmet not the image.
+Should there be a filesystem interface provided?
+No the interface is part of the standard library.
+Should system calls be included?
+How does the import and export system work?
+It takes a string which describes the location of a file which is dependent on the implementation.
+Everything is in the local directory.
+Can you change the working directory?
+No, because the environment shouldn't assume a file system exists.
+As far as import and export are concerned, there's a single storage repository.
+Read and Compute are not the same as the top level environment capabilities.
 
-You invoke the compiler with one or more files you want to run.
-Alternatively, you can invoke the compiler with no files in which case it will open a listener to accept program text.
-
-Files are run in sequential order.
-
-How does the compiler fit the semantics of ASC?
-It has an initial environment.
-The initial environment contains a mode exposing an interface that accepts programs and feeds them to Compute.
