@@ -1605,3 +1605,13 @@ You can read it easier.
 There's no huge clump of parens at the end of the top level expression.
 Parens are used to delimite sub-expressions where necessary.
 If you can use regex, then you don't need parens.
+Regex is not unrestricted though because you can set context.
+That's fine, you can set context in ASC too.
+
+
+
+How is stuff stored?
+I need to decide because compound data is part of the language.
+All the more complex constructs must have a cannonical representation as bytes.
+The trick is that all this stuff can have any format it wants because the 
+default operations for them ase already supplied.
