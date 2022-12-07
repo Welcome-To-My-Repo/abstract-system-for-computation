@@ -1580,12 +1580,12 @@ How would it look?
 	BS : List -> List = 
 		'l ->
 			'n <- 1, 
-			& 's <- `
+			('s <- `
 				? (l \ n) > l \ (n - 1)
 					swap (l n n - 1),
-					& s .
+					(s) .
 					'n <- n + 1 ,
-					& s .
+					(s) .)
 
 vs a delimited expression form
 
@@ -1593,14 +1593,15 @@ vs a delimited expression form
 	[[BS : [List -> List]] = 
 		['l -> [
 			['n <- 1] ,
-			[& ['s <- [? [[l \ n] < [l \ [n - 1]]]
+			[compute ['s <- [? [[l \ n] < [l \ [n - 1]]]
 				[[swap [l n [n - 1]]] ,	
 				['n <- 0]
-				[& s]]
+				[compute s]]
 				[['n <- [n + 1] ,
-				[& s]]]]]]]
+				[compute s]]]]]]]
 
 The one without delimited expressions is objectively better. 
 You can read it easier. 
 There's no huge clump of parens at the end of the top level expression.
 Parens are used to delimite sub-expressions where necessary.
+If you can use regex, then you don't need parens.
