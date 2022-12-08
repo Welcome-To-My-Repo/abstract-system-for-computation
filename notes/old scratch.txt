@@ -1784,3 +1784,30 @@ Here's some insanity,
  (y (1)),
  (z (1)),
  (y x z)) = 2)
+
+
+
+Let's make an un-typeable expression by creating a new expression
+	` (& <- (& + (('a *) | 'T)))
+Now let's make an untypeable function
+	('x -> ((('n *) = 'Type), (n)))
+So how can you type a function?
+A function is untyped until you assert that it's typed.
+If you don't provide any assertions to track, then you don't track any.
+What about type errors?
+That's a program failure.
+So then you don't actually track the type of a function, you just say that
+the definition of a a function is a sub-type of another function type,
+(f : (t -> T))
+(f : ('x -> (m x)))
+
+So how then would I assert the type of an expression?
+	((x : T), `(e))
+What happens when I violate the assertion?
+	(((x : T), ('x `((& <- (& + (('n) | P))), (n)))), (x))
+The program will compute until "(n)" and then abort.
+That kinda sucks.
+That's what happens when you allow a program to mutate the context.
+Also it's what happens when you allow a program to computationally define its own syntax.
+So then you can chose between how early a computation can abort and how weird you want the syntax to be.
+Compute is always (* -> *) unless more type information is provided.
