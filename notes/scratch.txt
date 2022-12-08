@@ -115,6 +115,7 @@ The implementation should provide the following operations:
 
 (Read : [(_ -> *) (_ -> String) (_ -> Character)])
 (Display : [((d : *),(d -> d))])
+(Compute : (Expression -> *))
 (Import : ([String Symbol] -> *))
 (Export : (* -> _))
 (Cache : [((n : *), (n -> n))])
