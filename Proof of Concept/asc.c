@@ -5,6 +5,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 typedef long long unsigned int Value;
+typedef unsigned char Byte;
+typedef void* Location;
+
 Value Read ();
 Value Compute (Value m);
 Value Import (Value m);
