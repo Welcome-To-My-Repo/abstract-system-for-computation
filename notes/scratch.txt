@@ -1679,6 +1679,8 @@ How would that be described?
 I would like to create a math expression where you can put any number of numbers and arithmetic operators in one expression.
 I also need to honor operator precedence. 
 Parens are always evaluated first because they form sub-expressions.
-1. exponent/root
+1. exponentiation/root
 2. multiplication/division
 3. addition/subtraction
+I would like expressions to look something like this:
+	(1 + 3 - 2 * 5 / 3)
