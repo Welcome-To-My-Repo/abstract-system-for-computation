@@ -1811,3 +1811,16 @@ That's what happens when you allow a program to mutate the context.
 Also it's what happens when you allow a program to computationally define its own syntax.
 So then you can chose between how early a computation can abort and how weird you want the syntax to be.
 Compute is always (* -> *) unless more type information is provided.
+
+
+
+When is an expression type-able?
+An expression is type-able when the result of computing the expression depends 
+on a typed expression.
+If 
+	((^ (Compute T)) = t)
+then
+	((^ (Compute ` T)) = t)
+
+I'm addressing the wrong thing.
+I can't talk about the type of an expression, I can only talk about the result of computing it.
