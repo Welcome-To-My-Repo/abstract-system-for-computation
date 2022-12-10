@@ -1847,3 +1847,115 @@ However this can be changed by doing
 	((Number . 'plus . Number) = (Number + Number))
 	((1 plus 1) : Number)
 This expression can be typed when the program is read because the expression has been previously defined.
+
+
+
+I really really want to do static typing.
+An expression type is 
+	[(e : Expression), (? ((e) = T) e _)]
+Where the result of computing an expression must yield some type.
+Should each expression have a result type?
+The result type is formed from the surface.
+Expressions have types, but their result also has a type.
+A bound expression actually appears as
+	(e | T)
+where computing the expression 'e results in some type 'T.
+
+
+
+What about parsing?
+Regular grammars are expressible by regular expressions, but I want full-on parsers.
+How do I manage a set of parsers?
+The grammar for ASC is pretty straightforward.
+You have three kinds of braces, string delimiters, and a syntax for numbers.
+
+
+How do I statically type this language?
+Given you know the type of all the expressions, this is easy.
+You can eagerly reject all models where types are known to mismatch.
+Expressions which are typed as * are disregarded.
+
+
+
+How does variable typing work?
+Say I have
+	1, (T = [A B C]),
+	2, (x : T),
+	3, (x : A)
+How is this possible?
+What is the actual value of x?
+Well in line 2 the value of x is unknown but is something of a type T.
+Type assertion is a computation constraint.
+Is a type binding the same as a value binding?
+Not really, it's a quantification.
+	(x : T)
+quantifies the values of x to the values of T.
+I'm losing most of the static typing capabilities that i want from my language.
+But i didnt want static typing, i wanted dependent typing.
+Type information is manifest in that compute will not perform an operation if it knows type constraints will not be followed.
+So how is type information tracked though?
+Generally by 
+	(n (e)), (? ((^ n) = T) n (& Type-Error))
+All checks are dynamic.
+But how is type information stored?
+If I say
+	(x : T)
+then 'x cannot be replaced with a single value, but the possible values of 'x are constrained.
+Is this simply binding x to T?
+No because 'x must compute to a value of T, not T itself.
+So binding then sets the supertype of the variable.
+each variable now has to track multiple things.
+
+What happens when I say
+	(x : T), (x : A)
+where
+	((^ A) = T)
+If you constrain a binding to a type which has no values, then the binding is to the type itself.
+Thus for any non-type constructor,
+	(x : c), (x = c)
+
+
+
+Who keeps track of type constraints?
+Does compute have additional context to manage type constraints?
+What happens in this program?
+	(('f : a -> b) ('x -> b)),
+	(n : b), (f n)
+'f cannot be applied to 'n because 'n is clearly the wrong type.
+Here the types of both f and n are known before the application is computed.
+But where are the types?
+It's extra information which is accessed via reflection.
+	(x : T) 
+sets a type constraint.
+	(^ x)
+gets a type constraint.
+such that
+	((^ (x : T)) = T)
+
+
+
+What about binding?
+	(x *) 
+binds x to the thing following it
+	(x <- *)
+removes the current binding and type constraints and creates a new binding
+	(x : *)
+constrains all future bindings such that they must be to values of the type.
+
+
+
+so if a type constraint is violated, then compute aborts with an error.
+there is no recovery or restart.
+no debugger.
+No I'd rather enter a debugger.
+Say I encounter a type error in a malformed program.
+Something like 
+	(1 + "2")
+what would be my options?
+- change the sub-expression.
+- abort the computation.
+
+
+
+how to define a function like haskell?
+	(((f : Function) x) = ('x -> x))
