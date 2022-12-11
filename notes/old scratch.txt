@@ -1959,3 +1959,36 @@ what would be my options?
 
 how to define a function like haskell?
 	(((f : Function) x) = ('x -> x))
+
+
+
+how do I define a recursive type in ASC?
+In Haskell, it's something like,
+	data List n = Node n | Node n (List n)
+this describes a singly linked list.
+In ASC this would be
+	(List : [{*} {* List}])
+A Tree structure would be
+	(Tree : Type),
+	(Leaf : {*}), 
+	(Branch : {Tree Tree}),
+	(Tree : [Leaf Branch])
+
+
+How to deconstruct a collection?
+Given
+	(C = {1 "2" '3})
+How do you deconstruct by index?
+	((C / 0) = 1)
+How do you deconstruct by type?
+	((C \ Symbol) = '3)
+What about simpler stuff without symbols?
+Terser, structure-based syntax.
+I need two syntaxes, destructuring based on index, and destructuring based on type.
+I need two different notations because in the very common case that you try to deconstruct a collection of numbers, you need to be explicit that you're not destructuring by type and instead are destructuring by index.
+Which will be more common though? 
+Destructuring by type or by index?
+Both will be equally common.
+Take a large collection of small collections.
+The large collection is destructured by index.
+The small collection is destructured by type.
