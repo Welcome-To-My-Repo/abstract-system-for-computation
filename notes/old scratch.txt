@@ -1992,3 +1992,26 @@ Both will be equally common.
 Take a large collection of small collections.
 The large collection is destructured by index.
 The small collection is destructured by type.
+
+
+
+How do I do typing?
+Types are collections of values.
+A value is a subtype.
+The type of a type is a supertype.
+I can bind a symbol to a value.
+Types are also values.
+If I say
+	('T [A B C])
+Then
+	('t T)
+Binds 't to the type entity 'T.
+But asserting the type of somethind is different.
+	(e : T)
+means that computing 'e must produce some value of 'T.
+This is different than binding.
+This is a constraint.
+In the case of a variable
+	(x : T)
+'x is still unbound, but there is a finite set of entities which 'x may be bound to.
+
