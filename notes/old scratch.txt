@@ -2015,3 +2015,16 @@ In the case of a variable
 	(x : T)
 'x is still unbound, but there is a finite set of entities which 'x may be bound to.
 
+A type assertion is not the same as a type binding.
+A type assertion can be applied to anything.
+	((1 + 1) : Number)
+However binding is not the same.
+	((x : T) 4)
+
+
+
+How to bind expressions?
+Unification is the brute force shortcut
+	((T  T 'a) = (f T T))
+But it doesn't work the same as adding an expression surface to the context.
+	(& <- (& + ((T T 'a) | 'e (f (e \ 0) (e \ 1)))))
