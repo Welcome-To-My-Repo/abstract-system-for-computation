@@ -2049,3 +2049,6 @@ Should I provide refinement types?
 No, because I already have them.
 	(x : T)
 means forall x, ((^ x) = T)
+So how do I do type binding?
+A type is a set of values.
+A type can be a value.
