@@ -2052,3 +2052,41 @@ means forall x, ((^ x) = T)
 So how do I do type binding?
 A type is a set of values.
 A type can be a value.
+
+
+
+How is type binding different than value binding?
+A type binding constrains the result of a certain part of a program.
+A value binding determines how an expression is rewritten.
+	(x : T)
+	(x = t)
+	(x <- t)
+A type can bind anything
+	((1 + 1) : 2)
+	('x -> ((x + 1) : 5))
+How is a type binding to a variable different than a type binding to an expression?
+	(1 + 1)
+Will always have a definite value.
+	(x : T)
+Has an indefinite value, but has a definite set of possible values.
+So then a binding can have multiple values?
+What is my semantics for binding?
+What if I do
+	(x = y)
+that means
+	(x : y)
+	(y : x)
+how are type constraints enforced?
+I set a constraint for an expression.
+That expression must always evaluate to that type or a semantic error occurs.
+Bindings can be given type constraints.
+	('x <- e)
+	(x : T)
+	(x = e)
+What about arbitrary refinement?
+	('x <- 1),
+	(x : Number),
+	(x : Natural),
+	(x : [1 2]),
+	(x : 1)
+These are all true.
