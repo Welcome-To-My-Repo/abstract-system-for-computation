@@ -2090,3 +2090,8 @@ What about arbitrary refinement?
 	(x : [1 2]),
 	(x : 1)
 These are all true.
+What does this mean though?
+It means that the compute function must enforce a semantic requirement.
+Can you type an unbound expression?
+	(x : T)
+	(`(f x) : t)
