@@ -2028,3 +2028,24 @@ Unification is the brute force shortcut
 	((T  T 'a) = (f T T))
 But it doesn't work the same as adding an expression surface to the context.
 	(& <- (& + ((T T 'a) | 'e (f (e \ 0) (e \ 1)))))
+Is expression binding the same as symbol binding?
+How does it look as an AST?
+	(1 + 1)
+	{{1} '+ {1}}
+
+	(f ('x -> x))
+	{{'f} {{'x} '-> {'x}}}
+So these two programs are semantically equivalent
+	(f ('x -> x))
+	(& <- (& + ({'f} | ('x -> x))))
+Because symbols are taken as expressions.
+How are types established though?
+I can bind any program or sub-program to a type.
+	((1 + 1) : Number)
+	((x : T) t)
+What does my variable binding form look like?
+	` ([{Symbol}] *) | 
+Should I provide refinement types?
+No, because I already have them.
+	(x : T)
+means forall x, ((^ x) = T)
