@@ -2095,3 +2095,45 @@ It means that the compute function must enforce a semantic requirement.
 Can you type an unbound expression?
 	(x : T)
 	(`(f x) : t)
+So a value is known or it is indeterminant.
+Thus implicit quantification is the case between a definite value and an indefinite value.
+Can you quantify over an expression?
+No.
+Expressions are different than variables.
+Variables are symbols that are replaced with data.
+Expressions are an abstraction.
+How do I separate variables and expressions?
+Simple, a variable binding is
+	(& <- (& + ('x | 1)))
+Now 
+	(x = 1)
+Variable binding is different than expression binding because there's no pattern
+matching involved.
+You just look up the variables by
+	(& x)
+The tricky bit is determining if a symbol is a variable or a punctuation.
+
+
+
+Expressions that admit unbound variables...
+- type assertion
+- unification
+- clobber
+Given 'x is unbound and 'y is bound, then the following expressions will bind
+x
+	(x <- y)
+	(x = y)
+	(x : y)
+Should I drop all this and just use let binding?
+How would a let form look?
+Let is just a sequence form anyways.
+I don't need let.
+My sequence expression forms a context that's discarded afterwords anyways.
+
+
+
+How do I do a map?
+	((c = {1 2 3}),
+ 	 (f = ('x -> (x + 1)),
+ 	 (c' = (f (c \ Natural))),
+	 (display c'))
