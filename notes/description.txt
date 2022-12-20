@@ -22,7 +22,7 @@ Constructors:
 
 Operations:
 - Compute		[("(" * ")") ("(" Expression ")")]
-- Arithmetic		(Number ['+ '- 'x '/ '//] Number)
+- Arithmetic		(Number ['+ '- '* '/ '//] Number)
 - Boolean Logic		(Boolean ['/\ '\/ '-] Boolean)
 - Negation		('- [Boolean Number])
 - Destructure by Type	(Collection '/ *)

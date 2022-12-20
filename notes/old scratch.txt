@@ -2135,5 +2135,49 @@ My sequence expression forms a context that's discarded afterwords anyways.
 How do I do a map?
 	((c = {1 2 3}),
  	 (f = ('x -> (x + 1)),
- 	 (c' = (f (c \ Natural))),
+ 	 (c' = (f ([c \ Natural]))),
 	 (display c'))
+
+
+
+Here's a weird thing: I want types to be computed before the rest of the program, but then I have to compute stuff dynamically.
+I'm making the mistake that computation is still ordered.
+Types are computed first, but it's not the same as lazy or out-of-order execution.
+Computation should happen in the order that the program model represents.
+	((x = 1), ([x]))
+
+
+
+How do types work?
+Given two types in a context,
+	{(t <- [a b]) (T <- [t])}
+What is the result of 
+	(^ t)
+is it 
+	T
+or
+	*
+By all rights, it should be T.
+But how?
+The type algorithm starts by getting the collection of all the types bound in the context.
+Then it searches for any type that contains the value.
+It gathers a collection of all types which contain the value.
+It emits that collection.
+
+
+
+What's the behavior of a typed expression if there's an unbound variable?
+Does it unify?
+For example, ((x + 1) : Number)
+'x must be a number for the program to work.
+What about ((x + 1) : 2)
+Now 'x must have a specific value.
+So with type constraints and equality, an unbound variable triggers a unification algorithm.
+The unification algorithm will attempt to find the most general binding for each unbound variable.
+What about a complex program with multiple unbound variables?
+	(((z * 3) + (x - y)) : 10)
+How would unification solve this?
+It would encounter z which would trigger the unifier.
+The unifier would begin guessing and encounter x.
+It would begin guessing for two variables and encounter y.
+Finally the unifier would begin guessing types for all three variables.
