@@ -2181,3 +2181,43 @@ It would encounter z which would trigger the unifier.
 The unifier would begin guessing and encounter x.
 It would begin guessing for two variables and encounter y.
 Finally the unifier would begin guessing types for all three variables.
+
+
+
+What are my storage semantics?
+If you want to modify a constructed entity, you have two choices, you can either create a modified copy of the entity or clobber the portion of the entity which is being changed.
+Given that every entity is serialized using Bytes, modifying an entity results in changing byte values in-place or copying the entire serialized entity and modifying bytes as they are copied.
+The simplest rule is to completely eschew copying in every case.
+Nothing is copied, everything is modified in-place.
+Variables are treated as linear references to entities.
+The clobber entity overwrites bindings to entities.
+Take this example code
+((x <- 1), "Here 'x is bound to 1",
+ (y <- x), "y is bound to x",
+ (y <- y + 1), (x = 2), "This is true",
+ (x <- 1), ((x = 1) /\ (y = 1)), "This is true")
+Is a constructor always guaranteed to claim new memory?
+Yes.
+Are numeric values constructors? Yes.
+Clobber will overwrite the target value with a new value if the new value requires at most the same storage as the previous value.
+
+
+
+How to do expressions?
+(('if Boolean 'then Expression 'else Expression) | 'cond (? (cond / Boolean) (cond \ 3) (cond \ 5)))
+
+Lets say I want to pipe a bunch of functions, f g h i j, would I have to do
+(f (g (h (i (j x)))))
+or could I just do
+(f g h i j x)
+or 
+(f g h (x j i))
+I should be able to do that last one?
+But how?
+What would that expression look like?
+It would be an expression of any length where each argument is either a function or not a function.
+Then you would walk across, pair-wise, applying functions to data.
+There would be a program to interpret that.
+Actually I'm not going to do that because that circumvents the entire point of being able to use parenthetical delimiters as a visual hint about the form of an expression.
+Rather if I am able to write arbitrary length expressions, then why am I using parentheses in the first place.
+If my language is good enough, people will come to use it.
