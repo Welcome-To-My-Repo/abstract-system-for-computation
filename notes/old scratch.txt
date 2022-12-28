@@ -2221,3 +2221,10 @@ There would be a program to interpret that.
 Actually I'm not going to do that because that circumvents the entire point of being able to use parenthetical delimiters as a visual hint about the form of an expression.
 Rather if I am able to write arbitrary length expressions, then why am I using parentheses in the first place.
 If my language is good enough, people will come to use it.
+
+
+
+What are the semantics for mutating elements of a collection?
+Take this program, (('c <- {1}), ((c \ 0) <- 2))
+What it's really doing is
+(('c <- ;Reference Number;),(c \ 0) <- (@ 2))
