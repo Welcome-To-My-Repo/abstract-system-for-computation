@@ -2228,3 +2228,7 @@ What are the semantics for mutating elements of a collection?
 Take this program, (('c <- {1}), ((c \ 0) <- 2))
 What it's really doing is
 (('c <- ;Reference Number;),(c \ 0) <- (@ 2))
+
+
+
+Semantics for mutating fields...
