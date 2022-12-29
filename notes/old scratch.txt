@@ -2231,4 +2231,10 @@ What it's really doing is
 
 
 
-Semantics for mutating fields...
+How does decomposing a collection even work?
+(1 + 1)
+((x <- 1) + 1)
+(({1} \ 0) + 1)
+What about binding?
+(x <- 1)
+(({1} \ 0) <- 1)
