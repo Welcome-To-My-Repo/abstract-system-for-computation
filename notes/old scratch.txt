@@ -2225,16 +2225,33 @@ If my language is good enough, people will come to use it.
 
 
 What are the semantics for mutating elements of a collection?
-Take this program, (('c <- {1}), ((c \ 0) <- 2))
-What it's really doing is
-(('c <- ;Reference Number;),(c \ 0) <- (@ 2))
+You destructure the collection and then set a value.
+Should I even have a collection?
+Or should there be a different means of creating a data structure?
+What about datalog as rules for constructing structured data?
+That wouldn't work because datalog does not have a concept of meta-spatial relation.
+You can't "group" things in datalog.
+
+What would be a realistic tree implementation?
+
+((tree : [branch leaf]),
+ (branch : {data tree tree}),
+ (leaf : {data})
 
 
 
-How does decomposing a collection even work?
-(1 + 1)
-((x <- 1) + 1)
-(({1} \ 0) + 1)
-What about binding?
-(x <- 1)
-(({1} \ 0) <- 1)
+What are the rules for shadowing?
+Contexts are encapsulated by collections such that
+((x = 1),{x = 2})
+So say I bind a variable,
+((x <- 1),
+ {(x <- 2)})
+In a new context, any binding is considered a fresh binding.
+Such that
+((x <- 1), [(x <- 2)], (x = 1)) is true
+
+
+What methods should I provide for the context?
+If you interact using a quoted expression, it will replace the current expression with that expression.
+If you interact using a surface, it will include that surface as an element.
+Or is it best to not provide default behavior that may get in the way?

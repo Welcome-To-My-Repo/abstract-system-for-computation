@@ -26,7 +26,9 @@ Operations:
 - Boolean Logic		(Boolean ['/\ '\/ '-] Boolean)
 - Negation		('- [Boolean Number])
 - Destructure by Type	(Collection '/ *)
+- Replace by Type	(Collection '/ * *)
 - Destructure by Index	(Collection '\ Natural)
+- Replace by Index	(Collectoin '\ Natural *)
 - Difference		[(Collection '- Collection) (Collection '- *)]
 - Sum			[(Collection '+ Collection) (Collection '+ *)]
 - Reference		('@ Location)
