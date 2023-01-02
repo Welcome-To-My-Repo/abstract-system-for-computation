@@ -2255,3 +2255,15 @@ What methods should I provide for the context?
 If you interact using a quoted expression, it will replace the current expression with that expression.
 If you interact using a surface, it will include that surface as an element.
 Or is it best to not provide default behavior that may get in the way?
+
+
+
+So dynamic or symbolic binding, how to do it?
+So when you bind a variable, it's appended as a surface in &
+When you go to substitute the variable, the surface is only checked for the current context.
+Expressions are different. 
+If the expression isn't found in the current context, the rewriting algorithm will move to the external context and search that one.
+OR, is every new expression bound in the form of macrolet?
+So when you exit a context, the expression is left behind?
+But that should be true for symbols.
+In a context,

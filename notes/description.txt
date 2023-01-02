@@ -115,7 +115,6 @@ A quantified type results from a type constructor containing any computational f
 
 
 The implementation should provide the following operations:
-
 (Read : [(_ -> *) (_ -> String) (_ -> Character)])
 (Display : [((d : *),(d -> d))])
 (Compute : (Expression -> *))
@@ -123,3 +122,12 @@ The implementation should provide the following operations:
 (Export : (* -> _))
 (Cache : [((n : *), (n -> n))])
 ('Extract String *)
+
+
+
+The computation algorithm begins by constructing an initial context which contains the program model to be computed and the default expressions as surfaces.
+Computation begins by finding first expression which does not contain any nested expressions.
+This can be found by taking the sum of the sequence of indicies used to access a bottom expression and then comparing each sum to find the smallest.
+The first expression will have the smallest sum in every case.
+The computation algorithm will then use the first expression to interact with the context.
+If the interaction produces nul, then the computation algorithm will construct a semantic error and interact with the context.
