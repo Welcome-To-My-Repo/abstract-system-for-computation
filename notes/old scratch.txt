@@ -2251,70 +2251,14 @@ Such that
 ((x <- 1), [(x <- 2)], (x = 1)) is true
 
 
-What methods should I provide for the context?
-If you interact using a quoted expression, it will replace the current expression with that expression.
-If you interact using a surface, it will include that surface as an element.
-Or is it best to not provide default behavior that may get in the way?
 
-
-
-So dynamic or symbolic binding, how to do it?
-So when you bind a variable, it's appended as a surface in &
-When you go to substitute the variable, the surface is only checked for the current context.
-Expressions are different. 
-If the expression isn't found in the current context, the rewriting algorithm will move to the external context and search that one.
-OR, is every new expression bound in the form of macrolet?
-So when you exit a context, the expression is left behind?
-But that should be true for symbols.
-What's the rules for surface interactions?
-You have a collection with a surface,
-(c = {('a | 'b)})
-you can interact with it
-(('a c) = 'b)
-if you create a collection within a collection,
-(c = {('a | 'b) {n}})
-that collection will also have the same surface
-(((c / {n}) 'a) = 'b)
-the context is provided by nesting collections.
-is this always dynamic though?
-with this model, yes.
-bindings are all dynamic. none are static.
-what's the difference between static and dynamic bindings?
-how far back up the context you look.
-for matching expressions, the entire context is searched.
-for matching symbols, just the local context is searched.
-but if the contexts are nested, you can't really control this because
-they follow the same rules.
-actually having a nested context close over the surfaces of the enclosing context is massively unsound.
-It breaks the entire point of having surfaces to begin with.
-The only time a context can touch something outside of it is when it's being constructed.
-So then this solves the problem.
-But now I have no means of using dynamic variables.
-
-
-
-Do I need forward declaration, or do my quoting semantics avoid it?
-Lets say there's two mutually recursive functions
-((f <- ('x -> g x)),
- (g <- ('x -> f x)))
-This should work in principal because both functions do not attempt to resolve their bindings.
-
-
-
-I want dynamic scope and lexical scope though.
-Simple to implement then, each context has a closure collection.
-
-
-
-So the context has 
-{Expression Collection ...} {...}
-The expression is the current expression.
-Collection is a reference to the lexical bindings.
-Well what if you don't provide lexical bindings as a surface?
-Just make pairs that you have to search for.
-Or is there a way to force the collection constructor to not close over the surfaces?
-Lexical bindings are enforced by
-(lexical? = ('s -> 
- (? (& / (s | *))
-    (& s)
-    (& (error)))))
+Dynamic or Lexical scope?
+Lexical scope.
+What are the rules for closing over something?
+((n <- 1), ('x -> (x + n)))
+the context is captured when the function is constructed.
+What about
+{(n <- 1) ('x -> (x + n))}
+same as the previous example.
+What about functions that capture nested contexts?
+How do you even do a nested context?
