@@ -2252,13 +2252,22 @@ Such that
 
 
 
-Dynamic or Lexical scope?
-Lexical scope.
-What are the rules for closing over something?
-((n <- 1), ('x -> (x + n)))
-the context is captured when the function is constructed.
-What about
-{(n <- 1) ('x -> (x + n))}
-same as the previous example.
-What about functions that capture nested contexts?
-How do you even do a nested context?
+I want hard lexical scope so that I can reason about contexts as a data structure.
+As such, an expression should only be able to search its own context which is different than a call stack
+Lets make a closure which is hard.
+((x <- 1), 
+ (y <- {('v | 2) 
+        {(z <- 3) 
+	 {('n -> (x + ((y 'v) + (z + n)))) }}}),
+ (((y / Collection) / Collection) / Function))
+
+
+
+What if I want to make a huge context with a fixed number of stuff?
+(f <- 
+((n <- 1), 
+(('a -> ('b -> (n + (a + b)))) 1)))
+Does a closure copy the entire fucking stack?
+No, just the bindings.
+Say you have a bunch of function calls, how do you close over dynamic scope.
+
