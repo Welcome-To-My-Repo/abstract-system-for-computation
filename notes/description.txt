@@ -3,7 +3,13 @@ It has capabilities for unbounded abstraction but also provides basic interfaces
 
 
 
-What is my syntax?
+ASC syntax is comprised of numbers, symbols, and some limited punctuation.
+Syntax is used to compose a program model.
+There is a one-to-one correspondence between the construction of a program model and how it is written.
+
+
+
+Default Expressions are
 
 Constructors:
 - Collection		[("{" * "}") (* '. *)]
@@ -62,12 +68,14 @@ Special Symbols:
 - This			'&
 
 
+
 ASC has a special constant, This, or "&", which refers to the current context.
 It provides access to the context as a Collection.
 The context stores data, bindings, the current expression, and any other information depending on the implementation.
 During computation, multiple contexts may be nested as a result of nested function calls and other stuff.
 The context is also used for interactions.
 One context can bind a surface in the context which can be accessed by further nested contexts.
+
 
 
 ASC provides minimally three basic data formats, 

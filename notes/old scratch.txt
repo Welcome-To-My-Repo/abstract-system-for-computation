@@ -20,13 +20,6 @@ Make sure to learn what proper use and safety mean for ASC or else you and other
 
 
 
-================================================================================
-Low Level System API implements something like Vulkan for rendering and 
-general purpose compute
-================================================================================
-
-
-
 the concept of This (%).
 "This" refers to the immediate context.
 The context is the collection of bindings.
@@ -2259,15 +2252,19 @@ Lets make a closure which is hard.
  (y <- {('v | 2) 
         {(z <- 3) 
 	 {('n -> (x + ((y 'v) + (z + n)))) }}}),
- (((y / Collection) / Collection) / Function))
+ (((y / Collection) / Collection) 
 
 
 
-What if I want to make a huge context with a fixed number of stuff?
-(f <- 
-((n <- 1), 
-(('a -> ('b -> (n + (a + b)))) 1)))
-Does a closure copy the entire fucking stack?
-No, just the bindings.
-Say you have a bunch of function calls, how do you close over dynamic scope.
+So quoting an expression will create a copy of the context for that expression to be evaluated in.
 
+
+
+A nested collection is a special case where two contexts must be combined.
+There's two collections, one nested in the other such that 
+{ {} }
+where each collection has a context.
+So we have an algorithm that begins with the outer context and constructs a new context.
+How are contexts associated with the code?
+Contexts are managed by the compute program.
+However, the program being computed is capable of inspecting the context constructed by the compute program.
