@@ -2281,3 +2281,63 @@ A type can also be
 But that doesn't imply that each value must be unique from the rest so square braces are important.
 Should I use squre braces for punctuation instead?
 No.
+
+
+
+What is my terminology for the | thing in collections?
+You do functions by saying
+{(Number | 'n (n + 1))}
+you do pattern matching by 
+{ (Case-1 | Match-1)
+  (Case-2 | Match-2) }
+you do object orientation by
+{(data <- 1) (* | 'n (data <- n)) (_ | data)}
+Wait, so aren't I just making functions then?
+Because the handler has to close over the collection.
+No this is different than functions.
+You can make a singleton collection that does a function.
+Not the same as a function, you can just make it look like one.
+I can parameterize it.
+It's not the same as doing a quoted thing.
+How do you parameterize something?
+Dumb question.
+What is the differece between parameterizing a quote as a function and parameterizing a map?
+I feel like there's some redundancy there.
+Well functions are made by quoting a thing and storing it in a collection.
+But when you send data to a collection, you need to provide a way for the collection to use it.
+That's parameterization but also makes sense.
+So then a function looks like
+(* | 'x (x + 1))
+It's a triple of some value which can be accepted, a symbol to bind the value to, and a program.
+So how do I represent stuff as collections?
+(1) = {1}
+(1 , 1) = {1 ', 1}
+{1 1} = {'{ 1 1 '} }
+What's the difference then between 
+'x
+and 
+x
+because right now both of them show up as 
+{'x}
+and 
+{'x}
+Or do I just do type tags?
+No that doesn't work.
+So I quote an expression and I get
+`x
+which is 'x
+But I'm forgetting type tags for determining which things are part of the program model and which things are data.
+It's the same as assembly that way.
+You just get a chunk of stuff and you have to pick it apart using rules.
+
+
+
+What are my rules then?
+How do I represent stuff in memory?
+It all has a tag which is a word size.
+So then it's easy to check which things are tagged as data and which things are tagged as programs.
+Both the program and data is folded together because an interpreter program handles computing it.
+Each entity has a type.
+The type follows the entity around.
+So everything is at least two words.
+Except for compound data where you can specify a type and the data is packed.

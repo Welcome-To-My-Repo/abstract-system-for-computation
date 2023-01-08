@@ -10,7 +10,7 @@ In this document, the name "nth" refers to the description language.
 The term "environment" shall refer to the mechanisms and resources through which computation is facilitated.
 As this document is a specification, all properties and behaviors of the system described below are requirements.
 	
-	nth is written as a series of characters read from left to right.
+	nth is written as a unidirectional sequence of characters.
 nth minimally requires the set of characters featured in the ASCII standard character encoding scheme.
 Implementations are encouraged to accept Unicode Standard UTF-8 character encoding scheme as it is transparently compatible with the ASCII encoding.
 The minimal set of characters is classified into the following catagories, letters, digits, blanks, and glyphs.
@@ -19,20 +19,23 @@ Digits are numerical characters in the inclusive range 48-57.
 Blanks are non-printable or control characters in the inclusive range 0-32.
 Glyphs are all other characters not already included in the other three catagories.
 	
-	The syntactic elements of an nth program are classified as Numbers, Symbols, and Punctuation.
+	The syntactic components of an nth program are classified as Numbers, Symbols, and Punctuation.
 A symbol is any sequence of characters not including punctuation.
 A number is any sequence of numerical digits (0123456789) optionally bisected once by a dot or forward slash, prefixed by one of either "+" or "-".
 Punctuation is any of the following characters...
-(){}[],'"`|
+(){}[],'"`
+A Punctuation character is treated as its own symbol where it occurs in a sequence.
+This will cause any syntax component on preceding or following a Punctuation character to be delimited at the point where the Punctuation character occurs.
+For example, the character sequence, "(abc,123)" would be interpreted as the symbols "(", "abc", ",", "123", and ")".
 	
-	There are several additional syntactic elements which are given unique character-based notation however, they are shorthand for structured data rather than single values.
+	There are several additional syntactic components which are given unique character-based notation however, they are shorthand for structured data rather than single values.
 The String is formed by a sequence of characters beginning and ending with a double quote (").
 The Escape is formed by a backward slash (\) followed by a double quote, a second backward slash, or a sequence of Digits.
 An Escape may only occur within a String.
 The Constant is a sequence of characters beginning with the apostrophe (') and ending with a Blank.
 	
-	Punctuation is used to form a program model composed of various syntactic elements.
-There are several different forms of punctioation each which denote a specific element which may occur in a program model.
+	Punctuation is used to form a Program Model.
+There are several different forms of punctuation which each denote a specific component of a program model.
 A grammar is featured below which describes how valid sequences of characters can be combined to form a program model.
 A classification is a Symbol beginning with a capitol letter.
 The arrow (-->) associates a specific classification with a line-separated list of other forms or classifications which may occur at that point in a character sequence.
@@ -62,11 +65,14 @@ An elipses (...) after a classification or form means that that classification o
 	Quote --> 
 		` Program 
 	
-	The components of a Program Model are Expressions, Sequences, Collections, Types, and Quotes; corresponding to the classifications given previously in the grammar.
+	The components of a Program Model are Expressions, Sequences, Collections, Types, and Quotes, corresponding to the classifications given previously in the grammar.
 Expressions represent computations to be performed.
 Sequences represent two or more computations to be performed.
 Collections represent compound, structured data.
 Types represent a set of unique data values.
-Quotes expose a program model as a data structure.
+Quotes expose a Program Model as a data structure.
 
-	A Program Model
+	A Program Model is a data structure corresponding to a written nth program.
+It is formed by nesting Collections.
+The manner in which Collections are nested is determined by the occurrance of closed pairs of round parentheses.
+At each point where a closed pair of parentheses occurs, a new Collection will be nested.
