@@ -3,17 +3,14 @@ Standard Documentation for the
 n
 System for Computation
 
-
-
-This document contains a description of "nth".
-nth is a system for creating and performing computations.
+	This document contains the specification of "nth", a system for creating and performing computations.
 This system is intended to be generally useful across all tasks which require computing.
 The system is comprised of a description language for composing programs and a small environment to compute those programs.
-From hereon the description language shall be referred to by "nth" and the environment by "environment".
-
-
-
-nth is written as a series of characters read from left to right.
+In this document, the name "nth" refers to the description language.
+The term "environment" shall refer to the mechanisms and resources through which computation is facilitated.
+As this document is a specification, all properties and behaviors of the system described below are requirements.
+	
+	nth is written as a series of characters read from left to right.
 nth minimally requires the set of characters featured in the ASCII standard character encoding scheme.
 Implementations are encouraged to accept Unicode Standard UTF-8 character encoding scheme as it is transparently compatible with the ASCII encoding.
 The minimal set of characters is classified into the following catagories, letters, digits, blanks, and glyphs.
@@ -21,25 +18,20 @@ Letters are alphabetical characters in the inclusive ranges 64-90 and 97-122.
 Digits are numerical characters in the inclusive range 48-57.
 Blanks are non-printable or control characters in the inclusive range 0-32.
 Glyphs are all other characters not already included in the other three catagories.
-
-
-
-The syntactic elements of an nth program are classified as Numbers, Symbols, and Punctuation.
+	
+	The syntactic elements of an nth program are classified as Numbers, Symbols, and Punctuation.
 A symbol is any sequence of characters not including punctuation.
 A number is any sequence of numerical digits (0123456789) optionally bisected once by a dot or forward slash, prefixed by one of either "+" or "-".
 Punctuation is any of the following characters...
-(){}[],'"`
-
-
-
-There are several additional syntactic elements which are given unique character-based notation however, they are shorthand for structured data rather than single values.
+(){}[],'"`|
+	
+	There are several additional syntactic elements which are given unique character-based notation however, they are shorthand for structured data rather than single values.
 The String is formed by a sequence of characters beginning and ending with a double quote (").
 The Escape is formed by a backward slash (\) followed by a double quote, a second backward slash, or a sequence of Digits.
 An Escape may only occur within a String.
 The Constant is a sequence of characters beginning with the apostrophe (') and ending with a Blank.
-
-
-Punctuation is used to form a program model composed of various syntactic elements.
+	
+	Punctuation is used to form a program model composed of various syntactic elements.
 There are several different forms of punctioation each which denote a specific element which may occur in a program model.
 A grammar is featured below which describes how valid sequences of characters can be combined to form a program model.
 A classification is a Symbol beginning with a capitol letter.
@@ -47,6 +39,7 @@ The arrow (-->) associates a specific classification with a line-separated list 
 Glyphs are interpreted literally as themselves occurring at that position in a sequence of characters.
 Blank space is added for the purpose of clarity but is not included as part of the grammar.
 An elipses (...) after a classification or form means that that classification or form may repeat any number of times from that point in a sequence.
+	
 	Program --> 
 		Expression, 
 		Sequence, 
@@ -68,12 +61,12 @@ An elipses (...) after a classification or form means that that classification o
 		[ Program ... ]
 	Quote --> 
 		` Program 
-
-
-
-The elements of a program model are Expressions, Sequences, Collections, Types, and Quotes; corresponding to the classifications given previously in the grammar.
+	
+	The components of a Program Model are Expressions, Sequences, Collections, Types, and Quotes; corresponding to the classifications given previously in the grammar.
 Expressions represent computations to be performed.
 Sequences represent two or more computations to be performed.
 Collections represent compound, structured data.
-Types represent the possible results from multiple computations.
-Quotes represent a program as a static entity.
+Types represent a set of unique data values.
+Quotes expose a program model as a data structure.
+
+	A Program Model

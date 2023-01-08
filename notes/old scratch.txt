@@ -2268,3 +2268,16 @@ So we have an algorithm that begins with the outer context and constructs a new 
 How are contexts associated with the code?
 Contexts are managed by the compute program.
 However, the program being computed is capable of inspecting the context constructed by the compute program.
+
+
+
+There should be an alternative way to do it with just parens.
+So then you don't have to worry about everything.
+A collection is formed by a bunch of things together
+(1 2 3)
+But that doesn't imply a new context so that's why the curly braces are important.
+A type can also be
+(1 2 3)
+But that doesn't imply that each value must be unique from the rest so square braces are important.
+Should I use squre braces for punctuation instead?
+No.
