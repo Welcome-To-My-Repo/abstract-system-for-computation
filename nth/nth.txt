@@ -44,20 +44,23 @@ Blank space is added for the purpose of clarity but is not included as part of t
 An elipses (...) after a classification or form means that that classification or form may repeat any number of times from that point in a sequence.
 	
 	Program --> 
-		Expression, 
-		Sequence, 
-		Collection, 
-		Type, 
+		Expression
+		Sequence
+		Collection
+		Type
 		Quote
 	Expression --> 
-		( Program ... ) 
+		Form 
 		Symbol 
 		Number 
 		String 
 		Constant
+		Blank
+	Form --> 
+		( Program ... )
 	Sequence -->
-		Program, Program
 		Program, Sequence
+		Program, Program
 	Collection --> 
 		{ Program ... }
 	Type --> 
@@ -73,6 +76,18 @@ Types represent a set of unique data values.
 Quotes expose a Program Model as a data structure.
 
 	A Program Model is a data structure corresponding to a written nth program.
-It is formed by nesting Collections.
-The manner in which Collections are nested is determined by the occurrance of closed pairs of round parentheses.
-At each point where a closed pair of parentheses occurs, a new Collection will be nested.
+It is formed by nesting Collections in a tree structure.
+The manner in which Collections are nested is determined by the occurrance of Forms.
+Each Form corresponds to a single unique Collection in the Program Model.
+If Form occurs inside another, then the inner Form corresponds to a Collection nested as an element of the Collection corresponding to the outer Form.
+In the case of multiple programs occurring inside a single Form, each program shall be included as an element in the corresponding Collection in the same order they occurred within the Form.
+For example, the Expression, (1 2 3) corresponds to the Program Model, {1 2 3}.
+
+	The nth environment provides a Compute program which is responsible for interpreting the components of a Program Model and the computational effects they represent.
+Every component in a Program Model has semantic meaning which the Compute program applies to achieve the required effect.
+Program Model components each fall under one of two forms of semantic meaning, Constructors or Operations.
+A Constructor is interpreted as a description of some form of data and computing a Constructor results in an instantiation of that data in the environment.
+An Operation is interpreted as a transformation which performs an effect on data when computed.
+Symbols, Numbers, Strings, Constants, Collections, Types, and Quotes are Constructors.
+Forms and Sequences are Operations.
+Thus an arrangement of Constructors and Operations into a Program Model will unambiguously represent the data used by a program and the exact order of computational effects performed on that data.
