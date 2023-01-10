@@ -2341,3 +2341,19 @@ Each entity has a type.
 The type follows the entity around.
 So everything is at least two words.
 Except for compound data where you can specify a type and the data is packed.
+
+
+
+How do you make an operation?
+You define a new expression which has some symbols denoting the type of operation and some types which parameterize the operation.
+How would you describe this then?
+It's structural typing.
+This means you can take advantage of the typing rules for structures, but applied to expressions.
+For example, you can declare a logic expression.
+((l <- ['/\ '\/ '-]), 
+ [(c : Collection), 
+  (? (((c / *) = l) \/ ((c /  *) = Boolean))
+   c
+   _ )
+ ])
+
