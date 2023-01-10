@@ -90,4 +90,4 @@ A Constructor is interpreted as a description of some form of data and computing
 An Operation is interpreted as a transformation which performs an effect on data when computed.
 Symbols, Numbers, Strings, Constants, Collections, Types, and Quotes are Constructors.
 Forms and Sequences are Operations.
-Thus an arrangement of Constructors and Operations into a Program Model will unambiguously represent the data used by a program and the exact order of computational effects performed on that data.
+Combining Constructors and Operations into a Program Model will unambiguously represent the data used by a program and the exact order of computational effects performed on that data.
