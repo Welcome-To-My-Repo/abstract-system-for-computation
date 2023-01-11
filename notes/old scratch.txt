@@ -2357,3 +2357,31 @@ For example, you can declare a logic expression.
    _ )
  ])
 
+
+
+So what happens when you quantify?
+Say that I do 
+(f : (T -> t)),
+(f T)
+What do I get out?
+I get t.
+
+
+
+How to check that something is of a type?
+(? (t / v)
+Because types are collections of unique values, you can use collection operations on types.
+The semantics are slightly different since the values in a type must be unique.
+
+
+
+How to bind a symbol?
+(x <- 1)
+is semantically equivalent to 
+(& <- (& + ('x | 1)))
+Which means if an expression is
+(& <- (& + ( 
+ ('sum Number Number) 
+ | 'e 
+ ((e \ 0) + (e \ 2))) )
+)
