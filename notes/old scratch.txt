@@ -2385,3 +2385,14 @@ Which means if an expression is
  | 'e 
  ((e \ 0) + (e \ 2))) )
 )
+
+
+
+What should be the syntax for defining a new expression?
+Variables appear in the context as 
+('x | 1)
+Expressions appear as
+( {'add Number Number} | 'e ((e \ 1) + (e \ 2)))
+So how do I describe an expression then?
+You have a Form with some elements.
+You either have default semantics for the form or you destructure the form into an expanded program.
