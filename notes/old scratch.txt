@@ -2451,3 +2451,31 @@ so that (x -> (x + 1)) is typed as (x : Number -> (x + 1))
 Or do I write (Number x -> (x + 1))
 I like saying that the parameter is second.
 Because this makes case matching so easy.
+
+So I have only one syntax for functions and maps.
+(T -> e)
+(T p -> e)
+I don't like that you can't specify the parameter.
+Or I'm thinking about it the wrong way.
+My language does respect types, so it's nice if you put the type in the function you're using.
+If there's an actual case where you're applying a function that work for literally everything, then you still want to be explicit that this function is for everything.
+(* id -> id)
+You can type a function also by doing
+(T t -> (t : T))
+
+
+
+How to do expressions?
+Desugared way is to do
+(& <- (& + {({'id *} e -> (e \ 1))}))
+So I want an operation which adds arbitrary things to the context.
+(f <- ...)
+this binds a map to the context ('f -> ...)
+I want something that binds an expression to the context but with parameterization.
+({'add Number Number} e -> ((e \ 1) + (e \ 2)))
+So how to add this to the context?
+Append.
+You append by doing
+(C <- (C + d))
+So is there any reason to force an in-place append?
+No because you don't actually want to go adding expressions willy-nilly.

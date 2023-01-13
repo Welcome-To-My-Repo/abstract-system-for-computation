@@ -10,7 +10,7 @@ In this document, the name "nth" refers to the description language.
 The term "environment" shall refer to the mechanisms and resources through which computation is facilitated.
 As this document is a specification, all properties and behaviors of the system described below are requirements.
 	
-	nth is written as a unidirectional sequence of characters.
+	nth is written as a sequence of characters.
 nth minimally requires the set of characters featured in the ASCII standard character encoding scheme.
 Implementations are encouraged to accept Unicode Standard UTF-8 character encoding scheme as it is transparently compatible with the ASCII encoding.
 The minimal set of characters is classified into the following catagories, letters, digits, blanks, and glyphs.
@@ -49,14 +49,12 @@ An elipses (...) after a classification or form means that that classification o
 		Collection
 		Type
 		Quote
-	Expression --> 
-		Form 
-		Symbol 
-		Number 
-		String 
+		Symbol
+		Number
+		String
 		Constant
 		Blank
-	Form --> 
+	Expression --> 
 		( Program ... )
 	Sequence -->
 		Program, Sequence
@@ -77,11 +75,11 @@ Quotes expose a Program Model as a data structure.
 
 	A Program Model is a data structure corresponding to a written nth program.
 It is formed by nesting Collections in a tree structure.
-The manner in which Collections are nested is determined by the occurrance of Forms.
-Each Form corresponds to a single unique Collection in the Program Model.
-If Form occurs inside another, then the inner Form corresponds to a Collection nested as an element of the Collection corresponding to the outer Form.
-In the case of multiple programs occurring inside a single Form, each program shall be included as an element in the corresponding Collection in the same order they occurred within the Form.
-For example, the Expression, (1 2 3) corresponds to the Program Model, {1 2 3}.
+The manner in which Collections are nested is determined by the occurrance of Expressions in the character sequence.
+Each Expression corresponds to a single unique Collection in the Program Model.
+If an Expression occurs inside another, then the inner Expression corresponds to a Collection nested as an element of the Collection corresponding to the outer Expression.
+In the case of multiple programs occurring inside a single Expression, each program shall be included as an element in the corresponding Collection in the same order they occurred within the Expression.
+For example, the Expression, (1 2 (3)) corresponds to the Program Model, {1 2 {3}}.
 
 	The nth environment provides a Compute program which is responsible for interpreting the components of a Program Model and the computational effects they represent.
 Every component in a Program Model has semantic meaning which the Compute program applies to achieve the required effect.
