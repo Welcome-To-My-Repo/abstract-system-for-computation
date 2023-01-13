@@ -2396,3 +2396,58 @@ Expressions appear as
 So how do I describe an expression then?
 You have a Form with some elements.
 You either have default semantics for the form or you destructure the form into an expanded program.
+So what I want is an insert operation.
+Or an append operation?
+I shouldn't provide an insertion operation.
+
+(C <- {'a 'b 'c}),
+(C' <- C + 'd)
+
+
+
+So the syntax for binding a variable is (x <- 1)
+What's the syntax for binding an expression?
+A function.
+You get the expression as a parameter. 
+It has data in it.
+You deconstruct the expression and perform ops on the elements of the expression.
+Which is exactly the map notation
+(n | 's m)
+So I add an expression as
+(& <- (& + ({'identity *} | 'i (i \ 2))))
+
+
+What's my algebra for each thing?
+
+Numbers
+addition	{Number '+ Number}
+subtraction	{Number '- Number}
+Multiplication	{Number '* Number}
+Division	{Number '/ Number}
+Remainder	{Number '// Number}
+
+Collections
+union		{Collection '+ Collection}
+filter		{Collection '/ *}
+complement	{Collection '- Collection}
+
+Types
+supertype	{Type '+ Type}
+subtype		{Type '- Type}
+refinement	{Type '/ Type}
+
+
+
+Drop maps/surfaces/all that crap.
+You have a lambda, (t -> T)
+The thing before the arrow is a type.
+The thing after is the definition.
+You can parameterize by adding a second thing before the arrow.
+That's the parameter (* id -> id)
+If a lambda is an element in a collection, that lambda can be invoked by applying the collection to the appropriate type.
+({(t -> T)} t) = T
+Do I add a type annotation?
+so that (x -> (x + 1)) is typed as (x : Number -> (x + 1))
+Or do I write (Number x -> (x + 1))
+I like saying that the parameter is second.
+Because this makes case matching so easy.
