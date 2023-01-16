@@ -2482,6 +2482,7 @@ No because you don't actually want to go adding expressions willy-nilly.
 
 
 
+
 Types are checked. 
 I want to provide a way to check types using arbitrary programs.
 Say that I want a collection where the first element is always type T.
@@ -2500,3 +2501,45 @@ Assuming I had a compiler that was capable of statically checking a program mode
 How would I construct a model where the only way to check a type is to compute the program?
 
 `(& <- (& / Expression `()))
+
+
+Do I want a regular language where everything must be described in its own grammmar or do I want a language which is extensible?
+I would like one that's extensible.
+How to bind expressions in the context then?
+I need a define thing except where there's multiple parameters.
+How do I do that?
+{'a ('x -> )}
+
+
+Language is getting overengineered and hard to talk about.
+Context is kinda useless since quotations close over everything.
+Well maybe not.
+What does this return
+((x <- 0),
+ (& <- (& / ('x -> *) ('x -> 1))),
+ (x))
+I set a context and then modify it.
+Closures is not the same as a fixed context.
+I can still take an expression and evaluate it.
+Is that how I implement dynamic binding?
+Don't I still have dynamic scope?
+Because 
+{(x <- 1) 
+ {(x <- 2)} 
+ {{(x = 2)}}}
+The innermost is true.
+So how is an expression evaluated.
+Is each expression evaluated in its own context?
+Some of the default expressions do not form their own context.
+How to quote an expression without forming its own context?
+The quote operation automatically captures the bindings.
+What if I have a massive structure?
+Then you use indirection so that the massive structure isn't copied with the function.
+What about if I do something like,
+((f <- (massive-file 10000000000)),
+ (g <- (* x -> (x + 1))))
+Which returns the function.
+A naive implementation captures the entire function.
+What about a quote that confuses something.
+(e <- `(& <- (& + ({'a ('n -> *)} -> (f (a 'n))))), (a 1))
+Here the quote would scan through and try to close over 'a even though its syntax, because it doesn't know it's syntax yet.
