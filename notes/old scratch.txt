@@ -2479,3 +2479,24 @@ You append by doing
 (C <- (C + d))
 So is there any reason to force an in-place append?
 No because you don't actually want to go adding expressions willy-nilly.
+
+
+
+Types are checked. 
+I want to provide a way to check types using arbitrary programs.
+Say that I want a collection where the first element is always type T.
+(type <- [(c : Collection), (? ((^(c \ 0)) = T) c _)])
+So then I can say that
+(x : type)
+And enforce that the type of the first element of x will always be T.
+
+
+
+Is there a way to statically type things with macros?
+Kinda?
+So for every expression, () you must determine a type coming in and a type coming out.
+How do you determine the type coming out of an expression where it might define its own expression.
+Assuming I had a compiler that was capable of statically checking a program model.
+How would I construct a model where the only way to check a type is to compute the program?
+
+`(& <- (& / Expression `()))
