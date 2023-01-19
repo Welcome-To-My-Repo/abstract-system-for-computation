@@ -2543,8 +2543,119 @@ A naive implementation captures the entire function.
 What about a quote that confuses something.
 (e <- `(& <- (& + ({'a ('n -> *)} -> (f (a 'n))))), (a 1))
 Here the quote would scan through and try to close over 'a even though its syntax, because it doesn't know it's syntax yet.
+So I have a small sub-language.
+Algebra over some primitive data structures.
+Most of this is all easy.
+The problem is being able to add expressions arbitrarily.
+This means that anything after the expression definition requires the preceding stuff to be computed.
+How to deal with this mechanism?
+Ex: 
 
 
 
-So I'm absolutely sure right now that all extra expressions should be resolved to the equivalent default expressions.
-This way the default expressions can be statically typed.
+
+Let notation rather than variable binding?
+I kinda already have it simply because I do
+(x <- 1), ...
+in order to bind stuff.
+Could it be more clear though?
+(let ((x 1)) ...)
+Or does it even need to be?
+What about expressions though?
+Variable binding is a primitive.
+Expression binding should be as well.
+Should I express it as a mapping?
+Yes.
+But how to bind it?
+Or you only have variable binding and lambdas?
+No that doesn't work.
+You have pattern matching over collections.
+
+
+
+Should the context be first class?
+It combines a number of things and "just use the context" could become an anti-pattern.
+
+
+
+What is my langauge?
+I have data, collections, functions, types.
+Data is a format for holding information.
+It has a size and a location.
+You can combine multiple data formats to form data of any size at a location.
+Collections are groups of data.
+Collections are a form of data themselves.
+The data in a collection is separate from the collection itself.
+Functions in a collection can be used as an interface to the collection.
+Functions can be parameterized or uninterpreted.
+Types are unions of values.
+Compared to just a value, a type represents the occurrance of multiple values.
+
+
+
+First class contexts are based or cringe?
+Based.
+This means that code is disassociated from bindings.
+Bindings are still static, but dependent on the context.
+Does quoting an expression capture bindings? No.
+Does creating a function capture the bindings? Yes.
+How far can you nest contexts?
+(_ -> (x <- 1), 
+ (_ -> (y <- 1),
+  (_ -> (z <- 1))))
+
+
+
+
+how should new expressions be constructed?
+Normal binding form is 
+(x <- *)
+Expression binding form is
+(x '+ y <- (add x y))
+((x : t) 'o (y : T) <- (op x y))
+or is it
+({(x : t) 'o (y : T)} <- (op x y))
+Or should I specify some other way?
+What about adding destructuring names?
+It's the same as adding maps.
+Here's what conditional evaluation would look like in my langauge.
+({'if ('b -> Boolean) 'then ('a -> Expression) ('b -> Expression)} e -> (? (e 'b) ((e 'a)) ((e 'b)))
+This also lets you do variadic arguments.
+
+
+
+currying looks like
+(Number x -> (Number y -> (x + y)))
+
+
+
+How should I do expressions and contexts?
+An expression is a kind of function.
+And you want it visible to the context same as a variable binding.
+Should there be some expressions which are declarative or top-level? NO.
+Everything returns.
+Variable bindings return the things they're bound to.
+Expressions are different though.
+An expression returns a function.
+Weird.
+So how would you do it?
+You're not talking about a variable binding.
+You don't want to return anything from an expression either.
+So you would define expressions in a context.
+How do you store stuff in a context?
+There's variable binding which is stateful
+(x <- *)
+should there also be a define which is not stateful?
+(define *)
+is semantically equivalent to
+(& <- (& + *))
+should it be the word "define"?
+Or should you be explicit?
+(& <- (& + *)) I think it should be explicit.
+
+
+
+
+How should I deal with the context?
+The context by itself has the following interface
+{(* x -> (& <- (& + x)))}
