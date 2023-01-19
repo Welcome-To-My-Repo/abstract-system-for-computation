@@ -2659,3 +2659,44 @@ Or should you be explicit?
 How should I deal with the context?
 The context by itself has the following interface
 {(* x -> (& <- (& + x)))}
+
+
+
+Without context what happens?
+Crap. Contexts are necessary.
+What about handlers?
+Works off how the context is formed.
+
+Start with a program.
+(1 + (3 - 2))
+read as
+{1 '+ {3 '- 2}}
+compute first expression
+{{1 '+ {3 '- 2}} _}
+resolve nested expression
+{{1 '+ {{3 '- 2} _}} _}
+Contexts interleave the expression.
+Evaluate the nested expression
+{{1 '+ 1} _}
+resolve outer expression
+2
+What semantics are these?
+There's a context which forms around a program being computed.
+When the program is finished (reduced to a value), the context is replaced with the value.
+In the case of nested programs, the context is formed around the node.
+
+
+
+You can close over macro definitions the same as bindings.
+Expressions are separate from contexts.
+Functions close over contexts.
+Collections close over contexts.
+
+
+
+Expressions are defined at the global level.
+How to import expression definitions?
+Where are expressions stored?
+In the context?
+Is the global context separate from the normal context?
+No.
