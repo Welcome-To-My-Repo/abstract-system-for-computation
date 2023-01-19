@@ -2543,3 +2543,8 @@ A naive implementation captures the entire function.
 What about a quote that confuses something.
 (e <- `(& <- (& + ({'a ('n -> *)} -> (f (a 'n))))), (a 1))
 Here the quote would scan through and try to close over 'a even though its syntax, because it doesn't know it's syntax yet.
+
+
+
+So I'm absolutely sure right now that all extra expressions should be resolved to the equivalent default expressions.
+This way the default expressions can be statically typed.
