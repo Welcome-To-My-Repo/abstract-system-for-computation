@@ -2700,3 +2700,26 @@ Where are expressions stored?
 In the context?
 Is the global context separate from the normal context?
 No.
+
+
+
+There should be a declare form that just adds stuff to the context.
+The form that appends stuff to the context is just an arrow to nothing.
+(x <- y) binds y to x, but (<- y) just appends whatever y is to the context.
+Should variable binding be a standard macro or primitive syntax?
+It should be primitive syntax.
+Even though you can implement it with a subset of the language, variables and contexts are such important semantic components that you need to add them.
+
+
+
+
+How to statically expand macros when they're added during runtime.
+If you define the macro outside the function,
+(<- ({'a ('b -> *)} n -> (n 'b))),
+(f <- (* x -> (a x))
+
+
+
+
+How to do delimited continuations?
+There's an AST that you capture as a function where you can parameterize the position where a sub-expression would be.
