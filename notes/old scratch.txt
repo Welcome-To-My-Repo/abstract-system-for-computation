@@ -2723,3 +2723,42 @@ If you define the macro outside the function,
 
 How to do delimited continuations?
 There's an AST that you capture as a function where you can parameterize the position where a sub-expression would be.
+Capturing the context counts as a delimited continuation.
+(& \ 0) gives the previous context.
+(& \ 1) gives the current expression.
+(& \ *) gives bindings and other stuff.
+
+
+Are contexts nested?
+No, a context is placed as a node in the AST.
+Does every node get a context? No.
+Functions and Sequences get a context.
+Macros are also functions.
+Default expressions are not functions.
+How do I make something that's not a function?
+Macros are given as functions.
+However, I can just quote a lambda.
+That might work.
+
+
+So what's my syntax now?
+
+eval ( ... )
+function ( _ -> ... )
+         ( _ _ -> ... )
+collection { ... }
+type [ ... ]
+sum ( _ + _ )
+difference ( _ - _ )
+product ( _ * _ )
+quotient ( _ / _ )
+remainder ( _ // _ )
+
+conjunction ( _ \/ _ )
+disjunction ( _ /\ _ )
+negation ( - _ )
+
+binding ( _ <- ... )
+        ( <- ... )
+
+
