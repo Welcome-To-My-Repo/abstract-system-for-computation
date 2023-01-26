@@ -2762,3 +2762,30 @@ binding ( _ <- ... )
         ( <- ... )
 
 
+
+There's already a form of delimited continuations since the root of the AST isn't captured as part of the context.
+What happens then when you do
+((c <- &), (& <- c))
+is this part of the program discarded?
+yes because at this point the context is discarded.
+no because the context is swapped in where the old context was.
+how does this work with pointers???
+contexts are linked lists
+setting the context changes the rest of the list.
+
+
+
+How to deal with infinite types?
+The primitive types are infinite.
+There are infinite possible instantiations of that type.
+When I say something like (x : Number) then 'x may be any number.
+Lets say I want natural numbers.
+(N = [(x : Number), (? (x > 0) x _)])
+I want some way of specifying a predicate.
+Should be a filter.
+Filter is already specified.
+Language is easy to look at
+All you do is determine the conditions dictating if a thing being compared to that type can be a value of that type.
+Optimal is specifying predicates.
+You have a boolean expression.
+
