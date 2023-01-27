@@ -2788,4 +2788,27 @@ Language is easy to look at
 All you do is determine the conditions dictating if a thing being compared to that type can be a value of that type.
 Optimal is specifying predicates.
 You have a boolean expression.
+There's a program which checks the boolean expression.
 
+
+
+How do I destructure objects.
+Lets say I construct a function.
+How do I destructure it?
+(f <- (T -> t)),
+((f \ 0) = T),
+((f \ 1) = t)
+How do I destructure a type?
+You select the value.
+(T <- [1 2 3]),
+((T \ 0) = 1)
+What about infinite types?
+(Collection \ 0)
+That returns * since the first member of any collection can be *
+
+
+
+
+Number system is anything up to Rational numbers.
+Anything which is a single constant magnitude.
+Anything beyond Rational requires structure beyond single magnitudes.
