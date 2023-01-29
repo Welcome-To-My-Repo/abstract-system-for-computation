@@ -81,11 +81,12 @@ If an Expression occurs inside another, then the inner Expression corresponds to
 In the case of multiple programs occurring inside a single Expression, each program shall be included as an element in the corresponding Collection in the same order they occurred within the Expression.
 For example, the Expression, (1 2 (3)) corresponds to the Program Model, {1 2 {3}}.
 
-	The nth environment provides a Compute program which is responsible for interpreting the components of a Program Model and the computational effects they represent.
+	The nth environment provides a program which is responsible for interpreting the components of a Program Model and the computational effects they represent.
+This program is referred to as the "Compute" program.
 Every component in a Program Model has semantic meaning which the Compute program applies to achieve the required effect.
 Program Model components each fall under one of two forms of semantic meaning, Constructors or Operations.
 A Constructor is interpreted as a description of some form of data and computing a Constructor results in an instantiation of that data.
 An Operation is interpreted as a transformation which performs an effect on data when computed.
 Symbols, Numbers, Strings, Constants, Collections, Types, and Quotes are Constructors.
-Forms and Sequences are Operations.
-Combining Constructors and Operations into a Program Model will unambiguously represent the data used by a program and the exact order of computational effects performed on that data.
+Expressions and Sequences are Operations.
+Combining Constructors and Operations into a Program Model will unambiguously represent the data used by a program and the exact order of the manipulations performed on that data.

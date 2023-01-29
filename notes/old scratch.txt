@@ -2812,3 +2812,23 @@ That returns * since the first member of any collection can be *
 Number system is anything up to Rational numbers.
 Anything which is a single constant magnitude.
 Anything beyond Rational requires structure beyond single magnitudes.
+
+
+
+what should be my function notation?
+parameter names first or type names first?
+in the case of functions, parameter names first makes the most sense as in (x -> x) representing the identity function.
+but I also make heavy use of uninterpreted functions which purely map one thing to another.
+uninterpreted function are (T -> T)
+making an interpreted function out of an uninterpreted function requires a parameter such that (T x -> T)
+this doesn't follow the usual notation of (e : T) where 'e is an expression and 'T is a type.
+perhaps make all functions uninterpreted, unless you add a type definition such as ((x : T) -> T)
+or simply if there are two things, then the parameter comes first, (x T -> T) or the identity function as (x * -> x)
+
+
+
+Pattern ambiguity.
+(<- ({'f A} -> t)),
+(<- ({'f *} -> T)),
+(f (A))
+does this return 't or 'T?
