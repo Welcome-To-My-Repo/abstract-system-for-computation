@@ -4,12 +4,34 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
+		:root{
+			--bg:white;
+			--fg:black;
+		}
 		body{text-align:center;font-size:calc(0.5cm + ((1vw + 1vh) / 3));}
-		p{text-align:left;max-width:160ch;width:75%;margin-left:auto;margin-right:auto;}
+		p, dt, dd{text-align:left;max-width:160ch;width:75%;margin-left:auto;margin-right:auto;}
+		dl{width:50%;margin-left:auto;margin-right:auto;}
+		dt{font-style:oblique;}
 	</style>
 </head>
 <body>
-	<h1>Standard Documentation for the <i>n</i><sup>th</sup> System for Computation</h1>
+	<article style="height:100vh;">
+		<svg viewBox="0 0 100 100" version="1.1" style="height:25%;width:25%;margin-top:10%;" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+			<defs id="defs54" />
+			<ellipse style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+				ry="15.550441" rx="38.556782" cy="-1.5364231" cx="62.654388" transform="matrix(0.8,0.6,-0.70710678,0.70710678,0,0)" id="ellipse45" />
+			<path style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:5;stroke-dasharray:none;stroke-opacity:1"
+				d="M 66.489828,62.06793 A 18.564376,18.564376 0 0 1 47.925452,82.060335 18.564376,18.564376 0 0 1 30.789107,62.06793 18.564376,18.564376 0 0 1 47.925452,43.503554 18.564376,18.564376 0 0 1 66.489828,63.495959"
+				id="path47" />
+			<path style="fill:none;stroke:var(--fg);stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+				d="M 60.777712,2.0907162 37.92925,97.768652" id="path49" />
+		</svg>
+	</article>
+	<article style="height:100vh">
+		<h1>Standard Documentation for the <i>n</i><sup>th</sup> System for Computation</h1>
+		<h5>Copyright &copy; Daniel Smith, 2023</h5>
+		<h3>Revision 0</h3>
+	</article>
 	<article>
 		<h2>Introduction</h2>
 		<p>
@@ -29,9 +51,23 @@
 		<h2>Syntax</h2>
 		<p>
 			<i>n</i><sup>th</sup> is written as a sequence of characters.
-			The basic characters needed to write an <i>n</i><sup>th</sup> program is supported by the ASCII character encoding, but <i>n</i><sup>th</sup> is intended to support the <a href="https://www.unicode.org/versions/latest/">Unicode&reg;</a> character encoding.
-			The minimal set of characters is classified into the following catagories, <i>letters</i>, <i>digits</i>, <i>blanks</i>, and <i>glyphs</i>.
+			The minimal set of characters required to write an <i>n</i><sup>th</sup> program is supported by the printable subset of the ASCII character encoding (all characters excluding control characters).
+			<i>n</i><sup>th</sup> is intended to be compatible with any character encoding which provides the same set of printable characters as the ASCII encoding.
+			This document uses this subset with the addition of a line break character.
 		</p>
+		<p>
+			For the purposes of this standard, characters are classified into the following catagories: <i>letters</i>, <i>digits</i>, <i>blanks</i>, and <i>glyphs</i>.
+		</p>
+		<dl>
+			<dt>letters</dt>
+			<dd>Any character associated with a spoken phoneme.</dd>
+			<dt>digits</dt>
+			<dd>Specifically the ten decimal digits, <code>0123456789</code>.</dd>
+			<dt>blanks</dt>
+			<dd>Any character which results in empty space when printed.</dd>
+			<dt>Glyphs</dt>
+			<dd>All other characters which are not control or formatting characters and display some symbol when printed.</dd>
+		</dl>
 	</article>
 
 </body>
