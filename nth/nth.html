@@ -8,10 +8,10 @@
 			--bg:white;
 			--fg:black;
 			--hg:yellow;
+			--size:calc(0.5cm + ((1vw + 1vh) / 3));
 		}
 		:target{background-color:var(--hg);}
-		body{text-align:center;font-size:calc(0.5cm + ((1vw + 1vh) / 3));}
-		article{min-height:100vh;}
+		body{text-align:center;font-size:var(--size);}
 		p, dt, dd, table{text-align:left;max-width:160ch;width:75%;margin-left:auto;margin-right:auto;}
 		dl{width:50%;margin-left:auto;margin-right:auto;}
 		dt{font-style:oblique;}
@@ -19,12 +19,15 @@
 		a:link{color:var(--fg);}
 		a:visited{color:var(--fg);}
 		table{text-align:center;}
-		code{color:blue;}
+		code{color:darkgray;}
+		h1{font-size:calc(var(--size) * 2);}
+		h2{font-size:calc(var(--size) * 1.5);}
+		h3, h4, h5, h6{font-size:var(--size)}
 	</style>
 </head>
 <body>
-	<article>
-		<svg viewBox="0 0 100 100" version="1.1" style="height:25%;width:25%;margin-top:10%;" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+	<article style="height:100vh;">
+		<svg viewBox="0 0 100 100" version="1.1" style="height:50%;width:30%;margin-top:10%;" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
 			<defs id="defs54" />
 			<ellipse style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
 				ry="15.550441" rx="38.556782" cy="-1.5364231" cx="62.654388" transform="matrix(0.8,0.6,-0.70710678,0.70710678,0,0)" id="ellipse45" />
@@ -35,8 +38,10 @@
 				d="M 60.777712,2.0907162 37.92925,97.768652" id="path49" />
 		</svg>
 	</article>
-	<article>
-		<h1>Standard Documentation for the <i>n</i><sup>th</sup> System for Computation</h1>
+	<article style="height:100vh;">
+		<h1>Standard Documentation for the</h1>
+		<h1><i>n</i><sup>th</sup></h1>
+		<h1>System for Computation</h1>
 		<h5>Copyright &copy; Daniel Smith, 2023</h5>
 		<h3>Revision 0</h3>
 	</article>
@@ -90,7 +95,7 @@
 			Punctuation is any one of the following characters, <code>(){}[],'"</code>.
 			A Punctuation character represents grammatical structure and cannot be treated as a Symbol.
 		</p>
-		<h2>Constructors</h2>
+		<h2>Data Notations</h2>
 		<p>
 			Some punctuation is used to denote structured data.
 			There are several forms of structured data for which <a href="#Punctuation">Punctuation</a> is provided.
@@ -112,25 +117,21 @@
 		<p id="Type-Notation">
 			The Type is denoted by a closed pair of square braces surrounding zero or more programs.
 		</p>
-		<h2>The Program Model</h2>
-		<p id="Program-Model">
-			A Program Model is some structured data corresponding to a written <i>n</i><sup>th</sup> program.
-			It unambiguously represents the data used by a program and the exact order of the manipulations performed on that data.
-		</p>
+		<h2>Programs</h2>
 		<p>
-			A <a href="#Program-Model">Program Model</a> is created using Expressions and Sequences.
 			<span id="Expression">An Expression is a closed pair of round braces surrounding zero or more programs.</span>
 			<span id="Sequence">A Sequence is a series of programs separated by a comma.</span>
+			<span id="Program">A Program is a composition of Expressions, Sequences, and Data Notations.</span>
 		</p>
 		<p>
-			The grammar below describes all possible valid sequences of characters which can form a <a href="#Program-Model">Program Model</a>.
+			The grammar below describes all possible valid sequences of characters which can form a <a href="#Program">Program</a>.
+			A character sequence is denoted by a mixed list of literal characters given in <code>monospaced font</code> and names of other character sequences.
 			In this grammar, the arrow (&rarr;) denotes one or more character sequences listed after the arrow which may occurr at a position identified by the name given left of the arrow.
 			The bar (|) separates two individual character sequences.
 			The star (*) suffixes a sequence that can occur one or more times.
-			Characters shown in <code>monospace</code> font represent literal characters that can occur at that position.
 		</p>
-		<table>
-			<tr><td>Program &rarr; <a href="#Expression">Expression</a> | <a href="#Sequence">Sequence</a> | Quote | Collection | String | Type | <a href="#Symbol">Symbol</a> | <a href="#Number">Number</a></td></tr>
+		<table style="border:var(--fg) 2px solid;">
+			<tr><td>Program &rarr; Expression | Sequence | Quote | Collection | String | Type | <a href="#Symbol">Symbol</a> | <a href="#Number">Number</a></td></tr>
 			<tr><td>Expression &rarr; <code>(</code> Program * <code>)</code></td></tr>
 			<tr><td>Sequence &rarr; Program <code>,</code> Sequence | Program <code>,</code> Program</td></tr>
 			<tr><td>Quote &rarr; <code>'</code> Program</td></tr>
@@ -141,5 +142,15 @@
 	</article>
 	<article>
 		<h1>Semantics</h1>
+		<h2>The Program Model</h2>
+		<p>
+			<span id="Program-Model">A Program Model is some structured data corresponding to a written <i>n</i><sup>th</sup> program.</span>
+			It unambiguously represents the data used by a program and the exact order of the manipulations performed on that data.
+		</p>
+		<h2>Computation</h2>
+		<p>
+			Computation is the iterative process of reducing a <a href="#Program-Model">Program Model</a> to a single value.
+
+		</p>
 	</article>
 </body>
