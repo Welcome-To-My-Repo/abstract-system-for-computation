@@ -9,13 +9,14 @@
 			--fg:black;
 		}
 		body{text-align:center;font-size:calc(0.5cm + ((1vw + 1vh) / 3));}
+		article{min-height:100vh;}
 		p, dt, dd{text-align:left;max-width:160ch;width:75%;margin-left:auto;margin-right:auto;}
 		dl{width:50%;margin-left:auto;margin-right:auto;}
 		dt{font-style:oblique;}
 	</style>
 </head>
 <body>
-	<article style="height:100vh;">
+	<article>
 		<svg viewBox="0 0 100 100" version="1.1" style="height:25%;width:25%;margin-top:10%;" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
 			<defs id="defs54" />
 			<ellipse style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -27,13 +28,13 @@
 				d="M 60.777712,2.0907162 37.92925,97.768652" id="path49" />
 		</svg>
 	</article>
-	<article style="height:100vh">
+	<article>
 		<h1>Standard Documentation for the <i>n</i><sup>th</sup> System for Computation</h1>
 		<h5>Copyright &copy; Daniel Smith, 2023</h5>
 		<h3>Revision 0</h3>
 	</article>
 	<article>
-		<h2>Introduction</h2>
+		<h1>Introduction</h1>
 		<p>
 			This document contains the specification of "<i>n</i><sup>th</sup>", a system for creating and performing computations.
 			This system is intended to be generally useful when applied to any problem which requires computing.
@@ -48,26 +49,58 @@
 		</p>
 	</article>
 	<article>
-		<h2>Syntax</h2>
+		<h1>Syntax</h1>
+		<h3>Character Set</h3>
 		<p>
 			<i>n</i><sup>th</sup> is written as a sequence of characters.
 			The minimal set of characters required to write an <i>n</i><sup>th</sup> program is supported by the printable subset of the ASCII character encoding (all characters excluding control characters).
 			<i>n</i><sup>th</sup> is intended to be compatible with any character encoding which provides the same set of printable characters as the ASCII encoding.
-			This document uses this subset with the addition of a line break character.
+			For the purposes of this standard, the ASCII subset is assumed, with the addition of a line break character.
 		</p>
 		<p>
-			For the purposes of this standard, characters are classified into the following catagories: <i>letters</i>, <i>digits</i>, <i>blanks</i>, and <i>glyphs</i>.
+			<i>n</i><sup>th</sup> assumes a classification of characters which is applied to any encoding.
+			A character may either be a Digit, Glyph, or Blank.
+			<span id="Digit">A Digit is a character corresponding to one of the ten decimal digits.</span>
+			<span id="Glyph">A Glyph is any character which is visible when printed.</span>
+			<span id="Blank">A Blank is any character which results in some blank space or formatting structure when printed.</span>
 		</p>
-		<dl>
-			<dt>letters</dt>
-			<dd>Any character associated with a spoken phoneme.</dd>
-			<dt>digits</dt>
-			<dd>Specifically the ten decimal digits, <code>0123456789</code>.</dd>
-			<dt>blanks</dt>
-			<dd>Any character which results in empty space when printed.</dd>
-			<dt>Glyphs</dt>
-			<dd>All other characters which are not control or formatting characters and display some symbol when printed.</dd>
-		</dl>
+		<h3>Grammatical Components</h3>
+		<p>
+			The grammatical components of an <i>n</i><sup>th</sup> program are classified as Symbols, Numbers, and Punctuation.
+			These are combined to
+		</p>
+		<p id="Symbol">
+			A Symbol is any sequence of characters not including <a href="#Punctuation">Punctuation</a> or a <a href="#Blank">Blank</a>.
+		</p>
+		<p id="Number">
+			A Number is any symbol which only contains decimal digits.
+			Numbers may optionally include either a fractional or decimal component as a forward slash or period dot respectively.
+			These components cannot occur as the first or last character in the Number.
+			Numbers may optionally include a sign component as a plus or dash.
+			The sign can only occur as the first character in the Number.
+		</p>
+		<p id="Punctuation">
+			Punctuation is any one of the following characters, <code>(){}[],'"</code>.
+			A Punctuation character represents grammatical structure and cannot be treated as a Symbol.
+		</p>
+		<h3>Constructors</h3>
+		<p>
+			Some punctuation is used to denote structured data.
+			There are several forms of structured data for which <a href="#Punctuation">Punctuation</a> is provided.
+			They are the <a>Quote</a>, <a>Collection</a>, <a>String</a>, and <a>Type</a>.
+		</p>
+		<p id="Quote">
+			The Quote is denoted by the apostrophe followed by a program.
+		</p>
+		<p id="Collection">
+			The Collection is denoted by a closed pair of curly braces surrounding zero or more programs.
+		</p>
+		<p id="String">
+			The String is denoted by a pair of double quotes surrounding zero or more characters.
+			<a href="#Digit">Digits</a>, <a href="#Glyph">Glyphs</a>, and <a href="#Blank">Blanks</a> may all be included in between the pair of double quotes and is interpreted as part of the String structure.
+			The backward slash character is an exception and is not interpreted as part of a String.
+			Instead, a backward slash asserts the the character immediately following it is interpreted as part of the String.
+			Thus a backward slash can assert another backward slash or a double quote character as part of the String.
+		</p>
 	</article>
-
 </body>
