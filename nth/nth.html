@@ -7,12 +7,19 @@
 		:root{
 			--bg:white;
 			--fg:black;
+			--hg:yellow;
 		}
+		:target{background-color:var(--hg);}
 		body{text-align:center;font-size:calc(0.5cm + ((1vw + 1vh) / 3));}
 		article{min-height:100vh;}
-		p, dt, dd{text-align:left;max-width:160ch;width:75%;margin-left:auto;margin-right:auto;}
+		p, dt, dd, table{text-align:left;max-width:160ch;width:75%;margin-left:auto;margin-right:auto;}
 		dl{width:50%;margin-left:auto;margin-right:auto;}
 		dt{font-style:oblique;}
+		a:active{color:var(--hg);}
+		a:link{color:var(--fg);}
+		a:visited{color:var(--fg);}
+		table{text-align:center;}
+		code{color:blue;}
 	</style>
 </head>
 <body>
@@ -50,7 +57,7 @@
 	</article>
 	<article>
 		<h1>Syntax</h1>
-		<h3>Character Set</h3>
+		<h2>Character Set</h2>
 		<p>
 			<i>n</i><sup>th</sup> is written as a sequence of characters.
 			The minimal set of characters required to write an <i>n</i><sup>th</sup> program is supported by the printable subset of the ASCII character encoding (all characters excluding control characters).
@@ -64,10 +71,10 @@
 			<span id="Glyph">A Glyph is any character which is visible when printed.</span>
 			<span id="Blank">A Blank is any character which results in some blank space or formatting structure when printed.</span>
 		</p>
-		<h3>Grammatical Components</h3>
+		<h2>Grammatical Components</h2>
 		<p>
 			The grammatical components of an <i>n</i><sup>th</sup> program are classified as Symbols, Numbers, and Punctuation.
-			These are combined to
+			These are combined to form a <a href="#Program-Model">Program Model</a>.
 		</p>
 		<p id="Symbol">
 			A Symbol is any sequence of characters not including <a href="#Punctuation">Punctuation</a> or a <a href="#Blank">Blank</a>.
@@ -83,24 +90,56 @@
 			Punctuation is any one of the following characters, <code>(){}[],'"</code>.
 			A Punctuation character represents grammatical structure and cannot be treated as a Symbol.
 		</p>
-		<h3>Constructors</h3>
+		<h2>Constructors</h2>
 		<p>
 			Some punctuation is used to denote structured data.
 			There are several forms of structured data for which <a href="#Punctuation">Punctuation</a> is provided.
 			They are the <a>Quote</a>, <a>Collection</a>, <a>String</a>, and <a>Type</a>.
 		</p>
-		<p id="Quote">
+		<p id="Quote-Notation">
 			The Quote is denoted by the apostrophe followed by a program.
 		</p>
-		<p id="Collection">
+		<p id="Collection-Notation">
 			The Collection is denoted by a closed pair of curly braces surrounding zero or more programs.
 		</p>
-		<p id="String">
+		<p id="String-Notation">
 			The String is denoted by a pair of double quotes surrounding zero or more characters.
 			<a href="#Digit">Digits</a>, <a href="#Glyph">Glyphs</a>, and <a href="#Blank">Blanks</a> may all be included in between the pair of double quotes and is interpreted as part of the String structure.
 			The backward slash character is an exception and is not interpreted as part of a String.
-			Instead, a backward slash asserts the the character immediately following it is interpreted as part of the String.
-			Thus a backward slash can assert another backward slash or a double quote character as part of the String.
+			A backward slash followed by a double quote or another backward slash asserts that the double quote or backward slash is included, uninterpreted, as part of the String.
+			A backward slash followed by one or more <a href="#Digit">Digits</a> ending in a dot is interpreted as a number, represented by the <a href="#Digit">Digits</a>, corresponding to a character code identifying a character which will be included in the String.
 		</p>
+		<p id="Type-Notation">
+			The Type is denoted by a closed pair of square braces surrounding zero or more programs.
+		</p>
+		<h2>The Program Model</h2>
+		<p id="Program-Model">
+			A Program Model is some structured data corresponding to a written <i>n</i><sup>th</sup> program.
+			It unambiguously represents the data used by a program and the exact order of the manipulations performed on that data.
+		</p>
+		<p>
+			A <a href="#Program-Model">Program Model</a> is created using Expressions and Sequences.
+			<span id="Expression">An Expression is a closed pair of round braces surrounding zero or more programs.</span>
+			<span id="Sequence">A Sequence is a series of programs separated by a comma.</span>
+		</p>
+		<p>
+			The grammar below describes all possible valid sequences of characters which can form a <a href="#Program-Model">Program Model</a>.
+			In this grammar, the arrow (&rarr;) denotes one or more character sequences listed after the arrow which may occurr at a position identified by the name given left of the arrow.
+			The bar (|) separates two individual character sequences.
+			The star (*) suffixes a sequence that can occur one or more times.
+			Characters shown in <code>monospace</code> font represent literal characters that can occur at that position.
+		</p>
+		<table>
+			<tr><td>Program &rarr; <a href="#Expression">Expression</a> | <a href="#Sequence">Sequence</a> | Quote | Collection | String | Type | <a href="#Symbol">Symbol</a> | <a href="#Number">Number</a></td></tr>
+			<tr><td>Expression &rarr; <code>(</code> Program * <code>)</code></td></tr>
+			<tr><td>Sequence &rarr; Program <code>,</code> Sequence | Program <code>,</code> Program</td></tr>
+			<tr><td>Quote &rarr; <code>'</code> Program</td></tr>
+			<tr><td>Collection &rarr; <code>{</code> Program * <code>}</code></td></tr>
+			<tr><td>String &rarr; <code>"</code> Character * | <code>\</code> <code>"</code> | <code>\</code> <code>\</code> | <code>\</code> <a href="#Digit">Digit</a> * <code>.</code></td></tr>
+			<tr><td>Type &rarr; <code>[</code> Program * <code>]</code></td></tr>
+		</table>
+	</article>
+	<article>
+		<h1>Semantics</h1>
 	</article>
 </body>
