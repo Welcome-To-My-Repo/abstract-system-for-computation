@@ -2832,3 +2832,12 @@ Pattern ambiguity.
 (<- ({'f *} -> T)),
 (f (A))
 does this return 't or 'T?
+So sub expressions are always evaluated before the outer expression.
+This expression returns 't.
+It will always return 't.
+
+
+How to do pointers?
+(@ x) produces the address of 'x
+(y <- (@ x)) binds the address of 'x to 'y
+(@ y)

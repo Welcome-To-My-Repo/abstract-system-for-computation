@@ -5,24 +5,27 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
 		:root{
-			--bg:white;
-			--fg:black;
-			--hg:yellow;
-			--size:calc(0.5cm + ((1vw + 1vh) / 4));
+			--bg:rgb(246, 234, 218);
+			--bgd:rgb(235, 220, 207);
+			--fg:rgb(0, 42, 27);
+			--fgl:rgb(52, 100, 93);
+			--hg:rgb(230, 230, 55);
+			--size:calc(0.5cm + ((1vw + 1vh) / 6));
 		}
 		:target{background-color:var(--hg);}
-		body{text-align:center;font-size:var(--size);}
-		p, dt, dd, table{text-align:left;max-width:160ch;width:75%;margin-left:auto;margin-right:auto;}
+		body{text-align:center;font-size:var(--size);color:var(--fg);background-color:var(--bg);}
+		p, dt, dd, table{text-align:left;max-width:160ch;width:75vw;margin-left:auto;margin-right:auto;}
 		dl{width:50%;margin-left:auto;margin-right:auto;}
 		dt{font-style:oblique;}
 		a:active{color:var(--hg);}
 		a:link{color:var(--fg);}
 		a:visited{color:var(--fg);}
 		table{text-align:center;}
-		code{color:darkgray;}
+		code{color:var(--fgl);background-color:var(--bgd);border-radius:calc(var(--size) / 6);}
 		h1{font-size:calc(var(--size) * 2.5);}
 		h2{font-size:calc(var(--size) * 2);}
 		h3, h4, h5, h6{font-size:calc(var(--size) * 1.5);}
+		figure{border-style:solid;border-color:var(--fg);border-radius:var(--size);width:fit-content;margin-left:auto;margin-right:auto;}
 	</style>
 </head>
 <body>
@@ -95,33 +98,11 @@
 			Punctuation is any one of the following characters, <code>(){}[],'"</code>.
 			A Punctuation character represents grammatical structure and cannot be treated as a Symbol.
 		</p>
-		<h2>Data Notations</h2>
-		<p>
-			Some punctuation is used to denote structured data.
-			There are several forms of structured data for which <a href="#Punctuation">Punctuation</a> is provided.
-			They are the <a>Quote</a>, <a>Collection</a>, <a>String</a>, and <a>Type</a>.
-		</p>
-		<p id="Quote-Notation">
-			The Quote is denoted by the apostrophe followed by a program.
-		</p>
-		<p id="Collection-Notation">
-			The Collection is denoted by a closed pair of curly braces surrounding zero or more programs.
-		</p>
-		<p id="String-Notation">
-			The String is denoted by a pair of double quotes surrounding zero or more characters.
-			<a href="#Digit">Digits</a>, <a href="#Glyph">Glyphs</a>, and <a href="#Blank">Blanks</a> may all be included in between the pair of double quotes and is interpreted as part of the String structure.
-			The backward slash character is an exception and is not interpreted as part of a String.
-			A backward slash followed by a double quote or another backward slash asserts that the double quote or backward slash is included, uninterpreted, as part of the String.
-			A backward slash followed by one or more <a href="#Digit">Digits</a> ending in a dot is interpreted as a number, represented by the <a href="#Digit">Digits</a>, corresponding to a character code identifying a character which will be included in the String.
-		</p>
-		<p id="Type-Notation">
-			The Type is denoted by a closed pair of square braces surrounding zero or more programs.
-		</p>
 		<h2>Programs</h2>
 		<p>
 			<span id="Expression">An Expression is a closed pair of round braces surrounding zero or more programs.</span>
 			<span id="Sequence">A Sequence is a series of programs separated by a comma.</span>
-			<span id="Program">A Program is a composition of Expressions, Sequences, and Data Notations.</span>
+			<span id="Program">A Program is a composition of Expressions, Sequences, and <a href="#Constructor">Constructors</a>.</span>
 		</p>
 		<p>
 			The grammar below describes all possible valid sequences of characters which can form a <a href="#Program">Program</a>.
@@ -130,15 +111,17 @@
 			The bar (|) separates two individual character sequences.
 			The star (*) suffixes a sequence that can occur one or more times.
 		</p>
-		<table style="border:var(--fg) 2px solid;">
-			<tr><td>Program &rarr; Expression | Sequence | Quote | Collection | String | Type | <a href="#Symbol">Symbol</a> | <a href="#Number">Number</a></td></tr>
-			<tr><td>Expression &rarr; <code>(</code> Program * <code>)</code></td></tr>
-			<tr><td>Sequence &rarr; Program <code>,</code> Sequence | Program <code>,</code> Program</td></tr>
-			<tr><td>Quote &rarr; <code>'</code> Program</td></tr>
-			<tr><td>Collection &rarr; <code>{</code> Program * <code>}</code></td></tr>
-			<tr><td>String &rarr; <code>"</code> Character * | <code>\</code> <code>"</code> | <code>\</code> <code>\</code> | <code>\</code> <a href="#Digit">Digit</a> * <code>.</code></td></tr>
-			<tr><td>Type &rarr; <code>[</code> Program * <code>]</code></td></tr>
-		</table>
+		<figure>
+			<table>
+				<tr><td>Program &rarr; <a href="#Expression">Expression</a> | <a href="#Sequence">Sequence</a> | <a href="#Quote">Quote</a> | <a href="#Collection">Collection</a> | <a href="#String">String</a> | <a href="#Type">Type</a> | <a href="#Symbol">Symbol</a> | <a href="#Number">Number</a></td></tr>
+				<tr><td>Expression &rarr; <code>(</code> Program * <code>)</code></td></tr>
+				<tr><td>Sequence &rarr; Program <code>,</code> Sequence | Program <code>,</code> Program</td></tr>
+				<tr><td>Quote &rarr; <code>'</code> Program</td></tr>
+				<tr><td>Collection &rarr; <code>{</code> Program * <code>}</code></td></tr>
+				<tr><td>String &rarr; <code>"</code> Character * | <code>\</code> <code>"</code> | <code>\</code> <code>\</code> | <code>\</code> <a href="#Digit">Digit</a> * <code>.</code></td></tr>
+				<tr><td>Type &rarr; <code>[</code> Program * <code>]</code></td></tr>
+			</table>
+		</figure>
 	</article>
 	<article>
 		<h1>Semantics</h1>
