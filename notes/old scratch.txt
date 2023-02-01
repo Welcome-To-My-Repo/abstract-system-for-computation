@@ -2838,6 +2838,89 @@ It will always return 't.
 
 
 How to do pointers?
-(@ x) produces the address of 'x
-(y <- (@ x)) binds the address of 'x to 'y
-(@ y)
+I have a reference operator '@.
+Applying the operator to anything produces a reference.
+Applying the operator to a reference produces the referenced object.
+How to reference a reference?
+A special case '@@.....
+If I'm using a special case which always returns a reference, then that should be the default since it's guaranteed.
+So then @ produces a reference.
+What happens if I evaluate a reference by itself?
+(x <- (@ t)), (x) => t
+
+
+Solution to the Expression Problem.
+Given a data abstraction 'D, and some functions on it, 'f, how can you 
+arbitrarily extend the set of functions over 'D and the structure of 'D while 
+remaining sound?
+You can as long as the extension creates a supertype.
+Given a redefinition function (D' (t Type -> (? (t > D) (D <- t) D)))
+
+
+What about function notation?
+I really want to have the identity function
+(x -> x)
+but also uninterpreted functions
+(T -> T)
+How do I get both?
+I also want to use both at the same time.
+(x T -> (x : T))
+(x * -> x)
+Simple, if there's a sub-expression, it's a type
+((T) -> T)
+if there's none, it's a parameter
+(x -> x)
+How do I write this?
+If I want a parameter by itself, I do
+((x) -> x)
+If there's multiple parameters or multiple nestings, that's a syntax error.
+
+
+
+How to do macros?
+These are functions that are evaluated before the rest of the program.
+I don't like macros, they have their own scope requirements and can affect the resultant program in strange ways.
+Macros are better as just functions with special treatment.
+This also allows them to be typed.
+Additionally, compilation can still erase them if needed.
+
+
+
+I need a type algorithm, a unification algorithm, and a quantification algorithm.
+Unification isn't so important. 
+It's hard to determine how something is unified and different implementations may get different solutions.
+Unification is an abstraction above what's needed.
+What about quantification?
+Quantification is important.
+Say I have a function,
+(f : (T -> T))
+now I apply it to an independent variable, (f (x : T))
+What happens?
+You get T back out.
+Do you get a subset of T depending on what 'f does?
+No.
+What about 
+(x : Number), (x + 1)
+You get 'Number
+What about 
+(x : Collection), (x / T)
+You get 'T
+What about 
+(f : ((x) -> 2)), (n : Number), (f n)
+you get 2
+
+
+
+How to make a macro?
+You do a function from syntax to syntax.
+
+
+
+What about a type algorithm?
+How do you decide the supertype and subtype of a type?
+You have to search the context for all types and then compare to see which is a superset of the type.
+How does this work with infinite types?
+Compare the conditions.
+Each infinite type results in a series of value comparisons.
+These are decidable.
+The superset is the one with less value comparisons.

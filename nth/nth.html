@@ -10,7 +10,7 @@
 			--fg:rgb(0, 42, 27);
 			--fgl:rgb(52, 100, 93);
 			--hg:rgb(230, 230, 55);
-			--size:calc(0.5cm + ((1vw + 1vh) / 6));
+			--size:calc(13px + ((1vw + 1vh) / 6));
 		}
 		:target{background-color:var(--hg);}
 		body{text-align:center;font-size:var(--size);color:var(--fg);background-color:var(--bg);}
@@ -22,10 +22,11 @@
 		a:visited{color:var(--fg);}
 		table{text-align:center;}
 		code{color:var(--fgl);background-color:var(--bgd);border-radius:calc(var(--size) / 6);}
-		h1{font-size:calc(var(--size) * 2.5);}
+		h1{font-size:calc(var(--size) * 3);}
 		h2{font-size:calc(var(--size) * 2);}
-		h3, h4, h5, h6{font-size:calc(var(--size) * 1.5);}
+		h3, h4, h5, h6{font-size:calc(var(--size) * 1.5);font-weight:normal;}
 		figure{border-style:solid;border-color:var(--fg);border-radius:var(--size);width:fit-content;margin-left:auto;margin-right:auto;}
+		#p-n{border-style:solid;border-color:var(--fg);text-align:center;width:5ch;padding:1ch;display:block;margin-left:auto;margin-right:auto;margin:1ch;}
 	</style>
 </head>
 <body>
@@ -130,10 +131,34 @@
 			<span id="Program-Model">A Program Model is some structured data corresponding to a written <i>n</i><sup>th</sup> program.</span>
 			It unambiguously represents the data used by a program and the exact order of the manipulations performed on that data.
 		</p>
-		<h3>Composition</h3>
 		<p>
-			A <a href="#Program-Model">Program Model</a> is composed of nested <a href="#Collection">Collections</a> containing a sequence of <a href="#Symbol">Symbols</a>, data, and other <a href="#Collection">Collections</a>.
+			A <a href="#Program-Model">Program Model</a> is composed of nested <a href="#Collection">Collections</a> containing sequences of <a href="#Symbol">Symbols</a>, <a href="#Constructor">Constructors</a>, and other <a href="#Collection">Collections</a>.
+			<span id="Node">A Node refers to a <a href="#Collection">Collection</a> used as a structural component of a <a href="#Program-Model">Program Model</a>.</span>
+			<a href="#Program">Programs</a> are discretely classified as <a href="#Operation">Operations</a> and <a href="#Constructor">Constructors</a>.
+			<span id="Operation">An Operation is a <a href="#Program">Program</a> which represents a manipulation performed on some data.</span>
+			<span id="Constructor">A Constructor is a <a href="#Program">Program</a> which represents a specific formation of data.</span>
 		</p>
+		<h3>Forming a Program Model</h3>
+		<p>
+			There is an exact correspondence between a <a href="#Program">Program</a> and a <a href="#Program-Model">Program Model</a>.
+			<a href="#Expression">Expressions</a>, <a href="#Sequence">Sequences</a>, <a href="#Collection">Collections</a>, and <a href="#Type">Types</a> all correspond to individual <a href="#Node">Nodes</a> within a <a href="#Program-Model">Program Model</a>.
+			If an <a href="Expression">Expression</a>, <a href="#Sequence">Sequence</a>, <a href="#Collection">Collection</a>, or <a href="#Type">Type</a> is nested within another in a <a href="#Program">Program</a>, then the resulting <a href="#Node">Nodes</a> in the <a href="#Program-Model">Program Model</a> will be nested.
+			The following figures demonstrate how a textual <a href="#Program">Program</a> corresponds to a visual representation of a <a href="#Program-Model">Program Model</a>.
+		</p>
+		<figure>
+			<p><code>(a (b) (123 d) e)</code></p>
+			<div id="p-n">
+				<p><code>a</code></p>
+				<div id="p-n">
+					<p><code>b</code></p>
+				</div>
+				<div id="p-n">
+					<p>123</p>
+					<p><code>d</code></p>
+				</div>
+				<p><code>d</code></p>
+			</div>
+		</figure>
 		<h2>Computation</h2>
 		<p>
 			Computation is the iterative process of reducing a <a href="#Program-Model">Program Model</a> to a single value.
