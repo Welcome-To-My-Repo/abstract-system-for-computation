@@ -143,21 +143,14 @@
 			There is an exact correspondence between a <a href="#Program">Program</a> and a <a href="#Program-Model">Program Model</a>.
 			<a href="#Expression">Expressions</a>, <a href="#Sequence">Sequences</a>, <a href="#Collection">Collections</a>, and <a href="#Type">Types</a> all correspond to individual <a href="#Node">Nodes</a> within a <a href="#Program-Model">Program Model</a>.
 			If an <a href="Expression">Expression</a>, <a href="#Sequence">Sequence</a>, <a href="#Collection">Collection</a>, or <a href="#Type">Type</a> is nested within another in a <a href="#Program">Program</a>, then the resulting <a href="#Node">Nodes</a> in the <a href="#Program-Model">Program Model</a> will be nested.
-			The following figures demonstrate how a textual <a href="#Program">Program</a> corresponds to a visual representation of a <a href="#Program-Model">Program Model</a>.
+			The following figures demonstrate how a textual <a href="#Program">Program</a> corresponds to a <a href="#Program-Model">Program Model</a> shown by a program which constructs that model.
 		</p>
 		<figure>
-			<p><code>(a (b) (123 d) e)</code></p>
-			<div id="p-n">
-				<p><code>a</code></p>
-				<div id="p-n">
-					<p><code>b</code></p>
-				</div>
-				<div id="p-n">
-					<p>123</p>
-					<p><code>d</code></p>
-				</div>
-				<p><code>d</code></p>
-			</div>
+			<table>
+				<tr><td><code>(a {b} (123 d) [e])</code></td></tr>
+				<tr><td>&VerticalBar;</td></tr>
+				<tr><td><code>{'a {'b} {123 'd} {'e}}</code></td></tr>
+			</table>
 		</figure>
 		<h2>Computation</h2>
 		<p>
