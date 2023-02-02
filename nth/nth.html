@@ -5,10 +5,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
 		:root{
-			--bg:rgb(210, 242, 237);
-			--bgd:rgb(235, 220, 212);
-			--fg:rgb(59, 14, 14);
-			--fgl:rgb(14, 88, 77);
+			--bg:rgb(233, 222, 220);
+			--bgd:rgb(199, 194, 193);
+			--fg:rgb(39, 41, 41);
+			--fgl:rgb(0, 110, 92);
 			--hg:rgb(255, 213, 2);
 			--size:calc(17px + ((1vw + 1vh) / 6));
 		}
@@ -19,7 +19,8 @@
 		dt{font-style:oblique;}
 		a:active{color:var(--hg);} a:link{color:var(--fg);} a:visited{color:var(--fg);}
 		table{text-align:center;width:fit-content;}
-		code{color:var(--fgl);background-color:var(--bgd);border-radius:calc(var(--size) / 6);}
+		td{padding-left:1ch;padding-right:1ch;}
+		code{color:var(--fgl);border-radius:calc(var(--size) / 6);}
 		h1{font-size:calc(var(--size) * 3);}
 		h2{font-size:calc(var(--size) * 2);}
 		h3, h4, h5, h6{font-size:calc(var(--size) * 1.5);font-weight:normal;}
@@ -145,8 +146,8 @@
 		</p>
 		<figure>
 			<table>
-				<tr><td><code>(a {b} (123 d) [e])</code></td><td style="text-align:right;"><i>... a written program</i></td></tr>
-				<tr><td><code>{'a {'b} {123 'd} {'e}}</code></td><td style="text-align:right;"><i>... the program model</i></td></tr>
+				<tr><td><code>(a {b} (123 d) [e])</code></td><td>...</td><td style="text-align:right;"><i>a written program</i></td></tr>
+				<tr><td><code>{'a {'b} {123 'd} {'e}}</code></td><td>...</td><td style="text-align:right;"><i>the program model</i></td></tr>
 			</table>
 		</figure>
 		<h2>Computation</h2>
@@ -158,9 +159,9 @@
 		</p>
 		<figure>
 			<table>
-				<tr><td><code>{1 '+ {1 '+ 1}}</code></td><td style="text-align:right;"><i>1</i></td></tr>
-				<tr><td><code>{1 '+ 2}</code></td><td style="text-align:right;"><i>2</i></td></tr>
-				<tr><td><code>3</code></td><td style="text-align:right;"><i>3</i></td></tr>
+				<tr><td><code>{1 '+ {1 '+ 1}}</code></td><td>...</td><td style="text-align:right;"><i>1</i></td></tr>
+				<tr><td><code>{1 '+ 2}</code></td><td>...</td><td style="text-align:right;"><i>2</i></td></tr>
+				<tr><td><code>3</code></td><td>...</td><td style="text-align:right;"><i>3</i></td></tr>
 			</table>
 		</figure>
 	</article>
@@ -168,6 +169,26 @@
 		<h1>Semantics</h1>
 		<p>
 			The result of computing a <a href="#Node">Node</a> is determined by the semantics corresponding to the <a href="#Node">Node</a> being computed.
+			The <i>n</i><sup>th</sup> language provides a number of expressions by default which are associated with a number of basic semantic theories.
+			The default expressions are initially presented in the figures below as they would be described in the <i>n</i><sup>th</sup> langauge.
+			The semantics used for computing these expressions are given in later sections corresponding to the respective theories involved in their computation.
 		</p>
+		<figure>
+			<table>
+				<tr><td><code>{('t -> *) '-> ('e -> *)}</code></td><td>...</td><td style="text-align:right"><i>Uninterpreted Function Constructor</i></td></tr>
+				<tr><td><code>{('p -> Symbol) ('t -> *) '-> ('e -> *)}</code></td><td>...</td><td style="text-align:right;"><i>Parameterized Function Constructor</i></td></tr>
+			</table>
+		</figure>
+		<figure>
+			<table>
+				<tr><td><code>{('n -> Number) '+ ('m -> Number)}</code></td><td>...</td><td style="text-align:right;"><i>addition</i></td></tr>
+				<tr><td><code>{('n -> Number) '- ('m -> Number)}</code></td><td>...</td><td style="text-align:right;"><i>subtraction</i></td></tr>
+				<tr><td><code>{('n -> Number) '* ('m -> Number)}</code></td><td>...</td><td style="text-align:right;"><i>multiplication</i></td></tr>
+				<tr><td><code>{('n -> Number) '/ ('m -> Number)}</code></td><td>...</td><td style="text-align:right;"><i>quotient</i></td></tr>
+				<tr><td><code>{('n -> Number) '// ('m -> Number)}</code></td><td>...</td><td style="text-align:right;"><i>remainder</i></td></tr>
+			</table>
+			<hr>
+			<figcaption>The default expressions for numerical arithmetic.</figcaption>
+		</figure>
 	</article>
 </body>

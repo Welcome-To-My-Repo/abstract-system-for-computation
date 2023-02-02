@@ -2927,4 +2927,7 @@ The superset is the one with less value comparisons.
 
 
 
-Algorithms for algebra
+what's my function notation?????
+I want to make three kinds of functions,
+uninterpreted, untyped, and typed.
+(t -> T), (x -> x), and (x t -> (x : T)) respectively.
