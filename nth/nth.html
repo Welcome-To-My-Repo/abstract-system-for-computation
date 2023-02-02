@@ -5,28 +5,26 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
 		:root{
-			--bg:rgb(246, 234, 218);
-			--bgd:rgb(235, 220, 207);
-			--fg:rgb(0, 42, 27);
-			--fgl:rgb(52, 100, 93);
-			--hg:rgb(230, 230, 55);
-			--size:calc(13px + ((1vw + 1vh) / 6));
+			--bg:rgb(242, 221, 210);
+			--bgd:rgb(216, 174, 152);
+			--fg:rgb(1, 35, 29);
+			--fgl:rgb(14, 88, 77);
+			--hg:rgb(255, 213, 2);
+			--size:calc(17px + ((1vw + 1vh) / 6));
 		}
 		:target{background-color:var(--hg);}
 		body{text-align:center;font-size:var(--size);color:var(--fg);background-color:var(--bg);}
 		p, dt, dd, table{text-align:left;max-width:160ch;width:75vw;margin-left:auto;margin-right:auto;}
 		dl{width:50%;margin-left:auto;margin-right:auto;}
 		dt{font-style:oblique;}
-		a:active{color:var(--hg);}
-		a:link{color:var(--fg);}
-		a:visited{color:var(--fg);}
-		table{text-align:center;}
+		a:active{color:var(--hg);} a:link{color:var(--fg);} a:visited{color:var(--fg);}
+		table{text-align:center;width:fit-content;}
 		code{color:var(--fgl);background-color:var(--bgd);border-radius:calc(var(--size) / 6);}
 		h1{font-size:calc(var(--size) * 3);}
 		h2{font-size:calc(var(--size) * 2);}
 		h3, h4, h5, h6{font-size:calc(var(--size) * 1.5);font-weight:normal;}
-		figure{border-style:solid;border-color:var(--fg);border-radius:var(--size);width:fit-content;margin-left:auto;margin-right:auto;}
-		#p-n{border-style:solid;border-color:var(--fg);text-align:center;width:5ch;padding:1ch;display:block;margin-left:auto;margin-right:auto;margin:1ch;}
+		figure{border-style:solid;border-color:var(--fg);border-radius:var(--size);width:fit-content;margin-left:auto;margin-right:auto;padding:1ch;}
+		hr{color:var(--fgl);}
 	</style>
 </head>
 <body>
@@ -142,15 +140,19 @@
 		<p>
 			There is an exact correspondence between a <a href="#Program">Program</a> and a <a href="#Program-Model">Program Model</a>.
 			<a href="#Expression">Expressions</a>, <a href="#Sequence">Sequences</a>, <a href="#Collection">Collections</a>, and <a href="#Type">Types</a> all correspond to individual <a href="#Node">Nodes</a> within a <a href="#Program-Model">Program Model</a>.
-			If an <a href="Expression">Expression</a>, <a href="#Sequence">Sequence</a>, <a href="#Collection">Collection</a>, or <a href="#Type">Type</a> is nested within another in a <a href="#Program">Program</a>, then the resulting <a href="#Node">Nodes</a> in the <a href="#Program-Model">Program Model</a> will be nested.
+			If an <a href="#Expression">Expression</a>, <a href="#Sequence">Sequence</a>, <a href="#Collection">Collection</a>, or <a href="#Type">Type</a> is nested within another in a <a href="#Program">Program</a>, then the resulting <a href="#Node">Nodes</a> in the <a href="#Program-Model">Program Model</a> will be nested.
 			The following figures demonstrate how a textual <a href="#Program">Program</a> corresponds to a <a href="#Program-Model">Program Model</a> shown by a program which constructs that model.
 		</p>
 		<figure>
 			<table>
 				<tr><td><code>(a {b} (123 d) [e])</code></td></tr>
-				<tr><td>&VerticalBar;</td></tr>
 				<tr><td><code>{'a {'b} {123 'd} {'e}}</code></td></tr>
 			</table>
+			<hr>
+			<figcaption>
+				The first line shows a Program. 
+				The second line shows the corresponding Program Model.
+			</figcaption>
 		</figure>
 		<h2>Computation</h2>
 		<p>
