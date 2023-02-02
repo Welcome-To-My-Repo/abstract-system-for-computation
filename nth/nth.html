@@ -7,7 +7,7 @@
 		:root{
 			--bg:rgb(210, 242, 237);
 			--bgd:rgb(235, 220, 212);
-			--fg:rgb(35, 13, 1);
+			--fg:rgb(59, 14, 14);
 			--fgl:rgb(14, 88, 77);
 			--hg:rgb(255, 213, 2);
 			--size:calc(17px + ((1vw + 1vh) / 6));
@@ -123,8 +123,8 @@
 		</figure>
 	</article>
 	<article>
-		<h1>Semantics</h1>
-		<h2>The Program Model</h2>
+		<h1>The Program Model</h1>
+		<h2>Format</h2>
 		<p>
 			<span id="Program-Model">A Program Model is some structured data corresponding to a written <i>n</i><sup>th</sup> program.</span>
 			It unambiguously represents the data used by a program and the exact order of the manipulations performed on that data.
@@ -136,28 +136,38 @@
 			<span id="Operation">An Operation is a <a href="#Program">Program</a> which represents a manipulation performed on some data.</span>
 			<span id="Constructor">A Constructor is a <a href="#Program">Program</a> which represents a specific formation of data.</span>
 		</p>
-		<h3>Forming a Program Model</h3>
+		<h3>Construction</h3>
 		<p>
 			There is an exact correspondence between a <a href="#Program">Program</a> and a <a href="#Program-Model">Program Model</a>.
 			<a href="#Expression">Expressions</a>, <a href="#Sequence">Sequences</a>, <a href="#Collection">Collections</a>, and <a href="#Type">Types</a> all correspond to individual <a href="#Node">Nodes</a> within a <a href="#Program-Model">Program Model</a>.
 			If an <a href="#Expression">Expression</a>, <a href="#Sequence">Sequence</a>, <a href="#Collection">Collection</a>, or <a href="#Type">Type</a> is nested within another in a <a href="#Program">Program</a>, then the resulting <a href="#Node">Nodes</a> in the <a href="#Program-Model">Program Model</a> will be nested.
-			The following figures demonstrate how a textual <a href="#Program">Program</a> corresponds to a <a href="#Program-Model">Program Model</a> shown by a program which constructs that model.
+			The following figure demonstrates how a textual <a href="#Program">Program</a> corresponds to a <a href="#Program-Model">Program Model</a> shown by a program which constructs that model.
 		</p>
 		<figure>
 			<table>
-				<tr><td><code>(a {b} (123 d) [e])</code></td></tr>
-				<tr><td><code>{'a {'b} {123 'd} {'e}}</code></td></tr>
+				<tr><td><code>(a {b} (123 d) [e])</code></td><td style="text-align:right;"><i>... a written program</i></td></tr>
+				<tr><td><code>{'a {'b} {123 'd} {'e}}</code></td><td style="text-align:right;"><i>... the program model</i></td></tr>
 			</table>
-			<hr>
-			<figcaption>
-				The first line shows a Program. 
-				The second line shows the corresponding Program Model.
-			</figcaption>
 		</figure>
 		<h2>Computation</h2>
 		<p>
-			Computation is the iterative process of reducing a <a href="#Program-Model">Program Model</a> to a single value.
-
+			Computation is the process of transforming a <a href="#Program-Model">Program Model</a> to a data result through repeated reductive steps.
+			A single reductive step will determine the first <a href="#Node">Node</a> in a <a href="#Program-Model">Program Model</a> which does not contain nested <a href="#Node">Nodes</a> and reduce a <a href="#Node">Node</a> to some data.
+			When a <a href="#Node">Node</a> is reduced, it will be replaced with the resultant data in the <a href="#Program-Model">Program Model</a>.
+			The figure below demonstrates the reductive steps that take place when computing a <a href="#Program-Model">Program Model</a> representing a compound arithmetic expression.
+		</p>
+		<figure>
+			<table>
+				<tr><td><code>{1 '+ {1 '+ 1}}</code></td><td style="text-align:right;"><i>1</i></td></tr>
+				<tr><td><code>{1 '+ 2}</code></td><td style="text-align:right;"><i>2</i></td></tr>
+				<tr><td><code>3</code></td><td style="text-align:right;"><i>3</i></td></tr>
+			</table>
+		</figure>
+	</article>
+	<article>
+		<h1>Semantics</h1>
+		<p>
+			The result of computing a <a href="#Node">Node</a> is determined by the semantics corresponding to the <a href="#Node">Node</a> being computed.
 		</p>
 	</article>
 </body>

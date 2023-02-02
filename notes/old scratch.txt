@@ -2924,3 +2924,7 @@ Compare the conditions.
 Each infinite type results in a series of value comparisons.
 These are decidable.
 The superset is the one with less value comparisons.
+
+
+
+Algorithms for algebra
