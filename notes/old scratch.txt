@@ -2927,7 +2927,121 @@ The superset is the one with less value comparisons.
 
 
 
-what's my function notation?????
-I want to make three kinds of functions,
-uninterpreted, untyped, and typed.
-(t -> T), (x -> x), and (x t -> (x : T)) respectively.
+I want to just be able to write a function
+(x -> x)
+but this requires that I can quote things in expressions.
+Symbol is a data type of a symbol
+Symbol* is a quoted symbol
+Expression* is a quoted expression
+So you can create function maps by doing
+((T) -> T)
+Where the function isn't parameterized.
+Or is a function always parameterized.
+(x -> T)
+(x -> (x : T), T)
+What do I do for maps then???
+I still want to be able to do a function that's just one thing to another.
+Lets say match over A B C
+
+{
+	(x -> (x : A) B)
+	(x -> (x : B) C)
+	(x -> (x : C) A)
+}
+
+{
+	((A) -> B)
+	((B) -> C)
+	((C) -> A)
+}
+
+
+
+Type theory is that a type expresses all possible results of an arbitrary computation.
+Thus types are formed by observing arbitrary computations and other computations can be limited by a type.
+This system is expressive, but incomplete because there is an unlimited number of computations for which all possible results cannot be observed.
+
+How to do the length of a collection that starts with 1?
+[(m : Collection), (? ((m \ 0) = 1) m _)]
+
+
+There are some programs for which all results can be observed, but not counted.
+nth provides a means of specifying quantified types which can represent the observed results of a program without counting every individual result.
+a finite type is a collection of all possible unique results from a computation.
+a quantified type is a collection of comparisons which must be true for all values of the type.
+
+
+
+so if my functions are either 
+(x -> x)
+or 
+((t : t) -> T)
+then how do I create a macro?
+should macros even be first class?
+yes, because then syntax is uniform.
+The entire point is prefix notation for everything is actually a shite idea.
+So there needs to be a way to specify actual expressions.
+How to provide a macro to the context?
+I want to specify the type and the parameter at the same time
+
+Because I want to make an expression as 
+(x {'f ('x -> Number)} -> )
+
+also should there be more than one parameter?
+because currying is terrible in lisp.
+f g h x
+
+lets say I wanted to combine two strings
+(cat : (s1 -> (s2 -> (s1 + s2)))),
+((cat "a") "b")
+or I would say
+(cat : (strings -> ((strings \ 0) + (strings \ 1)))),
+(cat {"a" "b"})
+
+
+
+So a function is either a generic type or a parameterized expression.
+((t) -> t)
+or 
+(x -> y)
+if I wanted to make a macro, i need to be specific about the type of node and provide a parameter name.
+this is expressed as
+(<- (x -> (x : {'f Number}), ((x \ 1) + 1))), (f 1)
+
+
+
+where can i use the period dot?
+is it useful?
+can it be a shorthand for destructuring a collection?
+No that's just the same as lambdas. 
+you provide named arguments as
+((x -> ((x 'n) + (x 'm))) {('n -> 1) ('m -> 1)}
+but can't you just allow multiple argument functions?
+nope. look at how cracked this pattern would be.
+
+(f -> (f : [(c : Collection), (? ((^(c \ 0)) = Function) c _)]))
+
+
+(x . (x + 1))
+instead of arrow notation you use the dot.
+
+(x <- (@ 1)),
+(. x)
+
+
+
+make a recursive type for boolean expressions.
+
+(B : [{Boolean ['/\ '\/] [B Boolean]} {'- [B Boolean]}])
+
+what about for numbers?
+
+(md : {Number ['* '/] [Number md]})
+(as : {[md Number] ['+ '-] [as md Number]})
+(math : [md as])
+1 + 2 * 3
+(3 * 2 + 1 * 4)
+this doesn't work because it doesn't enforce which sub-expressions are evaluated first.
+maybe if I define which ones are evaluated first it would work.
+too much work
+don't bother.

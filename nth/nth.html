@@ -6,10 +6,10 @@
 	<style>
 		:root{
 
-			--bg:rgb(239, 234, 232);
-			--bgd:rgb(199, 195, 193);
-			--fg:rgb(4, 40, 40);
-			--fgl:rgb(0, 110, 92);
+			--bg:rgb(240, 221, 217);
+			--bgd:rgb(218, 194, 189);
+			--fg:rgb(1, 52, 46);
+			--fgl:rgb(0, 110, 97);
 			--hg:rgb(255, 213, 2);
 			--size:calc(17px + ((1vw + 1vh) / 6));
 		}
@@ -25,24 +25,25 @@
 		h1{font-size:calc(var(--size) * 3);}
 		h2{font-size:calc(var(--size) * 2);}
 		h3, h4, h5, h6{font-size:calc(var(--size) * 1.5);font-weight:normal;}
-		figure{border-style:solid;border-color:var(--fg);border-radius:var(--size);width:fit-content;margin-left:auto;margin-right:auto;padding:1ch;}
+		figure{border-style:solid;border-color:var(--fg);background-color:var(--bgd);border-radius:var(--size);width:fit-content;margin-left:auto;margin-right:auto;padding:1ch;}
 		hr{color:var(--fgl);}
+		@media print{h1, h2, h3, h4{page-break-after:avoid;}article{page-break-after:always;}figure{page-break-inside:avoid;}}
 	</style>
 </head>
 <body>
-	<article style="height:100vh;">
-		<svg viewBox="0 0 100 100" version="1.1" style="height:50%;width:auto;margin-top:10%;" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+	<article style="height:100vh;page-break-after:initial;">
+		<svg viewBox="0 0 100 100" version="1.1" style="height:50%;width:auto;margin-top:10%;stroke-width:0.2ch;" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
 			<defs id="defs54" />
-			<ellipse style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+			<ellipse style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
 				ry="15.550441" rx="38.556782" cy="-1.5364231" cx="62.654388" transform="matrix(0.8,0.6,-0.70710678,0.70710678,0,0)" id="ellipse45" />
-			<path style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-width:2;stroke-linejoin:round;stroke-miterlimit:5;stroke-dasharray:none;stroke-opacity:1"
+			<path style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-linejoin:round;stroke-miterlimit:5;stroke-dasharray:none;stroke-opacity:1"
 				d="M 66.489828,62.06793 A 18.564376,18.564376 0 0 1 47.925452,82.060335 18.564376,18.564376 0 0 1 30.789107,62.06793 18.564376,18.564376 0 0 1 47.925452,43.503554 18.564376,18.564376 0 0 1 66.489828,63.495959"
 				id="path47" />
-			<path style="fill:none;stroke:var(--fg);stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+			<path style="fill:none;stroke:var(--fg);stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
 				d="M 60.777712,2.0907162 37.92925,97.768652" id="path49" />
 		</svg>
 	</article>
-	<article style="height:100vh;">
+	<article style="height:100vh;page-break-after:initial;">
 		<h1>Standard Documentation for the</h1>
 		<h1><i>n</i><sup>th</sup></h1>
 		<h1>System for Computation</h1>
@@ -153,10 +154,10 @@
 		</figure>
 		<h2>Computation</h2>
 		<p>
-			Computation is the process of transforming a <a href="#Program-Model">Program Model</a> to a data result through repeated reductive steps.
+			<span id="Compute">Computation, in terms of the <i>n</i><sup>th</sup> langauge, is the process of transforming a <a href="#Program-Model">Program Model</a> to a data result through repeated reductive steps.</span>
 			A single reductive step will determine the first <a href="#Node">Node</a> in a <a href="#Program-Model">Program Model</a> which does not contain nested <a href="#Node">Nodes</a> and reduce a <a href="#Node">Node</a> to some data.
 			When a <a href="#Node">Node</a> is reduced, it will be replaced with the resultant data in the <a href="#Program-Model">Program Model</a>.
-			The figure below demonstrates the reductive steps that take place when computing a <a href="#Program-Model">Program Model</a> representing a compound arithmetic expression.
+			The figure below demonstrates the reductive steps that take place when <a href="#Compute">computing</p> a <a href="#Program-Model">Program Model</a> representing a compound arithmetic expression.
 		</p>
 		<figure>
 			<table>
@@ -169,27 +170,85 @@
 	<article>
 		<h1>Semantics</h1>
 		<p>
-			The result of computing a <a href="#Node">Node</a> is determined by the semantics corresponding to the <a href="#Node">Node</a> being computed.
+			The result of <a href="#Compute">computing</a> a <a href="#Node">Node</a> is determined by the semantics corresponding to the <a href="#Node">Node</a> being <a href="#Compute">computed</a>.
 			The <i>n</i><sup>th</sup> language provides a number of expressions by default which are associated with a number of basic semantic theories.
-			The default expressions are initially presented in the figures below as they would be described in the <i>n</i><sup>th</sup> langauge.
-			The semantics used for computing these expressions are given in later sections corresponding to the respective theories involved in their computation.
+			The default <a href="#Expression">Expressions</a> are initially presented in the figures below describing the structure of each <a href="#Expression">Expression</a> as it would appear in a <a href="#Program-Model">Program Model</a>.
+			The semantics used for <a href="#Compute">computing</a> these expressions are given in later sections corresponding to the respective theories involved in their <a href="#Compute">computation</a>.
 		</p>
 		<figure>
 			<table>
-				<tr><td><code>{('t -> *) '-> ('e -> *)}</code></td><td>...</td><td style="text-align:right"><i>Uninterpreted Function Constructor</i></td></tr>
-				<tr><td><code>{('p -> Symbol) ('t -> *) '-> ('e -> *)}</code></td><td>...</td><td style="text-align:right;"><i>Parameterized Function Constructor</i></td></tr>
+				<tr><td><code>{* '-> *}</code></td><td>...</td><td style="text-align:right"><i>function constructor</i></td></tr>
+				<tr><td><code>{Symbol '-> *}</code></td><td>...</td><td style="text-align:right"><i>function constructor</i></td></tr>
+				<tr><td><code>{Function *}</code></td><td>...</td><td style="text-align:right;"><i>application</i></td></tr>
+				<tr><td><code>{'/ Function}</code></td><td>...</td><td style="text-align:right;"><i>derive function pre-image</i></td></tr>
+				<tr><td><code>{Function '/}</code></td><td>...</td><td style="text-align:right;"><i>derive function image</i></td></tr>
 			</table>
+			<hr>
+			<figcaption>The expressions for operating on <a href="#Function">Functions</a>.</figcaption>
 		</figure>
 		<figure>
 			<table>
-				<tr><td><code>{('n -> Number) '+ ('m -> Number)}</code></td><td>...</td><td style="text-align:right;"><i>addition</i></td></tr>
-				<tr><td><code>{('n -> Number) '- ('m -> Number)}</code></td><td>...</td><td style="text-align:right;"><i>subtraction</i></td></tr>
-				<tr><td><code>{('n -> Number) '* ('m -> Number)}</code></td><td>...</td><td style="text-align:right;"><i>multiplication</i></td></tr>
-				<tr><td><code>{('n -> Number) '/ ('m -> Number)}</code></td><td>...</td><td style="text-align:right;"><i>quotient</i></td></tr>
-				<tr><td><code>{('n -> Number) '// ('m -> Number)}</code></td><td>...</td><td style="text-align:right;"><i>remainder</i></td></tr>
+				<tr><td><code>{Number '+ Number}</code></td><td>...</td><td style="text-align:right;"><i>addition</i></td></tr>
+				<tr><td><code>{Number '- Number}</code></td><td>...</td><td style="text-align:right;"><i>subtraction</i></td></tr>
+				<tr><td><code>{Number '* Number}</code></td><td>...</td><td style="text-align:right;"><i>multiplication</i></td></tr>
+				<tr><td><code>{Number '/ Number}</code></td><td>...</td><td style="text-align:right;"><i>quotient</i></td></tr>
+				<tr><td><code>{Number '// Number}</code></td><td>...</td><td style="text-align:right;"><i>remainder</i></td></tr>
+				<tr><td><code>{('- Number}</code></td><td>...</td><td style="text-align:right;"><i>negation</i></td></tr>
 			</table>
 			<hr>
-			<figcaption>The default expressions for numerical arithmetic.</figcaption>
+			<figcaption>The expressions for numerical arithmetic.</figcaption>
+		</figure>
+		<figure>
+			<table>
+				<tr><td><code>{Boolean '/\ Boolean}</code></td><td>...</td><td style="text-align:right;"><i>conjunction</i></td></tr>
+				<tr><td><code>{Boolean '\/ ('q -> Boolean}</code></td><td>...</td><td style="text-align:right;"><i>disjunction</i></td></tr>
+				<tr><td><code>{'- Boolean}</code></td><td>...</td><td style="text-align:right;"><i>negation</i></td></tr>
+			</table>
+			<hr>
+			<figcaption>The expressions for boolean logic.</figcaption>
+		</figure>
+		<figure>
+			<table>
+				<tr><td><code>{Collection '/ *}</code></td><td>...</td><td style="text-align:right;"><i>selection</i></td></tr>
+				<tr><td><code>{Collection '/ * *}</code></td><td>...</td><td style="text-align:right;"><i>transforming selection</i></td></tr>
+				<tr><td><code>{Collection '\ Number}</code></td><td>...</td><td style="text-align:right;"><i>subscript</i></td></tr>
+				<tr><td><code>{Collection '\ Number *}</code></td><td>...</td><td style="text-align:right;"><i>transforming subscript</i></td></tr>
+				<tr><td><code>{Collection '+ Collection}</code></td><td>...</td><td style="text-align:right;"><i>union</i></td></tr>
+				<tr><td><code>{Collection '- Collection}</code></td><td>...</td><td style="text-align:right;"><i>complement</i></td></tr>
+				<tr><td><code>{Collection *}</code></td><td>...</td><td style="text-align:right;"><i>application</i></td></tr>
+			</table>
+			<hr>
+			<figcaption>The expressions for operating on <a href="#Collection">Collections</a>.</figcaption>
+		</figure>
+		<figure>
+			<table>
+				<tr><td><code>{'<- *}</code></td><td>...</td><td style="text-align:right;"><i>context binding</i></td></tr>
+				<tr><td><code>{Symbol '<- *}</code></td><td>...</td><td style="text-align:right;"><i>variable binding</i></td></tr>
+				<tr><td><code>{* ': *}</code></td><td>...</td><td style="text-align:right;"><i>type constraint</i></td></tr>
+				<tr><td><code>{Symbol ': *}</code></td><td>...</td><td style="text-align:right;"><i>independent variable</i></td></tr>
+			</table>
+			<hr>
+			<figcaption>The expressions for constructing bindings.</figcaption>
+		</figure>
+		<figure>
+			<table>
+				<tr><td><code>{'@ *}</code></td><td>...</td><td style="text-align:right;"><i>derive reference</i></td></tr>
+				<tr><td><code>{'. Reference}</code></td><td>...</td><td style="text-align:right;"><i>dereference</i></td></tr>
+			</table>
+			<hr>
+			<figcaption>The expressions for operating on <a href="#Reference">References</a>.</figcaption>
+		</figure>
+		<figure>
+			<table>
+				<tr><td><code>{* '= *}</code></td><td>...</td><td style="text-align:right;"><i>equality</i></td></tr>
+				<tr><td><code>{* '/= *}</code></td><td>...</td><td style="text-align:right"><i>inequality</i></td></tr>
+				<tr><td><code>{Type '&lt; Type}</code></td><td>...</td><td style="text-align:right;"><i>less-than</i></td></tr>
+				<tr><td><code>{Number '&lt; Number}</code></td><td>...</td><td style="text-align:right;"><i>less-than</i></td></tr>
+				<tr><td><code>{Type '&gt; Type}</code></td><td>...</td><td style="text-align:right;"><i>greater-than</i></td></tr>
+				<tr><td><code>{Number '&gt; Number}</code></td><td>...</td><td style="text-align:right;"><i>greater-than</i></td></tr>
+			</table>
+			<hr>
+			<figcaption>The expressions for comparison operations.</figcaption>
 		</figure>
 	</article>
 </body>
