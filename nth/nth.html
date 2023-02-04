@@ -6,10 +6,10 @@
 	<style>
 		:root{
 
-			--bg:rgb(240, 221, 217);
-			--bgd:rgb(218, 194, 189);
-			--fg:rgb(1, 52, 46);
-			--fgl:rgb(0, 110, 97);
+			--bg:rgb(223, 238, 231);
+			--bgd:rgb(191, 218, 209);
+			--fg:rgb(53, 25, 25);
+			--fgl:rgb(126, 49, 49);
 			--hg:rgb(255, 213, 2);
 			--size:calc(17px + ((1vw + 1vh) / 6));
 		}
@@ -172,14 +172,12 @@
 		<p>
 			The result of <a href="#Compute">computing</a> a <a href="#Node">Node</a> is determined by the semantics corresponding to the <a href="#Node">Node</a> being <a href="#Compute">computed</a>.
 			The <i>n</i><sup>th</sup> language provides a number of expressions by default which are associated with a number of basic semantic theories.
-			The default <a href="#Expression">Expressions</a> are initially presented in the figures below describing the structure of each <a href="#Expression">Expression</a> as it would appear in a <a href="#Program-Model">Program Model</a>.
-			The semantics used for <a href="#Compute">computing</a> these expressions are given in later sections corresponding to the respective theories involved in their <a href="#Compute">computation</a>.
+			These expressions are described by the figures below showing the construction of each <a href="#Expression">Expression</a> as it would appear as a <a href="#Node">Node</a> in a <a href="#Program-Model">Program Model</a>.
 		</p>
 		<figure>
 			<table>
 				<tr><td><code>{* '-> *}</code></td><td>...</td><td style="text-align:right"><i>function constructor</i></td></tr>
 				<tr><td><code>{Symbol '-> *}</code></td><td>...</td><td style="text-align:right"><i>function constructor</i></td></tr>
-				<tr><td><code>{Function *}</code></td><td>...</td><td style="text-align:right;"><i>application</i></td></tr>
 				<tr><td><code>{'/ Function}</code></td><td>...</td><td style="text-align:right;"><i>derive function pre-image</i></td></tr>
 				<tr><td><code>{Function '/}</code></td><td>...</td><td style="text-align:right;"><i>derive function image</i></td></tr>
 			</table>
@@ -215,7 +213,6 @@
 				<tr><td><code>{Collection '\ Number *}</code></td><td>...</td><td style="text-align:right;"><i>transforming subscript</i></td></tr>
 				<tr><td><code>{Collection '+ Collection}</code></td><td>...</td><td style="text-align:right;"><i>union</i></td></tr>
 				<tr><td><code>{Collection '- Collection}</code></td><td>...</td><td style="text-align:right;"><i>complement</i></td></tr>
-				<tr><td><code>{Collection *}</code></td><td>...</td><td style="text-align:right;"><i>application</i></td></tr>
 			</table>
 			<hr>
 			<figcaption>The expressions for operating on <a href="#Collection">Collections</a>.</figcaption>
@@ -249,6 +246,15 @@
 			</table>
 			<hr>
 			<figcaption>The expressions for comparison operations.</figcaption>
+		</figure>
+		<figure>
+			<table>
+				<tr><td><code>{'? * Expression Expression}</code></td><td>...</td><td style="text-align:right;"><i>conditional evaluation</i></td></tr>
+				<tr><td><code>{Function *}</code></td><td>...</td><td style="text-align:right;"><i>function application</i></td></tr>
+				<tr><td><code>{Collection *}</code></td><td>...</td><td style="text-align:right;"><i>collection application</i></td></tr>
+			</table>
+			<hr>
+			<figcaption>The expressions for applicative operations.</figcaption>
 		</figure>
 	</article>
 </body>
