@@ -3045,3 +3045,9 @@ this doesn't work because it doesn't enforce which sub-expressions are evaluated
 maybe if I define which ones are evaluated first it would work.
 too much work
 don't bother.
+
+
+
+what's the difference between 
+'x and '(1 + 1)
+there is no difference, they're both quote data.
