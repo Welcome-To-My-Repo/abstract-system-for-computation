@@ -3066,3 +3066,27 @@ Number '+ Number
 Symbol '-> Expression
 '@ *
 I can't reason about structures if they need to be deserialized though.
+
+
+
+Specifying collections.
+
+{Function} + Collection
+
+
+
+
+arithmetic
+
+(addition : {[Number multiplication division modulus] '+ [Number multiplication division modulus]})
+(subtraction : {[Number multiplication division modulus] '- [Number multiplication division modulus]})
+(multiplication : {Number '* Number})
+(division : {Number '/ Number})
+(modulus : {Number '// Number})
+
+(math : (({Number} + ['+ '- '* '/ '//]) + [{Number} math]))
+(logic : 
+	[
+	 ({'-} + [{Boolean} logic]) 
+	 ({logic} + {['\/ '/\]} + {logic})
+	])
