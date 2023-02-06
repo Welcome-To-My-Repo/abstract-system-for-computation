@@ -166,6 +166,7 @@
 				<tr><td><code>3</code></td><td>...</td><td style="text-align:right;"><i>3</i></td></tr>
 			</table>
 		</figure>
+		<!--
 		<h2>Default Expressions</h2>
 		<p>
 			The <i>n</i><sup>th</sup> language provides a number of expressions by default which correspond to the basic semantic theories provided by <i>n</i><sup>th</sup>.
@@ -173,10 +174,10 @@
 		</p>
 		<figure>
 			<table>
-				<tr><td><code>{* '-> *}</code></td><td>...</td><td style="text-align:right"><i>function constructor</i></td></tr>
-				<tr><td><code>{Symbol '-> *}</code></td><td>...</td><td style="text-align:right"><i>function constructor</i></td></tr>
-				<tr><td><code>{'/ Function}</code></td><td>...</td><td style="text-align:right;"><i>derive function pre-image</i></td></tr>
-				<tr><td><code>{Function '/}</code></td><td>...</td><td style="text-align:right;"><i>derive function image</i></td></tr>
+				<tr><td><code>{* . *}</code></td><td>...</td><td style="text-align:right"><i>function constructor</i></td></tr>
+				<tr><td><code>{Symbol . *}</code></td><td>...</td><td style="text-align:right"><i>function constructor</i></td></tr>
+				<tr><td><code>{'. Function}</code></td><td>...</td><td style="text-align:right;"><i>derive function pre-image</i></td></tr>
+				<tr><td><code>{Function '.}</code></td><td>...</td><td style="text-align:right;"><i>derive function image</i></td></tr>
 			</table>
 			<hr>
 			<figcaption>The expressions for operating on <a href="#Function">Functions</a>.</figcaption>
@@ -196,7 +197,7 @@
 		<figure>
 			<table>
 				<tr><td><code>{Boolean '/\ Boolean}</code></td><td>...</td><td style="text-align:right;"><i>conjunction</i></td></tr>
-				<tr><td><code>{Boolean '\/ ('q -> Boolean}</code></td><td>...</td><td style="text-align:right;"><i>disjunction</i></td></tr>
+				<tr><td><code>{Boolean '\/ Boolean}</code></td><td>...</td><td style="text-align:right;"><i>disjunction</i></td></tr>
 				<tr><td><code>{'- Boolean}</code></td><td>...</td><td style="text-align:right;"><i>negation</i></td></tr>
 			</table>
 			<hr>
@@ -216,8 +217,8 @@
 		</figure>
 		<figure>
 			<table>
-				<tr><td><code>{'<- *}</code></td><td>...</td><td style="text-align:right;"><i>context binding</i></td></tr>
-				<tr><td><code>{Symbol '<- *}</code></td><td>...</td><td style="text-align:right;"><i>variable binding</i></td></tr>
+				<tr><td><code>{'; *}</code></td><td>...</td><td style="text-align:right;"><i>context binding</i></td></tr>
+				<tr><td><code>{Symbol '; *}</code></td><td>...</td><td style="text-align:right;"><i>variable binding</i></td></tr>
 				<tr><td><code>{* ': *}</code></td><td>...</td><td style="text-align:right;"><i>type constraint</i></td></tr>
 				<tr><td><code>{Symbol ': *}</code></td><td>...</td><td style="text-align:right;"><i>independent variable</i></td></tr>
 			</table>
@@ -226,8 +227,8 @@
 		</figure>
 		<figure>
 			<table>
-				<tr><td><code>{'@ *}</code></td><td>...</td><td style="text-align:right;"><i>derive reference</i></td></tr>
-				<tr><td><code>{'. Reference}</code></td><td>...</td><td style="text-align:right;"><i>dereference</i></td></tr>
+				<tr><td><code>{'@@ *}</code></td><td>...</td><td style="text-align:right;"><i>derive reference</i></td></tr>
+				<tr><td><code>{'@ Reference}</code></td><td>...</td><td style="text-align:right;"><i>dereference</i></td></tr>
 			</table>
 			<hr>
 			<figcaption>The expressions for operating on <a href="#Reference">References</a>.</figcaption>
@@ -247,22 +248,26 @@
 		<figure>
 			<table>
 				<tr><td><code>{'? * Expression Expression}</code></td><td>...</td><td style="text-align:right;"><i>conditional evaluation</i></td></tr>
-				<tr><td><code>{Function *}</code></td><td>...</td><td style="text-align:right;"><i>function application</i></td></tr>
-				<tr><td><code>{Collection *}</code></td><td>...</td><td style="text-align:right;"><i>collection application</i></td></tr>
+				<tr><td><code>{[Function Collection] *}</code></td><td>...</td><td style="text-align:right;"><i>application</i></td></tr>
+				<tr><td><code>{* [Function Collection]}</code></td><td>...</td><td style="text-align:right"><i>application</i></td></tr>
 			</table>
 			<hr>
 			<figcaption>The expressions for applicative operations.</figcaption>
 		</figure>
+		<figure>
+			<table>
+				<tr><td><code>{'# *}</code></td><td>...</td><td style="text-align:right"><i>cardinality</i></td></tr>
+				<tr><td><code>{'## *}</code></td><td>...</td><td style="text-align:right"><i>unit size</i></td></tr>
+				<tr><td><code>{': *}</code></td><td>...</td><td style="text-align:right;"><i>derive type</i></td></tr>
+			</table>
+		</figure>
+	-->
 	</article>
 	<article>
 		<h1>Semantics</h1>
 		<p>
 			The result of <a href="#Compute">computing</a> a <a href="#Node">Node</a> is determined by the semantics corresponding to the <a href="#Operation">Operation</a> or <a href="#Constructor">Constructor</a> that the <a href="#Node">Node</a> represents.
-		</p>
-		<p>
-			The result of <a href="#Compute">computing</a> a <a href="#Node">Node</a> is determined by the semantics corresponding to the <a href="#Node">Node</a> being <a href="#Compute">computed</a>.
-			The <i>n</i><sup>th</sup> language provides a number of expressions by default which are associated with a number of basic semantic theories.
-			These expressions are described by the figures below showing the construction of each <a href="#Expression">Expression</a> as it would appear as a <a href="#Node">Node</a> in a <a href="#Program-Model">Program Model</a>.
+			
 		</p>
 	</article>
 </body>

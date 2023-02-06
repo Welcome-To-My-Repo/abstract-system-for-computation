@@ -3051,3 +3051,18 @@ don't bother.
 what's the difference between 
 'x and '(1 + 1)
 there is no difference, they're both quote data.
+
+
+
+how do I do exceptions and effects.
+do i actually need parentheses if I can specify patterns?
+kinda?
+depends, can you specify all expression boundaries so that they're inferrable?
+
+'( Expression ')
+'[ Expression * ']
+'{ Expression * '}
+Number '+ Number
+Symbol '-> Expression
+'@ *
+I can't reason about structures if they need to be deserialized though.
