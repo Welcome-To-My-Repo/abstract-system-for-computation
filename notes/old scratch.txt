@@ -3090,3 +3090,10 @@ arithmetic
 	 ({'-} + [{Boolean} logic]) 
 	 ({logic} + {['\/ '/\]} + {logic})
 	])
+
+
+
+what is my syntax for data type constructors?
+say 
+(x <- (register))
+(x <- (register (1 + 1)))
