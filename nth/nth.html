@@ -9,7 +9,7 @@
 			--bg:rgb(255, 255, 255);
 			--bgd:rgb(224, 224, 224);
 			--fg:rgb(0, 0, 0);
-			--fgl:rgb(58, 58, 58);
+			--fgl:rgb(92, 92, 92);
 			--hg:rgb(150, 150, 150);
 			--size:calc(17px + ((1vw + 1vh) / 6));
 		}
@@ -63,6 +63,20 @@
 		</p>
 		<p>
 			As this document is a specification, all properties and behaviors of the system as described are considered requirements for an implementation.
+		</p>
+		<h2>Conventions</h2>
+		<h3>Terminology</h3>
+		<p>
+			This document assumes basic knowledge of mathematics and computer science.
+			Terms which have a meaning specific to this document are written as clickable links.
+			Each term will link back to the point in this document where it was defined.
+		</p>
+		<h3>Notations</h3>
+		<p>
+			The <i>n</i><sup>th</sup> langauge can be described and extended in terms of itself.
+			However certain capabilities must be assumed which fulfill the behavior and semantics of the default <a href="#Expression">Expressions</a>.
+			The notation for the default expressions follows how an <a href="#Expression">Expression</a> would be provided to the <a href="#Context">Context</a>.
+			<a href="#Operation">Operations</a> which are assumed will be written in <code><b>bold monospace font</b></code>.
 		</p>
 	</article>
 	<article>
@@ -299,8 +313,10 @@
 			A Reference may hold any one abstract non-ordered value identifying a unique Byte.
 			References can be stored by the same number of <a href="#Byte">Byte</a> as a <a href="#Register">Register</a>.
 		</p>
-		<h2>Constructors</h2>
+		<h2>Operations on Data</h2>
 		<p>
+			The <a href="#Byte">Byte</a>, <a href="#Register">Register</a>, and <a href="#Reference">Reference</a> data types are provided as default <a href="#Type">Types</a>.
+			Thus binding or constraining a <a href="#Variable">Variable</a> using any of these three types results in an instantiation of that type in the environment.
 			
 		</p>
 	</article>

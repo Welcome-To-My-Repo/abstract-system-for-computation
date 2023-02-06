@@ -3097,3 +3097,17 @@ what is my syntax for data type constructors?
 say 
 (x <- (register))
 (x <- (register (1 + 1)))
+it's a type and you have operations on it.
+how do you update the value of a register?
+you give it a value
+
+{Register Register}
+{Register Number}
+Register is an entity.
+It's separate from numbers.
+
+
+
+what are data types?
+are they "storage types" or "environment types"?
+"environment types"
