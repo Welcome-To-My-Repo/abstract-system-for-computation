@@ -3111,3 +3111,8 @@ It's separate from numbers.
 what are data types?
 are they "storage types" or "environment types"?
 "environment types"
+
+You can't have random self-modifying structure.
+Double down on lisp and pattern matching.
+Function application pattern is anything that starts with a function
+[(m : Collection), (? ((: (m \ 0 )) = Function) m)]
