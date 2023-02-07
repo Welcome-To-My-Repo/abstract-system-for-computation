@@ -7,7 +7,7 @@
 		:root{
 
 			--bg:rgb(229, 211, 202);
-			--bgd:rgb(160, 194, 192);
+			--bgd:rgb(145, 192, 189);
 			--fg:rgb(87, 36, 0);
 			--fgl:rgb(154, 52, 1);
 			--hg:rgb(94, 228, 217);
@@ -286,10 +286,10 @@
 		</p>
 	</article>
 	<article>
-		<h1 id="Storage">Environment</h1>
+		<h1 id="Data">Data</h1>
 		<p>
 			The <i>n</i><sup>th</sup> environment facilitates and provides resources for <a href="#Compute">computing</a> <i>n</i><sup>th</sup> <a href="#Program">programs</a>.
-			The <i>n</i><sup>th</sup> langauge provides an interface to these resources in the form of a number of data types.
+			The <i>n</i><sup>th</sup> langauge provides an interface to these resources in the form of a number of types of data.
 		</p>
 		<p>
 			There are three data types which will always be provided with the <i>n</i><sup>th</sup> language.
@@ -313,14 +313,21 @@
 			A Reference may hold any one abstract non-ordered value identifying a unique Byte.
 			References can be stored by the same number of <a href="#Byte">Byte</a> as a <a href="#Register">Register</a>.
 		</p>
+		<h2>Data Constructors</h2>
+		<p>
+			Data is constructed via a single expression constructor described in the figure below. 
+		</p>
+		<figure>
+			<table>
+				<tr><td><code>{'data}</code></td></tr>
+			</table>
+		</figure>
 		<h2>Operations on Data</h2>
 		<p>
 			The <a href="#Byte">Byte</a>, <a href="#Register">Register</a>, and <a href="#Reference">Reference</a> data types are provided as default <a href="#Type">Types</a>.
-			Thus binding or constraining a <a href="#Variable">Variable</a> using any of these three types results in an instantiation of that type in the environment.
-			A <a href="#Byte">Byte</a> or <a href="#Register">Register</a> which is instantiated will have a possibly unknown value which reflects the state of the storage medium at the location which was claimed for the instantiation.
 		</p>
 		<p>
-			
+
 		</p>
 	</article>
 	<article>
