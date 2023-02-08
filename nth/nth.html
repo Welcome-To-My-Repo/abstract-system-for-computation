@@ -6,11 +6,11 @@
 	<style>
 		:root{
 
-			--bg:rgb(229, 211, 202);
+			--bg:rgb(229, 214, 202);
 			--bgd:rgb(145, 192, 189);
-			--fg:rgb(87, 36, 0);
+			--fg:rgb(43, 18, 0);
 			--fgl:rgb(154, 52, 1);
-			--hg:rgb(94, 228, 217);
+			--hg:rgb(145, 192, 189);
 			--size:calc(17px + ((1vw + 1vh) / 6));
 		}
 		:target{background-color:var(--hg);}
@@ -22,6 +22,7 @@
 		table{text-align:center;width:fit-content;}
 		td{padding-left:1ch;padding-right:1ch;}
 		code{color:var(--fgl);border-radius:calc(var(--size) / 6);}
+		code *{color:var(--fgl);}
 		h1{font-size:calc(var(--size) * 3);}
 		h2{font-size:calc(var(--size) * 2);}
 		h3, h4, h5, h6{font-size:calc(var(--size) * 1.5);font-weight:normal;}
@@ -74,9 +75,10 @@
 		<h3>Notations</h3>
 		<p>
 			The <i>n</i><sup>th</sup> langauge can be described and extended in terms of itself.
-			However certain capabilities must be assumed which fulfill the behavior and semantics of the default <a href="#Expression">Expressions</a>.
-			The notation for the default expressions follows how an <a href="#Expression">Expression</a> would be provided to the <a href="#Context">Context</a>.
-			<a href="#Operation">Operations</a> which are assumed will be written in <code><b>bold monospace font</b></code>.
+			As such, figures which describe syntax and semantics are written as valid <i>n</i><sup>th</sup> programs which construct syntactic or semantic entities as they would appear in a <a href="#Context">Context</a>.
+			In order to fulfill the behavior and semantics of the default <a href="#Expressions">Expressions</a>, certain capabilities must be assumed.
+			These capabilities are included in figures as <a href="#Operation">Operations</a> written in <code><b>bold monospace font</b></code>.
+			Each <a href="#Operation">Operation</a> included in a figure will also be described in plain wording.
 		</p>
 	</article>
 	<article>
@@ -313,21 +315,23 @@
 			A Reference may hold any one abstract non-ordered value identifying a unique Byte.
 			References can be stored by the same number of <a href="#Byte">Byte</a> as a <a href="#Register">Register</a>.
 		</p>
-		<h2>Data Constructors</h2>
+		<h2>Operations on Data</h2>
 		<p>
-			Data is constructed via a single expression constructor described in the figure below. 
+			Since data types correspond to constant resource amounts, operations on these types are performed in-place, overwriting any previous values.
+		</p>
+		<h3>Updating Byte Values</h3>
+		<p>
+			The value stored by a <a href="#Byte">Byte</a> can be updated by either copying the value of an existing <a href="#Byte">Byte</a> or converting a <a href="#Number">Number</a> to a <a href="#Byte">Byte</a> value.
+			The <a href="#Expression">Expressions</a> for both methods are given in the figure below.
 		</p>
 		<figure>
 			<table>
-				<tr><td><code>{'data}</code></td></tr>
+				<tr><td><code>({Byte Byte} -> Byte)</code></td><td>...</td><td style="text-align:right;"><i>Byte Copying Update</i></td></tr>
+				<tr><td><code>({Byte Natural} -> Byte)</code></td><td>...</td><td style="text-align:right;"><i>Byte Converting Update</i></td></tr>
 			</table>
 		</figure>
-		<h2>Operations on Data</h2>
 		<p>
-			The <a href="#Byte">Byte</a>, <a href="#Register">Register</a>, and <a href="#Reference">Reference</a> data types are provided as default <a href="#Type">Types</a>.
-		</p>
-		<p>
-
+			
 		</p>
 	</article>
 	<article>

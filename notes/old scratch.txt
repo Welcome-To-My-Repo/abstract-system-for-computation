@@ -3116,3 +3116,15 @@ You can't have random self-modifying structure.
 Double down on lisp and pattern matching.
 Function application pattern is anything that starts with a function
 [(m : Collection), (? ((: (m \ 0 )) = Function) m)]
+
+
+
+how do i describe data?
+There's three types, Byte, Register, Reference.
+You can have sub-types.
+(Reg-t <- [(d : Register), (? (d > 3) d)])
+Everything is a value of Data.
+What do I want to describe?
+A sequential organization of data in storage.
+Collections already cover sequence.
+There needs to be a way to specify that you want the contents fo a collection to be adjacent.
