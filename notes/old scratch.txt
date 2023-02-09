@@ -3128,3 +3128,8 @@ What do I want to describe?
 A sequential organization of data in storage.
 Collections already cover sequence.
 There needs to be a way to specify that you want the contents fo a collection to be adjacent.
+
+
+All bindings are discarded?
+That makes no sense.
+Should there be some kind of inverse closure where everything that's used is preserved?

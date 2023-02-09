@@ -7,10 +7,10 @@
 		:root{
 
 			--bg:rgb(229, 214, 202);
-			--bgd:rgb(145, 192, 189);
+			--bgd:rgb(188, 199, 199);
 			--fg:rgb(43, 18, 0);
 			--fgl:rgb(154, 52, 1);
-			--hg:rgb(145, 192, 189);
+			--hg:rgb(188, 199, 199);
 			--size:calc(17px + ((1vw + 1vh) / 6));
 		}
 		:target{background-color:var(--hg);}
@@ -21,8 +21,9 @@
 		a:active{color:var(--hg);} a:link{color:var(--fg);} a:visited{color:var(--fg);}
 		table{text-align:center;width:fit-content;}
 		td{padding-left:1ch;padding-right:1ch;}
-		code{color:var(--fgl);border-radius:calc(var(--size) / 6);}
+		code{color:var(--fgl);border-radius:calc(var(--size) / 6);font-size:var(--size);}
 		code *{color:var(--fgl);}
+		h1, h2, h3, h4, h5, h6{font-weight:normal;}
 		h1{font-size:calc(var(--size) * 3);}
 		h2{font-size:calc(var(--size) * 2);}
 		h3, h4, h5, h6{font-size:calc(var(--size) * 1.5);font-weight:normal;}
@@ -319,21 +320,38 @@
 		<p>
 			Since data types correspond to constant resource amounts, operations on these types are performed in-place, overwriting any previous values.
 		</p>
-		<h3>Updating Byte Values</h3>
+		<h3>Updating Values</h3>
 		<p>
-			The value stored by a <a href="#Byte">Byte</a> can be updated by either copying the value of an existing <a href="#Byte">Byte</a> or converting a <a href="#Number">Number</a> to a <a href="#Byte">Byte</a> value.
-			The <a href="#Expression">Expressions</a> for both methods are given in the figure below.
+			The value stored in a <a href="#Byte">Byte</a> or <a href="#Register">Register</a> can be updated by either copying the value of an existing <a href="#Byte">Byte</a> or <a href="#Register">Register</a> or converting a <a href="#Number">Number</a>.
 		</p>
-		<figure>
+		<figure id="data-copying-operations">
 			<table>
-				<tr><td><code>({Byte Byte} -> Byte)</code></td><td>...</td><td style="text-align:right;"><i>Byte Copying Update</i></td></tr>
-				<tr><td><code>({Byte Natural} -> Byte)</code></td><td>...</td><td style="text-align:right;"><i>Number Converting Update</i></td></tr>
+				<tr><td><code>({Byte Byte} -> Byte)</code></td><td>...</td><td style="text-align:right;"><i>copying byte update</i></td></tr>
+				<tr><td><code>({Register Register} -> Register)</code></td><td>...</td><td style="text-align:right;"><i>copying register update</i></td></tr>
 			</table>
 		</figure>
 		<p>
-			The Number Converting Update <a href="#Operation">operation</a> will convert a <a href="#Number">Number</a> to a <a href="#Byte">Byte</a> value.
-			If the numerical value is not a member of the set of values which can be stored in a <a href="#Byte">Byte</a>, then the operation will fail with an error.
+			The <a href="#data-copying-operations">figure</a> above describes the <a href="#Expression">Expressions</a> for copying the value from one <a href="#Byte">Byte</a> or <a href="#Register">Register</a> to another.
+			The first operand is the destination of the copy operation.
+			The second operand provides the value to be copied.
+			Both operations will produce the first operand with the updated value when <a href="#Compute">computed</a>.
 		</p>
+		<figure id="number-conversion-operations">
+			<table>
+				<tr><td><code>({Byte Number} -> Byte)</code></td><td>...</td><td style="text-align:right;"><i>convert number to byte</i></td></tr>
+				<tr><td><code>({Register Number} -> Byte)</code></td><td>...</td><td style="text-align:right;"><i>convert number to register</i></td></tr>
+			</table>
+		</figure>
+		<p>
+			The <a href="#number-conversion-operations">figure</a> above describes the <a href="#Expression">Expressions</a> for updating a data value by a corresponding numerical value.
+			The first operand is the destination of the converted value.
+			The second operand is the numerical value to be converted.
+			Both operations will produce the first operand with the updated value when <a href="#Compute">computed</a>.
+		</p>
+		<p>
+			Converting a <a href="#Number">Number</a> to a data value will fail with a type error if the value represented by the number is not included in the set of values which can be stored in the destination operand.
+		</p>
+		<h3>Arithmetic</h3>
 	</article>
 	<article>
 		<h1 id="Numbers">Numbers</h1>
