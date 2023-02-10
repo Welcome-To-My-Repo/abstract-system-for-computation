@@ -3133,3 +3133,24 @@ There needs to be a way to specify that you want the contents fo a collection to
 All bindings are discarded?
 That makes no sense.
 Should there be some kind of inverse closure where everything that's used is preserved?
+
+
+
+copy should be it's own operator with its own semantics.
+so what's my syntax now?
+
+
+Type constructor
+Collection constructor
+({Symbol '-> Expression} -> Function)
+({* -> *} '-> Function)
+(x : *), ({Symbol '<- x} -> x)
+(s : Symbol), ({s ': *} -> s)
+(x : *), ({x ': *} -> x)
+(x : *), ({'~ x} -> (: x))
+(n : [Number Collection Byte Register]), ({n '+ (: n)} -> (: n))
+(n : [Number Collection Byte Register]), ({n '- (: n)} -> (: n))
+(n : [Number Byte Register]), ({n '* (: n)} -> (: n))
+(n : [Number Collection Byte Register]), ({n '/ (: n)} -> (: n))
+(n : [Number Byte Register]), ({n '// (: n)} -> (: n))
+({Collection '\ *} -> [Collection *])
