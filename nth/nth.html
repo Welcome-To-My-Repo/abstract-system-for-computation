@@ -21,6 +21,7 @@
 		a:active{color:var(--hg);} a:link{color:var(--fg);} a:visited{color:var(--fg);}
 		table{text-align:center;width:fit-content;}
 		td{padding-left:1ch;padding-right:1ch;}
+		td code{text-align:left;}
 		code{color:var(--fgl);border-radius:calc(var(--size) / 6);font-size:var(--size);}
 		code *{color:var(--fgl);}
 		h1, h2, h3, h4, h5, h6{font-weight:normal;}
@@ -29,11 +30,12 @@
 		h3, h4, h5, h6{font-size:calc(var(--size) * 1.5);font-weight:normal;}
 		figure{border-style:solid;border-color:var(--fg);background-color:var(--bgd);border-radius:var(--size);width:fit-content;margin-left:auto;margin-right:auto;padding:1ch;}
 		hr{color:var(--fgl);}
+		article{border-color:var(--fg);border-width:calc(var(--size) / 10);border-top-style:solid;}
 		@media print{h1, h2, h3, h4{page-break-after:avoid;}article{page-break-after:always;}figure{page-break-inside:avoid;}}
 	</style>
 </head>
 <body>
-	<article style="height:100vh;page-break-after:initial;">
+	<article style="height:100vh;page-break-after:initial;border-style:none;">
 		<svg viewBox="0 0 100 100" version="1.1" style="height:50%;width:auto;margin-top:10%;stroke-width:0.2ch;" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
 			<defs id="defs54" />
 			<ellipse style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:var(--fg);stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -45,7 +47,7 @@
 				d="M 60.777712,2.0907162 37.92925,97.768652" id="path49" />
 		</svg>
 	</article>
-	<article style="height:100vh;page-break-after:initial;">
+	<article style="height:100vh;page-break-after:initial;border-style:none;">
 		<h1>Standard Documentation for the</h1>
 		<h1><i>n</i><sup>th</sup></h1>
 		<h1>System for Computation</h1>
@@ -106,7 +108,7 @@
 		<p id="Symbol">
 			A Symbol is any sequence of characters not including <a href="#Punctuation">Punctuation</a> or a <a href="#Blank">Blank</a>.
 		</p>
-		<p id="Number">
+		<p id="Written-Number">
 			A Number is any symbol which only contains decimal digits.
 			Numbers may optionally include either a fractional or decimal component as a forward slash or period dot respectively.
 			These components cannot occur as the first or last character in the Number.
@@ -132,7 +134,7 @@
 		</p>
 		<figure>
 			<table>
-				<tr><td>Program &rarr; <a href="#Expression">Expression</a> | <a href="#Sequence">Sequence</a> | <a href="#Quote">Quote</a> | <a href="#Collection">Collection</a> | <a href="#String">String</a> | <a href="#Type">Type</a> | <a href="#Symbol">Symbol</a> | <a href="#Number">Number</a></td></tr>
+				<tr><td>Program &rarr; <a href="#Expression">Expression</a> | <a href="#Sequence">Sequence</a> | <a href="#Quote">Quote</a> | <a href="#Collection">Collection</a> | <a href="#String">String</a> | <a href="#Type">Type</a> | <a href="#Symbol">Symbol</a> | <a href="#Writen-Number">Number</a></td></tr>
 				<tr><td>Expression &rarr; <code>(</code> Program * <code>)</code></td></tr>
 				<tr><td>Sequence &rarr; Program <code>,</code> Sequence | Program <code>,</code> Program</td></tr>
 				<tr><td>Quote &rarr; <code>'</code> Program</td></tr>
@@ -183,9 +185,6 @@
 				<tr><td><code>3</code></td><td>...</td><td style="text-align:right;"><i>3</i></td></tr>
 			</table>
 		</figure>
-	</article>
-	<article>
-		<h1>Semantics</h1>
 		<p>
 			The result of <a href="#Compute">computing</a> a <a href="#Node">Node</a> is determined by the semantics corresponding to the <a href="#Operation">Operation</a> or <a href="#Constructor">Constructor</a> that the <a href="#Node">Node</a> represents.
 			<i>n</i><sup>th</sup> relies on a group of interdependent semantic models.
@@ -193,74 +192,63 @@
 		</p>
 	</article>
 	<article>
-		<h1 id="Data">Data</h1>
+		<h1 id="Storage">Storage</h1>
 		<p>
-			The <i>n</i><sup>th</sup> environment facilitates and provides resources for <a href="#Compute">computing</a> <i>n</i><sup>th</sup> <a href="#Program">programs</a>.
-			The <i>n</i><sup>th</sup> langauge provides an interface to these resources in the form of a number of types of data.
+			The <i>n</i><sup>th</sup> language provides types which act as an interface to the storage medium provided by the environment.
+			They are named <a href="#Data">Data</a> and <a href="#Reference">Reference</a>.
+		</p>
+		<h2>Data</h2>
+		<p>
+			<span id="Data">Data is a type corresponding to the smallest individual unit of storage provided by the environment.</span>
+			A <a href="#Data">Data</a> unit can store one of a number of abstract values.
+			The number of values which can be stored as <a href="#Data">Data</a> are dependent on the nature of the storage medium supplied by the environment.
+			<i>n</i><sup>th</sup> enumerates these values as a set of sequential <a href="#Number">numerical</a> values beginning with zero and ending with a <a href="#Number">number</a> which is one less than the cardinality of the set.
+		</p>
+		<h3>Operations on Data</h3>
+		<p>
+			Data is constructed by converting a <a href="#Number">number</a> corresponding to a <a href="#Data">Data</a> value to a format which can be stored as <a href="#Data">Data</a>.
+			Values can also be <a href="#Compute">computed</a> using a modular arithmetic over existing <a href="#Data">Data</a>.
 		</p>
 		<p>
-			There are three data types which will always be provided with the <i>n</i><sup>th</sup> language.
-			They are the <a href="#Byte">Byte</a>, the <a href="#Register">Register</a>, and the <a href="#Reference">Reference</a>.
+			The <a href="#Data">Data</a> <a href="#Constructor">Constructor</a> accepts a <a href="#Number">Number</a> corresponding to a <a href="#Data">Data</a> value and will convert it to a format which can be stored.
+			The <a href="#Constructor">Constructor</a> <a href="#Expression">Expression</a> is given below.
 		</p>
-		<p>
-			<span id="Byte">A Byte corresponds to the smallest unit of storage which can be identified by a unique <a href="#Reference">Reference</a>.</span>
-			A Byte may store any one of a set of whole, positive numerical values.
-			The size of the set of values depends on the nature and capabilities of the storage medium used by each indivdual environment.
-			The set of values consists of zero and some additional numbers counting upwards by one until the maximum value.
-		</p>
-		<p>
-			<span id="Register">A Register corresponds to the largest unit of data which can be transformed in a single action by the environment.</span>
-			A Register may hold any one of a set of whole, positive numerical values.
-			The size of the set of values depends on the nature and capabilities of the compuational medium used by each individual environment.
-			The set of values consists of zero and additional numbers counting upwards by one until some maximum value.
-			A Register can be stored by one or more adjacent <a href="#Byte">Bytes</a>.
-		</p>
-		<p>
-			<span id="Reference">A Reference is a data value which uniquely identifies a single Byte.</span>
-			A Reference may hold any one abstract non-ordered value identifying a unique Byte.
-			References can be stored by the same number of <a href="#Byte">Byte</a> as a <a href="#Register">Register</a>.
-		</p>
-		<h2>Operations on Data</h2>
-		<p>
-			Since data types correspond to constant resource amounts, operations on these types are performed in-place, overwriting any previous values.
-		</p>
-		<h3>Updating Values</h3>
-		<p>
-			The value stored in a <a href="#Byte">Byte</a> or <a href="#Register">Register</a> can be updated by either copying the value of an existing <a href="#Byte">Byte</a> or <a href="#Register">Register</a> or converting a <a href="#Number">Number</a>.
-		</p>
-		<figure id="data-copying-operations">
+		<figure>
 			<table>
-				<tr><td><code>({Byte Byte} -> Byte)</code></td><td>...</td><td style="text-align:right;"><i>copying byte update</i></td></tr>
-				<tr><td><code>({Register Register} -> Register)</code></td><td>...</td><td style="text-align:right;"><i>copying register update</i></td></tr>
+				<tr><td><i>given </i><code>Maximum</code><i> which binds the maximum possible value for the Data type,</i></td></tr>
+				<tr><td><code>({'% [(n : Number), (? ((n < Maximum) /\ (n > -1)) n)]} -> Data)</code></td><td>...</td><td style="text-align:right;"><i>data constructor</i></td></tr>
 			</table>
 		</figure>
 		<p>
-			The <a href="#data-copying-operations">figure</a> above describes the <a href="#Expression">Expressions</a> for copying the value from one <a href="#Byte">Byte</a> or <a href="#Register">Register</a> to another.
-			The first operand is the destination of the copy operation.
-			The second operand provides the value to be copied.
-			Both operations will produce the first operand with the updated value when <a href="#Compute">computed</a>.
+			Modular arithmetic can be performed on <a href="#Data">Data</a> values which <a href="#Compute">computes</a> to other <a href="#Data">Data</a> values.
+			There are five arithmetic operations provided which are given in the figure below.
 		</p>
-		<figure id="number-conversion-operations">
+		<figure>
 			<table>
-				<tr><td><code>({Byte Number} -> Byte)</code></td><td>...</td><td style="text-align:right;"><i>convert number to byte</i></td></tr>
-				<tr><td><code>({Register Number} -> Byte)</code></td><td>...</td><td style="text-align:right;"><i>convert number to register</i></td></tr>
+				<tr><td><code>({Data '+ Data} -> Data)</code></td><td>...</td><td style="text-align:right;"><i>addition</i></td></tr>
+				<tr><td><code>({Data '- Data} -> Data)</code></td><td>...</td><td style="text-align:right;"><i>subtraction</i></td></tr>
+				<tr><td><code>({Data '* Data} -> Data)</code></td><td>...</td><td style="text-align:right;"><i>multiplication</i></td></tr>
+				<tr><td><code>({Data '/ Data} -> Data)</code></td><td>...</td><td style="text-align:right;"><i>division</i></td></tr>
+				<tr><td><code>({Data '// Data} -> Data)</code></td><td>...</td><td style="text-align:right;"><i>modulus</i></td></tr>
 			</table>
 		</figure>
 		<p>
-			The <a href="#number-conversion-operations">figure</a> above describes the <a href="#Expression">Expressions</a> for updating a data value by a corresponding numerical value.
-			The first operand is the destination of the converted value.
-			The second operand is the numerical value to be converted.
-			Both operations will produce the first operand with the updated value when <a href="#Compute">computed</a>.
+			All arithmetic operations on <a href="#Data">Data</a> will result in a value which is part of the set of values which can be stored as <a href="#Data">Data</a>.
+			Operations potentially will produce a value which is not included in the set of values.
+			In that case, the actual value is adjusted to a corresponding value which is included in the set according to the algorithm given below.
 		</p>
-		<p>
-			Converting a <a href="#Number">Number</a> to a data value will fail with a type error if the value represented by the number is not included in the set of values which can be stored in the destination operand.
-		</p>
-		<h3>References</h3>
-		<p>
-			
-		</p>
-		<h3>Arithmetic</h3>
-
+		<figure>
+			<table>
+				<tr><td><i>given </i><code>Maximum</code><i> which binds the maximum possible value for the Data type,</i></td></tr>
+				<tr><td><code>
+					(n -><br>
+					(? (n > Maximum)<br>
+					(n // Maximum)<br>
+					(? (n < 0)<br>
+					(-1 * (n // Maximum))<br>
+					n)))</code></td></tr>
+			</table>
+		</figure>
 	</article>
 	<article>
 		<h1 id="Numbers">Numbers</h1>

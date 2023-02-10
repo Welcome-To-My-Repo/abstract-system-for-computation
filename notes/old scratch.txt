@@ -3154,3 +3154,19 @@ Collection constructor
 (n : [Number Collection Byte Register]), ({n '/ (: n)} -> (: n))
 (n : [Number Byte Register]), ({n '// (: n)} -> (: n))
 ({Collection '\ *} -> [Collection *])
+
+
+
+
+
+
+should I have functions with multiple parameters or return parameters?
+No, because multiple parameters are just collections.
+
+(x -> ((x \ 1) + (x \ 2)))
+(x -> ((x 'n) + (x 'm)))
+pattern matching
+(k <- c), ({('a -> 1) ('b -> 2) ('c -> 3)} k)
+ok so is it the end of the world that application happens from left to right?
+no, nobody has ever ever asked for application to go the other way.
+notation to construct data
