@@ -6,7 +6,7 @@
 	<style>
 		:root{
 
-			--bg:rgb(229, 214, 202);
+			--bg:rgb(240, 217, 198);
 			--bgd:rgb(188, 199, 199);
 			--fg:rgb(43, 18, 0);
 			--fgl:rgb(154, 52, 1);
@@ -201,7 +201,7 @@
 			Each unit can be accessed through a <a href="#Reference">Reference</a> which uniquely identifies that <a href="#Data">Data</a> unit.
 		</p>
 		<p>
-			<a href="#Constructor">Constructors</a> will claim resources from the environment in the form of some number of <a href="#Data">Data</a> units.
+			<a href="#Constructor">Constructors</a> and <a href="#Operation">Operations</a> will claim resources from the environment in the form of some number of <a href="#Data">Data</a> units.
 		</p>
 		<h2>Data</h2>
 		<p>
@@ -266,8 +266,17 @@
 		</p>
 		<h3>Operations on References</h3>
 		<p>
-			A Reference cannot be constructed by itself but can only be derived from some entity which has been <a href="#Constructor">constructed</a>.
+			A <a href="#Reference">Reference</a> is not explicitly <a href="#Constructor">constructed</a>.
+			It can only be derived from some other entity which has been <a href="#Constructor">constructed</a>.
+			There are two operations, one which derives a <a href="#Reference">Reference</a> from an entity, and one which exposes an entity through a <a href="#Reference">Reference</a>.
+			The two <a href="#Expressions">Expressions</a> for the <a href="#Operation">Operations</a> are given in the figure below.
 		</p>
+		<figure>
+			<table>
+				<tr><td><code>({'@@ *} -> Reference)</code></td><td>...</td><td style="text-align:right;"><i>derive reference</i></td></tr>
+				<tr><td><code>({'@ Reference} -> *)</code></td><td>...</td><td style="text-align:right;"><i>dereference</i></td></tr>
+			</table>
+		</figure>
 	</article>
 	<article>
 		<h1 id="Numbers">Numbers</h1>
